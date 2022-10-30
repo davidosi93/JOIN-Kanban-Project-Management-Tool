@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="css/summary.css">
     <script src="template.js"></script>
+    <script src="js/summary.js"></script>
 </head>
 
 <body onload="includeHTML()">
@@ -106,12 +107,12 @@
                     <p>Kanban Project Management Tool</p>
 
                     <div class="headerImg">
-                        <img class="information" src="/asseds/img/information.png">
+                        <img onclick="help()" class="information" src="/asseds/img/information.png">
                         <img class="personLogIn" src="/asseds/img/logo.jpg">
                     </div>
                 </div>
 
-                <div class="mainContainer">
+                <div id="mainContainer" class="mainContainer">
                     <div class="headline">
                         <h1>Summary</h1>
                         <p>Everythihng in a nutshell!</p>
@@ -167,6 +168,39 @@
                     </div>
                 </div>
 
+
+                <div id="help" class="mainContainerHelp d-none">
+                    <div class="headerHelp">
+                        <h1>Help</h1>
+                        <img onclick="goBacktoMainContainer()" src="asseds/img/arrow-left-line.png">
+                    </div>
+
+                    <h2>What is Join?</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi
+                        ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id,
+                        facilis possimus dolores.</p>
+
+                    <h2>How to use it</h2>
+
+                    <div class="flex">
+                        <b>1.</b>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
+                            id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
+                            consequuntur alias porro magni.</p>
+                    </div>
+                    <div class="flex">
+                        <b>2.</b>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
+                            id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
+                            consequuntur alias porro magni.</p>
+                    </div>
+                    <div class="flex">
+                        <b>3.</b>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
+                            id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
+                            consequuntur alias porro magni.</p>
+                    </div>
+                </div>
             </div>
 
         </div>
