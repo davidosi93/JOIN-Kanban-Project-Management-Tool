@@ -1,0 +1,204 @@
+.headerRightMenu{
+    margin-top: 46px;
+    height: 635px;
+    width: 700px;
+    background-color: white;
+    
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-bottom: 3px solid lightgray;
+}
+
+.header p{
+    padding-left: 80px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.headerImg{
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.information{
+    opacity: 0.5;
+    width: 18px;
+    height: 18px;
+    padding-right: 10px;
+}
+
+.personLogIn{
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.mainContainer{
+    padding-left: 80px;
+    padding-top: 20px;
+    background-color: rgba(240, 236, 236, 0.443);
+    height: 560px;
+}
+
+.headline{
+    display: flex;
+}
+
+.headline h1{
+    
+    padding-right: 30px;
+    border-right: 3px solid #29ABE2;;
+   
+}
+
+.headline p{
+    padding-left: 20px;
+    margin-top: 35px;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.taskContainer{
+    display: flex;
+    margin-top: 50px;
+   
+    
+}
+
+.taskContainer div{
+    text-align: center;
+}
+
+.boardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    background-color: white;
+    border-radius: 10px;
+    max-width: 90px;
+    padding: 10px;
+}
+
+.boardContainer div{
+    font-size: 40px;
+    padding-top: 0;
+}
+
+.boardContainer p{
+    margin: 0;
+}
+
+.boardContainer:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: white;
+    background-color: #2A3647;
+}
+
+.deadlineContainer{
+    display: flex;
+}
+
+.deadlineTasks{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    width: 320px;
+    background-color: white;
+    border-radius: 10px;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.deadlineTasks img{
+    width: 36px;
+    height: 36px;
+    padding-right: 10px;
+}
+
+.deadlineTasks div{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 0;
+}
+
+.deadlineTasks p{
+    margin: 0;
+    font-size: 12px;
+}
+
+.deadlineTasks:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    color: white;
+    background-color: #2A3647;
+}
+
+.deatlineDate{
+    margin-left: 50px;
+    padding-left: 30px;
+    border-left: 3px solid lightgray;
+}
+
+.date{
+    font-size: 18px !important;
+}
+
+.greet{
+    margin-top: 20px;
+    text-align: center;
+    padding-left: 30px;
+    font-size: 30px;
+}
+
+.finishTask{
+    display: flex;
+    margin-top: 20px;
+    margin-right: 50px;
+    
+}
+
+.finishContainer{
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        width: 140px;
+        background-color: white;
+        border-radius: 10px;
+        padding-left: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-right: 20px;
+}
+
+.finishContainer div{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 0;
+}
+
+.finishContainer p{
+    margin: 0;
+}
+
+.finishContainer img{
+    padding-right: 10px;
+}
+
+.finishContainer:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    color: white;
+    background-color: #2A3647;
+}
