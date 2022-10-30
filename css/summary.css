@@ -178,13 +178,13 @@
         border-radius: 10px;
         padding-left: 30px;
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
         margin-right: 20px;
 }
 
-.finishContainer div{
+.finishContainer div div{
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
     padding-top: 0;
 }
 
