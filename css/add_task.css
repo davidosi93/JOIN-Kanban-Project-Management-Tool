@@ -1,0 +1,200 @@
+.headerRightMenu {
+    margin-top: 46px;
+    height: 88%;
+    width: 700px;
+    background-color: white;
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-bottom: 3px solid lightgray;
+}
+
+.header p {
+    padding-left: 80px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.headerImg {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.information {
+    opacity: 0.5;
+    width: 18px;
+    height: 18px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.personLogIn {
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.mainContainer {
+    padding-left: 80px;
+    padding-top: 20px;
+    background-color: rgba(240, 236, 236, 0.443);
+    height: 88%;
+    position: relative;
+}
+
+.headline {
+    display: flex;
+}
+
+.headline h1 {
+    padding-right: 30px;
+}
+
+.flex {
+    display: flex;
+    width: 100%;
+}
+
+.leftContainer {
+    width: 50%;
+}
+
+.leftContainer input {
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 220px;
+    padding: 8px;
+}
+
+.leftContainer textarea{
+    width: 220px;
+    height: 70px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 8px;
+    
+}
+
+.rightContainer input {
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 220px;
+    padding: 8px;
+}
+
+.flex p {
+    margin-bottom: 0;
+}
+
+.prio {
+    display: flex;
+    margin-top: 10px;
+}
+
+.prio img {
+    width: 12px;
+    height: 12px;
+}
+
+.prioContainer {
+    padding: 8px;
+    margin-right: 8px;
+    padding-right: 8px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.prioContainer:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    border-bottom: 2px solid lightgray;
+}
+
+.middleLine {
+    position: absolute;
+    width: 0px;
+    height: 350px;
+    left: 350px;
+    top: 120px;
+    border: 1px solid #D1D1D1;
+}
+
+.rightContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.dateImg{
+    width: 12px;
+    height: 12px;
+    background-color: white;
+}
+
+.subtaskIMG{
+    width: 12px;
+    height: 12px;
+}
+
+.subtasksImg{
+    margin-top: 5px;
+    width: 10px;
+    height: 10px;
+}
+
+.subtaskContainer{
+    display: flex;
+}
+
+.subtaskContainer p{
+    margin-top: 5px;
+    padding-left: 5px;
+    font-size: 12px;
+}
+
+.btn{
+   position: absolute;
+   bottom: 50px;
+   right: 70px;
+}
+
+.btn img{
+    width: 10px;
+    height: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.btnClear{
+    padding: 10px;
+    border-radius: 10px;
+    border-color: lightgray;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.btnCreate{
+    padding: 10px;
+    border-radius: 10px;
+    border-color: lightgray;
+    background: #2A3647;
+    color: white;
+    cursor: pointer;
+}
+
+.btnClear:hover{
+  color: #29ABE2;
+  border-color: #29ABE2;
+}
+
+.btnCreate:hover{
+    background-color: #29ABE2;
+}

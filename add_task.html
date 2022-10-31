@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="css/add_task.css">
+    <script src="js/add_task.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            font-family: 'Inter';
+            font-style: normal;
+        }
+
+        .headerMenuImage {
+            height: 84px;
+            width: 69px;
+            margin-bottom: 75px;
+            margin-top: 42px;
+        }
+
+        .containerHeader {
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: start;
+        }
+
+        .headerLeftMenu {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2A3647;
+            height: 88vh;
+            width: 158px;
+            margin-left: 312px;
+            z-index: 2;
+            margin-top: 46px;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* .headerRightMenu {
+            position: absolute;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+            width: 61%;
+            height: 7.5%;
+            float: right;
+            margin-left: 312px;
+            z-index: 1;
+            margin-top: 46px;
+        } */
+
+        .headerSummaryButton {
+            color: #CDCDCD;
+            background-color: #2A3647;
+            border: none;
+            font-size: 13px;
+            width: 158px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .headerSummeryButtonImage {
+            height: 17px;
+            width: 17px;
+            margin-right: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="containerHeader">
+
+
+        <div class="headerLeftMenu">
+            <img src="/asseds/img/Capa2.png" class="headerMenuImage">
+            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
+                    src="/asseds/img/uit_web-grid.png">Summary</button>
+            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
+                    src="/asseds/img/Frame 12.png">Board</button>
+            <button class="headerSummaryButton"><img class="headerSummeryButtonImage" src="/asseds/img/Group 1.png">Add
+                Task</button>
+            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
+                    src="/asseds/img/Frame 12 (1).png">Contacts</button>
+            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
+                    src="/asseds/img/Frame 4.png">Legal Notice</button>
+        </div>
+        <div class="headerRightMenu">
+            <div class="header">
+                <p>Kanban Project Management Tool</p>
+
+                <div class="headerImg">
+                    <img onclick="help()" class="information" src="/asseds/img/information.png">
+                    <img class="personLogIn" src="/asseds/img/logo.jpg">
+                </div>
+            </div>
+
+
+            <div id="mainContainer" class="mainContainer">
+                <div class="headline">
+                    <h1>Add Task</h1>
+                </div>
+                <div class="middleLine"></div>
+                <div class="flex">
+                    <div class="leftContainer">
+                        <p>Title</p>
+                        <input placeholder="Enter a title" required>
+                        <p>Description</p>
+                        <textarea placeholder="Enter a Description"></textarea>
+                        <p>Category</p>
+                        <input>
+                        <p>Assigned to</p>
+                        <input>
+
+
+                    </div>
+                    <div class="rightContainer">
+                        <p>Due date</p>
+                        <div>
+                            <input placeholder="dd/mm/yyyy" required>
+                            <img class="dateImg" src="asseds/img/date.png">
+                        </div>
+                        <p>Prio</p>
+                        <div class="prio">
+                            <div class="prioContainer">Urgent
+                                <img src="asseds/img/Vector red.png">
+                            </div>
+                            <div class="prioContainer">Medium
+                                <img src="asseds/img/Vector yellow.png">
+                            </div>
+                            <div class="prioContainer">Low
+                                <img src="asseds/img/Vector green.png">
+                            </div>
+                        </div>
+                        <p>Subtasks</p>
+
+                        <div>
+                            <input>
+                            <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                        </div>
+
+                        <div class="subtaskContainer">
+                            <img class="subtasksImg" src="asseds/img/Rectangle 5.png">
+                            <p>Subtask 1</p>
+                        </div>
+
+
+                        <div class="btn">
+                            <button class="btnClear">Clear
+                                <img src="asseds/img/cross.png">
+                            </button>
+                            <button class="btnCreate"> Create Task
+                                <img src="asseds/img/hacken.png">
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+</body>
+
+</html>
