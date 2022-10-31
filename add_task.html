@@ -14,6 +14,7 @@
             margin: 0px;
             font-family: 'Inter';
             font-style: normal;
+            font-weight: 400;
         }
 
         .headerMenuImage {
@@ -42,10 +43,10 @@
             margin-left: 312px;
             z-index: 2;
             margin-top: 46px;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-        }
+            
+        } -->
 
-        /* .headerRightMenu {
+        <!-- /* .headerRightMenu {
             position: absolute;
             background: #FFFFFF;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -61,11 +62,18 @@
             color: #CDCDCD;
             background-color: #2A3647;
             border: none;
-            font-size: 13px;
+            font-size: 12px;
             width: 158px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-bottom: 3px;
+            margin-top: 3px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .headerSummaryButton:hover {
+            color: #FFFFFF;
+            background-color: #091931;
+            cursor: pointer;
         }
 
         .headerSummeryButtonImage {
@@ -73,27 +81,125 @@
             width: 17px;
             margin-right: 14px;
         }
+
+        .headerBoatrdButton {
+            color: #CDCDCD;
+            background-color: #2A3647;
+            border: none;
+            font-size: 12px;
+            width: 158px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            padding-right: 25px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .headerBoatrdButton:hover {
+            color: #FFFFFF;
+            background-color: #091931;
+            cursor: pointer;
+        }
+        
+        .headerBoardButtonImage {
+            height: 21px;
+            width: 21px;
+            margin-right: 15px;
+        }
+        
+        .headerAddTaskButton {
+            color: #CDCDCD;
+            background-color: #2A3647;
+            border: none;
+            font-size: 12px;
+            width: 158px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            padding-right: 8px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+        
+        .headerAddTaskButton:hover {
+            color: #FFFFFF;
+            background-color: #091931;
+            cursor: pointer;
+        }
+        
+        .headerAddTaskButtonImage {
+            height: 21px;
+            width: 21px;
+            margin-right: 12px;
+        }
+        
+        .headerContactsButton {
+            color: #CDCDCD;
+            background-color: #2A3647;
+            border: none;
+            font-size: 12px;
+            width: 158px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            padding-right: 13px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+        
+        .headerContactsButton:hover {
+            color: #FFFFFF;
+            background-color: #091931;
+            cursor: pointer;
+        }
+        
+        .headerContactsButtonImage {
+            height: 21px;
+            width: 21px;
+            margin-right: 13px;
+        }
+        
+        .headerLegalNoticeButton {
+            color: #CDCDCD;
+            background-color: #2A3647;
+            border: none;
+            font-size: 12px;
+            width: 158px;
+            margin-top: 235px;
+            margin-bottom: 3px;
+            padding-left: 23px;
+            padding-top: 10px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+        
+        .headerLegalNoticeButton:hover {
+            color: #FFFFFF;
+            background-color: #091931;
+            cursor: pointer;
+        }
+        
+        .headerLegalNoticeButtonImage {
+            height: 21px;
+            width: 21px;
+            margin-right: 12px;
+        }
+
+
     </style>
-</head>
-
-<body>
-
-    <div class="containerHeader">
 
 
-        <div class="headerLeftMenu">
-            <img src="/asseds/img/Capa2.png" class="headerMenuImage">
-            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
-                    src="/asseds/img/uit_web-grid.png">Summary</button>
-            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
-                    src="/asseds/img/Frame 12.png">Board</button>
-            <button class="headerSummaryButton"><img class="headerSummeryButtonImage" src="/asseds/img/Group 1.png">Add
-                Task</button>
-            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
-                    src="/asseds/img/Frame 12 (1).png">Contacts</button>
-            <button class="headerSummaryButton"><img class="headerSummeryButtonImage"
-                    src="/asseds/img/Frame 4.png">Legal Notice</button>
-        </div>
+    <body>
+
+        <div class="containerHeader">
+
+
+            <div class="headerLeftMenu">
+                <img src="/asseds/img/Capa2.png" class="headerMenuImage">
+                <button id="headerSummaryButton" class="headerSummaryButton"><img class="headerSummeryButtonImage" src="/asseds/img/uit_web-grid.png">Summary</button>
+                <button class="headerBoatrdButton"><img class="headerBoardButtonImage" src="/asseds/img/Frame 12.png">Board</button>
+                <button class="headerAddTaskButton"><img class="headerAddTaskButtonImage" src="/asseds/img/Group 1.png">Add Task</button>
+                <button class="headerContactsButton"><img class="headerContactsButtonImage" src="/asseds/img/Frame 12 (1).png">Contacts</button>
+                <button class="headerLegalNoticeButton"><img class="headerLegalNoticeButtonImage" src="/asseds/img/Frame 4.png">Legal Notice</button>
+            </div>
         <div class="headerRightMenu">
             <div class="header">
                 <p>Kanban Project Management Tool</p>
@@ -113,23 +219,24 @@
                 <div class="flex">
                     <div class="leftContainer">
                         <p>Title</p>
+                        <form onsubmit="addTask(); return false;">
                         <input placeholder="Enter a title" required>
                         <p>Description</p>
-                        <textarea placeholder="Enter a Description"></textarea>
+                        <textarea required placeholder="Enter a Description"></textarea>
                         <p>Category</p>
-                        <input>
-                        <img  class="pfeilUnten" src="asseds/img/pfeil unten.png">
+                        <select required placeholder="Select task category">
+                        <option>New category</option>
+                        <option>Sales</option>
+                        <option>Backoffice</option>
+                        </select>
                         <p>Assigned to</p>
-                        <input>
-                        <img class="pfeilUnten" src="asseds/img/pfeil unten.png">
-
-
+                        <select placeholder="Select contacts to assign"></select>
 
                     </div>
                     <div class="rightContainer">
                         <p>Due date</p>
                         <div>
-                            <input placeholder="dd/mm/yyyy" required>
+                            <input type="date" placeholder="dd/mm/yyyy" required>
                             <img class="dateImg" src="asseds/img/date.png">
                         </div>
                         <p>Prio</p>
@@ -145,9 +252,8 @@
                             </div>
                         </div>
                         <p>Subtasks</p>
-
                         <div>
-                            <input>
+                            <input required>
                             <img class="subtaskIMG" src="asseds/img/Vector (1).png">
                         </div>
 
@@ -155,8 +261,6 @@
                             <img class="subtasksImg" src="asseds/img/Rectangle 5.png">
                             <p>Subtask 1</p>
                         </div>
-
-
                         <div class="btn">
                             <button class="btnClear">Clear
                                 <img src="asseds/img/cross.png">
@@ -164,16 +268,10 @@
                             <button class="btnCreate"> Create Task
                                 <img src="asseds/img/hacken.png">
                             </button>
+                        </form>
                         </div>
                     </div>
-
                 </div>
-
-
-
-
-
-
             </div>
         </div>
 

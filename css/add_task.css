@@ -203,3 +203,10 @@
     width: 8px;
     height: 8px;
 }
+
+select{
+    width: 235px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 8px;
+}
