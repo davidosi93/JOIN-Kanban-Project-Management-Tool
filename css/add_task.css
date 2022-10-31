@@ -198,3 +198,8 @@
 .btnCreate:hover{
     background-color: #29ABE2;
 }
+
+.pfeilUnten{
+    width: 8px;
+    height: 8px;
+}
