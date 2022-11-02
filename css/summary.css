@@ -6,7 +6,30 @@
     
 }
 
-.header{
+.headerUnderRightMenuHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 140px;
+}
+
+.headerUnderRightMenuHeaderHeadline {
+    font-weight: bold;
+    font-size: 61px;
+    color: #000000;
+    padding-right: 500px;
+}
+
+.headerUnderRightMenuHeaderInputfield {
+    margin-right: 50px;
+    width: 251px;
+    height: 51px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    border: 1px solid #A8A8A8;
+}
+
+/* .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +56,9 @@
     height: 18px;
     padding-right: 10px;
     cursor: pointer;
-}
+} */
+
+
 
 .personLogIn{
     object-fit: cover;
