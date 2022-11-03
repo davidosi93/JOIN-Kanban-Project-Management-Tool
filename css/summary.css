@@ -1,79 +1,15 @@
-.headerRightMenu{
-    margin-top: 46px;
-    height: 88%;
-    width: 700px;
-    background-color: white;
-    
-}
 
-.headerUnderRightMenuHeader {
+
+/* .Container{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 140px;
 }
 
-.headerUnderRightMenuHeaderHeadline {
-    font-weight: bold;
-    font-size: 61px;
-    color: #000000;
-    padding-right: 500px;
-}
-
-.headerUnderRightMenuHeaderInputfield {
-    margin-right: 50px;
-    width: 251px;
-    height: 51px;
-    border-radius: 5px;
-    background: #FFFFFF;
-    border: 1px solid #A8A8A8;
-}
-
-/* .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    border-bottom: 3px solid lightgray;
-}
-
-.header p{
-    padding-left: 80px;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.headerImg{
-    display: flex;
-    align-items: center;
-    padding-right: 10px;
-    cursor: pointer;
-}
-
-.information{
-    opacity: 0.5;
-    width: 18px;
-    height: 18px;
-    padding-right: 10px;
-    cursor: pointer;
-} */
-
-
-
-.personLogIn{
-    object-fit: cover;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid gray;
-}
 
 .mainContainer{
     padding-left: 80px;
     padding-top: 20px;
     background-color: rgba(240, 236, 236, 0.443);
     height: 88%;
-    /* width: 100%; */
 }
 
 .headline{
@@ -265,4 +201,61 @@
     padding-left: 10px;
     margin-top: 0;
     font-size: 14px;
+} */
+
+
+
+
+
+/* Ab hier wird der rechte Content bestimmt*/
+body{
+    margin: 0;
+}
+
+.rightContent{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(230, 226, 226);
+
+}
+
+.headerContent{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.headerContent p{
+    padding: 20px;
+    padding-left: 100px;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+
+.personLogIn{
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.headerContentRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.information{
+    padding-right: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.mainContent{
+    padding-left: 100px;
 }
