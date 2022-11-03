@@ -11,230 +11,57 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" Crossorigin>
-    <link href="https: //fonts.googleapis.com/css2?family=Inter:wght@100 & display Familie= Inter:wght@100;200;300;400;500;600;700;800;900 & ">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
 
 
     <style>
-        body {
-            margin: 0px;
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-        }
-        
-        .headerMenuImage {
-            height: 121px;
-            width: 100px;
-            margin-bottom: 100px;
-            margin-top: 63px;
-        }
-        
-        .containerHeader {
-            background-color: black;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: start;
-        }
-        
-        .headerLeftMenu {
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            align-items: center;
-            background-color: #2A3647;
-            height: 100vh;
-            width: 232px;
-            z-index: 2;
-        }
-        
-        .headerRightMenu {
-            position: absolute;
-            background: #FFFFFF;
-            width: 100vw;
-            height: 89px;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .headerUnderRightMenu {
-            position: absolute;
-            background: #F6F7F8;
-            width: 100vw;
-            height: 100vh;
-            float: right;
-            z-index: 0;
-        }
-        
-        .headerSummaryButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 16px;
-            font-weight: 400px;
-            width: 232px;
-            margin-bottom: 3px;
-            margin-top: 3px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .headerSummaryButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-        }
-        
-        .headerSummeryButtonImage {
-            height: 22px;
-            width: 22px;
-            margin-right: 14px;
-        }
-        
-        .headerBoardButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 16px;
-            font-weight: 400px;
-            width: 232px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 25px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .headerBoardButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-        }
-        
-        .headerBoardButtonImage {
-            height: 26px;
-            width: 22px;
-            margin-right: 15px;
-        }
-        
-        .headerAddTaskButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 16px;
-            font-weight: 400px;
-            width: 232px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 8px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .headerAddTaskButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-        }
-        
-        .headerAddTaskButtonImage {
-            height: 26px;
-            width: 26px;
-            margin-right: 12px;
-        }
-        
-        .headerContactsButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 16px;
-            font-weight: 400px;
-            width: 232px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 13px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .headerContactsButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-        }
-        
-        .headerContactsButtonImage {
-            height: 19.5px;
-            width: 22px;
-            margin-right: 13px;
-        }
-        
-        .headerLegalNoticeButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 16px;
-            font-weight: 400;
-            width: 232px;
-            margin-top: 200px;
-            margin-bottom: 3px;
-            padding-left: 23px;
-            padding-top: 10px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .headerLegalNoticeButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-        }
-        
-        .headerLegalNoticeButtonImage {
-            height: 18px;
-            width: 18px;
-            margin-right: 15px;
-        }
-        
-        .headerRightMenuUserName {
-            font-size: 21px;
-            font-weight: 400px;
-            color: #000000;
-            padding-left: 300px;
-            margin-top: 20px;
-        }
-        
-        .headerRightMenuPicture {
-            height: 49px;
-            width: 49px;
-            border-radius: 100%;
-            border: 3px solid #2A3647;
-            margin-left: 15px;
-        }
-        
-        .headerRightMenuImage {
-            height: 31px;
-            width: 31px;
-            margin-left: 820px;
-        }
-        
-       
+body{
+    margin: 0;
+    width: 100%;
+}
+
+.content{
+    display: flex;
+}
+
+.header{
+    width: 280px;
+    height: 100vh;
+    background-color: #2A3647;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.flex a{
+    padding: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.flex a:hover{
+    background-color: #091931;
+}
+
+.flex img {
+    padding-right: 30px;
+    width: 25px;
+    height: 25px;
+}
+
+
     </style>
 
     <script>
@@ -243,24 +70,18 @@
 
 <body>
 
-    <div class="containerHeader">
-
-
-        <div class="headerLeftMenu">
-            <img src="/asseds/img/Capa2.png" class="headerMenuImage">
-            <button id="headerSummaryButton" class="headerSummaryButton"><img class="headerSummeryButtonImage" src="/asseds/img/Vector (6).png">Summary</button>
-            <button class="headerBoardButton"><img class="headerBoardButtonImage" src="/asseds/img/Frame 12.png">Board</button>
-            <button class="headerAddTaskButton"><img class="headerAddTaskButtonImage" src="/asseds/img/Group 1.png">Add Task</button>
-            <button class="headerContactsButton"><img class="headerContactsButtonImage" src="/asseds/img/Frame 12 (1).png">Contacts</button>
-            <button class="headerLegalNoticeButton"><img class="headerLegalNoticeButtonImage" src="/asseds/img/Frame 4.png">Legal Notice</button>
+    <div class="header">
+        <img src="/asseds/img/Capa2.png">
+        <div class="flex">
+            <a href="#"><img src="/asseds/img/Vector (6).png">Summary</a>
+            <a href="#"><img src="/asseds/img/Frame 12.png">Board</a>
+            <a href="#"><img src="/asseds/img/Group 1.png">Add Task</a>
+            <a href="#"><img src="/asseds/img/Frame 12 (1).png">Contacts</a>
         </div>
-
-        <div class="headerRightMenu">
-            <p class="headerRightMenuUserName">Kanban Projekt Management Tool</p>
-            <img class="headerRightMenuImage" src="/asseds/img/Vector (4).png">
-            <img class="headerRightMenuPicture" src="/asseds/img/5I4A0006_xing.jpg">
+        <div class="flex">
+            <a href="#"><img src="/asseds/img/Frame 4.png">Legal Notice</a>
+            <a href="#"><img src="/asseds/img/Frame 4.png">Datenschutz</a>
         </div>
-
     </div>
 
 

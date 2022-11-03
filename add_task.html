@@ -9,271 +9,94 @@
 
     <link rel="stylesheet" href="css/add_task.css">
     <script src="js/add_task.js"></script>
-    <style>
-        body {
-            margin: 0px;
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-        }
-
-        .headerMenuImage {
-            height: 84px;
-            width: 69px;
-            margin-bottom: 75px;
-            margin-top: 42px;
-        }
-
-        .containerHeader {
-            background-color: black;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: start;
-        }
-
-        .headerLeftMenu {
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            align-items: center;
-            background-color: #2A3647;
-            height: 88vh;
-            width: 158px;
-            margin-left: 312px;
-            z-index: 2;
-            margin-top: 46px;
-            
-        } -->
-
-        <!-- /* .headerRightMenu {
-            position: absolute;
-            background: #FFFFFF;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-            width: 61%;
-            height: 7.5%;
-            float: right;
-            margin-left: 312px;
-            z-index: 1;
-            margin-top: 46px;
-        } */
-
-        .headerSummaryButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-bottom: 3px;
-            margin-top: 3px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-
-        .headerSummaryButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-
-        .headerSummeryButtonImage {
-            height: 17px;
-            width: 17px;
-            margin-right: 14px;
-        }
-
-        .headerBoatrdButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 25px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-
-        .headerBoatrdButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerBoardButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 15px;
-        }
-        
-        .headerAddTaskButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 8px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-        
-        .headerAddTaskButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerAddTaskButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 12px;
-        }
-        
-        .headerContactsButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 13px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-        
-        .headerContactsButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerContactsButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 13px;
-        }
-        
-        .headerLegalNoticeButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 235px;
-            margin-bottom: 3px;
-            padding-left: 23px;
-            padding-top: 10px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-        
-        .headerLegalNoticeButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerLegalNoticeButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 12px;
-        }
+    <script src="template.js"></script>
 
 
-    </style>
+<body onload="includeHTML()">
+    
+    <div class="content">
+        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
-
-    <body>
-
-        <div class="containerHeader">
-
-
-            <div class="headerLeftMenu">
-                <img src="/asseds/img/Capa2.png" class="headerMenuImage">
-                <button id="headerSummaryButton" class="headerSummaryButton"><img class="headerSummeryButtonImage" src="/asseds/img/uit_web-grid.png">Summary</button>
-                <button class="headerBoatrdButton"><img class="headerBoardButtonImage" src="/asseds/img/Frame 12.png">Board</button>
-                <button class="headerAddTaskButton"><img class="headerAddTaskButtonImage" src="/asseds/img/Group 1.png">Add Task</button>
-                <button class="headerContactsButton"><img class="headerContactsButtonImage" src="/asseds/img/Frame 12 (1).png">Contacts</button>
-                <button class="headerLegalNoticeButton"><img class="headerLegalNoticeButtonImage" src="/asseds/img/Frame 4.png">Legal Notice</button>
-            </div>
-        <div class="headerRightMenu">
-            <div class="header">
+        <div class="rightContent">
+            <div class="headerContent">
                 <p>Kanban Project Management Tool</p>
 
-                <div class="headerImg">
+                <div class="headerContentRight">
                     <img onclick="help()" class="information" src="/asseds/img/information.png">
                     <img class="personLogIn" src="/asseds/img/logo.jpg">
                 </div>
             </div>
+            <div class="mainContent">
+                <h1>Hallo</h1>
+            </div>
+        </div>
 
 
-            <div id="mainContainer" class="mainContainer">
-                <div class="headline">
-                    <h1>Add Task</h1>
-                </div>
-                <div class="middleLine"></div>
-                <div class="flex">
-                    <div class="leftContainer">
-                        <p>Title</p>
-                        <form onsubmit="addTask(); return false;">
-                        <input placeholder="Enter a title" required>
-                        <p>Description</p>
-                        <textarea required placeholder="Enter a Description"></textarea>
-                        <p>Category</p>
-                        <select required placeholder="Select task category">
+    </div>
+
+    <!-- <div id="mainContainer" class="mainContainer">
+        <div class="headline">
+            <h1>Add Task</h1>
+        </div>
+        <div class="middleLine"></div>
+        <div class="flex">
+            <div class="leftContainer">
+                <p>Title</p>
+                <form onsubmit="addTask(); return false;">
+                    <input placeholder="Enter a title" required>
+                    <p>Description</p>
+                    <textarea required placeholder="Enter a Description"></textarea>
+                    <p>Category</p>
+                    <select required placeholder="Select task category">
                         <option>New category</option>
                         <option>Sales</option>
                         <option>Backoffice</option>
-                        </select>
-                        <p>Assigned to</p>
-                        <select placeholder="Select contacts to assign"></select>
+                    </select>
+                    <p>Assigned to</p>
+                    <select placeholder="Select contacts to assign"></select>
 
-                    </div>
-                    <div class="rightContainer">
-                        <p>Due date</p>
-                        <div>
-                            <input type="date" placeholder="dd/mm/yyyy" required>
-                            
-                        </div>
-                        <p>Prio</p>
-                        <div class="prio">
-                            <div id="red" onclick="changeColor(red)" class="prioContainer">Urgent
-                                <img src="asseds/img/Vector red.png">
-                            </div>
-                            <div id="yellow" onclick="changeColor(yellow)" class="prioContainer">Medium
-                                <img src="asseds/img/Vector yellow.png">
-                            </div>
-                            <div id="green" onclick="changeColor(green)" class="prioContainer">Low
-                                <img src="asseds/img/Vector green.png">
-                            </div>
-                        </div>
-                        <p>Subtasks</p>
-                        <div>
-                            <input required>
-                            <img class="subtaskIMG" src="asseds/img/Vector (1).png">
-                        </div>
+            </div>
+            <div class="rightContainer">
+                <p>Due date</p>
+                <div>
+                    <input type="date" placeholder="dd/mm/yyyy" required>
 
-                        <div class="subtaskContainer">
-                            <img class="subtasksImg" src="asseds/img/Rectangle 5.png">
-                            <p>Subtask 1</p>
-                        </div>
-                        <div class="btn">
-                            <button class="btnClear">Clear
-                                <img src="asseds/img/cross.png">
-                            </button>
-                            <button class="btnCreate"> Create Task
-                                <img src="asseds/img/hacken.png">
-                            </button>
-                        </form>
-                        </div>
+                </div>
+                <p>Prio</p>
+                <div class="prio">
+                    <div id="red" onclick="changeColor(red)" class="prioContainer">Urgent
+                        <img src="asseds/img/Vector red.png">
                     </div>
+                    <div id="yellow" onclick="changeColor(yellow)" class="prioContainer">Medium
+                        <img src="asseds/img/Vector yellow.png">
+                    </div>
+                    <div id="green" onclick="changeColor(green)" class="prioContainer">Low
+                        <img src="asseds/img/Vector green.png">
+                    </div>
+                </div>
+                <p>Subtasks</p>
+                <div>
+                    <input required>
+                    <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                </div>
+
+                <div class="subtaskContainer">
+                    <img class="subtasksImg" src="asseds/img/Rectangle 5.png">
+                    <p>Subtask 1</p>
+                </div>
+                <div class="btn">
+                    <button class="btnClear">Clear
+                        <img src="asseds/img/cross.png">
+                    </button>
+                    <button class="btnCreate"> Create Task
+                        <img src="asseds/img/hacken.png">
+                    </button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div> -->
+
 
 </body>
 

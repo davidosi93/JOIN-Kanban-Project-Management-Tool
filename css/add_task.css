@@ -1,49 +1,59 @@
-.headerRightMenu {
-    margin-top: 46px;
-    height: 88%;
-    width: 700px;
-    background-color: white;
+
+body{
+    margin: 0;
+}
+
+.rightContent{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(230, 226, 226);
 
 }
 
-.header {
+.headerContent{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    border-bottom: 3px solid lightgray;
+    background-color: white;
 }
 
-.header p {
-    padding-left: 80px;
-    margin-bottom: 0;
+.headerContent p{
+    padding: 20px;
+    padding-left: 100px;
+    font-size: 30px;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
-.headerImg {
-    display: flex;
-    align-items: center;
-    padding-right: 10px;
-    cursor: pointer;
-}
 
-.information {
-    opacity: 0.5;
-    width: 18px;
-    height: 18px;
-    padding-right: 10px;
-    cursor: pointer;
-}
 
-.personLogIn {
+.personLogIn{
     object-fit: cover;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     border: 1px solid gray;
+    cursor: pointer;
 }
 
-.mainContainer {
+.headerContentRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.information{
+    padding-right: 10px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.mainContent{
+    padding-left: 100px;
+}
+
+/* .mainContainer {
     padding-left: 80px;
     padding-top: 20px;
     background-color: rgba(240, 236, 236, 0.443);
@@ -209,4 +219,4 @@ select{
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 8px;
-}
+} */
