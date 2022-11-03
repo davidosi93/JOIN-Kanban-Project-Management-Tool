@@ -205,6 +205,10 @@ body {
     margin-top: 7%;
 }
 
+.buttons a {
+    text-decoration: none;
+}
+
 .log-in-btn {
     display: flex;
     justify-content: center;
