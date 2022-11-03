@@ -164,6 +164,9 @@ body{
 .subtaskIMG{
     width: 12px;
     height: 12px;
+    position: absolute;
+    right: 30px;
+    top: 12px;
 }
 
 .checkbox{
@@ -238,3 +241,7 @@ select{
     padding: 8px;
     cursor: pointer;
 } 
+
+.relative{
+    position: relative;
+}
