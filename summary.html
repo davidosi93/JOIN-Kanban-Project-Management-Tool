@@ -10,310 +10,125 @@
     <link rel="stylesheet" href="css/summary.css">
     <script src="template.js"></script>
     <script src="js/summary.js"></script>
-    
+
 
 </head>
 
 <body onload="includeHTML()">
+    <div class="content">
+        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
-    <!-- <div w3-include-html="templates/desktop_template.html"></div> -->
+        <div class="rightContent">
+            <div class="headerContent">
+                <p>Kanban Project Management Tool</p>
 
-    <style>
-        body {
-            margin: 0px;
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-        }
-
-        .headerMenuImage {
-            height: 84px;
-            width: 69px;
-            margin-bottom: 75px;
-            margin-top: 42px;
-        }
-
-        .containerHeader {
-            background-color: black;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: start;
-        }
-
-        .headerLeftMenu {
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            align-items: center;
-            background-color: #2A3647;
-            height: 88vh;
-            width: 158px;
-            margin-left: 312px;
-            z-index: 2;
-            margin-top: 46px;
-            
-        } -->
-
-        <!-- /* .headerRightMenu {
-            position: absolute;
-            background: #FFFFFF;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-            width: 61%;
-            height: 7.5%;
-            float: right;
-            margin-left: 312px;
-            z-index: 1;
-            margin-top: 46px;
-        } */
-
-        .headerSummaryButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-bottom: 3px;
-            margin-top: 3px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-
-        .headerSummaryButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-
-        .headerSummeryButtonImage {
-            height: 17px;
-            width: 17px;
-            margin-right: 14px;
-        }
-
-        .headerBoatrdButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 25px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-
-        .headerBoatrdButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerBoardButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 15px;
-        }
-        
-        .headerAddTaskButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 8px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-        
-        .headerAddTaskButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerAddTaskButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 12px;
-        }
-        
-        .headerContactsButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 3px;
-            margin-bottom: 3px;
-            padding-right: 13px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-        
-        .headerContactsButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerContactsButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 13px;
-        }
-        
-        .headerLegalNoticeButton {
-            color: #CDCDCD;
-            background-color: #2A3647;
-            border: none;
-            font-size: 12px;
-            width: 158px;
-            margin-top: 235px;
-            margin-bottom: 3px;
-            padding-left: 23px;
-            padding-top: 10px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-        
-        .headerLegalNoticeButton:hover {
-            color: #FFFFFF;
-            background-color: #091931;
-            cursor: pointer;
-        }
-        
-        .headerLegalNoticeButtonImage {
-            height: 21px;
-            width: 21px;
-            margin-right: 12px;
-        }
-
-
-    </style>
-
-
-    <body>
-
-        <div class="containerHeader">
-
-
-            <div class="headerLeftMenu">
-                <img src="/asseds/img/Capa2.png" class="headerMenuImage">
-                <button id="headerSummaryButton" class="headerSummaryButton"><img class="headerSummeryButtonImage" src="/asseds/img/uit_web-grid.png">Summary</button>
-                <button class="headerBoatrdButton"><img class="headerBoardButtonImage" src="/asseds/img/Frame 12.png">Board</button>
-                <button class="headerAddTaskButton"><img class="headerAddTaskButtonImage" src="/asseds/img/Group 1.png">Add Task</button>
-                <button class="headerContactsButton"><img class="headerContactsButtonImage" src="/asseds/img/Frame 12 (1).png">Contacts</button>
-                <button class="headerLegalNoticeButton"><img class="headerLegalNoticeButtonImage" src="/asseds/img/Frame 4.png">Legal Notice</button>
-            </div>
-
-            <div class="headerRightMenu">
-                <div class="header">
-                    <p>Kanban Project Management Tool</p>
-
-                    <div class="headerImg">
-                        <img onclick="help()" class="information" src="/asseds/img/information.png">
-                        <img class="personLogIn" src="/asseds/img/logo.jpg">
-                    </div>
-                </div>
-
-                <div id="mainContainer" class="mainContainer">
-                    <div class="headline">
-                        <h1>Summary</h1>
-                        <p>Everythihng in a nutshell!</p>
-
-                    </div>
-                    <div class="taskContainer">
-                        <div class="boardContainer">
-                            <div><b>5</b></div>
-                            <p>Tasks in Board</p>
-                        </div>
-                        <div class="boardContainer">
-                            <div><b>2</b></div>
-                            <p>Tasks in Progress</p>
-                        </div>
-                        <div class="boardContainer">
-                            <div><b>2</b></div>
-                            <p>Awaiting Feedback</p>
-                        </div>
-                    </div>
-
-                    <div class="deadlineContainer">
-                        <div class="deadlineTasks">
-                            <img src="/asseds/img/Group 7.png">
-                            <div>
-                                <div><b>1</b></div>
-                                <p>Urgent</p>
-                            </div>
-
-                            <div class="deatlineDate">
-                                <p class="date"> <b>October 16, 2022</b></p>
-                                <p> Upcoming Deadline</p>
-                            </div>
-
-
-                        </div>
-                        <div class="greet">Good Morning,<br> Artur Marbach</div>
-                    </div>
-                    <div class="finishTask">
-                        <div class="finishContainer">
-                            <img href="board.html" src="/asseds/img/Frame 59.png">
-                            <div>
-                                <div><b>1</b></div>
-                                <p>To-do</p>
-                            </div>
-                        </div>
-                        <div class="finishContainer">
-                            <img  href="board.html" src="/asseds/img/Frame 59 (1).png">
-                            <div>
-                                <div><b>1</b></div>
-                                <p>Done</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="help" class="mainContainerHelp d-none">
-                    <div class="headerHelp">
-                        <h1>Help</h1>
-                        <img onclick="goBacktoMainContainer()" src="asseds/img/Vector.png">
-                    </div>
-
-                    <h2>What is Join?</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi
-                        ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id,
-                        facilis possimus dolores.</p>
-
-                    <h2>How to use it</h2>
-
-                    <div class="flex">
-                        <b>1.</b>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
-                            id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
-                            consequuntur alias porro magni.</p>
-                    </div>
-                    <div class="flex">
-                        <b>2.</b>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
-                            id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
-                            consequuntur alias porro magni.</p>
-                    </div>
-                    <div class="flex">
-                        <b>3.</b>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
-                            id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
-                            consequuntur alias porro magni.</p>
-                    </div>
+                <div class="headerContentRight">
+                    <img onclick="help()" class="information" src="/asseds/img/information.png">
+                    <img class="personLogIn" src="/asseds/img/logo.jpg">
                 </div>
             </div>
-
+            <div class="mainContent">
+                <h1>Hallo</h1>
+            </div>
         </div>
 
 
-    </body>
+    </div>
+
+    <!-- <div id="mainContainer" class="mainContainer">
+                <!-- <div class="headline">
+                    <h1>Summary</h1>
+                    <p>Everythihng in a nutshell!</p>
+
+                </div> -->
+    <!-- <div class="taskContainer">
+                    <div class="boardContainer">
+                        <div><b>5</b></div>
+                        <p>Tasks in Board</p>
+                    </div>
+                    <div class="boardContainer">
+                        <div><b>2</b></div>
+                        <p>Tasks in Progress</p>
+                    </div>
+                    <div class="boardContainer">
+                        <div><b>2</b></div>
+                        <p>Awaiting Feedback</p>
+                    </div>
+                </div> -->
+
+    <!-- <div class="deadlineContainer">
+                    <div class="deadlineTasks">
+                        <img src="/asseds/img/Group 7.png">
+                        <div>
+                            <div><b>1</b></div>
+                            <p>Urgent</p>
+                        </div>
+
+                        <div class="deatlineDate">
+                            <p class="date"> <b>October 16, 2022</b></p>
+                            <p> Upcoming Deadline</p>
+                        </div>
+
+
+                    </div>
+                    <div class="greet">Good Morning,<br> Artur Marbach</div>
+                </div> -->
+    <!-- <div class="finishTask">
+                    <div class="finishContainer">
+                        <img href="board.html" src="/asseds/img/Frame 59.png">
+                        <div>
+                            <div><b>1</b></div>
+                            <p>To-do</p>
+                        </div>
+                    </div> -->
+    <!-- <div class="finishContainer">
+                        <img href="board.html" src="/asseds/img/Frame 59 (1).png">
+                        <div>
+                            <div><b>1</b></div>
+                            <p>Done</p>
+                        </div>
+                    </div>
+                </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <!-- <div id="help" class="mainContainerHelp d-none">
+        <div class="headerHelp">
+            <h1>Help</h1>
+            <img onclick="goBacktoMainContainer()" src="asseds/img/Vector.png">
+        </div>
+
+        <h2>What is Join?</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi
+            ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id,
+            facilis possimus dolores.</p>
+
+        <h2>How to use it</h2>
+
+        <div class="flex">
+            <b>1.</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
+                id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
+                consequuntur alias porro magni.</p>
+        </div>
+        <div class="flex">
+            <b>2.</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
+                id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
+                consequuntur alias porro magni.</p>
+        </div>
+        <div class="flex">
+            <b>3.</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
+                id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
+                consequuntur alias porro magni.</p>
+        </div>
+    </div> --> -->
+
+
+
+
+
+</body>
 
 </html>

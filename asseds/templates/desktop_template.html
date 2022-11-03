@@ -11,29 +11,73 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" Crossorigin>
-    <link href="https: //fonts.googleapis.com/css2?family=Inter:wght@100 & display Familie= Inter:wght@100;200;300;400;500;600;700;800;900 & ">
 
 
+
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+        }
+        
+        .content {
+            display: flex;
+        }
+        
+        .header {
+            width: 280px;
+            height: 100vh;
+            background-color: #2A3647;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .flex a {
+            padding: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .flex a:hover {
+            background-color: #091931;
+        }
+        
+        .flex img {
+            padding-right: 30px;
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+
+    <script>
+    </script>
 </head>
 
 <body>
 
-    <div class="containerHeader">
-
-
-        <div class="headerLeftMenu">
-            <img src="/asseds/img/Capa2.png" class="headerMenuImage">
-            <button id="headerSummaryButton" class="headerSummaryButton"><img class="headerSummeryButtonImage" src="/asseds/img/Vector (6).png">Summary</button>
-            <button class="headerBoardButton"><img class="headerBoardButtonImage" src="/asseds/img/Frame 12.png">Board</button>
-            <button class="headerAddTaskButton"><img class="headerAddTaskButtonImage" src="/asseds/img/Group 1.png">Add Task</button>
-            <button class="headerContactsButton"><img class="headerContactsButtonImage" src="/asseds/img/Frame 12 (1).png">Contacts</button>
-            <button class="headerLegalNoticeButton"><img class="headerLegalNoticeButtonImage" src="/asseds/img/Frame 4.png">Legal Notice</button>
+    <div class="header">
+        <img src="/asseds/img/Capa2.png">
+        <div class="flex">
+            <a href="#"><img src="/asseds/img/Vector (6).png">Summary</a>
+            <a href="#"><img src="/asseds/img/Frame 12.png">Board</a>
+            <a href="#"><img src="/asseds/img/Group 1.png">Add Task</a>
+            <a href="#"><img src="/asseds/img/Frame 12 (1).png">Contacts</a>
         </div>
-
-        <div class="headerRightMenu">
-            <p class="headerRightMenuUserName">Kanban Projekt Management Tool</p>
-            <img class="headerRightMenuImage" src="/asseds/img/Vector (4).png">
-            <img class="headerRightMenuPicture" src="/asseds/img/5I4A0006_xing.jpg">
+        <div class="flex">
+            <a href="#"><img src="/asseds/img/Frame 4.png">Legal Notice</a>
+            <a href="#"><img src="/asseds/img/Frame 4.png">Datenschutz</a>
         </div>
 
 
