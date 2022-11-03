@@ -1,0 +1,272 @@
+body {
+    margin: 0;
+}
+
+:root {
+    font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F6F7F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.big-Logo {
+    height: 10%;
+    z-index: 2;
+    position: absolute;
+    left: 5.35%;
+    right: 87.71%;
+    top: 7.81%;
+    bottom: 80.28%;
+}
+
+.log-In-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    width: 826px;
+    height: 462px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    position: absolute;
+}
+
+.left-arrow {
+    position: absolute;
+    left: 4%;
+    top: 0;
+    bottom: 0;
+}
+
+.left-arrow img {
+    cursor: pointer;
+    height: 7%;
+}
+
+.header {
+    width: 626px;
+    height: 73px;
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.header:before {
+    content: "";
+    border-bottom: 3px solid #29ABE2;
+    position: absolute;
+    left: 35%;
+    bottom: -24px;
+    height: 1px;
+    width: 30%;
+}
+
+.header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.text {
+    width: 656px;
+    height: 50px;
+    text-align: center;
+    margin-top: 7%;
+}
+
+.text p {
+    font-weight: 400;
+    font-size: 21px;
+}
+
+.log-In-input {
+    margin-top: 8%;
+}
+
+.log-In-input input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.inputField {
+    position: relative;
+}
+
+.inputFieldIMG {
+    position: absolute;
+    height: 20px;
+    width: 23px;
+    right: 5%;
+    top: 30%;
+}
+
+.remem-me {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 35px;
+    width: 335px;
+    height: 19px;
+    margin-top: 10%;
+}
+
+.remem-me p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.remember {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+}
+
+.checkbox {
+    border: 1px solid #000000;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+}
+
+.forgot-pass {
+    color: #29ABE2;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 35px;
+    width: 341px;
+    height: 51px;
+    margin-top: 7%;
+}
+
+.buttons a {
+    text-decoration: none;
+}
+
+.log-in-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    width: 264px;
+    height: 51px;
+    background: #2A3647;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.log-in-btn:hover {
+    background-color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
+}
+
+.log-in-guest {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+    width: 161px;
+    height: 51px;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+    background-color: white;
+    color: #2A3647;
+    cursor: pointer;
+}
+
+.log-in-guest:hover {
+    border-color: #29ABE2;
+    color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
+}
+
+.email-confirm-background {
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.email-confirm {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    width: 424px;
+    height: 74px;
+    background: #2A3647;
+    border-radius: 20px;
+    position: fixed;
+    animation: btnAnim 0.6s normal both;
+}
+
+@keyframes btnAnim {
+    from {
+        bottom: -100%;
+    }
+    to {
+        bottom: 50%;
+    }
+}
+
+.email-confirm img {
+    width: 9.5%;
+    height: 55.5%;
+    position: absolute;
+    top: 25%;
+}
+
+.email-confirm p {
+    font-weight: 400;
+    font-size: 145%;
+    position: absolute;
+    right: 7%;
+}
+
+.d-none {
+    display: none;
+}

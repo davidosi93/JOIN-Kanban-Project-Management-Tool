@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="css/add_task.css">
+    <script src="js/add_task.js"></script>
+    <script src="template.js"></script>
+
+
+<body onload="includeHTML()">
+
+    <div class="content">
+        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+
+        <div class="rightContent">
+            <div class="headerContent">
+                <p>Kanban Project Management Tool</p>
+
+                <div class="headerContentRight">
+                    <img onclick="help()" class="information" src="/asseds/img/information.png">
+                    <img class="personLogIn" src="/asseds/img/logo.jpg">
+                </div>
+            </div>
+
+            <div class="mainContent">
+                <div class="headline">
+                    <h1>Add Task</h1>
+                </div>
+            </div>
+
+            
+                <div class="middleLine"></div>
+                <div class="flexContainer">
+                    <div class="leftContainer">
+                        <p>Title</p>
+                        <form onsubmit="addTask(); return false;">
+                            <input placeholder="Enter a title" required>
+                            <p>Description</p>
+                            <textarea required placeholder="Enter a Description"></textarea>
+                            <p>Category</p>
+                            <select required placeholder="Select task category">
+                                <option>New category</option>
+                                <option>Sales</option>
+                                <option>Backoffice</option>
+                            </select>
+                            <p>Assigned to</p>
+                            <select placeholder="Select contacts to assign"></select>
+
+                    </div>
+                    <div class="rightContainer">
+                        <p>Due date</p>
+                        <div>
+                            <input type="date" placeholder="dd/mm/yyyy" required>
+
+                        </div>
+                        <p>Prio</p>
+                        <div class="prio">
+                            <div id="red" onclick="changeColor(red)" class="prioContainer">Urgent
+                                <img src="asseds/img/Vector red.png">
+                            </div>
+                            <div id="yellow" onclick="changeColor(yellow)" class="prioContainer">Medium
+                                <img src="asseds/img/Vector yellow.png">
+                            </div>
+                            <div id="green" onclick="changeColor(green)" class="prioContainer">Low
+                                <img src="asseds/img/Vector green.png">
+                            </div>
+                        </div>
+                        <p>Subtasks</p>
+                        <div class="relative">
+                            <input required>
+                            <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                        </div>
+
+                        <div class="subtaskContainer">
+                            <input class="checkbox" type="checkbox">
+                            <p>Subtask 1</p>
+                        </div>
+                        <div class="btn">
+                            <button class="btnClear">Clear
+                                X
+                            </button>
+                            <button class="btnCreate"> Create Task
+                                <img src="asseds/img/hacken.png">
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        <!-- <div id="mainContainer" class="mainContainer">
+        
+        <div class="middleLine"></div>
+        <div class="flex">
+            <div class="leftContainer">
+                <p>Title</p>
+                <form onsubmit="addTask(); return false;">
+                    <input placeholder="Enter a title" required>
+                    <p>Description</p>
+                    <textarea required placeholder="Enter a Description"></textarea>
+                    <p>Category</p>
+                    <select required placeholder="Select task category">
+                        <option>New category</option>
+                        <option>Sales</option>
+                        <option>Backoffice</option>
+                    </select>
+                    <p>Assigned to</p>
+                    <select placeholder="Select contacts to assign"></select>
+
+            </div>
+            <div class="rightContainer">
+                <p>Due date</p>
+                <div>
+                    <input type="date" placeholder="dd/mm/yyyy" required>
+
+                </div>
+                <p>Prio</p>
+                <div class="prio">
+                    <div id="red" onclick="changeColor(red)" class="prioContainer">Urgent
+                        <img src="asseds/img/Vector red.png">
+                    </div>
+                    <div id="yellow" onclick="changeColor(yellow)" class="prioContainer">Medium
+                        <img src="asseds/img/Vector yellow.png">
+                    </div>
+                    <div id="green" onclick="changeColor(green)" class="prioContainer">Low
+                        <img src="asseds/img/Vector green.png">
+                    </div>
+                </div>
+                <p>Subtasks</p>
+                <div>
+                    <input required>
+                    <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                </div>
+
+                <div class="subtaskContainer">
+                    <img class="subtasksImg" src="asseds/img/Rectangle 5.png">
+                    <p>Subtask 1</p>
+                </div>
+                <div class="btn">
+                    <button class="btnClear">Clear
+                        <img src="asseds/img/cross.png">
+                    </button>
+                    <button class="btnCreate"> Create Task
+                        <img src="asseds/img/hacken.png">
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+</body>
+
+</html>

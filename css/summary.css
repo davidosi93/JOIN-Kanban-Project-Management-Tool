@@ -1,212 +1,248 @@
-.headerRightMenu{
-    margin-top: 46px;
-    height: 635px;
-    width: 700px;
-    background-color: white;
-    
-}
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    border-bottom: 3px solid lightgray;
-}
 
-.header p{
-    padding-left: 80px;
-    margin-bottom: 0;
-    margin-top: 0;
-}
 
-.headerImg{
-    display: flex;
-    align-items: center;
-    padding-right: 10px;
-    cursor: pointer;
-}
-
-.information{
-    opacity: 0.5;
-    width: 18px;
-    height: 18px;
-    padding-right: 10px;
-    cursor: pointer;
-}
-
-.personLogIn{
-    object-fit: cover;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid gray;
-}
-
-.mainContainer{
-    padding-left: 80px;
-    padding-top: 20px;
-    background-color: rgba(240, 236, 236, 0.443);
-    height: 560px;
-}
-
-.headline{
-    display: flex;
-}
-
-.headline h1{
-    padding-right: 30px;
-    border-right: 3px solid #29ABE2;;
-}
-
-.headline p{
-    padding-left: 20px;
-    margin-top: 35px;
-    font-size: 20px;
-    padding-bottom: 10px;
-}
-
-.taskContainer{
-    display: flex;
-    margin-top: 50px;
-}
-
-.taskContainer div{
-    text-align: center;
-}
-
-.boardContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: 18px;
-    background-color: white;
-    border-radius: 10px;
-    max-width: 90px;
-    padding: 10px;
-}
-
-.boardContainer div{
-    font-size: 40px;
-    padding-top: 0;
-}
-
-.boardContainer p{
+/* Ab hier wird der rechte Content bestimmt*/
+body {
     margin: 0;
 }
 
-.boardContainer:hover{
+.rightContent {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(230, 226, 226);
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.headerContent p {
+    padding: 20px;
+    padding-left: 100px;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.personLogIn {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.headerContentRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.information {
+    padding-right: 10px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.mainContent {
+    padding-left: 100px;
+}
+
+/* Hier beginnt der Content*/
+
+.headline {
+    display: flex;
+}
+
+.headline h1 {
+    font-size: 70px;
+    padding-right: 30px;
+    border-right: 3px solid #29ABE2;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+.headline p {
+    display: flex;
+    align-items: flex-end;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 35px;
+    padding-bottom: 10px;
+}
+
+.taskContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 550px;
+    padding-left: 100px;
+    margin-top: 20px;
+}
+
+.taskContainer div {
+    text-align: center;
+}
+
+.boardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 120px;
+    background-color: white;
+    border-radius: 10px;
+    max-width: 100px;
+    padding: 25px;
+   
+}
+
+.boardContainer div {
+    font-size: 50px;
+    padding-top: 0;
+   
+    
+}
+
+
+
+.boardContainer p {
+    margin: 0;
+    font-size: 20px;
+    
+}
+
+.boardContainer:hover {
     cursor: pointer;
     transform: scale(1.2);
     color: white;
     background-color: #2A3647;
 }
 
-.deadlineContainer{
+.deadlineContainer {
     display: flex;
+    padding-left: 100px;
+    max-height: 150px;
+
 }
 
-.deadlineTasks{
+.deadlineTasks {
     display: flex;
     align-items: center;
-    margin-top: 20px;
-    width: 320px;
+    margin-top: 25px;
+    width: 550px;
     background-color: white;
     border-radius: 10px;
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 25px;
 }
 
-.deadlineTasks img{
-    width: 36px;
-    height: 36px;
+.deadlineTasks img {
+    width: 80px;
+    height: 80px;
     padding-right: 10px;
 }
 
-.deadlineTasks div{
+.deadlineTasks div {
     text-align: center;
-    font-size: 20px;
+    font-size: 40px;
     padding-top: 0;
 }
 
-.deadlineTasks p{
+.deadlineTasks p {
     margin: 0;
-    font-size: 12px;
+    font-size: 20px;
 }
 
-.deadlineTasks:hover{
+.deadlineTasks:hover {
     cursor: pointer;
     transform: scale(1.05);
     color: white;
     background-color: #2A3647;
 }
 
-.deatlineDate{
+.deatlineDate {
     margin-left: 50px;
     padding-left: 30px;
     border-left: 3px solid lightgray;
 }
 
-.date{
-    font-size: 18px !important;
+.date {
+    font-size: 30px !important;
+    padding-left: 25px;
 }
 
-.greet{
+.greet {
     margin-top: 20px;
     text-align: center;
-    padding-left: 30px;
-    font-size: 30px;
+    padding-left: 50px;
+    font-size: 60px;
 }
 
-.finishTask{
+.greet p {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #29ABE2;
+}
+
+.finishTask {
     display: flex;
+    justify-content: space-around;
+    width: 600px;
+    
     margin-top: 20px;
-    margin-right: 50px;
+    padding-left: 100px;
+
+}
+
+.finishContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 140px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
     
 }
 
-.finishContainer{
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-        width: 140px;
-        background-color: white;
-        border-radius: 10px;
-        padding-left: 30px;
-        padding-top: 20px;
-        padding-bottom: 10px;
-        margin-right: 20px;
-}
-
-.finishContainer div div{
+.finishContainer div div {
     text-align: center;
     font-size: 30px;
     padding-top: 0;
 }
 
-.finishContainer p{
+.finishContainer p {
     margin: 0;
+    font-size: 20px;
 }
 
-.finishContainer img{
+.finishContainer img {
     padding-right: 10px;
+    height: 80px;
+    width: 80px;
 }
 
-.finishContainer:hover{
+.finishContainer:hover {
     cursor: pointer;
     transform: scale(1.05);
     color: white;
     background-color: #2A3647;
 }
 
+
+/*Ab hier Help Container*/
+
 .mainContainerHelp{
-    padding-left: 80px;
-    padding-right: 80px;
+    padding-left: 100px;
+    padding-right: 100px;
     padding-top: 50px;
-    background-color: rgba(240, 236, 236, 0.443);
-    height: 530px; 
+    background-color: rgba(240, 236, 236, 0.443); 
 }
 
 .d-none{
@@ -220,20 +256,34 @@
 
 .headerHelp h1{
     margin-top: 0;
+    font-size: 50px;
+}
+
+h2{
+    font-size: 30px;
 }
 
 .headerHelp img{
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
+    opacity: 0.8;
 }
 
-.flex{
+.flexContainer{
     display: flex;
 }
 
-.flex p{
+.flexContainer p{
     padding-left: 10px;
     margin-top: 0;
-    font-size: 14px;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+} 
+
+h3{
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
