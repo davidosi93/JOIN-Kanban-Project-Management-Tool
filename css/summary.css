@@ -63,6 +63,7 @@ body {
     padding-right: 30px;
     border-right: 3px solid #29ABE2;
     margin-bottom: 0;
+    margin-top: 20px;
 }
 
 .headline p {
@@ -78,9 +79,9 @@ body {
 .taskContainer {
     display: flex;
     justify-content: flex-start;
-   
+    width: 550px;
     padding-left: 100px;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 .taskContainer div {
@@ -96,17 +97,23 @@ body {
     background-color: white;
     border-radius: 10px;
     max-width: 100px;
-    padding: 10px;
+    padding: 25px;
+   
 }
 
 .boardContainer div {
     font-size: 50px;
     padding-top: 0;
+   
+    
 }
+
+
 
 .boardContainer p {
     margin: 0;
     font-size: 20px;
+    
 }
 
 .boardContainer:hover {
@@ -171,8 +178,8 @@ body {
 .greet {
     margin-top: 20px;
     text-align: center;
-    padding-left: 30px;
-    font-size: 70px;
+    padding-left: 50px;
+    font-size: 60px;
 }
 
 .greet p {
