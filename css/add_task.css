@@ -53,52 +53,60 @@ body{
     padding-left: 100px;
 }
 
-/* .mainContainer {
-    padding-left: 80px;
-    padding-top: 20px;
-    background-color: rgba(240, 236, 236, 0.443);
-    height: 88%;
-    position: relative;
-}
-
+/* Hier beginnt der Content*/
 .headline {
     display: flex;
 }
 
 .headline h1 {
     padding-right: 30px;
+    font-size: 70px;
+    margin-bottom: 0;
 }
 
-.flex {
+.flexContainer {
     display: flex;
-    width: 100%;
+    padding-left: 100px;
 }
 
 .leftContainer {
     width: 50%;
 }
 
+.leftContainer p{
+    font-size: 20px;
+}
+
 .leftContainer input {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    width: 220px;
+    width: 400px;
     padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .leftContainer textarea{
-    width: 220px;
+    width: 400px;
     height: 70px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 8px;
-    
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .rightContainer input {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    width: 220px;
+    width: 400px;
     padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.rightContainer p{
+    font-size: 20px;
 }
 
 .flex p {
@@ -107,20 +115,20 @@ body{
 
 .prio {
     display: flex;
-    margin-top: 10px;
 }
 
 .prio img {
-    width: 12px;
-    height: 12px;
+    width: 20px;
+    height: 20px;
 }
 
 .prioContainer {
-    padding: 8px;
-    margin-right: 8px;
-    padding-right: 8px;
+    padding: 10px;
+    margin-right: 18px;
     background-color: white;
     border-radius: 5px;
+    font-size: 30px;
+
 }
 
 .prioContainer:hover {
@@ -132,10 +140,14 @@ body{
 .middleLine {
     position: absolute;
     width: 0px;
-    height: 350px;
-    left: 350px;
-    top: 120px;
+    height: 500px;
+    left: 875px;
+    top: 200px;
     border: 1px solid #D1D1D1;
+}
+
+.relativeContainer{
+    position: relative;
 }
 
 .rightContainer{
@@ -154,10 +166,12 @@ body{
     height: 12px;
 }
 
-.subtasksImg{
-    margin-top: 5px;
-    width: 10px;
-    height: 10px;
+.checkbox{
+    max-width: 25px;
+    width: 16px;
+    height: 16px;
+    margin-left: 0;
+    margin-top: 6px;
 }
 
 .subtaskContainer{
@@ -167,20 +181,21 @@ body{
 .subtaskContainer p{
     margin-top: 5px;
     padding-left: 5px;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .btn{
    position: absolute;
    bottom: 50px;
-   right: 70px;
+   right: 150px;
 }
 
 .btn img{
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     padding-left: 5px;
     padding-right: 5px;
+   
 }
 
 .btnClear{
@@ -189,6 +204,7 @@ body{
     border-color: lightgray;
     margin-right: 12px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .btnCreate{
@@ -198,6 +214,7 @@ body{
     background: #2A3647;
     color: white;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .btnClear:hover{
@@ -215,8 +232,9 @@ body{
 }
 
 select{
-    width: 235px;
+    width: 415px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 8px;
-} */
+    cursor: pointer;
+} 
