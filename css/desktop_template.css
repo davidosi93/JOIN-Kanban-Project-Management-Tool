@@ -1,6 +1,8 @@
 body {
     margin: 0;
     width: 100%;
+    font-weight: 400px;
+    font-family: 'Inter', sans-serif;
 }
 
 .content {
@@ -8,7 +10,7 @@ body {
 }
 
 .header {
-    width: 280px;
+    width: 232px;
     height: 100vh;
     background-color: #2A3647;
     display: flex;
@@ -20,25 +22,94 @@ body {
 .flex {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 .flex a {
     padding: 8px;
     cursor: pointer;
     text-decoration: none;
-    color: white;
+    color: #CDCDCD;
     display: flex;
     align-items: center;
-}
-
-.flex a:hover {
-    background-color: #091931;
+    justify-content: center;
+    width: 216px;
 }
 
 .flex img {
-    padding-right: 30px;
-    width: 25px;
-    height: 25px;
+    color: #FFFFFF;
+}
+
+.headerSummaryImage {
+    width: 22px;
+    height: 22px;
+    margin-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.headerSummaryText {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.headerBoardImage {
+    width: 30px;
+    height: 30px;
+    margin-right: 23px;
+    margin-left: -30px;
+}
+
+.haderBoardText {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.headerAddTaskImage {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    margin-left: -7px;
+}
+
+.headerAddTaskText {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.headerContactsImage {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    margin-left: -13px;
+}
+
+.headerContactsText {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.headerNoticeImage {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    margin-left: 17px;
+}
+
+.headerNoticeText {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.headerDatenschutzImage {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    margin-left: 17px;
+}
+
+.headerDatenschutzText {
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
