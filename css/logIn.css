@@ -1,0 +1,287 @@
+body {
+    margin: 0;
+}
+
+:root {
+    font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F6F7F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.big-Logo {
+    animation: myAnim 1s linear 200ms 1 normal both;
+    height: 10%;
+    z-index: 2;
+    position: absolute;
+    left: 5.35%;
+    right: 87.71%;
+    top: 7.81%;
+    bottom: 80.28%;
+}
+
+@keyframes myAnim {
+    0% {
+        transform: scale(3.5);
+        top: 40%;
+        left: 45%;
+    }
+
+    100% {
+        transform: scale(1);
+        top: 7%;
+        left: 5%;
+    }
+}
+
+
+.sign-Up-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 35px;
+    position: absolute;
+    width: 287px;
+    height: 51px;
+    right: 3%;
+    top: 67px;
+}
+
+.sign-Up-area p {
+    font-size: 20px;
+}
+
+.sign-Up-area button {
+    padding: 4px 16px;
+    gap: 10px;
+    width: 91px;
+    height: 51px;
+    background: #2A3647;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.sign-Up-area button:hover {
+    background-color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
+}
+
+.log-In-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    width: 652px;
+    height: 513px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+}
+
+.header {
+    width: 315px;
+    height: 73px;
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.header:before {
+    content: "";
+    border-bottom: 3px solid #29ABE2;
+    position: absolute;
+    left: 25%;
+    bottom: -24px;
+    height: 1px;
+    width: 50%;
+}
+
+.header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.log-In-input {
+    margin-top: 11%;
+}
+
+.log-In-input input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.inputField {
+    position: relative;
+}
+
+.inputFieldIMG {
+    position: absolute;
+    height: 20px;
+    width: 23px;
+    right: 5%;
+    top: 30%;
+}
+
+#input1 {
+    margin-bottom: 12%;
+}
+
+.remem-me {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 35px;
+    width: 335px;
+    height: 19px;
+    margin-top: 10%;
+}
+
+.remem-me p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.remem-me a {
+    text-decoration: none;
+}
+
+.remember {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+}
+
+.checkbox {
+    border: 1px solid #000000;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+}
+
+.forgot-pass {
+    color: #29ABE2;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 35px;
+    width: 341px;
+    height: 51px;
+    margin-top: 7%;
+}
+
+.buttons a {
+    text-decoration: none;
+}
+
+.log-in-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    width: 145px;
+    height: 51px;
+    background: #2A3647;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.log-in-btn:hover {
+    background-color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
+}
+
+.log-in-guest {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+    width: 161px;
+    height: 51px;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+    background-color: white;
+    color: #2A3647;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.log-in-guest:hover {
+    border-color: #29ABE2;
+    color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
+}
+
+#myElem {
+    animation: cssAnimation 400ms 600ms forwards;
+    visibility: hidden;
+}
+
+@keyframes cssAnimation {
+    0% {
+        opacity: 0.25;
+        visibility: visible;
+    }
+
+    25% {
+        opacity: 0.5;
+        visibility: visible;
+    }
+
+    50% {
+        opacity: 0.75;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}

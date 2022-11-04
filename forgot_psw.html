@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot my password - send mail</title>
+    <link rel="stylesheet" href="css/forgot_psw.css">
+    <script src="js/forgot_psw.js"></script>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+<body>
+    <div class="container">
+        <img class="big-Logo" src="asseds/img/biglogo.png">
+        <div class="log-In-area">
+            <div class="left-arrow">
+                <a href="index.html"><img src="asseds/img/arrow-left-line.png"></a>
+            </div>
+            <div class="header">
+                <h1>I forgot my password</h1>
+            </div>
+            <div class="text">
+                <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
+            </div>
+            <div class="log-In-input">
+                <div class="inputField">
+                    <input id="input1" type="email" required placeholder="Email">
+                    <img class="inputFieldIMG" src="asseds/img/email.png">
+                </div>
+            </div>
+            <div class="buttons">
+                <a href="javascript:delay('reset_psw.html')"><button onclick="showAnim()" class="log-in-btn">Send me the email</button></a>
+            </div>
+        </div>
+        <div id="email-confirm" class="email-confirm-background d-none">
+            <div class="email-confirm">
+                <img src="asseds/img/send.png">
+                <p>An E-mail has been sent to you</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
