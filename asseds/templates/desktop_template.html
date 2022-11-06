@@ -7,77 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gruppenarbeit Join</title>
     <link rel="stylesheet" href="/css/desktop_template.css">
+    <script src="/js/desktop_template.js"></script>
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" Crossorigin>
 
-
-
-    <style>
-        body {
-            margin: 0;
-            width: 100%;
-        }
-        
-        .content {
-            display: flex;
-        }
-        
-        .header {
-            width: 280px;
-            height: 100vh;
-            background-color: #2A3647;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-        }
-        
-        .flex {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-        
-        .flex a {
-            padding: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-        
-        .flex a:hover {
-            background-color: #091931;
-        }
-        
-        .flex img {
-            padding-right: 30px;
-            width: 25px;
-            height: 25px;
-        }
-    </style>
-
-    <script>
-    </script>
 </head>
+
+
 
 <body>
 
     <div class="header">
         <img src="/asseds/img/Capa2.png">
         <div class="flex">
-            <a href="summary.html"><img src="/asseds/img/Vector (6).png">Summary</a>
-            <a href="#"><img src="/asseds/img/Frame 12.png">Board</a>
-            <a href="add_task.html"><img src="/asseds/img/Group 1.png">Add Task</a>
-            <a href="#"><img src="/asseds/img/Frame 12 (1).png">Contacts</a>
+            <a id="summary" onclick="summary()" class="headerSummaryText"><img class="headerSummaryImage" src="/asseds/img/Vector (6).png">Summary</a>
+            <a id="board" onclick="board()" class="haderBoardText"><img class="headerBoardImage" src="/asseds/img/Frame 12.png">Board </a>
+            <a id="addTask" onclick="addTask()" class="headerAddTaskText"><img class="headerAddTaskImage" src="/asseds/img/Group 1.png">Add Task</a>
+            <a id="contacts" onclick="contacts()" class="headerContactsText"><img class="headerContactsImage" src="/asseds/img/Frame 12 (1).png">Contacts</a>
         </div>
         <div class="flex">
-            <a href="#"><img src="/asseds/img/Frame 4.png">Legal Notice</a>
-            <a href="#"><img src="/asseds/img/Frame 4.png">Datenschutz</a>
+            <a id="notice" onclick="notice()" class="headerNoticeText"><img class="headerNoticeImage" src="/asseds/img/Frame 4.png">Legal Notice</a>
+            <a id="datenschutz" onclick="datenschutz()" class="headerDatenschutzText"><img class="headerDatenschutzImage" src="/asseds/img/Frame 4.png">Datenschutz</a>
         </div>
     </div>
 

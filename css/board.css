@@ -1,15 +1,70 @@
-.headerUnderRightMenuHeader {
+/* Right Container*/
+
+body {
+    margin: 0;
+}
+
+.rightContent {
+    height: 100vh;
+    width: 100vw;
+    background-color: #F5F5F5;
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.headerContent p {
+    padding: 20px;
+    padding-left: 100px;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.personLogIn {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.headerContentRight {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 140px;
+    padding: 20px;
+}
+
+.information {
+    padding-right: 10px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.mainContent {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+
+/* scc for Board */
+
+.headerUnderRightMenuHeader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .headerUnderRightMenuHeaderHeadline {
     font-weight: bold;
     font-size: 61px;
     color: #000000;
-    padding-left: 220px;
 }
 
 .headerUnderRightMenuHeaderInputfield {
@@ -56,7 +111,7 @@
     width: 251px;
     height: 51px;
     margin-right: 50px;
-    margin-left: 550px;
+    margin-left: 515px;
 }
 
 .containerInputfieldImage {
@@ -66,22 +121,39 @@
 
 .containerTodoList {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-left: 220px;
 }
 
 .containerTodoListTodo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 80px;
-    margin-right: 80px;
-    width: 205px;
+    width: 280px;
 }
 
-.containerTodoListText {
-    padding-right: 10px;
+.containerTodoListTodoTodo {
     font-size: 21px;
     font-weight: 700px;
 }
+
+.containerTodoListProgress {
+    font-size: 21px;
+    font-weight: 700px;
+    margin-left: 75px;
+}
+
+.containerTodoListFeedback {
+    font-size: 21px;
+    font-weight: 700px;
+    margin-left: 75px;
+}
+
+.containerTodoListDone {
+    font-size: 21px;
+    font-weight: 700px;
+    margin-left: 75px;
+}
+
+.d-none {}
+
+
+/* css for add task*/
