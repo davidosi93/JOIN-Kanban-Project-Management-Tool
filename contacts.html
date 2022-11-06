@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="template.js"></script>
+    <script src="js/contacts.js"></script>
     <link rel="stylesheet" href="css/contacts.css">
 </head>
 
 <body onload="includeHTML()">
-    
+
     <div class="content">
         <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
@@ -24,7 +26,66 @@
                 </div>
             </div>
             <div class="mainContent">
-               <!-- Hier kommt der Content rein -->
+                <div class="contactListBckgr">
+                    <div class="contactList">
+                        <div class="letter">
+                            <p>A</p>
+                            <div class="letterUnderline"></div>
+                        </div>
+                        <div id="contactDiv" onclick="changeBckgrClr(); showContact();" class="contactDiv hover bg-white">
+                            <div class="contactLetter">
+                                DO
+                            </div>
+                            <div class="contactName">
+                                <p class="name">David Osipov</p>
+                                <p class="email">david.osipov@mail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightSection">
+                    <div class="showContactHeader">
+                        <h1 class="showContactHeaderH1">Contacts</h1>
+                        <div class="line"></div>
+                        <p>Better with a team</p>
+                    </div>
+                    <div id="contactBox" class="contactBox d-none">
+                        <div class="contact">
+                            <p class="contactP">DO</p>
+                            <div class="contactNameRight">
+                                <p class="contactNameRightP">David Osipov</p>
+                                <div class="addTaskBox">
+                                    <img src="asseds/img/plus.png">
+                                    <p class="addTask">Add Task</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contactInfo">
+                            <p class="contactInfoP">Contact Information</p>
+                            <div class="contactInfoEdit">
+                                <img src="asseds/img/pencil.png">
+                                <p class="contactInfoEditP">Edit Contact</p>
+                            </div>
+                        </div>
+
+                        <div class="phoneMailBox">
+                            <div class="mail">
+                                <p class="mailP">Email</p>
+                                <p class="mailAdress">davidosipov@mail.de</p>
+                            </div>
+                            <div class="mail">
+                                <p class="mailP">Phone</p>
+                                <p class="phoneNumber">0123456789</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="new-contact">
+                        <p class="new-contact-btn">New Contact</p>
+                        <img src="asseds/img/new_contact.png">
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -33,4 +94,5 @@
 
 
 </body>
+
 </html>
