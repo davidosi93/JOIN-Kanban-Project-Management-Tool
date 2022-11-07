@@ -1,21 +1,21 @@
-body{
+body {
     margin: 0;
 }
 
-.rightContent{
+.rightContent {
     height: 100vh;
     width: 100vw;
-    background-color: rgb(230, 226, 226);
+    background-color: #F6F7F8;
 
 }
 
-.headerContent{
+.headerContent {
     display: flex;
     justify-content: space-between;
     background-color: white;
 }
 
-.headerContent p{
+.headerContent p {
     padding: 20px;
     padding-left: 100px;
     font-size: 30px;
@@ -25,7 +25,7 @@ body{
 
 
 
-.personLogIn{
+.personLogIn {
     object-fit: cover;
     width: 32px;
     height: 32px;
@@ -34,20 +34,332 @@ body{
     cursor: pointer;
 }
 
-.headerContentRight{
+.headerContentRight {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-.information{
+.information {
     padding-right: 10px;
     height: 20px;
     width: 20px;
     cursor: pointer;
 }
 
-.mainContent{
-    padding-left: 100px;
+.mainContent {
+    display: flex;
+}
+
+.contactListBckgr {
+    width: 453px;
+    height: 645px;
+    background: #FFFFFF;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.contactList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    position: absolute;
+    width: 357px;
+    height: 645px;
+    left: 48px;
+    top: 2px;
+    background: #FFFFFF;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.letter p {
+    font-weight: 400;
+    font-size: 21px;
+    color: #000000;
+    padding-left: 20px;
+}
+
+.letterUnderline {
+    width: 323px;
+    height: 0px;
+    border: 1px solid #D1D1D1;
+    border-radius: 3px;
+}
+
+.contactDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 25px;
+    gap: 35px;
+    width: 300px;
+    height: 79px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.hover:hover {
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    border-radius: 10px;
+}
+
+.bg-blue {
+    background-color: #2A3647;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+.clr-white {
+    color: white;
+}
+
+.contactLetter {
+    background-color: aqua;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-weight: 400;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+.contactName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 5px;
+    width: auto;
+    height: 49px;
+}
+
+.email {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #007CEE;
+}
+
+.name {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.rightSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.showContactHeader {
+    width: 569px;
+    height: 73px;
+    left: 743px;
+    top: 171px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 60px;
+    margin-left: 20px;
+}
+
+.line {
+    height: 59px;
+    border: 2px solid #29ABE2;
+    background-color: #29ABE2;
+}
+
+.showContactHeader p {
+    font-size: 27px;
+}
+
+.showContactHeaderH1 {
+    font-size: 61px;
+    margin: 0;
+}
+
+.contactBox {
+    width: 461px;
+    height: 364px;
+    margin-top: 60px;
+    position: relative;
+}
+
+.animation {
+    animation: anim 0.4s normal both;
+}
+
+@keyframes anim {
+    from {
+        right: -1000px;
+    }
+
+    to {
+        right: 0px;
+    }
+}
+
+.d-none {
+    display: none;
+}
+
+.contact {
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 54px;
+}
+
+.contactP {
+    font-size: 47px;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: aqua;
+}
+
+.contactNameRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 5px;
+    width: auto;
+    height: 49px;
+}
+
+.contactNameRightP {
+    margin: 0;
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 120%;
+}
+
+.addTaskBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.addTask {
+    margin: 0;
+    font-size: 16px;
+    color: #29ABE2;
+}
+
+.contactInfo {
+    display: flex;
+    gap: 59px;
+}
+
+.contactInfoP {
+    font-size: 21px;
+}
+
+.contactInfoEdit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contactInfoEdit img {
+    width: 20px;
+    height: 30px;
+}
+
+.contactInfoEditP {
+    font-size: 16px;
+}
+
+.phoneMailBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 22px;
+    width: 140px;
+    height: 128px;
+    bottom: 0;
+    position: absolute;
+}
+
+.mail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 15px;
+    height: 53px;
+}
+
+.mailAdress {
+    margin: 0;
+    color: #007CEE;
+}
+
+.mailP {
+    font-weight: bold;
+    margin: 0;
+}
+
+.phoneNumber {
+    margin: 0;
+}
+
+.new-contact {
+    padding: 4px 0px;
+    width: 193px;
+    height: 53px;
+    background: #2A3647;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+.new-contact-btn {
+    margin: 0;
+}
+
+.new-contact:hover {
+    background-color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
+}
+
+.newContactBox {
+    position: relative;
+    width: 1212px;
+    height: 594px;
+    background: #FFFFFF;
+    border-radius: 30px;
 }
