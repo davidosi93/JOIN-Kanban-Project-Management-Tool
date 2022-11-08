@@ -1,7 +1,6 @@
 body {
     margin: 0;
     width: 100%;
-    font-weight: 400px;
     font-family: 'Inter', sans-serif;
 }
 
@@ -17,6 +16,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+.headerImage {
+    width: 100px;
+    height: 121px;
 }
 
 .flex {
@@ -52,6 +56,8 @@ body {
 .headerSummaryText {
     margin-top: 3px;
     margin-bottom: 3px;
+    font-size: 16px;
+    font-weight: 400px;
 }
 
 .headerBoardImage {
@@ -64,6 +70,8 @@ body {
 .haderBoardText {
     margin-top: 3px;
     margin-bottom: 3px;
+    font-size: 16px;
+    font-weight: 400px;
 }
 
 .headerAddTaskImage {
@@ -76,6 +84,8 @@ body {
 .headerAddTaskText {
     margin-top: 3px;
     margin-bottom: 3px;
+    font-size: 16px;
+    font-weight: 400px;
 }
 
 .headerContactsImage {
@@ -88,6 +98,8 @@ body {
 .headerContactsText {
     margin-top: 3px;
     margin-bottom: 3px;
+    font-size: 16px;
+    font-weight: 400px;
 }
 
 .headerNoticeImage {
@@ -100,6 +112,8 @@ body {
 .headerNoticeText {
     margin-top: 3px;
     margin-bottom: 3px;
+    font-size: 16px;
+    font-weight: 400px;
 }
 
 .headerDatenschutzImage {
@@ -112,4 +126,6 @@ body {
 .headerDatenschutzText {
     margin-top: 3px;
     margin-bottom: 3px;
+    font-size: 16px;
+    font-weight: 400px;
 }
