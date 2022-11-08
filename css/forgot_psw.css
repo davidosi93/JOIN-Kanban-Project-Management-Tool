@@ -48,7 +48,7 @@ body {
 .left-arrow {
     position: absolute;
     left: 4%;
-    top: 0;
+    top: 4%;
     bottom: 0;
 }
 
@@ -233,7 +233,7 @@ body {
 .email-confirm {
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
     width: 424px;
