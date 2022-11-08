@@ -14,6 +14,7 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: white;
+    height: 89px;
 }
 
 .headerContent p {
@@ -111,7 +112,7 @@ body {
     width: 251px;
     height: 51px;
     margin-right: 50px;
-    margin-left: 515px;
+    margin-left: 550px;
 }
 
 .containerInputfieldImage {
@@ -121,13 +122,18 @@ body {
 
 .containerTodoList {
     display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    position: sticky;
+    top: 300px;
 }
 
 .containerTodoListTodo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 280px;
+    width: 230px;
+    margin-left: 10px;
 }
 
 .containerTodoListTodoTodo {
@@ -138,22 +144,37 @@ body {
 .containerTodoListProgress {
     font-size: 21px;
     font-weight: 700px;
-    margin-left: 75px;
 }
 
 .containerTodoListFeedback {
     font-size: 21px;
     font-weight: 700px;
-    margin-left: 75px;
 }
 
 .containerTodoListDone {
     font-size: 21px;
     font-weight: 700px;
-    margin-left: 75px;
 }
 
-.d-none {}
+.containerTodo {
+    width: 250px;
+    margin-top: 10px;
+}
+
+.containerBlock {
+    padding: 20px;
+    background-color: white;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    height: fit-content;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
 
 
 /* css for add task*/
