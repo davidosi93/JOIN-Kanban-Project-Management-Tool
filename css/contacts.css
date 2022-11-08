@@ -5,8 +5,7 @@ body {
 .rightContent {
     height: 100vh;
     width: 100vw;
-    background-color: #F6F7F8;
-
+    background-color: #F5F5F5;
 }
 
 .headerContent {
@@ -22,8 +21,6 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
-
-
 
 .personLogIn {
     object-fit: cover;

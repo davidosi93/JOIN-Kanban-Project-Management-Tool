@@ -10,30 +10,31 @@
     <link rel="stylesheet" href="css/add_task.css">
     <script src="js/add_task.js"></script>
     <script src="template.js"></script>
+    <script src="/js/desktop_template.js"></script>
 
 
-<body onload="includeHTML()">
+    <body onload="includeHTML()">
 
-    <div class="content">
-        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div class="content">
+            <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
-        <div class="rightContent">
-            <div class="headerContent">
-                <p>Kanban Project Management Tool</p>
+            <div class="rightContent">
+                <div class="headerContent">
+                    <p>Kanban Project Management Tool</p>
 
-                <div class="headerContentRight">
-                    <img onclick="help()" class="information" src="/asseds/img/information.png">
-                    <img class="personLogIn" src="/asseds/img/logo.jpg">
+                    <div class="headerContentRight">
+                        <img onclick="help()" class="information" src="/asseds/img/information.png">
+                        <img class="personLogIn" src="/asseds/img/logo.jpg">
+                    </div>
                 </div>
-            </div>
 
-            <div class="mainContent">
-                <div class="headline">
-                    <h1>Add Task</h1>
+                <div class="mainContent">
+                    <div class="headline">
+                        <h1>Add Task</h1>
+                    </div>
                 </div>
-            </div>
 
-            
+
                 <div class="middleLine"></div>
                 <div class="flexContainer">
                     <div class="leftContainer">
@@ -44,14 +45,15 @@
                             <textarea required placeholder="Enter a Description"></textarea>
                             <p>Category</p>
                             <select required placeholder="Select task category">
-                                <option>New category</option>
-                                <option>Sales</option>
-                                <option>Backoffice</option>
-                            </select>
+                            <option>New category</option>
+                            <option>Sales</option>
+                            <option>Backoffice</option>
+                        </select>
                             <p>Assigned to</p>
                             <select placeholder="Select contacts to assign"></select>
 
                     </div>
+
                     <div class="rightContainer">
                         <p>Due date</p>
                         <div>
@@ -70,8 +72,10 @@
                                 <img src="asseds/img/Vector green.png">
                             </div>
                         </div>
+
                         <p>Subtasks</p>
-                        <div class="relative">
+
+                        <div>
                             <input required>
                             <img class="subtaskIMG" src="asseds/img/Vector (1).png">
                         </div>
@@ -80,6 +84,7 @@
                             <input class="checkbox" type="checkbox">
                             <p>Subtask 1</p>
                         </div>
+
                         <div class="btn">
                             <button class="btnClear">Clear
                                 X
@@ -89,6 +94,7 @@
                             </button>
                             </form>
                         </div>
+
                     </div>
                 </div>
 
@@ -160,6 +166,6 @@
     </div> -->
 
 
-</body>
+    </body>
 
 </html>

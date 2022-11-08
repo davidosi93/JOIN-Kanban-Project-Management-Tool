@@ -15,50 +15,68 @@
 
 </head>
 
-<body onload="init()">
 
-    <div class=" containerHeader ">
+<body onload="includeHTML()">
 
-        <!-- <nav w3-include-html="/asseds/templates/desktop_template.html"></nav> -->
+    <div class="content">
+        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
-        <div class="headerUnderRightMenu ">
-            <div class="headerUnderRightMenuHeader ">
-                <p class="headerUnderRightMenuHeaderHeadline ">Board</p>
-                <div class="containerInputfield ">
-                    <input class="headerUnderRightMenuHeaderInputfield " type="text " placeholder="Find Task ">
-                    <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
+        <div class="rightContent">
+            <div class="headerContent">
+                <p>Kanban Project Management Tool</p>
+
+                <div class="headerContentRight">
+                    <img onclick="help()" class="information" src="/asseds/img/information.png">
+                    <img class="personLogIn" src="/asseds/img/logo.jpg">
                 </div>
-                <button class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
             </div>
 
-            <div class="containerTodoList">
-                <div class="containerTodoListTodo">
-                    <p class="containerTodoListText">To do</p>
-                    <img src="/asseds/img/plus button v1.png ">
+            <div>
+
+            </div>
+
+            <div class="mainContent">
+
+                <div class="headerUnderRightMenuHeader ">
+                    <p class="headerUnderRightMenuHeaderHeadline ">Board</p>
+                    <div class="containerInputfield ">
+                        <input class="headerUnderRightMenuHeaderInputfield " type="text " placeholder="Find Task ">
+                        <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
+                    </div>
+                    <button class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
                 </div>
 
-                <div class="containerTodoListTodo">
-                    <p class="containerTodoListText">In progress</p>
-                    <img src="/asseds/img/plus button v1.png ">
+                <div class="containerTodoList">
+                    <div class="containerTodoListTodo">
+                        <p class="containerTodoListTodoTodo">To do</p>
+                        <img src="/asseds/img/plus button v1.png ">
+                    </div>
+
+                    <div class="containerTodoListTodo">
+                        <p class="containerTodoListProgress">In progress</p>
+                        <img src="/asseds/img/plus button v1.png ">
+                    </div>
+
+                    <div class="containerTodoListTodo">
+                        <p class="containerTodoListFeedback">Awaiting Feedback</p>
+                        <img src="/asseds/img/plus button v1.png ">
+                    </div>
+
+                    <div class="containerTodoListTodo">
+                        <p class="containerTodoListDone">Done</p>
+                        <img src="/asseds/img/plus button v1.png ">
+                    </div>
                 </div>
 
-                <div class="containerTodoListTodo">
-                    <p class="containerTodoListText">Awaiting Feedback</p>
-                    <img src="/asseds/img/plus button v1.png ">
-                </div>
-
-                <div class="containerTodoListTodo">
-                    <p class="containerTodoListText">Done</p>
-                    <img src="/asseds/img/plus button v1.png ">
-                </div>
             </div>
         </div>
-
 
 
     </div>
 
 
 </body>
+
+
 
 </html>

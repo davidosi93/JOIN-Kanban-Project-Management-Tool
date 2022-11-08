@@ -8,8 +8,9 @@
     <title>Summary</title>
 
     <link rel="stylesheet" href="css/summary.css">
-    <script src="template.js"></script>     
+    <script src="template.js"></script>
     <script src="js/summary.js"></script>
+    <script src="/js/desktop_template.js"></script>
 
 
 </head>
@@ -34,29 +35,29 @@
                 </div>
 
                 <h2>What is Join?</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi
-                    ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id,
-                    facilis possimus dolores.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa
+                    rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis
+                    possimus dolores.</p>
 
                 <h2>How to use it</h2>
 
                 <div class="flexContainer">
                     <h3>1.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
-                        id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
-                        consequuntur alias porro magni.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id,
+                        cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias
+                        porro magni.</p>
                 </div>
                 <div class="flexContainer">
                     <h3>2.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
-                        id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
-                        consequuntur alias porro magni.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id,
+                        cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias
+                        porro magni.</p>
                 </div>
                 <div class="flexContainer">
                     <h3>3.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam,
-                        id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos
-                        consequuntur alias porro magni.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id,
+                        cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias
+                        porro magni.</p>
                 </div>
             </div>
 
@@ -70,33 +71,41 @@
                     </div>
                 </div>
                 <div class="taskContainer">
-                    <div class="boardContainer">
-                        <div><b>5</b></div>
-                        <p>Tasks in Board</p>
-                    </div>
-                    <div class="boardContainer">
-                        <div><b>2</b></div>
-                        <p>Tasks in Progress</p>
-                    </div>
-                    <div class="boardContainer">
-                        <div><b>2</b></div>
-                        <p>Awaiting Feedback</p>
-                    </div>
+                    <a href="board.html">
+                        <div class="boardContainer">
+                            <div><b>5</b></div>
+                            <p>Tasks in Board</p>
+                        </div>
+                    </a>
+                    <a href="board.html">
+                        <div class="boardContainer">
+                            <div><b>2</b></div>
+                            <p>Tasks in Progress</p>
+                        </div>
+                    </a>
+                    <a href="board.html">
+                        <div class="boardContainer">
+                            <div><b>2</b></div>
+                            <p>Awaiting Feedback</p>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="deadlineContainer">
-                    <div class="deadlineTasks">
-                        <img src="/asseds/img/Group 7.png">
-                        <div>
-                            <div><b>1</b></div>
-                            <p>Urgent</p>
-                        </div>
+                    <a href="board.html">
+                        <div class="deadlineTasks">
+                            <img src="/asseds/img/Group 7.png">
+                            <div>
+                                <div><b>1</b></div>
+                                <p>Urgent</p>
+                            </div>
 
-                        <div class="deatlineDate">
-                            <p class="date"> <b>October 16, 2022</b></p>
-                            <p> Upcoming Deadline</p>
+                            <div class="deatlineDate">
+                                <p class="date"> <b>October 16, 2022</b></p>
+                                <p> Upcoming Deadline</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <div class="greet">Good Morning,<br>
                         <p>Artur Marbach</p>
@@ -105,21 +114,24 @@
 
 
                 <div class="finishTask">
-                    <div class="finishContainer">
-                        <img id="left-img" href="board.html" src="/asseds/img/Frame 59.png">
-                        <div>
-                            <div><b>1</b></div>
-                            <p>To-do</p>
+                    <a href="board.html">
+                        <div onmouseover="onHoverLeft()" onmouseout="offHoverLeft()" class="finishContainer">
+                            <img  id="left-img" href="board.html" src="/asseds/img/Frame 59.png">
+                            <div>
+                                <div><b>1</b></div>
+                                <p>To-do</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="finishContainer">
-                        <img id="right-img" href="board.html" src="/asseds/img/Group 7 (1).png">
-                        <div>
-                            <div><b>1</b></div>
-                            <p>Done</p>
+                    </a>
+                    <a href="board.html">
+                        <div onmouseover="onHoverRight()" onmouseout="offHoverRight()" class="finishContainer">
+                            <img   id="right-img" href="board.html" src="/asseds/img/Group 7 (1).png">
+                            <div>
+                                <div><b>1</b></div>
+                                <p>Done</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
