@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>task_form</title>
 
     <link rel="stylesheet" href="/css/task_form.css">
-    <script src="js/add_task.js"></script>
-    <script src="template.js"></script>
+    <script src="/js/task_form.js"></script>
+
 
 </head>
 
 <body>
 
-    <div class="mainContainer">
+    <div id="deleteContainer" class="mainContainer">
         <div class="mainContainerTaskForm">
             <div class="mainContent">
                 <div class="headline">
@@ -42,6 +42,8 @@
                         <select placeholder="Select contacts to assign"></select>
 
                 </div>
+
+                <div onclick="closeContainer()" class="close">&times;</div>
 
                 <div class="rightContainer">
                     <p>Due date</p>
@@ -76,11 +78,11 @@
 
                     <div class="btn">
                         <button class="btnClear">Clear
-                    X
-                </button>
+                        X
+                        </button>
                         <button class="btnCreate"> Create Task
-                    <img src="asseds/img/hacken.png">
-                </button>
+                            <img src="asseds/img/hacken.png">
+                        </button>
                         </form>
                     </div>
 
