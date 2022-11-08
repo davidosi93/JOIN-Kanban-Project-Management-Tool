@@ -119,14 +119,26 @@ body {
 .prio img {
     width: 20px;
     height: 20px;
+    object-fit: cover;
 }
 
 .prioContainer {
-    padding: 10px;
+    padding: 12px;
     margin-right: 18px;
     background-color: white;
     border-radius: 5px;
-    font-size: 30px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.prioContainer img{
+    padding-left: 10px;
+}
+
+.medium{
+    height: 10px !important;
+    
 }
 
 .prioContainer:hover {
@@ -165,6 +177,7 @@ body {
     position: absolute;
     right: 30px;
     top: 12px;
+    cursor: pointer;
 }
 
 .checkbox {
@@ -201,7 +214,7 @@ body {
 .btnClear {
     padding: 10px;
     border-radius: 10px;
-    border-color: lightgray;
+    
     margin-right: 12px;
     cursor: pointer;
     font-size: 18px;
@@ -237,4 +250,19 @@ select {
     border-radius: 10px;
     padding: 8px;
     cursor: pointer;
+}
+
+.red{
+    background-color: #FF3D00;
+    color: white;
+}
+
+.yellow{
+    background-color: #FFA800;
+    color: white;
+}
+
+.green{
+    background-color: #7AE229;
+    color: white;
 }
