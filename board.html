@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gruppenarbeit Join</title>
+    <title>Board</title>
     <link rel="stylesheet" href="/css/board.css">
-    <script src="js/board.js"></script>
+    <link rel="stylesheet" href="/add_task.html">
+    <script src="/js/board.js"></script>
+    <script src="/js/task_form.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" Crossorigin>
     <link href="https: //fonts.googleapis.com/css2?family=Inter:wght@100 & display Familie= Inter:wght@100;200;300;400;500;600;700;800;900 & ">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
-
-
 
 </head>
 
@@ -22,6 +22,7 @@
 
     <div class="content">
         <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div id="addTaskRight" w3-include-html="/asseds/templates/task_form.html" class="d-none"></div>
 
         <div class="rightContent">
             <div class="headerContent">
@@ -41,7 +42,7 @@
                         <input class="headerUnderRightMenuHeaderInputfield " type="text " placeholder="Find Task ">
                         <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
                     </div>
-                    <button class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
+                    <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
                 </div>
 
                 <div class="containerTodoList">
@@ -55,7 +56,7 @@
                             <div class="containerBlock">
                                 <img src="/asseds/img/Frame 113.png">
                                 <p>Website redesigt</p>
-                                <p>Modify the contents of the main webside lllllllllllllllllllllllllllllllllllllllllllllllpppppppppppppppppppppppppppppppppppppppppppppppppppppp</p>
+                                <p>Modify the contents of the main webside ppppppppppppppppppppppppppppppppp</p>
                             </div>
 
                         </div>
