@@ -91,9 +91,9 @@ body {
 .middleLine {
     position: absolute;
     width: 0px;
-    height: 500px;
-    left: 875px;
-    top: 200px;
+    height: 510px;
+    left: 750px;
+    top: 185px;
     border: 1px solid #D1D1D1;
 }
 
@@ -139,9 +139,8 @@ body {
 }
 
 .btn {
-    position: absolute;
-    bottom: 50px;
-    right: 150px;
+    margin-top: 120px;
+    margin-left: 100px;
 }
 
 .btn img {
@@ -199,13 +198,38 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
 }
 
 .mainContainerTaskForm {
     background-color: #FFFFFF;
     width: 80vw;
-    height: 85vh;
+    height: 90vh;
     border-radius: 30px;
 }
 
-.grey-line {}
+.close {
+    position: absolute;
+    top: 60px;
+    right: 200px;
+    color: #5f5e5e;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none;
+}
