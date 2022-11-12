@@ -17,3 +17,13 @@ function showContact() {
     document.getElementById('contactBox').classList.remove('d-none');
     document.getElementById('contactBox').classList.add('animation');
 }
+
+function showContactBox() {
+    document.getElementById('newContactBoxBckgr').style.display = 'block';
+    document.getElementById('newContactBoxBckgr').style.display = 'flex';
+    document.getElementById('newContactBox').classList.add('animation');
+}
+
+function closeContactBox() {
+    document.getElementById('newContactBoxBckgr').style.display = 'none';
+}

@@ -82,14 +82,15 @@
                         </div>
                     </div>
 
-                    <div class="new-contact">
+                    <div onclick="showContactBox()" class="new-contact">
                         <p class="new-contact-btn">New Contact</p>
                         <img src="asseds/img/new_contact.png">
                     </div>
                 </div>
 
-                <div class="newContactBoxBckgr">
-                    <div class="newContactBox">
+                <div id="newContactBoxBckgr" style="display: none;" class="newContactBoxBckgr">
+                    <div id="newContactBox" class="newContactBox">
+                        <img onclick="closeContactBox()" class="closeImg" src="asseds/img/cross.png">
                         <div class="leftContent">
                             <img src="asseds/img/littleLogo.png">
                             <h1>Add Contact</h1>
@@ -104,21 +105,22 @@
                             <div class="inputFieldSection">
                                 <div class="inputField">
                                     <input id="input1" type="name" required placeholder="Name">
-                                    <img class="inputFieldIMG" src="asseds/img/person.png">
                                 </div>
                                 <div class="inputField">
                                     <input id="input2" type="email" required placeholder="Email">
-                                    <img class="inputFieldIMG" src="asseds/img/email.png">
                                 </div>
                                 <div class="inputField">
                                     <input id="input3" type="phone" required placeholder="Phone">
-                                    <img class="inputFieldIMG" src="asseds/img/email.png">
                                 </div>
                             </div>
 
                             <div class="buttons">
-                                <button class="log-in-guest">Cancel</button>
-                                <a><button class="log-in-btn">Create Contact</button></a>
+                                <div class="log-in-guest" onclick="closeContactBox()">
+                                    <p>Cancel</p>
+                                </div>
+                                <div class="log-in-btn">
+                                    <p class="buttonImg">Create Contact</p>
+                                </div>
                             </div>
 
                         </div>

@@ -367,11 +367,19 @@ body {
 }
 
 .newContactBox {
-    width: 80%;
-    height: 70%;
+    width: 1212px;
+    height: 594px;
     background: #FFFFFF;
     border-radius: 30px;
     position: relative;
+}
+
+.closeImg {
+    position: absolute;
+    right: 05%;
+    top: 5%;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .leftContent {
@@ -444,16 +452,31 @@ body {
     flex-direction: row;
     align-items: center;
     padding: 13px 21px;
-    width: 350px;
+    width: 422px;
     height: 51px;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+#input1 {
+    background: url('/asseds/img/person.png') no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+}
+
+#input2 {
+    background: url('/asseds/img/email.png') no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
 }
 
 #input3 {
-    margin-bottom: 0;
+    background: url('/asseds/img/email.png') no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
 }
 
 .inputField {
@@ -470,16 +493,15 @@ body {
 
 .buttons {
     display: flex;
-    justify-content: center;
     align-items: center;
     padding: 0px;
     gap: 35px;
-    width: 341px;
+    width: 422px;
     height: 51px;
     margin-top: 7%;
     position: absolute;
     bottom: 10%;
-    right: 20%;
+    right: 10%;
 }
 
 .buttons a {
@@ -488,9 +510,8 @@ body {
 
 .log-in-btn {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 4px 0px;
+    padding-left: 5%;
     width: 208px;
     height: 51px;
     background: #2A3647;
@@ -500,6 +521,14 @@ body {
     cursor: pointer;
     font-weight: 700;
     font-size: 21px;
+}
+
+.buttonImg {
+    background: url('/asseds/img/check.png') no-repeat;
+    margin: 0;
+    width: 200px;
+    background-position-x: 90%;
+    background-position-y: 35%;
 }
 
 .log-in-btn:hover {
@@ -513,19 +542,19 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     padding: 4px 16px;
-    gap: 10px;
     width: 136px;
     height: 51px;
     border: 1px solid #2A3647;
     border-radius: 8px;
-    background-color: white;
     color: #2A3647;
     cursor: pointer;
     font-weight: 700;
     font-size: 20px;
+    background: url('/asseds/img/cross.png') no-repeat;
+    background-position-x: 80%;
+    background-position-y: 49%;
 }
 
 .log-in-guest:hover {
@@ -534,4 +563,7 @@ body {
     transition: 125ms;
     transform: scale(1.01);
     box-shadow: 0px 8px 15px -7px gray;
+    background: url('/asseds/img/bluecross.png') no-repeat;
+    background-position-x: 80%;
+    background-position-y: 45%;
 }
