@@ -33,16 +33,9 @@
                             <p>A</p>
                             <div class="letterUnderline"></div>
                         </div>
-                        <div id="contactDiv" onclick="changeBckgrClr(); showContact();"
-                            class="contactDiv hover bg-white">
-                            <div class="contactLetter">
-                                DO
-                            </div>
-                            <div class="contactName">
-                                <p class="name">David Osipov</p>
-                                <p class="email">david.osipov@mail.com</p>
-                            </div>
-                        </div>
+
+                        <div id="contactList"></div>
+
                     </div>
                 </div>
                 <div class="rightSection">
@@ -51,37 +44,8 @@
                         <div class="line"></div>
                         <p>Better with a team</p>
                     </div>
-                    <div id="contactBox" class="contactBox d-none">
-                        <div class="contact">
-                            <p class="contactP">DO</p>
-                            <div class="contactNameRight">
-                                <p class="contactNameRightP">David Osipov</p>
-                                <div class="addTaskBox">
-                                    <img src="asseds/img/plus.png">
-                                    <p class="addTask">Add Task</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="contactInfo">
-                            <p class="contactInfoP">Contact Information</p>
-                            <div class="contactInfoEdit">
-                                <img src="asseds/img/pencil.png">
-                                <p class="contactInfoEditP">Edit Contact</p>
-                            </div>
-                        </div>
-
-                        <div class="phoneMailBox">
-                            <div class="mail">
-                                <p class="mailP">Email</p>
-                                <p class="mailAdress">davidosipov@mail.de</p>
-                            </div>
-                            <div class="mail">
-                                <p class="mailP">Phone</p>
-                                <p class="phoneNumber">0123456789</p>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <div id="bigContactSection"></div>
 
                     <div onclick="showContactBox()" class="new-contact">
                         <p class="new-contact-btn">New Contact</p>
@@ -119,7 +83,7 @@
                                 <div class="log-in-guest" onclick="closeContactBox()">
                                     <p>Cancel</p>
                                 </div>
-                                <div class="log-in-btn">
+                                <div onclick="addContact(); closeContactBox();" class="log-in-btn">
                                     <p class="buttonImg">Create Contact</p>
                                 </div>
                             </div>
