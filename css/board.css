@@ -13,6 +13,7 @@ body {
 .headerContent {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
     height: 89px;
 }
@@ -49,8 +50,8 @@ body {
 }
 
 .mainContent {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 6%;
+    padding-right: 5%;
 }
 
 
@@ -58,7 +59,7 @@ body {
 
 .headerUnderRightMenuHeader {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -90,6 +91,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .headerUnderRightMenuHeaderButton:hover {
@@ -139,21 +141,25 @@ body {
 .containerTodoListTodoTodo {
     font-size: 21px;
     font-weight: 700px;
+    cursor: pointer;
 }
 
 .containerTodoListProgress {
     font-size: 21px;
     font-weight: 700px;
+    cursor: pointer;
 }
 
 .containerTodoListFeedback {
     font-size: 21px;
     font-weight: 700px;
+    cursor: pointer;
 }
 
 .containerTodoListDone {
     font-size: 21px;
     font-weight: 700px;
+    cursor: pointer;
 }
 
 .containerTodo {
@@ -174,6 +180,23 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+.plusButtonTodoList {
+    border-radius: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-color: #2A3647;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plusButtonTodoList:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
 }
 
 

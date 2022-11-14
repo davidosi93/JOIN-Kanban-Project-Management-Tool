@@ -1,95 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="/css/task_form.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>task_form</title>
-
-    <link rel="stylesheet" href="/css/task_form.css">
-    <script src="/js/task_form.js"></script>
-
-
-</head>
-
-<body>
-
-    <div id="deleteContainer" class="mainContainer">
-        <div class="mainContainerTaskForm">
-            <div class="mainContent">
-                <div class="headline">
-                    <h1>Add Task</h1>
-                </div>
+<div class="mainContainer">
+    <div class="mainContainerTaskForm">
+        <div class="mainContent1">
+            <div class="headline">
+                <h1>Add Task</h1>
             </div>
+        </div>
 
 
-            <div class="middleLine"></div>
-            <div class="flexContainer">
-                <div class="leftContainer">
-                    <p>Title</p>
-                    <form onsubmit="addTask(); return false;">
-                        <input placeholder="Enter a title" required>
-                        <p>Description</p>
-                        <textarea required placeholder="Enter a Description"></textarea>
-                        <p>Category</p>
-                        <select required placeholder="Select task category">
+        <div class="middleLine"></div>
+        <div class="flexContainer">
+            <form onsubmit="addTask(); return false;"></form>
+            <div class="leftContainer">
+                <p>Title</p>
+
+                <input placeholder="Enter a title" required>
+                <p>Description</p>
+                <textarea required placeholder="Enter a Description"></textarea>
+                <p>Category</p>
+                <select required placeholder="Select task category">
                         <option>New category</option>
                         <option>Sales</option>
                         <option>Backoffice</option>
                          </select>
-                        <p>Assigned to</p>
-                        <select placeholder="Select contacts to assign"></select>
+                <p>Assigned to</p>
+                <select placeholder="Select contacts to assign"></select>
+
+            </div>
+
+            <div onclick="closeContainer()" class="closes">&times;</div>
+
+            <div class="rightContainer">
+                <p>Due date</p>
+                <div>
+                    <input type="date" placeholder="dd/mm/yyyy" required>
 
                 </div>
-
-                <div onclick="closeContainer()" class="close">&times;</div>
-
-                <div class="rightContainer">
-                    <p>Due date</p>
-                    <div>
-                        <input type="date" placeholder="dd/mm/yyyy" required>
-
+                <p>Prio</p>
+                <div class="prio">
+                    <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
+                        <img id="redImg" src="/asseds/img/pfeil-oben-rot.png">
                     </div>
-                    <p>Prio</p>
-                    <div class="prio">
-                        <div id="red" onclick="changeColor(red)" class="prioContainer">Urgent
-                            <img src="/asseds/img/Vector red.png">
-                        </div>
-                        <div id="yellow" onclick="changeColor(yellow)" class="prioContainer">Medium
-                            <img src="/asseds/img/Vector yellow.png">
-                        </div>
-                        <div id="green" onclick="changeColor(green)" class="prioContainer">Low
-                            <img src="/asseds/img/Vector green.png">
-                        </div>
+                    <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
+                        <img id="yellowImg" class="medium" src="/asseds/img/medium-gelb.png">
                     </div>
-
-                    <p>Subtasks</p>
-
-                    <div>
-                        <input required>
-                        <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                    <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
+                        <img id="greenImg" src="/asseds/img/pfeil-unten-grün.png">
                     </div>
+                </div>
 
-                    <div class="subtaskContainer">
-                        <input class="checkbox" type="checkbox">
-                        <p>Subtask 1</p>
-                    </div>
+                <p>Subtasks</p>
 
-                    <div class="btn">
-                        <button class="btnClear">Clear
-                        X
+                <div>
+                    <input required>
+                    <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                </div>
+
+                <div class="subtaskContainer">
+                    <input class="checkbox" type="checkbox">
+                    <p>Subtask 1</p>
+                </div>
+
+                <div class="btn">
+                    <button onclick="closeContainer()" class="btnClear">Clear
+                                X
                         </button>
-                        <button class="btnCreate"> Create Task
+
+                    <button class="btnCreate"> Create Task
                             <img src="asseds/img/hacken.png">
                         </button>
-                        </form>
-                    </div>
-
                 </div>
             </div>
+
+            </form>
         </div>
     </div>
-</body>
-
-</html>
+</div>

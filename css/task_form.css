@@ -2,7 +2,7 @@ body {
     margin: 0px;
 }
 
-.mainContent {
+.mainContent1 {
     padding-left: 70px;
 }
 
@@ -77,23 +77,33 @@ body {
 .prioContainer {
     padding: 10px;
     margin-right: 18px;
-    background-color: white;
-    border-radius: 5px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
     font-size: 30px;
+    border: 1px solid #D1D1D1;
+}
+
+.prioContainer img {
+    padding-left: 0px;
+}
+
+.medium {
+    height: 10px !important;
+    padding-bottom: 3px;
 }
 
 .prioContainer:hover {
     cursor: pointer;
     transform: scale(1.1);
-    border-bottom: 2px solid lightgray;
+    box-shadow: 2px 3px lightgray;
 }
 
 .middleLine {
     position: absolute;
     width: 0px;
-    height: 510px;
+    height: 520px;
     left: 750px;
-    top: 185px;
+    top: 180px;
     border: 1px solid #D1D1D1;
 }
 
@@ -157,6 +167,7 @@ body {
     margin-right: 12px;
     cursor: pointer;
     font-size: 18px;
+    background-color: #FFFFFF;
 }
 
 .btnCreate {
@@ -213,7 +224,7 @@ select {
     border-radius: 30px;
 }
 
-.close {
+.closes {
     position: absolute;
     top: 60px;
     right: 200px;
@@ -223,8 +234,8 @@ select {
     transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
+.closes:hover,
+.closes:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
@@ -232,4 +243,19 @@ select {
 
 .d-none {
     display: none;
+}
+
+.red {
+    background-color: #FF3D00;
+    color: white;
+}
+
+.yellow {
+    background-color: #FFA800;
+    color: white;
+}
+
+.green {
+    background-color: #7AE229;
+    color: white;
 }
