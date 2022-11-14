@@ -9,6 +9,7 @@
     <script src="template.js"></script>
     <script src="js/contacts.js"></script>
     <link rel="stylesheet" href="css/contacts.css">
+    <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
 </head>
 
 <body onload="includeHTML()">
@@ -32,16 +33,9 @@
                             <p>A</p>
                             <div class="letterUnderline"></div>
                         </div>
-                        <div id="contactDiv" onclick="changeBckgrClr(); showContact();"
-                            class="contactDiv hover bg-white">
-                            <div class="contactLetter">
-                                DO
-                            </div>
-                            <div class="contactName">
-                                <p class="name">David Osipov</p>
-                                <p class="email">david.osipov@mail.com</p>
-                            </div>
-                        </div>
+
+                        <div id="contactList"></div>
+
                     </div>
                 </div>
                 <div class="rightSection">
@@ -50,46 +44,18 @@
                         <div class="line"></div>
                         <p>Better with a team</p>
                     </div>
-                    <div id="contactBox" class="contactBox d-none">
-                        <div class="contact">
-                            <p class="contactP">DO</p>
-                            <div class="contactNameRight">
-                                <p class="contactNameRightP">David Osipov</p>
-                                <div class="addTaskBox">
-                                    <img src="asseds/img/plus.png">
-                                    <p class="addTask">Add Task</p>
-                                </div>
-                            </div>
-                        </div>
+                    
+                    <div id="bigContactSection"></div>
 
-                        <div class="contactInfo">
-                            <p class="contactInfoP">Contact Information</p>
-                            <div class="contactInfoEdit">
-                                <img src="asseds/img/pencil.png">
-                                <p class="contactInfoEditP">Edit Contact</p>
-                            </div>
-                        </div>
-
-                        <div class="phoneMailBox">
-                            <div class="mail">
-                                <p class="mailP">Email</p>
-                                <p class="mailAdress">davidosipov@mail.de</p>
-                            </div>
-                            <div class="mail">
-                                <p class="mailP">Phone</p>
-                                <p class="phoneNumber">0123456789</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="new-contact">
+                    <div onclick="showContactBox()" class="new-contact">
                         <p class="new-contact-btn">New Contact</p>
                         <img src="asseds/img/new_contact.png">
                     </div>
                 </div>
 
-                <div class="newContactBoxBckgr">
-                    <div class="newContactBox">
+                <div id="newContactBoxBckgr" style="display: none;" class="newContactBoxBckgr">
+                    <div id="newContactBox" class="newContactBox">
+                        <img onclick="closeContactBox()" class="closeImg" src="asseds/img/cross.png">
                         <div class="leftContent">
                             <img src="asseds/img/littleLogo.png">
                             <h1>Add Contact</h1>
@@ -104,21 +70,22 @@
                             <div class="inputFieldSection">
                                 <div class="inputField">
                                     <input id="input1" type="name" required placeholder="Name">
-                                    <img class="inputFieldIMG" src="asseds/img/person.png">
                                 </div>
                                 <div class="inputField">
                                     <input id="input2" type="email" required placeholder="Email">
-                                    <img class="inputFieldIMG" src="asseds/img/email.png">
                                 </div>
                                 <div class="inputField">
                                     <input id="input3" type="phone" required placeholder="Phone">
-                                    <img class="inputFieldIMG" src="asseds/img/email.png">
                                 </div>
                             </div>
 
                             <div class="buttons">
-                                <button class="log-in-guest">Cancel</button>
-                                <a><button class="log-in-btn">Create Contact</button></a>
+                                <div class="log-in-guest" onclick="closeContactBox()">
+                                    <p>Cancel</p>
+                                </div>
+                                <div onclick="addContact(); closeContactBox();" class="log-in-btn">
+                                    <p class="buttonImg">Create Contact</p>
+                                </div>
                             </div>
 
                         </div>
