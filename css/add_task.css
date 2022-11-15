@@ -52,6 +52,50 @@ body {
 
 /* Hier beginnt der Content*/
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.drop {
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 380px;
+    border: 1px solid lightgray;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {
+    display: block !important;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content img {
+    padding-left: 10px;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
 .headline {
     display: flex;
 }
@@ -132,13 +176,13 @@ body {
     align-items: center;
 }
 
-.prioContainer img{
+.prioContainer img {
     padding-left: 10px;
 }
 
-.medium{
+.medium {
     height: 10px !important;
-    
+
 }
 
 .prioContainer:hover {
@@ -151,8 +195,8 @@ body {
     position: absolute;
     width: 0px;
     height: 500px;
-    left: 875px;
-    top: 200px;
+    left: 845px;
+    top: 170px;
     border: 1px solid #D1D1D1;
 }
 
@@ -196,6 +240,7 @@ body {
     margin-top: 5px;
     padding-left: 5px;
     font-size: 18px;
+    margin-bottom: 5px;
 }
 
 .btn {
@@ -214,7 +259,7 @@ body {
 .btnClear {
     padding: 10px;
     border-radius: 10px;
-    
+
     margin-right: 12px;
     cursor: pointer;
     font-size: 18px;
@@ -252,17 +297,17 @@ select {
     cursor: pointer;
 }
 
-.red{
+.red {
     background-color: #FF3D00;
     color: white;
 }
 
-.yellow{
+.yellow {
     background-color: #FFA800;
     color: white;
 }
 
-.green{
+.green {
     background-color: #7AE229;
     color: white;
 }
