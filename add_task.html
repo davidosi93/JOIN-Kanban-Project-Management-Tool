@@ -14,7 +14,7 @@
     <script src="/js/desktop_template.js"></script>
     <script src="./mini_backend.js"></script>
 
-    <body onload="includeHTML()">
+    <body onload="includeHTML();renderCategory()">
 
         <div class="content">
             <div w3-include-html="/asseds/templates/desktop_template.html"></div>
@@ -49,19 +49,18 @@
                         <textarea id="description" required placeholder="Enter a Description"></textarea>
                         <p>Category</p>
                         <div class="dropdown">
-                            <div onclick="dropDownCategory()" class="drop">Select task category</div>
+                            <div id="selectCategory" onclick="dropDownCategory()" class="drop selectImg">Select task category<img src="/asseds/img/pfeil unten.png"></div>
                             <div id="category" class="dropdown-content">
-                                <a href="#home">New category</a>
-                                <a href="#about">Sales <img src="asseds/img/violetter-kreis.png"></a>
-                                <a href="#contact">Backoffice <img src="asseds/img/hellblauer-kreis.png"></a>
+                                <a onclick="newCategory()">New category</a>
+                                
                             </div>
                         </div>
                         <p>Assigned to</p>
                         <div class="dropdown">
-                            <div onclick="dropDownAssign()" class="drop">Select contacts to assign</div>
-                            <div id="assign" class="dropdown-content">
-                                <a >Artur Marbach <img src="asseds/img/violetter-kreis.png"></a>
-                                <a >Waldemar Neumann <img src="asseds/img/hellblauer-kreis.png"></a>
+                            <div onclick="dropDownAssign()" class="drop">Select contacts to assign<img src="/asseds/img/pfeil unten.png"></div>
+                            <div id="assign" class="dropdown-content assign-contact">
+                                <a >Artur Marbach <input type="checkbox"></a>
+                                <a >Waldemar Neumann <input type="checkbox"></a>
                                 <a >Invite new contact</a>
                             </div>
                         </div>

@@ -58,15 +58,28 @@ body {
 }
 
 .drop {
+    display: flex;
+    justify-content: space-between;
     background-color: white;
     color: black;
-    padding: 16px;
+    padding: 8px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     border-radius: 10px;
     width: 380px;
     border: 1px solid lightgray;
+}
+
+.drop img{
+    object-fit: contain;
+    width: 12px;
+    height: 16px;
+}
+
+.selectImg{
+    display: flex;
+    align-items: center;
 }
 
 .dropdown a:hover {background-color: #ddd;}
@@ -102,7 +115,7 @@ body {
 
 .headline h1 {
     padding-right: 30px;
-    font-size: 70px;
+    font-size: 60px;
     margin-bottom: 0;
     margin-top: 20px;
 }
@@ -117,7 +130,7 @@ body {
 }
 
 .leftContainer p {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .leftContainer input {
@@ -149,7 +162,7 @@ body {
 }
 
 .rightContainer p {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .flex p {
@@ -309,4 +322,37 @@ select {
 .green {
     background-color: #7AE229;
     color: white;
+}
+
+.category img{
+    padding-left: 10px;
+}
+
+.newCategoryText{
+    
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.newCategoryImg{
+    margin: 10px;
+    cursor: pointer;
+}
+
+.xBtn{
+    width: 16px !important;
+    height: 16px !important;
+    padding-right: 10px;
+    border-right: 2px solid black;
+}
+
+.hackenBtn{
+    width: 16px !important;
+    height: 16px !important;
+    padding-left: 10px;
+}
+
+.newCategoryText input:hover{
+    border-right: none;
 }
