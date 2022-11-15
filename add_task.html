@@ -14,27 +14,26 @@
     <script src="/js/desktop_template.js"></script>
     <script src="./mini_backend.js"></script>
 
+    <body onload="includeHTML()">
 
-<body onload="includeHTML()">
+        <div class="content">
+            <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
-    <div class="content">
-        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+            <div class="rightContent">
+                <div class="headerContent">
+                    <p>Kanban Project Management Tool</p>
 
-        <div class="rightContent">
-            <div class="headerContent">
-                <p>Kanban Project Management Tool</p>
-
-                <div class="headerContentRight">
-                    <img onclick="help()" class="information" src="/asseds/img/information.png">
-                    <img class="personLogIn" src="/asseds/img/logo.jpg">
+                    <div class="headerContentRight">
+                        <img onclick="help()" class="information" src="/asseds/img/information.png">
+                        <img class="personLogIn" src="/asseds/img/logo.jpg">
+                    </div>
                 </div>
-            </div>
 
-            <div class="mainContent">
-                <div class="headline">
-                    <h1>Add Task</h1>
+                <div class="mainContent">
+                    <div class="headline">
+                        <h1>Add Task</h1>
+                    </div>
                 </div>
-            </div>
 
 
 

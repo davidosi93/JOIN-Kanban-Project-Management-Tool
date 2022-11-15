@@ -169,11 +169,12 @@ body {
 .prioContainer {
     padding: 12px;
     margin-right: 18px;
-    background-color: white;
-    border-radius: 5px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
     font-size: 26px;
     display: flex;
     align-items: center;
+    border: 1px solid #D1D1D1;
 }
 
 .prioContainer img {
@@ -182,13 +183,12 @@ body {
 
 .medium {
     height: 10px !important;
-
 }
 
 .prioContainer:hover {
     cursor: pointer;
     transform: scale(1.1);
-    border-bottom: 2px solid lightgray;
+    box-shadow: 2px 3px lightgray;
 }
 
 .middleLine {
@@ -259,7 +259,6 @@ body {
 .btnClear {
     padding: 10px;
     border-radius: 10px;
-
     margin-right: 12px;
     cursor: pointer;
     font-size: 18px;
