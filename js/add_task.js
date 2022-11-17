@@ -3,29 +3,32 @@ let red = false;
 let yellow = false;
 let green = false;
 
-/**
- * Create Task and put it to the JSON allTasks
- * 
- */
 function addTask() {
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('description').value;
-    let category = document.getElementById('category').value;
-    let dueDate = document.getElementById('dueDate').value;
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let category = document.getElementById('category');
+    let dueDate = document.getElementById('dueDate');
 
     let task = {
-        'title': title,
-        'description': description,
-        'category': category,
-        'DueDate': dueDate
+        'title': title.value,
+        'description': description.value,
+        'category': category.value,
+        'dueDate': dueDate.value,
+        'priority': prio,
+        'subtask': subtask,
+        'assigned': assigned
     };
-
-
     allTasks.push(task);
 
     let allTasksAsString = JSON.stringify(allTasks);
     localStorage.setItem('allTasks', allTasksAsString);
 }
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('allTasks');
+    allTasks = JSON.parse(allTasksAsString);
+}
+
 
 
 function changeColorRed() {
@@ -61,6 +64,17 @@ function changeColorRed() {
 
 }
 
+function changePrioUrgent() {
+    prio;
+    prio = 'urgent';
+}
+
+function changeColorYellow() {
+    changePrioMedium();
+    document.getElementById('yellow').classList.add('yellow');
+    document.getElementById('yellowImg').src = 'asseds/img/medium-weiss.png';
+}
+
 function changeColorYellow() {
     console.log('yellow', yellow)
 
@@ -87,6 +101,18 @@ function changeColorYellow() {
     document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
 }
 
+
+function changePrioMedium() {
+    prio;
+    prio = 'medium';
+}
+
+function changeColorGreen() {
+    changePrioLow();
+    document.getElementById('green').classList.add('green');
+    document.getElementById('greenImg').src = 'asseds/img/pfeil-unten-weiss.png';
+}
+
 function changeColorGreen() {
     console.log('green', green)
     if (green) {
@@ -108,7 +134,147 @@ function changeColorGreen() {
     document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
 
     document.getElementById('yellow').classList.remove('yellow');
-    document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
+    document.getElementById('yellowImg').src = 'asseds/img/medium-gelb.png';
+}
 
+function changePrioLow() {
+    prio;
+    prio = 'low';
+}
+
+
+function renderSubtask() {
+    let subtask = document.getElementById('subtask').value;
+    document.getElementById('subtask').value = '';
+
+    generateSubtask(subtask, i);
+    i++;
+}
+
+function generateSubtask(subtask, i) {
+
+    return document.getElementById('renderSubtask').innerHTML += `
+    <div class="subtaskContainer">
+    <input onclick="checkSubtask('${subtask}')" class="checkbox" type="checkbox">
+    <p id="getSubtask">${subtask}</p>
+    </div>
+    `;
+}
+
+function checkSubtask(subtask) {
+    subtasks.push(subtask);
+    console.log(subtask);
+}
+
+
+function dropDownCategory() {
+    document.getElementById("category").classList.toggle("show");
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.drop')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+}
+
+function dropDownAssign() {
+    document.getElementById("assign").classList.toggle("show");
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.drop')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+}
+
+
+
+function renderCategory() {
+    let content = document.getElementById('category');
+
+    for (let i = 0; i < categoriesName.length; i++) {
+        const category = categoriesName[i];
+        const img = categoriesImg[i];
+        content.innerHTML += `
+        
+        <a onclick="myCategory(${i})">${category} <img src="${img}"</a>
+        `;
+
+    }
+
+}
+
+function myCategory(i) {
+    let content = document.getElementById('selectCategory');
+    content.innerHTML = '';
+    content.innerHTML = `
+    <div class="category">
+    ${categoriesName[i]}<img src="${categoriesImg[i]}">
+    </div>
+    <img src="/asseds/img/pfeil unten.png">
+    `;
+}
+
+
+function newCategory() {
+    let content = document.getElementById('selectCategory');
+
+    content.innerHTML = '';
+    content.innerHTML += `
+    
+    <input class="newCategoryText" placeholder="New category Name...">
+    <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
+    <img class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
+    `;
+
+    let contentImg = document.getElementById('category');
+    contentImg.innerHTML = '';
+    contentImg.style.display = "block";
+    for (let i = 0; i < newCategoryImg.length; i++) {
+        const img = newCategoryImg[i];
+        contentImg.innerHTML += `
+        <img onclick="newCategoryImages(${i})" class="newCategoryImg" src="${img}">
+        `;
+    }
+}
+
+
+function newCategoryImages(i) {
+    let content = document.getElementById('selectCategory');
+
+    content.innerHTML = '';
+    content.innerHTML += `
+    <img src="${newCategoryImg[i]}">
+    <input "required"  class="newCategoryText"  placeholder="New category Name...">
+    
+    <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
+    <img class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
+    `;
+}
+
+
+function goToSelectCategory() {
+    let content = document.getElementById('selectCategory');
+    let input = document.getElementById('category').innerHTML = '';
+    content.innerHTML = `
+    Select task category<img src="/asseds/img/pfeil unten.png">
+    `;
+    renderCategory();
 
 }

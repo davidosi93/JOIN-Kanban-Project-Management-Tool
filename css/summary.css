@@ -47,15 +47,13 @@ body {
     cursor: pointer;
 }
 
-.mainContent {
-    padding-left: 100px;
-}
 
 
 /* Hier beginnt der Content*/
 
 .headline {
     display: flex;
+    margin-left: 10%;
 }
 
 .headline h1 {
@@ -76,12 +74,20 @@ body {
     padding-bottom: 10px;
 }
 
+.mainContent {
+    display: flex;
+}
+
+.leftContent {
+    width: 50%;
+    margin-left: 10%;
+}
+
 .taskContainer {
     display: flex;
-    justify-content: flex-start;
-    width: 550px;
-    padding-left: 100px;
+    justify-content: space-between;
     margin-top: 20px;
+
 }
 
 .taskContainer a {
@@ -94,12 +100,9 @@ body {
 }
 
 .boardContainer {
-
-    margin-right: 75px;
+    padding: 25px;
     background-color: white;
     border-radius: 10px;
-    min-width: 100px;
-    padding: 25px;
 }
 
 .boardContainer div {
@@ -109,7 +112,7 @@ body {
 
 .boardContainer p {
     margin: 0;
-    font-size: 19px;
+    font-size: 20px;
 }
 
 .boardContainer:hover {
@@ -119,45 +122,39 @@ body {
     background-color: #2A3647;
 }
 
+
+
 .deadlineContainer {
     display: flex;
-    padding-left: 100px;
-    max-height: 150px;
-}
-
-.deadlineContainer a {
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    margin-top: 20px;
+    padding: 25px;
     text-decoration: none;
     color: black;
-}
-
-.deadlineTasks {
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-    min-width: 550px;
-    background-color: white;
     border-radius: 10px;
-    padding: 25px;
 }
 
-.deadlineTasks img {
-    width: 80px;
-    height: 80px;
+
+.deadlineContainer img {
+    width: 90px;
+    height: 90px;
     padding-right: 10px;
 }
 
-.deadlineTasks div {
-    text-align: center;
+.deadlineContainer div {
     font-size: 40px;
+    text-align: center;
     padding-top: 0;
 }
 
-.deadlineTasks p {
+.deadlineContainer p {
     margin: 0;
     font-size: 19px;
 }
 
-.deadlineTasks:hover {
+.deadlineContainer:hover {
     cursor: pointer;
     transform: scale(1.05);
     color: white;
@@ -175,28 +172,14 @@ body {
     padding-left: 25px;
 }
 
-.greet {
-    margin-top: 20px;
-    text-align: center;
-    padding-left: 50px;
-    font-size: 60px;
-}
-
-.greet p {
-    margin-top: 0;
-    margin-bottom: 0;
-    color: #29ABE2;
-}
-
 .finishTask {
     display: flex;
     justify-content: space-between;
-    width: 600px;
     margin-top: 20px;
-    padding-left: 100px;
+
 }
 
-.finishTask a{
+.finishTask a {
     text-decoration: none;
     color: black;
 }
@@ -206,32 +189,35 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
-    width: 200px;
+    margin-top: 20px;
     background-color: white;
     border-radius: 10px;
     padding: 25px;
-    padding-left: 35px;
-    padding-right: 35px;
-
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 
 .finishContainer div div {
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     padding-top: 0;
+    padding-right: 25px;
 }
 
 .finishContainer p {
     margin: 0;
     font-size: 19px;
+    padding-right: 25px;
 }
 
 .finishContainer img {
     padding-right: 10px;
     height: 80px;
     width: 80px;
+    padding-left: 25px;
+    padding-right: 25px;
+
 }
 
 
@@ -240,6 +226,22 @@ body {
     transform: scale(1.05);
     color: white;
     background-color: #2A3647;
+}
+
+.greet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 60px;
+    margin-left: 5%;
+}
+
+.greet p {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #29ABE2;
 }
 
 
