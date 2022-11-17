@@ -1,4 +1,7 @@
 let allTasks = [];
+let red = false;
+let yellow = false;
+let green = false;
 
 /**
  * Create Task and put it to the JSON allTasks
