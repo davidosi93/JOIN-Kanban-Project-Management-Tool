@@ -164,6 +164,7 @@ body {
 
 .containerTodo {
     width: 250px;
+    height: 300px;
     margin-top: 10px;
 }
 
@@ -199,5 +200,18 @@ body {
     border-color: #29ABE2;
 }
 
+.assignTask {
+    display: flex;
+    align-items: center;
+}
 
-/* css for add task*/
+.divAssignTask {
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    background-color: aqua;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

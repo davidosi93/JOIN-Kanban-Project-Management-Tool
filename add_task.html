@@ -12,8 +12,9 @@
     <script src="js/add_task.js"></script>
     <script src="template.js"></script>
     <script src="/js/desktop_template.js"></script>
+    <script src="./mini_backend.js"></script>
 
-    <body onload="includeHTML()">
+    <body onload="includeHTML();renderCategory()">
 
         <div class="content">
             <div w3-include-html="/asseds/templates/desktop_template.html"></div>
@@ -35,25 +36,34 @@
                 </div>
 
 
+
+
+            <form onsubmit="addTask(); return false;">
                 <div class="middleLine"></div>
                 <div class="flexContainer">
                     <div class="leftContainer">
                         <p>Title</p>
-                        <form onsubmit="addTask(); return false;">
-                            <input id="title" placeholder="Enter a title" required>
-                            <p>Description</p>
-                            <textarea id="description" required placeholder="Enter a Description"></textarea>
-                            <p>Category</p>
-                            <select id="category" required placeholder="Select task category">
-                            <option >Select Task Category</option>
-                            <option value="1">Sales</option>
-                            <option value="2">Backoffice</option>
-                            <option value="3">Media</option>
-                            <option value="4">Marketing</option>
-                        </select>
-                            <p>Assigned to</p>
-                            <select placeholder="Select contacts to assign"></select>
 
+                        <input id="title" placeholder="Enter a title" required>
+                        <p>Description</p>
+                        <textarea id="description" required placeholder="Enter a Description"></textarea>
+                        <p>Category</p>
+                        <div class="dropdown">
+                            <div id="selectCategory" onclick="dropDownCategory()" class="drop selectImg">Select task category<img src="/asseds/img/pfeil unten.png"></div>
+                            <div id="category" class="dropdown-content">
+                                <a onclick="newCategory()">New category</a>
+                                
+                            </div>
+                        </div>
+                        <p>Assigned to</p>
+                        <div class="dropdown">
+                            <div onclick="dropDownAssign()" class="drop">Select contacts to assign<img src="/asseds/img/pfeil unten.png"></div>
+                            <div id="assign" class="dropdown-content assign-contact">
+                                <a >Artur Marbach <input type="checkbox"></a>
+                                <a >Waldemar Neumann <input type="checkbox"></a>
+                                <a >Invite new contact</a>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="rightContainer">
@@ -78,33 +88,27 @@
                         <p>Subtasks</p>
 
                         <div class="relativeContainer">
-                            <input>
-                            <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                            <input id="subtask" required placeholder="Enter a Subtask...">
+                            <img onclick="renderSubtask()" class="subtaskIMG" src="asseds/img/Vector (1).png">
                         </div>
 
-                        <div class="subtaskContainer">
-                            <input class="checkbox" type="checkbox">
-                            <p>Subtask 1</p>
-                        </div>
+                        <div id="renderSubtask"></div>
 
                         <div class="btn">
-                            <button class="btnClear">Clear X
+                            <button class="btnClear">Clear
+                                X
                             </button>
                             <button class="btnCreate"> Create Task
                                 <img src="asseds/img/hacken.png">
                             </button>
-                            </form>
                         </div>
-
                     </div>
                 </div>
-
-
-            </div>
-
+            </form>
 
         </div>
+    </div>
 
-    </body>
+</body>
 
 </html>

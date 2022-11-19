@@ -1,79 +1,91 @@
 <link rel="stylesheet" href="/css/task_form.css">
 
+
 <div class="mainContainer">
     <div class="mainContainerTaskForm">
         <div class="mainContent1">
             <div class="headline">
-                <h1>Add Task</h1>
+                <p class="headlineTitel">Add Task</p>
             </div>
         </div>
 
 
         <div class="middleLine"></div>
         <div class="flexContainer">
-            <form onsubmit="addTask(); return false;"></form>
-            <div class="leftContainer">
-                <p>Title</p>
+            <form class="containerForm" onsubmit="addTask(); return false;">
+                <div class="leftContainer">
 
-                <input placeholder="Enter a title" required>
-                <p>Description</p>
-                <textarea required placeholder="Enter a Description"></textarea>
-                <p>Category</p>
-                <select required placeholder="Select task category">
-                        <option>New category</option>
-                        <option>Sales</option>
-                        <option>Backoffice</option>
-                         </select>
-                <p>Assigned to</p>
-                <select placeholder="Select contacts to assign"></select>
+                    <p class="titleInputFields">Title</p>
+                    <input id="title" placeholder="Enter a title" required>
 
-            </div>
+                    <p class="titleInputFields">Description</p>
+                    <textarea id="description" required placeholder="Enter a Description"></textarea>
 
-            <div onclick="closeContainer()" class="closes">&times;</div>
+                    <p class="titleInputFields">Category</p>
+                    <select id="category" required placeholder="Select task category">
+                        <option >Select Task Category</option>
+                        <option value="1">Sales</option>
+                        <option value="2">Backoffice</option>
+                        <option value="3">Media</option>
+                        <option value="4">Marketing</option>
+                    </select>
 
-            <div class="rightContainer">
-                <p>Due date</p>
-                <div>
-                    <input type="date" placeholder="dd/mm/yyyy" required>
+                    <p class="titleInputFields">Assigned to</p>
+                    <select id="assignedTo" required placeholder="Select contacts to assign">
+                        <option >Select contacts to assign</option>
+                        <option value="1">Artur Marbach</option>
+                        <option value="2">David Osipov</option>
+                        <option value="3">Waldemar Neumann</option>
+                        <option value="4">Invite new contact</option>
+                    </select>
 
                 </div>
-                <p>Prio</p>
-                <div class="prio">
-                    <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
-                        <img id="redImg" src="/asseds/img/pfeil-oben-rot.png">
+
+                <div onclick="closeContainer()" class="closes">&times;</div>
+
+                <div class="rightContainer">
+                    <p class="titleInputFields">Due date</p>
+                    <div>
+                        <input id="dueDate" type="date" placeholder="dd/mm/yyyy" required>
                     </div>
-                    <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
-                        <img id="yellowImg" class="medium" src="/asseds/img/medium-gelb.png">
+
+                    <p class="titleInputFields">Prio</p>
+                    <div id="prio" class="prio">
+                        <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
+                            <img id="redImg" src="/asseds/img/pfeil-oben-rot.png">
+                        </div>
+                        <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
+                            <img id="yellowImg" class="medium" src="/asseds/img/medium-gelb.png">
+                        </div>
+                        <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
+                            <img id="greenImg" src="/asseds/img/pfeil-unten-grün.png">
+                        </div>
                     </div>
-                    <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
-                        <img id="greenImg" src="/asseds/img/pfeil-unten-grün.png">
+
+                    <p class="titleInputFields">Subtasks</p>
+                    <div class="relativeContainer">
+                        <input>
+                        <img class="subtaskIMG" src="asseds/img/Vector (1).png">
                     </div>
-                </div>
 
-                <p>Subtasks</p>
+                    <div class="subtaskContainer">
+                        <input class="checkbox" type="checkbox">
+                        <p>Subtask 1</p>
+                    </div>
 
-                <div>
-                    <input required>
-                    <img class="subtaskIMG" src="asseds/img/Vector (1).png">
-                </div>
 
-                <div class="subtaskContainer">
-                    <input class="checkbox" type="checkbox">
-                    <p>Subtask 1</p>
-                </div>
-
-                <div class="btn">
-                    <button onclick="closeContainer()" class="btnClear">Clear
-                                X
+                    <div class="btn">
+                        <button onclick="closeContainer()" class="btnClear">Clear
+                            X
                         </button>
 
-                    <button class="btnCreate"> Create Task
+                        <button onclick="createTask();closeContainer(); addTask();" class="btnCreate"> Create Task
                             <img src="asseds/img/hacken.png">
                         </button>
+                    </div>
                 </div>
-            </div>
-
             </form>
+
         </div>
     </div>
 </div>

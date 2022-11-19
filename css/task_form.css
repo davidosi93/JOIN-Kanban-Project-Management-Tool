@@ -4,6 +4,7 @@ body {
 
 .mainContent1 {
     padding-left: 70px;
+    margin-top: -20px;
 }
 
 .headline {
@@ -25,8 +26,27 @@ body {
     width: 50%;
 }
 
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 200px;
+}
+
+.containerForm {
+    display: flex;
+}
+
 .leftContainer p {
-    font-size: 20px;
+    font-size: 21px;
+    font-weight: 400px;
+}
+
+.headlineTitel {
+    font-weight: bold;
+    font-size: 61px;
+    color: #000000;
+    margin-bottom: 20px;
 }
 
 .leftContainer input {
@@ -48,6 +68,16 @@ body {
     cursor: pointer;
 }
 
+.rightContainer textarea {
+    width: 400px;
+    height: 70px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .rightContainer input {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -58,7 +88,8 @@ body {
 }
 
 .rightContainer p {
-    font-size: 20px;
+    font-size: 21px;
+    font-weight: 400px;
 }
 
 .flex p {
@@ -72,6 +103,7 @@ body {
 .prio img {
     width: 20px;
     height: 20px;
+    margin-left: 10px;
 }
 
 .prioContainer {
@@ -79,8 +111,12 @@ body {
     margin-right: 18px;
     background-color: #FFFFFF;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 21px;
     border: 1px solid #D1D1D1;
+    width: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .prioContainer img {
@@ -89,7 +125,7 @@ body {
 
 .medium {
     height: 10px !important;
-    padding-bottom: 3px;
+    padding-top: 4px;
 }
 
 .prioContainer:hover {
@@ -109,11 +145,6 @@ body {
 
 .relativeContainer {
     position: relative;
-}
-
-.rightContainer {
-    display: flex;
-    flex-direction: column;
 }
 
 .dateImg {
@@ -149,7 +180,7 @@ body {
 }
 
 .btn {
-    margin-top: 120px;
+    margin-top: 150px;
     margin-left: 100px;
 }
 
@@ -232,6 +263,7 @@ select {
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
+    font-family: none;
 }
 
 .closes:hover,
@@ -258,4 +290,9 @@ select {
 .green {
     background-color: #7AE229;
     color: white;
+}
+
+.titleInputFields {
+    margin-top: 20px;
+    margin-bottom: 5px;
 }

@@ -7,23 +7,69 @@ let green = false;
  * Create Task and put it to the JSON allTasks
  * 
  */
-function addTask() {
-    let title = document.getElementById('').value;
-    let description = document.getElementById('').value;
-    let category = document.getElementById('').value;
+function createTask() {
+    let titles = document.getElementById('title').value;
+    let descriptions = document.getElementById('description').value;
+    let categorys = document.getElementById('category').value;
+    let dueDates = document.getElementById('dueDate').value;
+    let assignedTos = document.getElementById('assignedTo').value;
+    let prios = document.getElementById('prio').value;
+    let subtasks = document.getElementById('subtask');
 
     let task = {
-        'title': title,
-        'description': description,
-        'category': category,
-        'createAt': new Date().getTime()
+        'title': titles,
+        'description': descriptions,
+        'category': categorys,
+        'dueDates': dueDates,
+        'assignedTo': assignedTos,
+        'prio': prios,
+        'subtask': subtasks,
     };
 
 
     allTasks.push(task);
 
+    titles.value = '';
+    descriptions.value = '';
+
     let allTasksAsString = JSON.stringify(allTasks);
     localStorage.setItem('allTasks', allTasksAsString);
+    console.log('Beginn', allTasks);
+
+
+}
+
+function addTask() {
+    let makeTask = document.getElementById('containerTodo');
+
+    makeTask.innerHTML = '';
+
+    for (let i = 0; i < allTasks.length; i++) {
+        const tasks = allTasks[i];
+        const title = tasks['title'];
+        const description = tasks['description'];
+        const category = tasks['category'];
+        const dueDate = tasks['dueDate'];
+        const assignedTo = tasks['assignedTo'];
+        const prio = tasks['prio'];
+        const subtask = tasks['subtask'];
+
+        tasking.innerHTML += /*html*/ `
+        <div class="containerBlock">
+            <img src="/asseds/img/Frame 113.png">
+            <p>${title['titel']}</p>
+            <p>${description}</p>
+            <div class="assignTask">
+                <div class="divAssignTask">WN</div>
+                <div class="divAssignTask">WN</div>
+                <div class="divAssignTask">WN</div>
+            </div>
+        </div>
+        `;
+
+    }
+
+
 }
 
 function closeContainer() {
