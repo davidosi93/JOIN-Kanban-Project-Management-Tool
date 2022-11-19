@@ -12,10 +12,10 @@ async function includeHTML() {
     }
 }
 
-function showContactDiv(name, email, str, i) {
+function showContactDiv(name, email, str, i, color) {
     return `<div id="contactDiv${i}" onclick="showContact(${i});"
-                class="contactDiv hover bg-white">
-                    <div class="contactLetter">
+                class="contactDiv hover">
+                    <div id="contactLetter${i}" style="background-color: ${color}" class="contactLetter">
                         ${str}
                     </div>
                 <div class="contactName">
@@ -25,10 +25,10 @@ function showContactDiv(name, email, str, i) {
             </div>`;
 }
 
-function showBigConactDiv(str, name, email, phone, i) {
+function showBigConactDiv(str, name, email, phone, i, color) {
     return `<div id="contactBox${i}" class="contactBox d-none">
                 <div class="contact">
-                    <p class="contactP">${str}</p>
+                    <p style="background-color: ${color}" class="contactP">${str}</p>
                     <div class="contactNameRight">
                         <p class="contactNameRightP">${name}</p>
                         <div class="addTaskBox">

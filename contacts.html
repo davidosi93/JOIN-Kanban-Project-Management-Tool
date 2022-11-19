@@ -44,7 +44,7 @@
                         <div class="line"></div>
                         <p>Better with a team</p>
                     </div>
-                    
+
                     <div id="bigContactSection"></div>
 
                     <div onclick="showContactBox()" class="new-contact">
@@ -83,12 +83,18 @@
                                 <div class="log-in-guest" onclick="closeContactBox()">
                                     <p>Cancel</p>
                                 </div>
-                                <div onclick="addContact(); closeContactBox();" class="log-in-btn">
+                                <div onclick="addContact(); closeContactBox(); showContactBtn();" class="log-in-btn">
                                     <p class="buttonImg">Create Contact</p>
                                 </div>
                             </div>
 
                         </div>
+                    </div>
+                </div>
+
+                <div id="contactCreated"  style="display: none;" class="conctactCreatedDiv">
+                    <div class="contactCreated">
+                        <p>Contact succesfully created</p>
                     </div>
                 </div>
             </div>

@@ -3,32 +3,16 @@ let allContacts = [];
 
 // change backgroundcolor of the clicked contact on the list
 function changeBckgrClr(i) {
-    const div = document.getElementById(`contactDiv${i}`);
-    if (div.classList.contains('bg-white') == true) {
-        changeBckgrClrBlue(i);
-    } else {
-        document.getElementById(`contactBox${i}`).classList.add('d-none');
-        document.getElementById(`contactBox${i}`).classList.remove('animation');
-        changeBckgrClrWhite(i);
+    for (let i = 0; i < allContacts.length; i++) {
+        document.getElementById(`contactDiv${i}`).classList.remove('bg-blue');
+        document.getElementById(`contactDiv${i}`).classList.add('hover');
+        document.getElementById(`contactDiv${i}`).classList.remove('clr-white');
+        document.getElementById(`contactLetter${i}`).classList.remove('border');
     }
-}
-
-
-// change the backgorund color to blue on the contact list
-function changeBckgrClrBlue(i) {
-    document.getElementById(`contactDiv${i}`).classList.remove('hover');
-    document.getElementById(`contactDiv${i}`).classList.remove('bg-white');
     document.getElementById(`contactDiv${i}`).classList.add('bg-blue');
+    document.getElementById(`contactDiv${i}`).classList.remove('hover');
     document.getElementById(`contactDiv${i}`).classList.add('clr-white');
-}
-
-
-// change the backgorund color to white on the contact list
-function changeBckgrClrWhite(i) {
-    document.getElementById(`contactDiv${i}`).classList.add('hover');
-    document.getElementById(`contactDiv${i}`).classList.add('bg-white');
-    document.getElementById(`contactDiv${i}`).classList.remove('bg-blue');
-    document.getElementById(`contactDiv${i}`).classList.remove('clr-white');
+    document.getElementById(`contactLetter${i}`).classList.add('border');
 }
 
 
@@ -38,8 +22,9 @@ function showContact(i) {
     let name = allContacts[i]['name'];
     let email = allContacts[i]['email'];
     let phone = allContacts[i]['phone'];
+    let color = allContacts[i]['color'];
     contactInfo.innerHTML = '';
-    contactInfo.innerHTML += showBigConactDiv(getFirstLetters(name), name, email, phone, i);
+    contactInfo.innerHTML += showBigConactDiv(getFirstLetters(name), name, email, phone, i, color);
     showContactAnimation(i);
     changeBckgrClr(i);
 }
@@ -73,10 +58,9 @@ function createContact() {
     for (let i = 0; i < allContacts.length; i++) {
         let name = allContacts[i]['name'];
         let email = allContacts[i]['email'];
-        contact.innerHTML += showContactDiv(name, email, getFirstLetters(name), i);
+        let color = allContacts[i]['color'];
+        contact.innerHTML += showContactDiv(name, email, getFirstLetters(name), i, color);
     }
-    let allContactsAsString = JSON.stringify(allContacts);
-    localStorage.setItem('allContacts', allContactsAsString);
 }
 
 
@@ -85,10 +69,12 @@ function addContact() {
     const name = document.getElementById('input1').value;
     const email = document.getElementById('input2').value;
     const phone = document.getElementById('input3').value;
+    const color = getRandomColor();
     let contacts = {
         'name': name,
         'email': email,
-        'phone': phone
+        'phone': phone,
+        'color': color
     };
     allContacts.push(contacts);
     createContact();
@@ -109,3 +95,21 @@ function getFirstLetters(str) {
     const firstLetters = str.split(' ').map(word => word[0]).join('');
     return firstLetters;
 }
+
+function showContactBtn() {
+    document.getElementById('contactCreated').style.display = 'block';
+    setTimeout(closeContactBtn, 800);
+}
+
+function closeContactBtn() {
+    document.getElementById('contactCreated').style.display = 'none';
+}
+
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
