@@ -12,7 +12,7 @@
 
         <div class="middleLine"></div>
         <div class="flexContainer">
-            <form class="containerForm" onsubmit="addTask(); return false;">
+            <form class="containerForm" onsubmit="onSubmit(); return false">
                 <div class="leftContainer">
 
                     <p class="titleInputFields">Title</p>
@@ -64,12 +64,12 @@
 
                     <p class="titleInputFields">Subtasks</p>
                     <div class="relativeContainer">
-                        <input>
+                        <input required>
                         <img class="subtaskIMG" src="asseds/img/Vector (1).png">
                     </div>
 
                     <div class="subtaskContainer">
-                        <input class="checkbox" type="checkbox">
+                        <input id="subtask" class="checkbox" type="checkbox">
                         <p>Subtask 1</p>
                     </div>
 
@@ -79,7 +79,7 @@
                             X
                         </button>
 
-                        <button onclick="createTask();closeContainer(); addTask();" class="btnCreate"> Create Task
+                        <button type="submit" class="btnCreate"> Create Task
                             <img src="asseds/img/hacken.png">
                         </button>
                     </div>

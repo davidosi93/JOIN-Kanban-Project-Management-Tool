@@ -44,6 +44,14 @@
                     <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
                 </div>
 
+
+                <div id="closeContainer2" class="checkTasking d-none">
+                    <div class="checkTaskSmall">
+
+                    </div>
+                    <div onclick="closeContainer1()" class="closes2">&times;</div>
+                </div>
+
                 <div class="containerTodoList">
                     <div>
                         <div class="containerTodoListTodo" id="myHeader">
@@ -51,12 +59,9 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div id="containerTodo" class="containerTodo">
-
+                        <div id="containerTodos" class="containerTodo" ondrop="moveTo('containerTodos')" ondragover="allowDrop(event)">
 
                         </div>
-
-
 
                     </div>
 
@@ -66,13 +71,7 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div class="containerTodo">
-                            <div class="containerBlock">
-                                <img src="/asseds/img/Frame 113 (1).png">
-                                <p>Call potencial clients</p>
-                                <p>Make the produkt presentation to prospective buyers</p>
-                            </div>
-
+                        <div id="containerTodos1" class="containerTodo" ondrop="moveTo('containerTodo1')" ondragover="allowDrop(event)">
 
                         </div>
 
@@ -84,12 +83,8 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div class="containerTodo">
-                            <div class="containerBlock">
-                                <img src="/asseds/img/Frame 113 (2).png">
-                                <p>Accounting invoices</p>
-                                <p>Write open incoices for customer</p>
-                            </div>
+                        <div id="containerTodos2" class="containerTodo" ondrop="moveTo('containerTodo2')" ondragover="allowDrop(event)">
+
                         </div>
 
                     </div>
@@ -100,12 +95,8 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div class="containerTodo">
-                            <div class="containerBlock">
-                                <img src="/asseds/img/Frame 113 (3).png">
-                                <p>Social media strategy</p>
-                                <p>Develop on ad campaign for brand positioning</p>
-                            </div>
+                        <div id="containerTodos3" class="containerTodo" ondrop="moveTo('containerTodo3')" ondragover="allowDrop(event)">
+
                         </div>
 
                     </div>

@@ -1,7 +1,5 @@
 async function init() {
     await includeHTML();
-
-
 }
 
 async function includeHTML() {
@@ -35,4 +33,12 @@ async function includeHTML() {
 
 function addTaskRight() {
     document.getElementById('addTaskRight').classList.remove('d-none');
+}
+
+function openCheckTask() {
+    document.getElementById('closeContainer2').classList.remove('d-none');
+}
+
+function closeContainer1() {
+    document.getElementById('closeContainer2').classList.add('d-none');
 }

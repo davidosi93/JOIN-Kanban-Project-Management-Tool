@@ -175,6 +175,7 @@ body {
     margin-bottom: 20px;
     border-radius: 30px;
     height: fit-content;
+    cursor: pointer;
 }
 
 .sticky {
@@ -214,4 +215,46 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.checkTasking {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+
+.checkTaskSmall {
+    background-color: #FFFFFF;
+    width: 623px;
+    height: 80vh;
+    border-radius: 30px;
+    margin-left: 230px;
+    margin-top: 70px;
+}
+
+.closes2 {
+    position: absolute;
+    top: 120px;
+    right: 400px;
+    color: #5f5e5e;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    font-family: none;
+}
+
+.closes2:hover,
+.closes2:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }

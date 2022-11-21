@@ -3,10 +3,9 @@ let red = false;
 let yellow = false;
 let green = false;
 
-/**
- * Create Task and put it to the JSON allTasks
- * 
- */
+let currentDraggedElement;
+
+
 function createTask() {
     let titles = document.getElementById('title').value;
     let descriptions = document.getElementById('description').value;
@@ -14,7 +13,7 @@ function createTask() {
     let dueDates = document.getElementById('dueDate').value;
     let assignedTos = document.getElementById('assignedTo').value;
     let prios = document.getElementById('prio').value;
-    let subtasks = document.getElementById('subtask');
+    let subtasks = document.getElementById('subtask').value;
 
     let task = {
         'title': titles,
@@ -24,45 +23,51 @@ function createTask() {
         'assignedTo': assignedTos,
         'prio': prios,
         'subtask': subtasks,
+        'id': new Date().getTime(),
+        'list': 'todo'
+
     };
 
-
     allTasks.push(task);
-
-    titles.value = '';
-    descriptions.value = '';
 
     let allTasksAsString = JSON.stringify(allTasks);
     localStorage.setItem('allTasks', allTasksAsString);
     console.log('Beginn', allTasks);
 
+    addTasking()
+    inputfieldValue()
 
 }
 
-function addTask() {
-    let makeTask = document.getElementById('containerTodo');
+function addTasking() {
+    let todos = allTasks.filter(t => t['list'] == 'todo');
+
+    let makeTask = document.getElementById('containerTodos');
 
     makeTask.innerHTML = '';
 
-    for (let i = 0; i < allTasks.length; i++) {
-        const tasks = allTasks[i];
-        const title = tasks['title'];
-        const description = tasks['description'];
-        const category = tasks['category'];
-        const dueDate = tasks['dueDate'];
-        const assignedTo = tasks['assignedTo'];
-        const prio = tasks['prio'];
-        const subtask = tasks['subtask'];
+    for (let i = 0; i < todos.length; i++) {
+        const element = todos[i];
 
-        tasking.innerHTML += /*html*/ `
-        <div class="containerBlock">
+        // const title = allTasks[i]['title'];
+        // const description = allTasks[i]['description'];
+        // const category = allTasks[i]['category'];
+        // const dueDate = allTasks[i]['dueDate'];
+        // const assignedTo = allTasks[i]['assignedTo'];
+        // const prio = allTasks[i]['prio'];
+        // const subtask = allTasks[i]['subtask'];
+        // const id = allTasks[i]['id'];
+
+
+        makeTask.innerHTML += /*html*/ `
+        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${id})" class="containerBlock">
             <img src="/asseds/img/Frame 113.png">
-            <p>${title['titel']}</p>
+            <p>${element['title']}</p>
             <p>${description}</p>
             <div class="assignTask">
-                <div class="divAssignTask">WN</div>
-                <div class="divAssignTask">WN</div>
-                <div class="divAssignTask">WN</div>
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div>
             </div>
         </div>
         `;
@@ -72,8 +77,39 @@ function addTask() {
 
 }
 
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(catogory) {
+    allTasks[currentDraggedElement]
+}
+
+function drag(id) {
+    currentDraggedElement = id;
+}
+
+
+function onSubmit() {
+    createTask();
+    closeContainer();
+    addTasking();
+}
+
+
+function inputfieldValue() {
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('category').value = '';
+    document.getElementById('dueDate').value = '';
+    document.getElementById('assignedTo').value = '';
+    document.getElementById('prio').value = '';
+    document.getElementById('subtask').value = '';
+}
+
 function closeContainer() {
     document.getElementById('addTaskRight').classList.add('d-none');
+
 }
 
 
@@ -107,7 +143,6 @@ function changeColorRed() {
         document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
     }
 
-
 }
 
 function changeColorYellow() {
@@ -119,21 +154,28 @@ function changeColorYellow() {
         red = false;
         yellow = false;
         green = false;
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('green').classList.remove('green');
+        document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
+
     } else {
         document.getElementById('yellow').classList.add('yellow');
         document.getElementById('yellowImg').src = '/asseds/img/medium-weiss.png';
         yellow = true;
         red = false;
         green = false;
+
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('green').classList.remove('green');
+        document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
     }
 
-
-
-    document.getElementById('red').classList.remove('red');
-    document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
-
-    document.getElementById('green').classList.remove('green');
-    document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
 }
 
 function changeColorGreen() {
@@ -144,20 +186,26 @@ function changeColorGreen() {
         red = false;
         yellow = false;
         green = false;
+
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('yellow').classList.remove('yellow');
+        document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
+
     } else {
         document.getElementById('green').classList.add('green');
         document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-weiss.png';
         green = true;
         red = false;
         yellow = false;
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('yellow').classList.remove('yellow');
+        document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
     }
-
-
-    document.getElementById('red').classList.remove('red');
-    document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
-
-    document.getElementById('yellow').classList.remove('yellow');
-    document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
-
 
 }
