@@ -30,40 +30,50 @@ function createTask() {
 
     allTasks.push(task);
 
+
     let allTasksAsString = JSON.stringify(allTasks);
     localStorage.setItem('allTasks', allTasksAsString);
     console.log('Beginn', allTasks);
 
     addTasking()
+
     inputfieldValue()
 
 }
 
 function addTasking() {
     let todos = allTasks.filter(t => t['list'] == 'todo');
+    let progresses = allTasks.filter(t => t['list'] == 'progress');
+    let feedbacks = allTasks.filter(t => t['list'] == 'feedback');
+    let dones = allTasks.filter(t => t['list'] == 'done');
 
-    let makeTask = document.getElementById('containerTodos');
+    let containerTodo = document.getElementById('containerTodo');
+    let containerProgress = document.getElementById('containerProgress');
+    let containerFeedback = document.getElementById('containerFeedback');
+    let containerDone = document.getElementById('containerDone');
 
-    makeTask.innerHTML = '';
+    containerTodo.innerHTML = '';
+    containerProgress.innerHTML = '';
+    containerFeedback.innerHTML = '';
+    containerDone.innerHTML = '';
+
 
     for (let i = 0; i < todos.length; i++) {
-        const element = todos[i];
-
-        // const title = allTasks[i]['title'];
-        // const description = allTasks[i]['description'];
-        // const category = allTasks[i]['category'];
-        // const dueDate = allTasks[i]['dueDate'];
-        // const assignedTo = allTasks[i]['assignedTo'];
-        // const prio = allTasks[i]['prio'];
-        // const subtask = allTasks[i]['subtask'];
-        // const id = allTasks[i]['id'];
+        const title = todos[i];
+        const description = todos[i];
+        const category = todos[i];
+        const dueDate = todos[i];
+        const assignedTo = todos[i];
+        const prio = todos[i];
+        const subtask = todos[i];
+        const id = todos[i];
 
 
-        makeTask.innerHTML += /*html*/ `
+        containerTodo.innerHTML += /*html*/ `
         <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${id})" class="containerBlock">
             <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${description}</p>
+            <p>${title['title']}</p>
+            <p>${description['description']}</p>
             <div class="assignTask">
                 <div class="divAssignTask"></div>
                 <div class="divAssignTask"></div>
@@ -75,14 +85,95 @@ function addTasking() {
     }
 
 
+
+    for (let i = 0; i < progresses.length; i++) {
+        const title = progresses[i];
+        const description = progresses[i];
+        const category = progresses[i];
+        const dueDate = progresses[i];
+        const assignedTo = progresses[i];
+        const prio = progresses[i];
+        const subtask = progresses[i];
+        const id = progresses[i];
+
+        containerProgress.innerHTML += /*html*/ `
+        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${id})" class="containerBlock">
+            <!-- <img src="/asseds/img/Frame 113.png">
+            <p>${title['title']}</p>
+            <p>${description['description']}</p>
+            <div class="assignTask">
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div>
+            </div> -->
+        </div>
+        `;
+
+    }
+
+    for (let i = 0; i < feedbacks.length; i++) {
+        const title = feedbacks[i];
+        const description = feedbacks[i];
+        const category = feedbacks[i];
+        const dueDate = feedbacks[i];
+        const assignedTo = feedbacks[i];
+        const prio = feedbacks[i];
+        const subtask = feedbacks[i];
+        const id = feedbacks[i];
+
+        containerFeedback.innerHTML += /*html*/ `
+        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${id})" class="containerBlock">
+            <!-- <img src="/asseds/img/Frame 113.png">
+            <p>${title['title']}</p>
+            <p>${description['description']}</p>
+            <div class="assignTask">
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div>
+            </div> -->
+        </div>
+        `;
+
+    }
+
+
+
+    for (let i = 0; i < dones.length; i++) {
+        const title = dones[i];
+        const description = dones[i];
+        const category = dones[i];
+        const dueDate = dones[i];
+        const assignedTo = dones[i];
+        const prio = dones[i];
+        const subtask = dones[i];
+        const id = dones[i];
+
+        containerDone.innerHTML += /*html*/ `
+        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${id})" class="containerBlock">
+            <!-- <img src="/asseds/img/Frame 113.png">
+            <p>${title['title']}</p>
+            <p>${description['description']}</p>
+            <div class="assignTask">
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div>
+                <div class="divAssignTask"></div> -->
+            </div>
+        </div>
+        `;
+
+    }
+
+
+
 }
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drop(catogory) {
-    allTasks[currentDraggedElement]
+function drop(category) {
+    allTasks[currentDraggedElement]['list'] = category;
+    addTasking()
 }
 
 function drag(id) {
@@ -90,10 +181,11 @@ function drag(id) {
 }
 
 
-function onSubmit() {
+function onSubmit(event) {
+    event.preventDefault();
     createTask();
     closeContainer();
-    addTasking();
+
 }
 
 
