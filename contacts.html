@@ -27,17 +27,14 @@
                 </div>
             </div>
             <div class="mainContent">
-                <div class="contactListBckgr">
-                    <div class="contactList">
-                        <div class="letter">
-                            <p>A</p>
-                            <div class="letterUnderline"></div>
-                        </div>
 
+                <div class="contactList">
+                    <div id="contactHeaderLetter">
+                        <div id="contactHeader"></div>
                         <div id="contactList"></div>
-
                     </div>
                 </div>
+
                 <div class="rightSection">
                     <div class="showContactHeader">
                         <h1 class="showContactHeaderH1">Contacts</h1>
@@ -83,7 +80,7 @@
                                 <div class="log-in-guest" onclick="closeContactBox()">
                                     <p>Cancel</p>
                                 </div>
-                                <div onclick="addContact(); closeContactBox(); showContactBtn();" class="log-in-btn">
+                                <div onclick="addContact(); closeContactBox(); showContactBtn(); createBigSection();" class="log-in-btn">
                                     <p class="buttonImg">Create Contact</p>
                                 </div>
                             </div>
@@ -92,7 +89,7 @@
                     </div>
                 </div>
 
-                <div id="contactCreated"  style="display: none;" class="conctactCreatedDiv">
+                <div id="contactCreated" style="display: none;" class="conctactCreatedDiv">
                     <div class="contactCreated">
                         <p>Contact succesfully created</p>
                     </div>

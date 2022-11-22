@@ -12,6 +12,8 @@ async function includeHTML() {
     }
 }
 
+
+// Templates contact.js von David
 function showContactDiv(name, email, str, i, color) {
     return `<div id="contactDiv${i}" onclick="showContact(${i});"
                 class="contactDiv hover">
@@ -56,5 +58,12 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                         <p class="phoneNumber">${phone}</p>
                     </div>
                 </div>
+            </div>`;
+}
+
+function contactLetterHeadline(firstChar){
+    return `<div class="letter">
+                <p>${firstChar}</p>
+                <div class="letterUnderline"></div>
             </div>`;
 }
