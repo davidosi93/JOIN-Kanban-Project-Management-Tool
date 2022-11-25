@@ -167,16 +167,17 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drop(categorys) {
-    let droppedTask = allTasks.filter(x => x.id == currentDraggedElement)
-    droppedTask[0]['list'] = categorys;
-    addTasking();
-}
-
 // function drop(categorys) {
-//     allTasks[currentDraggedElement]['list'] = categorys;
+//     let droppedTask = allTasks.filter(x => x.id == currentDraggedElement)
+//     droppedTask[0]['list'] = categorys;
 //     addTasking();
 // }
+
+function drop(categorys) {
+    let task = allTasks.filter(t => t.id == currentDraggedElement);
+    allTasks[currentDraggedElement]['list'] = categorys;
+    addTasking();
+}
 
 function drag(id) {
     currentDraggedElement = id;
