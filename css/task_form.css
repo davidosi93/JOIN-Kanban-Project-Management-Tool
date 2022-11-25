@@ -295,4 +295,96 @@ select {
 .titleInputFields {
     margin-top: 20px;
     margin-bottom: 5px;
+    font-size: 21px;
+}
+
+
+/** Area for Category **/
+
+.categoryDiv {
+    width: 400px;
+    height: 7px;
+    border-radius: 10px;
+    padding: 18px 21px;
+    border: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.categoryMedia {
+    display: flex;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+
+.selectTaskCategory {
+    font-size: 21px;
+    margin: 0px;
+}
+
+.bg-orange {
+    background-color: #FF3D00 !important;
+    color: white !important;
+}
+
+.bg-yellow {
+    background-color: #FFA800 !important;
+    color: white !important;
+}
+
+.bg-green {
+    background-color: #7AE229 !important;
+    color: white !important;
+}
+
+.bg-pink {
+    background-color: #FC71FF;
+}
+
+.bg-turquoise {
+    background-color: #1FD7C1;
+}
+
+.bg-blue {
+    background-color: #0038FF;
+}
+
+.bg-violet {
+    background-color: #AE9EE5;
+}
+
+.categoryMediaDivSmoll {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.categoryMediaDivSmoll:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.taskCategory {
+    font-size: 21px;
+    margin: 10px 21px;
+}
+
+.categoryList {
+    padding-left: 12px;
+    margin-top: 0px;
+    border: 1px solid lightgray;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.borderButton {
+    border-bottom: none;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }

@@ -22,13 +22,36 @@
                     <textarea id="description" required placeholder="Enter a Description"></textarea>
 
                     <p class="titleInputFields">Category</p>
-                    <select id="category" required placeholder="Select task category">
+                    <div id="borderButton" class="categoryDiv" onclick="openCategory()">
+                        <p class="selectTaskCategory">Select Task Category</p>
+                        <img src="/asseds/img/Vector 2.png">
+                    </div>
+
+                    <ul id="categoryList" class="categoryList d-none">
+                        <div class="categoryMediaDivSmoll">
+                            <li class="taskCategory">New Category</li>
+                        </div>
+
+                        <div class="categoryMediaDivSmoll">
+                            <li class="taskCategory">Media</li>
+                            <div class="categoryMedia bg-yellow"></div>
+                        </div>
+
+                        <div class="categoryMediaDivSmoll">
+                            <li class="taskCategory">Sales</li>
+                            <div class="categoryMedia bg-pink"></div>
+                        </div>
+
+
+                    </ul>
+                    <!-- <select id="category" required placeholder="Select task category">
                         <option >Select Task Category</option>
                         <option value="1">Sales</option>
                         <option value="2">Backoffice</option>
                         <option value="3">Media</option>
                         <option value="4">Marketing</option>
-                    </select>
+                   
+                    </select> -->
 
                     <p class="titleInputFields">Assigned to</p>
                     <select id="assignedTo" required placeholder="Select contacts to assign">

@@ -1,173 +1,7 @@
-let allTasks = [];
 let red = false;
 let yellow = false;
 let green = false;
 
-let currentDraggedElement;
-
-
-function createTask() {
-    let titles = document.getElementById('title').value;
-    let descriptions = document.getElementById('description').value;
-    let categorys = document.getElementById('category').value;
-    let dueDates = document.getElementById('dueDate').value;
-    let assignedTos = document.getElementById('assignedTo').value;
-    let prios = document.getElementById('prio').value;
-    let subtasks = document.getElementById('subtask').value;
-
-    let task = {
-        'title': titles,
-        'description': descriptions,
-        'category': categorys,
-        'dueDates': dueDates,
-        'assignedTo': assignedTos,
-        'prio': prios,
-        'subtask': subtasks,
-        'id': new Date().getTime(),
-        'list': 'todo'
-
-    };
-
-    allTasks.push(task);
-
-
-    let allTasksAsString = JSON.stringify(allTasks);
-    localStorage.setItem('allTasks', allTasksAsString);
-    console.log('Beginn', allTasks);
-
-    addTasking()
-    inputfieldValue()
-}
-
-function addTasking() {
-    let todos = allTasks.filter(t => t['list'] == 'todo');
-    let progresses = allTasks.filter(t => t['list'] == 'progress');
-    let feedbacks = allTasks.filter(t => t['list'] == 'feedback');
-    let dones = allTasks.filter(t => t['list'] == 'done');
-
-    let containerTodo = document.getElementById('containerTodos');
-    let containerProgress = document.getElementById('containerProgresses');
-    let containerFeedback = document.getElementById('containerFeedbacks');
-    let containerDone = document.getElementById('containerDones');
-
-    containerTodo.innerHTML = '';
-    containerProgress.innerHTML = '';
-    containerFeedback.innerHTML = '';
-    containerDone.innerHTML = '';
-
-
-    for (let i = 0; i < todos.length; i++) {
-        const element = todos[i];
-
-        containerTodo.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
-            <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-            </div>
-        </div>
-        `;
-
-    }
-
-    for (let i = 0; i < progresses.length; i++) {
-        const element = progresses[i];
-
-        containerProgress.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-        <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
-            <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-            </div>
-        </div>
-        `;
-
-    }
-
-    for (let i = 0; i < feedbacks.length; i++) {
-        const element = feedbacks[i];
-
-
-        containerFeedback.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
-            <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-            </div>
-        </div>
-        `;
-
-    }
-
-    for (let i = 0; i < dones.length; i++) {
-        const element = dones[i];
-
-        containerDone.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
-            <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-            </div>
-        </div>
-        `;
-
-    }
-
-
-
-}
-
-// function generateTodoHTML(element) {
-//     return
-// }
-
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drop(categorys) {
-    allTasks[currentDraggedElement]['list'] = categorys;
-    addTasking();
-}
-
-function drag(id) {
-    currentDraggedElement = id;
-}
-
-
-function onSubmit(event) {
-    event.preventDefault();
-    createTask();
-    closeContainer();
-
-}
-
-
-function inputfieldValue() {
-    document.getElementById('title').value = '';
-    document.getElementById('description').value = '';
-    document.getElementById('category').value = '';
-    document.getElementById('dueDate').value = '';
-    document.getElementById('assignedTo').value = '';
-    document.getElementById('prio').value = '';
-    document.getElementById('subtask').value = '';
-}
 
 function closeContainer() {
     document.getElementById('addTaskRight').classList.add('d-none');
@@ -270,4 +104,17 @@ function changeColorGreen() {
         document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
     }
 
+}
+
+/** Area for Category */
+
+function openCategory() {
+    let category = document.getElementById('categoryList');
+    if (category.classList.contains('d-none')) {
+        category.classList.remove('d-none');
+        document.getElementById('borderButton').classList.add('borderButton');
+    } else {
+        category.classList.add('d-none');
+        document.getElementById('borderButton').classList.remove('borderButton');
+    }
 }
