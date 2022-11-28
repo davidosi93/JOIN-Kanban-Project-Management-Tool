@@ -57,10 +57,19 @@ body {
     padding: 0px;
     box-shadow: 4px 0px 6px rgb(0 0 0 / 8%);
     width: 453px;
-    height: 645px;
+    height: 88vh;
     left: 48px;
     top: 2px;
     background: #FFFFFF;
+    overflow: scroll;
+}
+
+.contactList::-webkit-scrollbar {
+    width: 10px;
+}
+
+.contactList::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
 }
 
 .letter {
@@ -72,7 +81,6 @@ body {
 .letter p {
     font-weight: 400;
     font-size: 21px;
-    color: #000000;
     padding-left: 20px;
 }
 
@@ -137,8 +145,8 @@ body {
 
 .email {
     margin: 0;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 16px !important;
+    font-weight: 400 !important;
     color: #007CEE;
 }
 

@@ -2,6 +2,8 @@ let allContacts = [];
 let letters = [];
 
 
+
+
 // display the box to create a new contact
 function showContactBox() {
     document.getElementById('newContactBoxBckgr').style.display = 'block';
@@ -23,9 +25,16 @@ function addContact() {
         'color': color
     };
     allContacts.push(contacts);
+    let firstLetter = name.charAt(0);
+    if (!letters.includes(firstLetter)) {
+        letters.push(firstLetter);
+        letters.sort();
+    }
     sortNames();
-    createContact();
+    renderLetters();
     emptyInputFields();
+    closeContactBox();
+    showContactBtn();
 }
 
 
@@ -38,38 +47,33 @@ function sortNames() {
     });
 }
 
-function createBigSection() {
-    let content = document.getElementById('contactHeaderLetter');
-    content.innerHTML += createContact();
+
+function createBigSection(name, email, color, firstLetter, i) {
+    let contact = document.getElementById(`contactLetter-${firstLetter}`);
+    if (!firstLetter || firstLetter == firstLetter) {
+        contact.innerHTML += showContactDiv(name, email, getFirstLetters(name), color, i);
+    }
 }
 
-
 // Create contact from the inputFields and show at the contactlist
-function createContact(filter) {
-    let contact = document.getElementById('contactList');
-    contact.innerHTML = '';
+function createContact() {
     for (let i = 0; i < allContacts.length; i++) {
         let name = allContacts[i]['name'];
         let email = allContacts[i]['email'];
         let color = allContacts[i]['color'];
         let firstLetter = name.charAt(0);
-        if (!filter || filter == firstLetter) {
-            contact.innerHTML += showContactDiv(name, email, getFirstLetters(name), i, color);
-        } if (!letters.includes(firstLetter)) {
-            letters.push(firstLetter);
-            letters.sort();
-        }
+        createBigSection(name, email, color, firstLetter, i);
     }
-    renderLetters();
 }
 
 function renderLetters() {
-    let content = document.getElementById('contactHeader');
-    content.innerHTML = '';
+    let contact = document.getElementById('contactList');
+    contact.innerHTML = '';
     for (let i = 0; i < letters.length; i++) {
-        const firstChar = letters[i];
-        content.innerHTML += contactLetterHeadline(firstChar);
+        const firstLetter = letters[i];
+        contact.innerHTML += contactLetterHeadline(firstLetter);
     }
+    createContact();
 }
 
 

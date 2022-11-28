@@ -28,12 +28,7 @@
             </div>
             <div class="mainContent">
 
-                <div class="contactList">
-                    <div id="contactHeaderLetter">
-                        <div id="contactHeader"></div>
-                        <div id="contactList"></div>
-                    </div>
-                </div>
+                <div id="contactList" class="contactList"></div>
 
                 <div class="rightSection">
                     <div class="showContactHeader">
@@ -64,7 +59,7 @@
                             <div class="contactRightContentImg">
                                 <img src="asseds/img/personLogo.png">
                             </div>
-                            <div class="inputFieldSection">
+                            <form class="inputFieldSection">
                                 <div class="inputField">
                                     <input id="input1" type="name" required placeholder="Name">
                                 </div>
@@ -74,13 +69,13 @@
                                 <div class="inputField">
                                     <input id="input3" type="phone" required placeholder="Phone">
                                 </div>
-                            </div>
+                            </form>
 
                             <div class="buttons">
                                 <div class="log-in-guest" onclick="closeContactBox()">
                                     <p>Cancel</p>
                                 </div>
-                                <div onclick="addContact(); closeContactBox(); showContactBtn(); createBigSection();" class="log-in-btn">
+                                <div onclick="addContact()" class="log-in-btn">
                                     <p class="buttonImg">Create Contact</p>
                                 </div>
                             </div>
