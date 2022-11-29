@@ -1,9 +1,11 @@
 let allContacts = [];
+let selectedContact;
 
 
 // change backgroundcolor of the clicked contact on the list
 function changeBckgrClr(i) {
     const div = document.getElementById(`contactDiv${i}`);
+    selectedContact = `contactDiv${i}`;
     if (div.classList.contains('bg-white') == true) {
         changeBckgrClrBlue(i);
     } else {
@@ -16,6 +18,7 @@ function changeBckgrClr(i) {
 
 // change the backgorund color to blue on the contact list
 function changeBckgrClrBlue(i) {
+    
     document.getElementById(`contactDiv${i}`).classList.remove('hover');
     document.getElementById(`contactDiv${i}`).classList.remove('bg-white');
     document.getElementById(`contactDiv${i}`).classList.add('bg-blue');
@@ -34,6 +37,7 @@ function changeBckgrClrWhite(i) {
 
 // show the whole information of a contact
 function showContact(i) {
+    document.getElementById(`contactDiv0`).classList.contains('bg-white');
     let contactInfo = document.getElementById('bigContactSection');
     let name = allContacts[i]['name'];
     let email = allContacts[i]['email'];

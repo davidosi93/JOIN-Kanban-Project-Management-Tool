@@ -221,12 +221,17 @@ function dropDownAssign() {
 function renderCategory(){
     let content = document.getElementById('category');
     
+    content.innerHTML ='';
+    content.innerHTML =`
+    <a onclick="newCategory()">New category</a>
+    `;
+
     for (let i = 0; i < categoriesName.length; i++) {
         const category = categoriesName[i];
         const img = categoriesImg[i];
         content.innerHTML += `
         
-        <a onclick="myCategory(${i})">${category} <img src="${img}"</a>
+        <a class="categoryContainer" onclick="myCategory(${i})"><p>${category}</p> <img src="${img}"</a>
         `;
         
     }
@@ -251,9 +256,9 @@ function newCategory(){
     content.innerHTML = '';
     content.innerHTML +=`
     
-    <input class="newCategoryText" placeholder="New category Name...">
+    <input id="pushNewCategory" class="newCategoryText" placeholder="New category Name...">
     <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
-    <img class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
+    <img onclick="pushCategoryToArray()" class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
     `;
 
     let contentImg = document.getElementById('category');
@@ -271,14 +276,12 @@ function newCategory(){
 function newCategoryImages(i){
     let content = document.getElementById('selectCategory');
     
-    content.innerHTML = '';
+    // content.innerHTML = '';
     content.innerHTML +=`
-    <img src="${newCategoryImg[i]}">
-    <input "required"  class="newCategoryText"  placeholder="New category Name...">
-    
-    <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
-    <img class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
+    <img class="updateImg" src="${newCategoryImg[i]}">
     `;
+
+    document.getElementById('category').style.display="none";
 }
 
 
@@ -290,4 +293,13 @@ function goToSelectCategory(){
     `;
     renderCategory();
    
+}
+
+function pushCategoryToArray(){
+    let newCategory = document.getElementById('pushNewCategory').value;
+    categoriesName.push(newCategory);
+    categoriesImg.push('Hallo');
+
+
+    
 }
