@@ -105,16 +105,3 @@ function changeColorGreen() {
     }
 
 }
-
-/** Area for Category */
-
-function openCategory() {
-    let category = document.getElementById('categoryList');
-    if (category.classList.contains('d-none')) {
-        category.classList.remove('d-none');
-        document.getElementById('borderButton').classList.add('borderButton');
-    } else {
-        category.classList.add('d-none');
-        document.getElementById('borderButton').classList.remove('borderButton');
-    }
-}

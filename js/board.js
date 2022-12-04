@@ -32,6 +32,14 @@ function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
 }
 
+function onSubmit(event) {
+    event.preventDefault();
+    createTask();
+    closeContainer()
+}
+
+/** Area for Drag and Drop */
+
 function createTask() {
     let titles = document.getElementById('title').value;
     let descriptions = document.getElementById('description').value;
@@ -159,36 +167,21 @@ function addTasking() {
 
 }
 
-// function generateTodoHTML(element) {
-//     return
-// }
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-// function drop(categorys) {
-//     let droppedTask = allTasks.filter(x => x.id == currentDraggedElement)
-//     droppedTask[0]['list'] = categorys;
-//     addTasking();
-// }
-
 function drop(categorys) {
-    let task = allTasks.filter(t => t.id == currentDraggedElement);
-    allTasks[currentDraggedElement]['list'] = categorys;
+    let droppedTask = allTasks.filter(x => x.id == currentDraggedElement)
+    droppedTask[0]['list'] = categorys;
     addTasking();
 }
 
+
+
 function drag(id) {
     currentDraggedElement = id;
-}
-
-
-function onSubmit(event) {
-    event.preventDefault();
-    createTask();
-    closeContainer();
-
 }
 
 
@@ -200,4 +193,32 @@ function inputfieldValue() {
     document.getElementById('assignedTo').value = '';
     document.getElementById('prio').value = '';
     document.getElementById('subtask').value = '';
+}
+
+/** Area for Category */
+
+function openCategory() {
+    let category = document.getElementById('categoryList');
+    if (category.classList.contains('d-none')) {
+        category.classList.remove('d-none');
+        document.getElementById('borderButton').classList.add('borderButton');
+    } else {
+        category.classList.add('d-none');
+        document.getElementById('borderButton').classList.remove('borderButton');
+    }
+}
+
+function selectCategory(id) {
+    liCategory = id.replace('div-', '');
+    let ulCategory = document.getElementById("ul-category");
+    let category = document.getElementById(id).innerHTML;
+
+    document.getElementById('selected-category').style = 'display: flex; align-items: center; list-style-type: none;';
+    document.getElementById("selected-category").innerHTML = category;
+    document.getElementById("hidden-category-input").value = '.';
+    document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
+
+    ulCategory.classList.add('d-none');
+    document.getElementById("select-div-category").classList.remove('no-border-bottom');
+
 }

@@ -27,21 +27,20 @@ function selectCategory(id) {
     liCategory = id.replace('div-', '');
     let ulCategory = document.getElementById("ul-category");
     let category = document.getElementById(id).innerHTML;
-    showSelectedCategory(category, liCategory);
-    hideSelectionCategories(ulCategory);
-}
 
-function showSelectedCategory(category, liCategory) {
     document.getElementById('selected-category').style = 'display: flex; align-items: center; list-style-type: none;';
     document.getElementById("selected-category").innerHTML = category;
     document.getElementById("hidden-category-input").value = '.';
     document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
+
+    ulCategory.classList.add('d-none');
+    document.getElementById("select-div-category").classList.remove('no-border-bottom');
+
 }
 
-function hideSelectionContacts(ulContact) {
-    ulContact.classList.add('d-none');
-    document.getElementById("select-div-contact").classList.remove('no-border-bottom');
-}
+// function showSelectedCategory(category, liCategory) {
+
+// }
 
 
 /**------------Contacts */
