@@ -31,7 +31,7 @@ function showContactDiv(name, email, str, color, i) {
                     <p class="name">${name}</p>
                     <p class="email">${email}</p>
                 </div>
-            </div>`;       
+            </div>`;
 }
 
 
@@ -42,7 +42,7 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                     <div class="contactNameRight">
                         <p class="contactNameRightP">${name}</p>
                         <div class="addTaskBox">
-                            <img src="asseds/img/plus.png">
+                            <img src="asseds/img/blueplus.png">
                             <p class="addTask">Add Task</p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ function showBigConactDiv(str, name, email, phone, i, color) {
 
                 <div class="contactInfo">
                     <p class="contactInfoP">Contact Information</p>
-                    <div class="contactInfoEdit">
+                    <div onclick="showEditContactBox(${i})" class="contactInfoEdit">
                         <img src="asseds/img/pencil.png">
                         <p class="contactInfoEditP">Edit Contact</p>
                     </div>
@@ -67,4 +67,41 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                     </div>
                 </div>
             </div>`;
+}
+
+
+function editContactBox(i, color, str) {
+    return `    <div id="editContactBox${i}" class="newContactBox">
+                    <img onclick="closeEditBox()" class="closeImg" src="asseds/img/cross.png">
+                    <div class="leftContent">
+                            <img src="asseds/img/littleLogo.png">
+                            <h1>Edit Contact</h1>
+                        <div class="newContactBoxLine"></div>
+                    </div>
+
+                    <div class="contactRightContent">
+                        <div class="contactRightContentImg">
+                            <p style="background-color: ${color}" class="contactP">${str}</p>
+                        </div>
+                        <form class="inputFieldSection">
+                            <div class="inputField">
+                                <input id="input1Filled" type="name" required placeholder="Name">
+                            </div>
+                            <div class="inputField">
+                                <input id="input2Filled" type="email" required placeholder="Email">
+                            </div>
+                            <div class="inputField">
+                                <input id="input3Filled" type="phone" required placeholder="Phone">
+                            </div>
+                        </form>
+
+                        <div class="SaveButtonDiv">
+                            <div onclick="saveContactChanges(${i})" class="saveButton">
+                                <p>Save</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+
 }

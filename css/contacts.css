@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .rightContent {
@@ -56,12 +58,13 @@ body {
     align-items: center;
     padding: 0px;
     box-shadow: 4px 0px 6px rgb(0 0 0 / 8%);
-    width: 453px;
-    height: 88vh;
+    width: 35%;
+    height: 89.6vh;
     left: 48px;
     top: 2px;
     background: #FFFFFF;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .contactList::-webkit-scrollbar {
@@ -70,6 +73,29 @@ body {
 
 .contactList::-webkit-scrollbar-thumb {
     background-color: darkgrey;
+    border-radius: 10px;
+}
+
+.contactList::-webkit-scrollbar-button:single-button {
+    border-style: solid;
+    height: 13px;
+    width: 16px;
+}
+
+.contactList::-webkit-scrollbar-button:single-button:vertical:decrement {
+    border-color: transparent transparent darkgrey transparent;
+}
+
+.contactList::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+    border-color: transparent transparent darkgrey transparent;
+}
+
+.contactList::-webkit-scrollbar-button:single-button:vertical:increment {
+    border-color: darkgrey transparent transparent transparent;
+}
+
+.contactList::-webkit-scrollbar-button:vertical:single-button:increment:hover {
+    border-color: darkgrey transparent transparent transparent;
 }
 
 .letter {
@@ -85,7 +111,7 @@ body {
 }
 
 .letterUnderline {
-    width: 323px;
+    width: 100%;
     height: 0px;
     border: 1px solid #D1D1D1;
     border-radius: 3px;
@@ -255,6 +281,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .addTask {
@@ -276,6 +303,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .contactInfoEdit img {
@@ -507,6 +535,20 @@ body {
     text-decoration: none;
 }
 
+.SaveButtonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    gap: 35px;
+    width: 422px;
+    height: 51px;
+    margin-top: 7%;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
 .log-in-btn {
     display: flex;
     align-items: center;
@@ -520,6 +562,28 @@ body {
     cursor: pointer;
     font-weight: 700;
     font-size: 21px;
+}
+
+.saveButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 143px;
+    height: 61px;
+    background: #2A3647;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.saveButton:hover {
+    background-color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
 }
 
 .buttonImg {
