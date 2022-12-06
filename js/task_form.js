@@ -3,10 +3,7 @@ let yellow = false;
 let green = false;
 
 
-function closeContainer() {
-    document.getElementById('addTaskRight').classList.add('d-none');
 
-}
 
 
 function changeColorRed() {

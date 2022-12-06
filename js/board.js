@@ -1,5 +1,12 @@
 let allTasks = [];
 let currentDraggedElement;
+let liCategory;
+let gbPink = false;
+let gbOrange = false;
+let gbGreen = false;
+let gbTurquoise = false;
+let gbYellow = false;
+let gbBlue = false;
 
 async function init() {
     await includeHTML();
@@ -30,6 +37,11 @@ function openCheckTask() {
 
 function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
+}
+
+function closeContainer() {
+    document.getElementById('addTaskRight').classList.add('d-none');
+
 }
 
 function onSubmit(event) {
@@ -209,16 +221,189 @@ function openCategory() {
 }
 
 function selectCategory(id) {
-    liCategory = id.replace('div-', '');
-    let ulCategory = document.getElementById("ul-category");
+    liCategory = id;
+    let ulCategory = document.getElementById("categoryList");
     let category = document.getElementById(id).innerHTML;
 
-    document.getElementById('selected-category').style = 'display: flex; align-items: center; list-style-type: none;';
-    document.getElementById("selected-category").innerHTML = category;
-    document.getElementById("hidden-category-input").value = '.';
-    document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
+    document.getElementById('selectTaskCategory').style = 'display: flex; align-items: center; list-style-type: none; margin-left: -18px;';
+    document.getElementById("selectTaskCategory").innerHTML = category;
+
 
     ulCategory.classList.add('d-none');
-    document.getElementById("select-div-category").classList.remove('no-border-bottom');
+    document.getElementById('borderButton').classList.remove('borderButton');
 
+}
+
+function selectNewCategory() {
+    let selectNewCategory = document.getElementById('selectNewCategory');
+    if (selectNewCategory.classList.contains('d-none')) {
+        selectNewCategory.classList.remove('d-none');
+        document.getElementById('selectTaskCategory').classList.add('d-none');
+        document.getElementById('categoryList').classList.add('d-none');
+        document.getElementById('borderButton').classList.remove('borderButton');
+        document.getElementById('containerColorPicker').classList.remove('d-none');
+        document.getElementById('selectNewCategoryImg').classList.remove('d-none');
+        document.getElementById('selectTaskCategoryImg').classList.add('d-none');
+
+    } else {
+        selectNewCategory.classList.add('d-none');
+        document.getElementById('selectTaskCategory').classList.remove('d-none');
+        document.getElementById('categoryList').classList.remove('d-none');
+        document.getElementById('borderButton').classList.add('borderButton');
+        document.getElementById('containerColorPicker').classList.add('d-none');
+        document.getElementById('selectNewCategoryImg').classList.add('d-none');
+        document.getElementById('selectTaskCategoryImg').classList.remove('d-none');
+    }
+
+}
+
+function newCategorySelectColorPink(id) {
+    if (gbPink) {
+        document.getElementById('bg-pink').style = 'box-shadow:  none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    } else {
+        document.getElementById('bg-pink').style = 'box-shadow: 0px 10px 12px -6px #000000;';
+        document.getElementById('bg-orange').style = 'box-shadow: none';
+        document.getElementById('bg-green').style = 'box-shadow:  none';
+        document.getElementById('bg-turquoise').style = 'box-shadow:  none';
+        document.getElementById('bg-yellow').style = 'box-shadow:  none';
+        document.getElementById('bg-blue').style = 'box-shadow:  none';
+        gbPink = true;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+
+    }
+}
+
+function newCategorySelectColorOrange(id) {
+    if (gbOrange) {
+        document.getElementById('bg-orange').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    } else {
+        document.getElementById('bg-orange').style = 'box-shadow: 0px 10px 12px -6px #000000;';
+        document.getElementById('bg-pink').style = 'box-shadow: none';
+        document.getElementById('bg-green').style = 'box-shadow:  none';
+        document.getElementById('bg-turquoise').style = 'box-shadow: none';
+        document.getElementById('bg-yellow').style = 'box-shadow: none';
+        document.getElementById('bg-blue').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = true;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    }
+}
+
+function newCategorySelectColorGreen(id) {
+    if (gbGreen) {
+        document.getElementById('bg-green').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    } else {
+        document.getElementById('bg-green').style = 'box-shadow: 0px 10px 12px -6px #000000;';
+        document.getElementById('bg-orange').style = 'box-shadow: none';
+        document.getElementById('bg-pink').style = 'box-shadow: none';
+        document.getElementById('bg-turquoise').style = 'box-shadow: none';
+        document.getElementById('bg-yellow').style = 'box-shadow: none';
+        document.getElementById('bg-blue').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = true;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    }
+}
+
+function newCategorySelectColorTurquoise(id) {
+    if (gbTurquoise) {
+        document.getElementById('bg-turquoise').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    } else {
+        document.getElementById('bg-turquoise').style = 'box-shadow: 0px 10px 12px -6px #000000;';
+        document.getElementById('bg-green').style = 'box-shadow: none';
+        document.getElementById('bg-orange').style = 'box-shadow: none';
+        document.getElementById('bg-pink').style = 'box-shadow: none';
+        document.getElementById('bg-yellow').style = 'box-shadow: none';
+        document.getElementById('bg-blue').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = true;
+        gbYellow = false;
+        gbBlue = false;
+    }
+}
+
+function newCategorySelectColorYellow(id) {
+    if (gbYellow) {
+        document.getElementById('bg-yellow').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    } else {
+        document.getElementById('bg-yellow').style = 'box-shadow: 0px 10px 12px -6px #000000;';
+        document.getElementById('bg-turquoise').style = 'box-shadow: none';
+        document.getElementById('bg-green').style = 'box-shadow: none';
+        document.getElementById('bg-orange').style = 'box-shadow: none';
+        document.getElementById('bg-pink').style = 'box-shadow: none';
+        document.getElementById('bg-blue').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = true;
+        gbBlue = false;
+    }
+}
+
+function newCategorySelectColorBlue(id) {
+    if (gbBlue) {
+        document.getElementById('bg-blue').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = false;
+    } else {
+        document.getElementById('bg-blue').style = 'box-shadow: 0px 10px 12px -6px #000000;';
+        document.getElementById('bg-yellow').style = 'box-shadow: none';
+        document.getElementById('bg-turquoise').style = 'box-shadow: none';
+        document.getElementById('bg-green').style = 'box-shadow: none';
+        document.getElementById('bg-orange').style = 'box-shadow: none';
+        document.getElementById('bg-pink').style = 'box-shadow: none';
+        gbPink = false;
+        gbOrange = false;
+        gbGreen = false;
+        gbTurquoise = false;
+        gbYellow = false;
+        gbBlue = true;
+    }
 }

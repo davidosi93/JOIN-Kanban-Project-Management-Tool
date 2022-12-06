@@ -274,7 +274,7 @@ select {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .red {
@@ -305,7 +305,7 @@ select {
     width: 400px;
     height: 7px;
     border-radius: 10px;
-    padding: 18px 21px;
+    padding: 18px;
     border: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
@@ -352,10 +352,6 @@ select {
     background-color: #0038FF;
 }
 
-.bg-violet {
-    background-color: #AE9EE5;
-}
-
 .categoryMediaDivSmoll {
     display: flex;
     align-items: center;
@@ -387,4 +383,45 @@ select {
     border-bottom: none;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+}
+
+.containerColorPicker {
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.colorPicker {
+    border-radius: 100%;
+    height: 17px;
+    width: 17px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.inputfieldNewCategory {
+    outline: none !important;
+    border: none !important;
+}
+
+.selectNewCategory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -5px;
+}
+
+.subLine {
+    width: 0px;
+    height: 30px;
+    border: 1px solid lightgray;
+}
+
+.selectNewCategoryCancel {
+    padding-right: 5px;
+}
+
+.selectNewCategoryCheckmark {
+    padding-left: 12px;
 }

@@ -23,27 +23,43 @@
 
                     <p class="titleInputFields">Category</p>
                     <div id="borderButton" class="categoryDiv" onclick="openCategory()">
-                        <p class="selectTaskCategory">Select Task Category</p>
-                        <img src="/asseds/img/Vector 2.png">
+                        <p id="selectTaskCategory" class="selectTaskCategory">Select Task Category</p>
+                        <img id="selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
+                        <input onclick="newCategory()" id="selectNewCategory" class="inputfieldNewCategory d-none" placeholder="New Catetogory Name">
+                        <div id="selectNewCategoryImg" class="selectNewCategory d-none">
+                            <img class="selectNewCategoryCancel" src="/asseds/img/cancel.png">
+                            <div class="subLine"></div>
+                            <img class="selectNewCategoryCheckmark" src="/asseds/img/hacken-schwarz.png">
+                        </div>
                     </div>
 
-                    <ul id="categoryList" class="categoryList d-none">
-                        <div onclick="selectCategory(id)" class="categoryMediaDivSmoll">
+
+
+                    <ul id="categoryList" class="categoryList scroll d-none">
+                        <div onclick="selectNewCategory(id)" id="newCategory" class="categoryMediaDivSmoll">
                             <li class="taskCategory">New Category</li>
+
                         </div>
 
-                        <div onclick="selectCategory(id)" class="categoryMediaDivSmoll">
+                        <div onclick="selectCategory(id)" id="media" class="categoryMediaDivSmoll">
                             <li class="taskCategory">Media</li>
                             <div class="categoryMedia bg-yellow"></div>
                         </div>
 
-                        <div onclick="selectCategory(id)" class="categoryMediaDivSmoll">
+                        <div onclick="selectCategory(id)" id="sales" class="categoryMediaDivSmoll">
                             <li class="taskCategory">Sales</li>
                             <div class="categoryMedia bg-pink"></div>
                         </div>
-
-
                     </ul>
+
+                    <div id="containerColorPicker" class="containerColorPicker d-none">
+                        <div id="bg-pink" onclick="newCategorySelectColorPink(id)" class="colorPicker bg-pink"></div>
+                        <div id="bg-orange" onclick="newCategorySelectColorOrange(id)" class="colorPicker bg-orange"></div>
+                        <div id="bg-green" onclick="newCategorySelectColorGreen(id)" class="colorPicker bg-green"></div>
+                        <div id="bg-turquoise" onclick="newCategorySelectColorTurquoise(id)" class="colorPicker bg-turquoise"></div>
+                        <div id="bg-yellow" onclick="newCategorySelectColorYellow(id)" class="colorPicker bg-yellow"></div>
+                        <div id="bg-blue" onclick="newCategorySelectColorBlue(id)" class="colorPicker bg-blue"></div>
+                    </div>
 
 
                     <p class="titleInputFields">Assigned to</p>
