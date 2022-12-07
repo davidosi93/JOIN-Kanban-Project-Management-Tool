@@ -22,33 +22,33 @@
                     <textarea id="description" required placeholder="Enter a Description"></textarea>
 
                     <p class="titleInputFields">Category</p>
-                    <div id="borderButton" class="categoryDiv" onclick="openCategory()">
+                    <div id="borderButton" class="categoryDiv" onclick="openCategory(), event.stopPropagation()">
                         <p id="selectTaskCategory" class="selectTaskCategory">Select Task Category</p>
                         <img id="selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
                         <input onclick="newCategory()" id="selectNewCategory" class="inputfieldNewCategory d-none" placeholder="New Catetogory Name">
                         <div id="selectNewCategoryImg" class="selectNewCategory d-none">
-                            <img class="selectNewCategoryCancel" src="/asseds/img/cancel.png">
+                            <img onclick="selectNewCatagoryCancel()" class="selectNewCategoryCancel" src="/asseds/img/cancel.png">
                             <div class="subLine"></div>
-                            <img class="selectNewCategoryCheckmark" src="/asseds/img/hacken-schwarz.png">
+                            <img onclick="createNewCategory()" class="selectNewCategoryCheckmark" src="/asseds/img/hacken-schwarz.png">
                         </div>
                     </div>
 
-
-
                     <ul id="categoryList" class="categoryList scroll d-none">
-                        <div onclick="selectNewCategory(id)" id="newCategory" class="categoryMediaDivSmoll">
+                        <div onclick="selectNewCategory(id), event.stopPropagation()" id="newCategory" class="categoryMediaDivSmoll">
                             <li class="taskCategory">New Category</li>
 
                         </div>
 
-                        <div onclick="selectCategory(id)" id="media" class="categoryMediaDivSmoll">
-                            <li class="taskCategory">Media</li>
-                            <div class="categoryMedia bg-yellow"></div>
-                        </div>
+                        <div id="createNewTategory">
+                            <div onclick="selectCategory(id)" id="media" class="categoryMediaDivSmoll">
+                                <li class="taskCategory">Media</li>
+                                <div class="categoryMedia bg-yellow"></div>
+                            </div>
 
-                        <div onclick="selectCategory(id)" id="sales" class="categoryMediaDivSmoll">
-                            <li class="taskCategory">Sales</li>
-                            <div class="categoryMedia bg-pink"></div>
+                            <div onclick="selectCategory(id)" id="sales" class="categoryMediaDivSmoll">
+                                <li class="taskCategory">Sales</li>
+                                <div class="categoryMedia bg-pink"></div>
+                            </div>
                         </div>
                     </ul>
 

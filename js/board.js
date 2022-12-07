@@ -1,4 +1,5 @@
 let allTasks = [];
+let allCategorys = [];
 let currentDraggedElement;
 let liCategory;
 let gbPink = false;
@@ -236,6 +237,7 @@ function selectCategory(id) {
 
 function selectNewCategory() {
     let selectNewCategory = document.getElementById('selectNewCategory');
+    selectNewCategory.value = ``;
     if (selectNewCategory.classList.contains('d-none')) {
         selectNewCategory.classList.remove('d-none');
         document.getElementById('selectTaskCategory').classList.add('d-none');
@@ -255,9 +257,43 @@ function selectNewCategory() {
         document.getElementById('selectTaskCategoryImg').classList.remove('d-none');
     }
 
+
+}
+
+function selectNewCatagoryCancel() {
+    document.getElementById('selectNewCategoryImg').classList.add('d-none');
+    document.getElementById('containerColorPicker').classList.add('d-none');
+    document.getElementById('selectNewCategory').classList.add('d-none');
+    document.getElementById('selectTaskCategory').classList.remove('d-none');
+    document.getElementById('selectTaskCategoryImg').classList.remove('d-none');
+}
+
+function createNewCategory() {
+    newCategory = document.getElementById('selectNewCategory').value;
+    allCategorys.push(newCategory);
+    selectNewCatagoryCancel();
+    createnewCategoryAll();
+}
+
+function createnewCategoryAll() {
+    newCategorys = document.getElementById('createNewTategory');
+    newCategorys.includeHTML = '';
+
+    for (let i = 0; i < allCategorys.length; i++) {
+        const element = allCategorys[i];
+
+        newCategorys.innerHTML += /*html*/ `
+        <div onclick="selectCategory(id)" id="${element}" class="categoryMediaDivSmoll">
+            <li class="taskCategory">${element}</li>
+            <div class="categoryMedia bg-yellow"></div>
+        </div>
+        `;
+    }
+
 }
 
 function newCategorySelectColorPink(id) {
+    color = document.getElementById('bg-pink');
     if (gbPink) {
         document.getElementById('bg-pink').style = 'box-shadow:  none';
         gbPink = false;

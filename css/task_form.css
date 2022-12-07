@@ -327,17 +327,14 @@ select {
 
 .bg-orange {
     background-color: #FF3D00 !important;
-    color: white !important;
 }
 
 .bg-yellow {
     background-color: #FFA800 !important;
-    color: white !important;
 }
 
 .bg-green {
     background-color: #7AE229 !important;
-    color: white !important;
 }
 
 .bg-pink {
@@ -365,7 +362,7 @@ select {
 
 .taskCategory {
     font-size: 21px;
-    margin: 10px 21px;
+    margin: 10px 19px;
 }
 
 .categoryList {
@@ -403,6 +400,7 @@ select {
 .inputfieldNewCategory {
     outline: none !important;
     border: none !important;
+    z-index: 999 !important;
 }
 
 .selectNewCategory {
