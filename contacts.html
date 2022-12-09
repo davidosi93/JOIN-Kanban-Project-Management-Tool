@@ -30,14 +30,18 @@
 
                 <div id="contactList" class="contactList"></div>
 
+
                 <div class="rightSection">
-                    <div class="showContactHeader">
-                        <h1 class="showContactHeaderH1">Contacts</h1>
-                        <div class="line"></div>
-                        <p>Better with a team</p>
+                    <div class="rightArea">
+                        <div class="showContactHeader">
+                            <h1 class="showContactHeaderH1">Contacts</h1>
+                            <div class="line"></div>
+                            <p>Better with a team</p>
+                        </div>
+
+                        <div id="bigContactSection"></div>
                     </div>
 
-                    <div id="bigContactSection"></div>
 
                     <div onclick="showContactBox()" class="new-contact">
                         <p class="new-contact-btn">New Contact</p>
@@ -61,26 +65,27 @@
                             <div class="contactRightContentImg">
                                 <img src="asseds/img/personLogo.png">
                             </div>
-                            <form class="inputFieldSection">
+                            <form onsubmit="addContact(); return false;" class="inputFieldSection">
                                 <div class="inputField">
-                                    <input id="input1" type="name" required placeholder="Name">
+                                    <input required id="input1" type="name" placeholder="Name">
                                 </div>
                                 <div class="inputField">
-                                    <input id="input2" type="email" required placeholder="Email">
+                                    <input required id="input2" type="email" placeholder="Email">
                                 </div>
                                 <div class="inputField">
-                                    <input id="input3" type="phone" required placeholder="Phone">
+                                    <input required id="input3" type="phone" placeholder="Phone">
+                                </div>
+
+
+                                <div class="buttons">
+                                    <div class="log-in-guest" onclick="closeContactBox()">
+                                        <p>Cancel</p>
+                                    </div>
+                                    <button class="log-in-btn">
+                                        <p class="buttonImg">Create Contact</p>
+                                    </button>
                                 </div>
                             </form>
-
-                            <div class="buttons">
-                                <div class="log-in-guest" onclick="closeContactBox()">
-                                    <p>Cancel</p>
-                                </div>
-                                <div onclick="addContact()" class="log-in-btn">
-                                    <p class="buttonImg">Create Contact</p>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
