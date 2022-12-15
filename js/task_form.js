@@ -7,7 +7,7 @@ let green = false;
 
 
 function changeColorRed() {
-    console.log('red', red)
+
     if (red) {
         document.getElementById('red').classList.remove('red');
         document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
@@ -39,7 +39,7 @@ function changeColorRed() {
 }
 
 function changeColorYellow() {
-    console.log('yellow', yellow)
+
 
     if (yellow) {
         document.getElementById('yellow').classList.remove('yellow');
@@ -72,7 +72,7 @@ function changeColorYellow() {
 }
 
 function changeColorGreen() {
-    console.log('green', green)
+
     if (green) {
         document.getElementById('green').classList.remove('green');
         document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';

@@ -1,7 +1,12 @@
 let allTasks = [];
 let allCategorys = [];
+let allSubtasks = [];
+let allContacts = [];
+let assignedChackedBox = [];
 let currentDraggedElement;
+let currentCategoryColor;
 let liCategory;
+let newCategorySelected = false;
 let gbPink = false;
 let gbOrange = false;
 let gbGreen = false;
@@ -56,18 +61,17 @@ function onSubmit(event) {
 function createTask() {
     let titles = document.getElementById('title').value;
     let descriptions = document.getElementById('description').value;
-    let categorys = document.getElementById('categoryList').value;
     let dueDates = document.getElementById('dueDate').value;
-    let assignedTos = document.getElementById('assignedTo').value;
+    // let assignedTos = document.getElementById('assignedTo').value;
     let prios = document.getElementById('prio').value;
     let subtasks = document.getElementById('subtask').value;
 
     let task = {
         'title': titles,
         'description': descriptions,
-        'category': categorys,
+        'category': liCategory,
         'dueDates': dueDates,
-        'assignedTo': assignedTos,
+        'assignedTo': assignedChackedBox,
         'prio': prios,
         'subtask': subtasks,
         'id': new Date().getTime(),
@@ -108,13 +112,17 @@ function addTasking() {
 
         containerTodo.innerHTML += /*html*/ `
         <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
+            <div class="addCategoryInTask ${element['category']}">
+                <p>${element['category']}</p>
+            </div>
+            <div>
+                <p>${element['title']}</p>
+            </div>
+            <div>
+                <p>${element['description']}</p>
+            </div>
             <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
+                <div class="divAssignTask">${element['assignedTo']}</div>
             </div>
         </div>
         `;
@@ -126,13 +134,17 @@ function addTasking() {
 
         containerProgress.innerHTML += /*html*/ `
         <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-        <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
+            <div class="addCategoryInTask ${element['category']}">
+                <p>${element['category']}</p>
+            </div>
+            <div>
+                <p>${element['title']}</p>
+            </div>
+            <div>
+                <p>${element['description']}</p>
+            </div>
             <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
+                <div class="divAssignTask">${element['assignedTo']}</div>
             </div>
         </div>
         `;
@@ -145,13 +157,18 @@ function addTasking() {
 
         containerFeedback.innerHTML += /*html*/ `
         <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
+            <div class="addCategoryInTask ${element['category']}">
+                <p>${element['category']}</p>
+            </div>
+            <div>
+                <p>${element['title']}</p>
+            </div>
+            <div>
+                <p>${element['description']}</p>
+            </div>
             <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
+                <div class="divAssignTask">${element['assignedTo']}</div>
+                <div></div>
             </div>
         </div>
         `;
@@ -163,20 +180,23 @@ function addTasking() {
 
         containerDone.innerHTML += /*html*/ `
         <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <img src="/asseds/img/Frame 113.png">
-            <p>${element['title']}</p>
-            <p>${element['description']}</p>
+            
+        <div class="addCategoryInTask ${element['category']}">
+                <p>${element['category']}</p>
+            </div>
+            <div>
+                <p>${element['title']}</p>
+            </div>
+            <div>
+                <p>${element['description']}</p>
+            </div>
             <div class="assignTask">
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
-                <div class="divAssignTask"></div>
+                <div class="divAssignTask">${element['assignedTo']}</div>
             </div>
         </div>
         `;
 
     }
-
-
 
 }
 
@@ -203,7 +223,7 @@ function inputfieldValue() {
     document.getElementById('description').value = '';
     document.getElementById('categoryList').value = '';
     document.getElementById('dueDate').value = '';
-    document.getElementById('assignedTo').value = '';
+    // document.getElementById('assignedTo').value = '';
     document.getElementById('prio').value = '';
     document.getElementById('subtask').value = '';
 }
@@ -211,6 +231,12 @@ function inputfieldValue() {
 /** Area for Category */
 
 function openCategory() {
+
+    if (newCategorySelected) {
+        return; // Funktion abbrechen
+    }
+
+    // Öffnen - Wird nicht ausgeführt nach einem return
     let category = document.getElementById('categoryList');
     if (category.classList.contains('d-none')) {
         category.classList.remove('d-none');
@@ -219,10 +245,13 @@ function openCategory() {
         category.classList.add('d-none');
         document.getElementById('borderButton').classList.remove('borderButton');
     }
+
 }
 
 function selectCategory(id) {
+
     liCategory = id;
+
     let ulCategory = document.getElementById("categoryList");
     let category = document.getElementById(id).innerHTML;
 
@@ -233,9 +262,11 @@ function selectCategory(id) {
     ulCategory.classList.add('d-none');
     document.getElementById('borderButton').classList.remove('borderButton');
 
+
 }
 
 function selectNewCategory() {
+
     let selectNewCategory = document.getElementById('selectNewCategory');
     selectNewCategory.value = ``;
     if (selectNewCategory.classList.contains('d-none')) {
@@ -257,7 +288,7 @@ function selectNewCategory() {
         document.getElementById('selectTaskCategoryImg').classList.remove('d-none');
     }
 
-
+    newCategorySelected = true;
 }
 
 function selectNewCatagoryCancel() {
@@ -266,180 +297,164 @@ function selectNewCatagoryCancel() {
     document.getElementById('selectNewCategory').classList.add('d-none');
     document.getElementById('selectTaskCategory').classList.remove('d-none');
     document.getElementById('selectTaskCategoryImg').classList.remove('d-none');
+    document.getElementById('categoryList').classList.remove('d-none');
+    newCategorySelected = false;
+
 }
 
 function createNewCategory() {
     newCategory = document.getElementById('selectNewCategory').value;
-    allCategorys.push(newCategory);
-    selectNewCatagoryCancel();
-    createnewCategoryAll();
+
+    let jsonColor = {
+        'name': newCategory,
+        'color': currentCategoryColor,
+    }
+
+    if (newCategory.length > 0 && currentCategoryColor.length > 0) {
+        allCategorys.push(jsonColor);
+        selectNewCatagoryCancel();
+        createnewCategoryAll();
+        newCategorySelected = false;
+    }
+
+    document.getElementById('bg-pink').style = 'box-shadow: none;';
+    document.getElementById('bg-orange').style = 'box-shadow: none;';
+    document.getElementById('bg-green').style = 'box-shadow: none;';
+    document.getElementById('bg-turquoise').style = 'box-shadow: none;';
+    document.getElementById('bg-yellow').style = 'box-shadow: none;';
+    document.getElementById('bg-blue').style = 'box-shadow: none;';
 }
 
 function createnewCategoryAll() {
     newCategorys = document.getElementById('createNewTategory');
-    newCategorys.includeHTML = '';
+    newCategorys.innerHTML = '';
 
     for (let i = 0; i < allCategorys.length; i++) {
         const element = allCategorys[i];
 
         newCategorys.innerHTML += /*html*/ `
-        <div onclick="selectCategory(id)" id="${element}" class="categoryMediaDivSmoll">
-            <li class="taskCategory">${element}</li>
-            <div class="categoryMedia bg-yellow"></div>
-        </div>
+            <div onclick="selectCategory(id)" id="${element['name']}, ${element['color']}" class="categoryMediaDivSmoll">
+                <li class="taskCategory">${element['name']}</li>
+                <div class="categoryMedia ${element['color']}"></div>
+            </div>
         `;
     }
 
 }
 
-function newCategorySelectColorPink(id) {
-    color = document.getElementById('bg-pink');
-    if (gbPink) {
-        document.getElementById('bg-pink').style = 'box-shadow:  none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
+function newCategorySelectColor(id) {
+    currentCategoryColor = id;
+    let colorPickers = document.getElementsByClassName('colorPicker')
+
+    for (let item of colorPickers) {
+        item.style = '';
+    }
+
+    document.getElementById(id).style = 'box-shadow: 0px 10px 12px -6px #000000;';
+
+}
+
+
+/** Area for Assigned To */
+
+function openContacts() {
+    let allContacts = document.getElementById('assignedToList');
+
+    if (allContacts.classList.contains('d-none')) {
+        allContacts.classList.remove('d-none');
+        document.getElementById('openContact').classList.add('assignedDivBorder');
     } else {
-        document.getElementById('bg-pink').style = 'box-shadow: 0px 10px 12px -6px #000000;';
-        document.getElementById('bg-orange').style = 'box-shadow: none';
-        document.getElementById('bg-green').style = 'box-shadow:  none';
-        document.getElementById('bg-turquoise').style = 'box-shadow:  none';
-        document.getElementById('bg-yellow').style = 'box-shadow:  none';
-        document.getElementById('bg-blue').style = 'box-shadow:  none';
-        gbPink = true;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
+        allContacts.classList.add('d-none');
+        document.getElementById('openContact').classList.remove('assignedDivBorder');
 
     }
 }
 
-function newCategorySelectColorOrange(id) {
-    if (gbOrange) {
-        document.getElementById('bg-orange').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
+function selectContacted(id) {
+
+    let chackedBox = document.getElementById(id);
+
+    if (chackedBox.checked) {
+        assignedChackedBox.push(chackedBox.value);
     } else {
-        document.getElementById('bg-orange').style = 'box-shadow: 0px 10px 12px -6px #000000;';
-        document.getElementById('bg-pink').style = 'box-shadow: none';
-        document.getElementById('bg-green').style = 'box-shadow:  none';
-        document.getElementById('bg-turquoise').style = 'box-shadow: none';
-        document.getElementById('bg-yellow').style = 'box-shadow: none';
-        document.getElementById('bg-blue').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = true;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
+        //remove value from array when it is unchecked
+        assignedChackedBox = assignedChackedBox.filter(e => e !== chackedBox.value);
     }
+
+    addContact()
+
 }
 
-function newCategorySelectColorGreen(id) {
-    if (gbGreen) {
-        document.getElementById('bg-green').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
-    } else {
-        document.getElementById('bg-green').style = 'box-shadow: 0px 10px 12px -6px #000000;';
-        document.getElementById('bg-orange').style = 'box-shadow: none';
-        document.getElementById('bg-pink').style = 'box-shadow: none';
-        document.getElementById('bg-turquoise').style = 'box-shadow: none';
-        document.getElementById('bg-yellow').style = 'box-shadow: none';
-        document.getElementById('bg-blue').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = true;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
+function addContact() {
+    let assignedAddContact = document.getElementById('assignedAddContact');
+
+    assignedAddContact.innerHTML = '';
+
+    for (let i = 0; i < assignedChackedBox.length; i++) {
+        const element = assignedChackedBox[i];
+        const firstLetters = getFirstLetters(element);
+
+        assignedAddContact.innerHTML += /*html*/ `
+        <div class="assignedAddContactDivs">
+        <p class="assignedAddContactLetters">${firstLetters}</p>          
+        </div>
+        `;
+
     }
+
 }
 
-function newCategorySelectColorTurquoise(id) {
-    if (gbTurquoise) {
-        document.getElementById('bg-turquoise').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
-    } else {
-        document.getElementById('bg-turquoise').style = 'box-shadow: 0px 10px 12px -6px #000000;';
-        document.getElementById('bg-green').style = 'box-shadow: none';
-        document.getElementById('bg-orange').style = 'box-shadow: none';
-        document.getElementById('bg-pink').style = 'box-shadow: none';
-        document.getElementById('bg-yellow').style = 'box-shadow: none';
-        document.getElementById('bg-blue').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = true;
-        gbYellow = false;
-        gbBlue = false;
-    }
+function getFirstLetters(str) {
+    // Split the string into an array of words
+    const words = str.split(' ');
+
+    // Map the array of words to an array of the first letters of each word
+    const firstLetters = words.map(word => word[0]);
+
+    // Join the array of first letters into a single string and return it
+    return firstLetters.join('');
 }
 
-function newCategorySelectColorYellow(id) {
-    if (gbYellow) {
-        document.getElementById('bg-yellow').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
-    } else {
-        document.getElementById('bg-yellow').style = 'box-shadow: 0px 10px 12px -6px #000000;';
-        document.getElementById('bg-turquoise').style = 'box-shadow: none';
-        document.getElementById('bg-green').style = 'box-shadow: none';
-        document.getElementById('bg-orange').style = 'box-shadow: none';
-        document.getElementById('bg-pink').style = 'box-shadow: none';
-        document.getElementById('bg-blue').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = true;
-        gbBlue = false;
-    }
+/** Area for Subtask */
+
+function openSubtask() {
+    document.getElementById('subtasksAddImg').classList.add('d-none');
+    document.getElementById('subtsasksCancelImg').classList.remove('d-none');
+    document.getElementById('subtasksSubLine').classList.remove('d-none');
+    document.getElementById('subtasksChackImg').classList.remove('d-none');
+
 }
 
-function newCategorySelectColorBlue(id) {
-    if (gbBlue) {
-        document.getElementById('bg-blue').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = false;
-    } else {
-        document.getElementById('bg-blue').style = 'box-shadow: 0px 10px 12px -6px #000000;';
-        document.getElementById('bg-yellow').style = 'box-shadow: none';
-        document.getElementById('bg-turquoise').style = 'box-shadow: none';
-        document.getElementById('bg-green').style = 'box-shadow: none';
-        document.getElementById('bg-orange').style = 'box-shadow: none';
-        document.getElementById('bg-pink').style = 'box-shadow: none';
-        gbPink = false;
-        gbOrange = false;
-        gbGreen = false;
-        gbTurquoise = false;
-        gbYellow = false;
-        gbBlue = true;
+function subtasksCancel() {
+    document.getElementById('subtasksAddImg').classList.remove('d-none');
+    document.getElementById('subtsasksCancelImg').classList.add('d-none');
+    document.getElementById('subtasksSubLine').classList.add('d-none');
+    document.getElementById('subtasksChackImg').classList.add('d-none');
+}
+
+function addSubtasks() {
+    let openSubtasks = document.getElementById('openSubtasks').value;
+
+    if (openSubtasks.length > 0) {
+        allSubtasks.push(openSubtasks);
+        addAllSubtasks()
     }
+
+    openSubtasks.value = '';
+}
+
+function addAllSubtasks() {
+    let allAddSubtasks = document.getElementById('allAddSubtask');
+
+
+    for (let i = 0; i < allSubtasks.length; i++) {
+        const element = allSubtasks[i];
+
+        allAddSubtasks.innerHTML += /*html*/ `
+        <input id="subtask" class="checkboxSubtasks" type="checkbox">
+        <p class="subtasksComent">${element}</p>
+        `;
+    }
+
+    subtasksCancel();
 }
