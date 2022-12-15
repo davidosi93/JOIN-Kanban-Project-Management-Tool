@@ -8,12 +8,14 @@
     <title>Join</title>
     <link rel="stylesheet" href="css/logIn.css">
     <script src="js/logIn.js"></script>
+    <script src="./mini_backend.js"></script>
+    <script src="js/sign_up.js"></script>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
 </head>
 
-<body>
+<body onload="init()">
     <div class="container">
         <img class="big-Logo" src="asseds/img/biglogo.png">
         <div id="myElem">
@@ -21,7 +23,7 @@
                 <p>Not a Join User?</p>
                 <a href="sign_up.html"><button>Sign Up</button></a>
             </div>
-            <div class="log-In-area">
+            <form onsubmit="login(); return false" class="log-In-area">
                 <div class="header">
                     <h1>Log In</h1>
                 </div>
@@ -35,6 +37,10 @@
                         <img class="inputFieldIMG" src="asseds/img/password.png">
                     </div>
                 </div>
+                <div id="wrongInput" class="d-none">
+                    <p>Sorry, it looks like your login information was incorrect. Please check your email and
+                        password and try again.</p>
+                </div>
                 <div class="remem-me">
                     <div class="remember">
                         <input class="checkbox" type="checkbox">
@@ -46,9 +52,11 @@
                 </div>
                 <div class="buttons">
                     <button class="log-in-btn">Log in</button>
-                    <a href="summary.html"><button class="log-in-guest">Guest Log in</button></a>
+                    <a href="summary.html">
+                        <div class="log-in-guest">Guest Log in</div>
+                    </a>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

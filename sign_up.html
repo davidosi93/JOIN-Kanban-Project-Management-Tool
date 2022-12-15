@@ -7,16 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="css/sign_up.css">
-    <script src="logIn.js"></script>
+    <script src="./js/sign_up.js"></script>
+    <script src="./mini_backend.js"></script>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
 </head>
 
-<body>
+<body onload="init()">
     <div class="container">
         <img class="big-Logo" src="asseds/img/biglogo.png">
-        <div class="log-In-area">
+        <form onsubmit="addUser(); return false;" class="log-In-area">
             <div class="left-arrow">
                 <a href="index.html"><img src="asseds/img/arrow-left-line.png"></a>
             </div>
@@ -25,22 +26,22 @@
             </div>
             <div class="log-In-input">
                 <div class="inputField">
-                    <input id="input3" type="name" required placeholder="Name">
+                    <input id="input3name" type="name" required placeholder="Name">
                     <img class="inputFieldIMG" src="asseds/img/person.png">
                 </div>
                 <div class="inputField">
-                    <input id="input1" type="email" required placeholder="Email">
+                    <input id="input1email" type="email" required placeholder="Email">
                     <img class="inputFieldIMG" src="asseds/img/email.png">
                 </div>
                 <div class="inputField">
-                    <input id="input2" type="password" required placeholder="Password">
+                    <input id="input2password" type="password" required placeholder="Password">
                     <img class="inputFieldIMG" src="asseds/img/password.png">
                 </div>
             </div>
             <div class="buttons">
-                <a href="index.html"><button class="log-in-btn">Sign up</button></a>
+                <button class="log-in-btn">Sign up</button>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 

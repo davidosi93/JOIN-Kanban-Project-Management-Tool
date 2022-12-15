@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+.d-none {
+    display: none;
+}
+
 :root {
     font-family: 'Inter', sans-serif;
 }
@@ -153,6 +157,16 @@ body {
 
 #input1 {
     margin-bottom: 12%;
+}
+
+#wrongInput {
+    color: red;
+}
+
+#wrongInput p {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 11px;
 }
 
 .remem-me {
