@@ -27,7 +27,7 @@ function showEditContactBox(i) {
 
 
 // Add names, emailAdress, phoneNumber into InputFields and create JSON
-function addContact() {
+async function addContact() {
     const name = document.getElementById('input1').value;
     const email = document.getElementById('input2').value;
     const phone = document.getElementById('input3').value;
@@ -49,6 +49,13 @@ function addContact() {
     emptyInputFields();
     closeContactBox();
     showContactBtn();
+    await backend.setItem('allContacts', JSON.stringify(allContacts));
+}
+
+
+async function init() {
+    await downloadFromServer();
+    allContacts = JSON.parse(backend.getItem('allContacts')) || [];
 }
 
 

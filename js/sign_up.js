@@ -12,8 +12,14 @@ async function addUser() {
     };
     users.push(user);
     await backend.setItem('users', JSON.stringify(users));
-    console.log(users);
+    emptyInputFields()
     window.location.href = 'index.html';
+}
+
+function emptyInputFields() {
+    document.getElementById('input3name').value = '';
+    document.getElementById('input1email').value = '';
+    document.getElementById('input2password').value = '';
 }
 
 
