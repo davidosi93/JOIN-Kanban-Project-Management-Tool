@@ -10,3 +10,32 @@ function login() {
         document.getElementById('wrongInput').classList.remove('d-none');
     }
 }
+
+function changeImg() {
+    let input = document.getElementById('input2');
+    if (input.value.length > 0) {
+        document.getElementById('password').classList.add('d-none');
+        document.getElementById('password-nonvisible').classList.remove('d-none');
+    } else {
+        document.getElementById('password').classList.remove('d-none');
+        document.getElementById('password-nonvisible').classList.add('d-none');
+    }
+}
+
+
+function setInputToText() {
+    let passwordField = document.getElementById('input2');
+    let showPassword = document.getElementById('password-nonvisible');
+    let hidePassword = document.getElementById('password-visible');
+    showPassword.addEventListener('click', () => {
+        passwordField.type = 'text';
+        showPassword.style.display = 'none';
+        hidePassword.style.display = 'inline';
+    });
+    hidePassword.addEventListener('click', () => {
+        passwordField.type = 'password';
+        showPassword.style.display = 'inline';
+        hidePassword.style.display = 'none';
+    });
+}
+

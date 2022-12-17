@@ -169,6 +169,14 @@ body {
     font-size: 11px;
 }
 
+#password-nonvisible {
+    cursor: pointer;
+}
+
+#password-visible {
+    cursor: pointer;
+}
+
 .remem-me {
     display: flex;
     justify-content: space-between;

@@ -33,8 +33,10 @@
                         <img class="inputFieldIMG" src="asseds/img/email.png">
                     </div>
                     <div class="inputField">
-                        <input id="input2" type="password" required placeholder="Password">
-                        <img class="inputFieldIMG" src="asseds/img/password.png">
+                        <input id="input2" onkeyup="changeImg()" type="password" required placeholder="Password">
+                        <img id="password" class="inputFieldIMG" src="asseds/img/password.png">
+                        <img id="password-nonvisible" onclick="setInputToText()" class="inputFieldIMG d-none" src="asseds/img/password_nonvisible.png">
+                        <img id="password-visible" class="inputFieldIMG d-none" src="asseds/img/password_visible.png">
                     </div>
                 </div>
                 <div id="wrongInput" class="d-none">
