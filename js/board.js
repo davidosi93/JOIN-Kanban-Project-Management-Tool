@@ -3,16 +3,12 @@ let allCategorys = [];
 let allSubtasks = [];
 let allContacts = [];
 let assignedChackedBox = [];
+let allLiCategory;
+let currentSelectedCategory;
 let currentDraggedElement;
 let currentCategoryColor;
-let liCategory;
 let newCategorySelected = false;
-let gbPink = false;
-let gbOrange = false;
-let gbGreen = false;
-let gbTurquoise = false;
-let gbYellow = false;
-let gbBlue = false;
+
 
 async function init() {
     await includeHTML();
@@ -37,8 +33,14 @@ function addTaskRight() {
     document.getElementById('addTaskRight').classList.remove('d-none');
 }
 
-function openCheckTask() {
+function openCheckTask(i) {
     document.getElementById('closeContainer2').classList.remove('d-none');
+    let checkTaskSmall = document.getElementById('checkTaskSmall');
+
+    checkTaskSmall.innerHTML = `
+    
+    
+    `;
 }
 
 function closeContainer1() {
@@ -69,7 +71,7 @@ function createTask() {
     let task = {
         'title': titles,
         'description': descriptions,
-        'category': liCategory,
+        'category': allLiCategory,
         'dueDates': dueDates,
         'assignedTo': assignedChackedBox,
         'prio': prios,
@@ -111,9 +113,9 @@ function addTasking() {
         const element = todos[i];
 
         containerTodo.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <div class="addCategoryInTask ${element['category']}">
-                <p>${element['category']}</p>
+        <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div class="addCategoryInTask ${element['category']['color']}">
+                <p>${element['category']['name']}</p>
             </div>
             <div>
                 <p>${element['title']}</p>
@@ -122,7 +124,8 @@ function addTasking() {
                 <p>${element['description']}</p>
             </div>
             <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']}</div>
+                <div class="divAssignTask">${element['assignedTo']['0']}</div>
+                <div class="divAssignTask">${element['assignedTo']['1']}</div>
             </div>
         </div>
         `;
@@ -133,9 +136,9 @@ function addTasking() {
         const element = progresses[i];
 
         containerProgress.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <div class="addCategoryInTask ${element['category']}">
-                <p>${element['category']}</p>
+        <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div class="addCategoryInTask ${element['category']['color']}">
+                <p>${element['category']['name']}</p>
             </div>
             <div>
                 <p>${element['title']}</p>
@@ -144,7 +147,8 @@ function addTasking() {
                 <p>${element['description']}</p>
             </div>
             <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']}</div>
+                <div class="divAssignTask">${element['assignedTo']['0']}</div>
+                <div class="divAssignTask">${element['assignedTo']['1']}</div>
             </div>
         </div>
         `;
@@ -156,9 +160,9 @@ function addTasking() {
 
 
         containerFeedback.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            <div class="addCategoryInTask ${element['category']}">
-                <p>${element['category']}</p>
+        <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div class="addCategoryInTask ${element['category']['color']}">
+                <p>${element['category']['name']}</p>
             </div>
             <div>
                 <p>${element['title']}</p>
@@ -167,8 +171,8 @@ function addTasking() {
                 <p>${element['description']}</p>
             </div>
             <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']}</div>
-                <div></div>
+                <div class="divAssignTask">${element['assignedTo']['0']}</div>
+                <div class="divAssignTask">${element['assignedTo']['1']}</div>
             </div>
         </div>
         `;
@@ -179,10 +183,9 @@ function addTasking() {
         const element = dones[i];
 
         containerDone.innerHTML += /*html*/ `
-        <div onclick="openCheckTask()" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
-            
-        <div class="addCategoryInTask ${element['category']}">
-                <p>${element['category']}</p>
+       <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div class="addCategoryInTask ${element['category']['color']}">
+                <p>${element['category']['name']}</p>
             </div>
             <div>
                 <p>${element['title']}</p>
@@ -191,7 +194,8 @@ function addTasking() {
                 <p>${element['description']}</p>
             </div>
             <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']}</div>
+                <div class="divAssignTask">${element['assignedTo']['0']}</div>
+                <div class="divAssignTask">${element['assignedTo']['1']}</div>
             </div>
         </div>
         `;
@@ -249,8 +253,10 @@ function openCategory() {
 }
 
 function selectCategory(id) {
-
-    liCategory = id;
+    const selectedElement = document.getElementById(id);
+    const name = selectedElement.querySelector('.taskCategory').innerHTML;
+    const color = selectedElement.querySelector('.categoryMedia').classList[1];
+    allLiCategory = ({ name, color });
 
     let ulCategory = document.getElementById("categoryList");
     let category = document.getElementById(id).innerHTML;
@@ -333,7 +339,7 @@ function createnewCategoryAll() {
         const element = allCategorys[i];
 
         newCategorys.innerHTML += /*html*/ `
-            <div onclick="selectCategory(id)" id="${element['name']}, ${element['color']}" class="categoryMediaDivSmoll">
+            <div onclick="selectCategory(id)" id="${element['name']}" class="categoryMediaDivSmoll">
                 <li class="taskCategory">${element['name']}</li>
                 <div class="categoryMedia ${element['color']}"></div>
             </div>
