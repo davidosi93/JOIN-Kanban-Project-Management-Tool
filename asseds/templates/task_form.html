@@ -22,10 +22,10 @@
                     <textarea id="description" required placeholder="Enter a Description"></textarea>
 
                     <p class="titleInputFields">Category</p>
-                    <div id="borderButton" class="categoryDiv" onclick="openCategory(); event.stopPropagation()">
+                    <div id="borderButton" class="categoryDiv" onclick="openCategory();">
                         <p id="selectTaskCategory" class="selectTaskCategory">Select Task Category</p>
                         <img id="selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
-                        <input id="selectNewCategory" class="inputfieldNewCategory d-none" placeholder="New Catetogory Name" required>
+                        <input id="selectNewCategory" class="inputfieldNewCategory d-none" placeholder="New Catetogory Name">
                         <div id="selectNewCategoryImg" class="selectNewCategory d-none">
                             <img onclick="selectNewCatagoryCancel()" class="selectNewCategoryCancel" src="/asseds/img/cancel.png">
                             <div class="subLine"></div>
@@ -39,15 +39,7 @@
                         </div>
 
                         <div id="createNewTategory">
-                            <!-- <div onclick="selectCategory(id)" id="media" class="categoryMediaDivSmoll">
-                                <li class="taskCategory">Media</li>
-                                <div class="categoryMedia bg-yellow"></div>
-                            </div>
 
-                            <div onclick="selectCategory(id)" id="sales" class="categoryMediaDivSmoll">
-                                <li class="taskCategory">Sales</li>
-                                <div class="categoryMedia bg-pink"></div>
-                            </div> -->
                         </div>
                     </ul>
 
@@ -78,12 +70,27 @@
 
                         <label class="assignedToListBox">
                             <li class="taskAssignedTo">Artur Marbach</li>
-                            <input  onclick="selectContacted('Artur_Marbach')" class="inputCheckbox" type="checkbox" value="Artur Marbach" id="Artur_Marbach">
+                            <input  onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="Artur Marbach" id="Artur_Marbach">
                         </label>
 
                         <label class="assignedToListBox">
                             <li class="taskAssignedTo">David Osipov</li>
-                            <input onclick="selectContacted('David_Osipov')" class="inputCheckbox" type="checkbox" value="David Osipov" id="David_Osipov">
+                            <input onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="David Osipov" id="David_Osipov">
+                        </label>
+
+                        <label class="assignedToListBox">
+                            <li class="taskAssignedTo">Waldemar Neumann</li>
+                            <input onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="Waldemar Neumann" id="Waldemar_Neumann">
+                        </label>
+
+                        <label class="assignedToListBox">
+                            <li class="taskAssignedTo">Jakob Neumann</li>
+                            <input onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="Jakob Neumann" id="Jakob_Neumann">
+                        </label>
+
+                        <label class="assignedToListBox">
+                            <li class="taskAssignedTo">Oscar Neumann</li>
+                            <input onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="Oscar Neuamnn" id="Oscar_Neumann">
                         </label>
 
                     </ul>
@@ -104,20 +111,20 @@
 
                     <p class="titleInputFields">Prio</p>
                     <div id="prio" class="prio">
-                        <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
+                        <div id="red" onclick="changeColor('red')" class="prioContainer">Urgent
                             <img id="redImg" src="/asseds/img/pfeil-oben-rot.png">
                         </div>
-                        <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
+                        <div id="yellow" onclick="changeColor('yellow')" class="prioContainer">Medium
                             <img id="yellowImg" class="medium" src="/asseds/img/medium-gelb.png">
                         </div>
-                        <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
+                        <div id="green" onclick="changeColor('green')" class="prioContainer">Low
                             <img id="greenImg" src="/asseds/img/pfeil-unten-grün.png">
                         </div>
                     </div>
 
                     <p class="titleInputFields">Subtasks</p>
                     <div class="relativeContainer">
-                        <input id="openSubtasks" onclick="openSubtask()" required placeholder="Add new subtask">
+                        <input id="openSubtasks" onclick="openSubtask()" placeholder="Add new subtask">
                         <img id="subtasksAddImg" class="subtaskIMG" src="asseds/img/Vector (1).png">
                         <img onclick="subtasksCancel()" id="subtsasksCancelImg" class="subtsasksCancelImg d-none" src="/asseds/img/cancel.png">
                         <div id="subtasksSubLine" class="subtasksSsubLine d-none"></div>

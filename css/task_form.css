@@ -159,10 +159,6 @@ body {
     margin-top: 6px;
 }
 
-.btn {
-    margin-top: 160px;
-}
-
 .btn img {
     width: 14px;
     height: 14px;
@@ -528,11 +524,24 @@ select {
     max-width: 25px;
     width: 16px;
     height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkboxSubtasksContainer {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    position: absolute;
+    top: 685px;
 }
 
 .subtaskContainer {
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
 .subtasksComent {

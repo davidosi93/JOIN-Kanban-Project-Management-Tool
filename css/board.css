@@ -204,6 +204,26 @@ body {
 .assignTask {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    margin-left: -10px;
+}
+
+.assignTaskSelect {
+    display: flex;
+    justify-content: space-between;
+}
+
+.assignTaskSelectName {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 260px;
+    margin-left: 10px;
+}
+
+.assignTaskSelectImage {
+    margin-right: 0px;
+    margin-top: 16px;
 }
 
 .divAssignTask {
@@ -215,6 +235,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 3px solid white;
 }
 
 .checkTasking {

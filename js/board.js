@@ -3,6 +3,7 @@ let allCategorys = [];
 let allSubtasks = [];
 let allContacts = [];
 let assignedChackedBox = [];
+let selectedSubtasks = [];
 let allLiCategory;
 let currentSelectedCategory;
 let currentDraggedElement;
@@ -33,14 +34,22 @@ function addTaskRight() {
     document.getElementById('addTaskRight').classList.remove('d-none');
 }
 
-function openCheckTask(i) {
+function openCheckTask(taskIndex) {
     document.getElementById('closeContainer2').classList.remove('d-none');
-    let checkTaskSmall = document.getElementById('checkTaskSmall');
+    let container = document.getElementById('checkTaskSmall');
+    container.innerHTML = '';
 
-    checkTaskSmall.innerHTML = `
-    
-    
+    let task = allTasks[taskIndex];
+
+    container.innerHTML = /*html*/ `
+    <div>
+      <h2>${task.title}</h2>
+      <p>${task.description}</p>
+      <p>Category: ${task.category.name}</p>
+      <p>Due Date: ${task.dueDate}</p>
+    </div>
     `;
+    // // container.classList.add('visible');
 }
 
 function closeContainer1() {
@@ -65,8 +74,8 @@ function createTask() {
     let descriptions = document.getElementById('description').value;
     let dueDates = document.getElementById('dueDate').value;
     // let assignedTos = document.getElementById('assignedTo').value;
-    let prios = document.getElementById('prio').value;
-    let subtasks = document.getElementById('subtask').value;
+    // let prios = document.getElementById('prio').value;
+    // let subtasks = document.getElementById('subtask').value;
 
     let task = {
         'title': titles,
@@ -74,8 +83,8 @@ function createTask() {
         'category': allLiCategory,
         'dueDates': dueDates,
         'assignedTo': assignedChackedBox,
-        'prio': prios,
-        'subtask': subtasks,
+        'prio': colorArray,
+        'subtask': selectedSubtasks,
         'id': new Date().getTime(),
         'list': 'todo'
 
@@ -86,7 +95,7 @@ function createTask() {
 
     let allTasksAsString = JSON.stringify(allTasks);
     localStorage.setItem('allTasks', allTasksAsString);
-    console.log('Beginn', allTasks);
+    console.log('Inhalt von allTasks', allTasks);
 
     addTasking()
     inputfieldValue()
@@ -112,6 +121,19 @@ function addTasking() {
     for (let i = 0; i < todos.length; i++) {
         const element = todos[i];
 
+        let nameParts = element['assignedTo'];
+        let initialsContainer = '';
+
+        for (let j = 0; j < nameParts.length; j++) {
+            let name = nameParts[j].split(' ');
+            initialsContainer += `
+            <div class="assignTask">
+                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
+            </div>
+          `;
+        }
+
+
         containerTodo.innerHTML += /*html*/ `
         <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
             <div class="addCategoryInTask ${element['category']['color']}">
@@ -123,9 +145,13 @@ function addTasking() {
             <div>
                 <p>${element['description']}</p>
             </div>
-            <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']['0']}</div>
-                <div class="divAssignTask">${element['assignedTo']['1']}</div>
+            <div class="assignTaskSelect">
+                <div class="assignTaskSelectName">
+                    ${initialsContainer}
+                </div>
+                <div class="assignTaskSelectImage">
+                   <img src="${element['prio']['image']}">
+                </div>
             </div>
         </div>
         `;
@@ -134,6 +160,18 @@ function addTasking() {
 
     for (let i = 0; i < progresses.length; i++) {
         const element = progresses[i];
+
+        let nameParts = element['assignedTo'];
+        let initialsContainer = '';
+
+        for (let j = 0; j < nameParts.length; j++) {
+            let name = nameParts[j].split(' ');
+            initialsContainer += `
+            <div class="assignTask">
+                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
+            </div>
+          `;
+        }
 
         containerProgress.innerHTML += /*html*/ `
         <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -146,9 +184,13 @@ function addTasking() {
             <div>
                 <p>${element['description']}</p>
             </div>
-            <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']['0']}</div>
-                <div class="divAssignTask">${element['assignedTo']['1']}</div>
+            <div class="assignTaskSelect">
+                <div class="assignTaskSelectName">
+                    ${initialsContainer}
+                </div>
+                <div class="assignTaskSelectImage">
+                   <img src="${element['prio']['image']}">
+                </div>
             </div>
         </div>
         `;
@@ -158,6 +200,17 @@ function addTasking() {
     for (let i = 0; i < feedbacks.length; i++) {
         const element = feedbacks[i];
 
+        let nameParts = element['assignedTo'];
+        let initialsContainer = '';
+
+        for (let j = 0; j < nameParts.length; j++) {
+            let name = nameParts[j].split(' ');
+            initialsContainer += `
+            <div class="assignTask">
+                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
+            </div>
+          `;
+        }
 
         containerFeedback.innerHTML += /*html*/ `
         <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -170,9 +223,13 @@ function addTasking() {
             <div>
                 <p>${element['description']}</p>
             </div>
-            <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']['0']}</div>
-                <div class="divAssignTask">${element['assignedTo']['1']}</div>
+            <div class="assignTaskSelect">
+                <div class="assignTaskSelectName">
+                    ${initialsContainer}
+                </div>
+                <div class="assignTaskSelectImage">
+                   <img src="${element['prio']['image']}">
+                </div>
             </div>
         </div>
         `;
@@ -181,6 +238,19 @@ function addTasking() {
 
     for (let i = 0; i < dones.length; i++) {
         const element = dones[i];
+
+        let nameParts = element['assignedTo'];
+        let initialsContainer = '';
+
+        for (let j = 0; j < nameParts.length; j++) {
+            let name = nameParts[j].split(' ');
+            initialsContainer += `
+            <div class="assignTask">
+                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
+            </div>
+          `;
+        }
+
 
         containerDone.innerHTML += /*html*/ `
        <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -193,9 +263,13 @@ function addTasking() {
             <div>
                 <p>${element['description']}</p>
             </div>
-            <div class="assignTask">
-                <div class="divAssignTask">${element['assignedTo']['0']}</div>
-                <div class="divAssignTask">${element['assignedTo']['1']}</div>
+            <div class="assignTaskSelect">
+                <div class="assignTaskSelectName">
+                    ${initialsContainer}
+                </div>
+                <div class="assignTaskSelectImage">
+                   <img src="${element['prio']['image']}">
+                </div>
             </div>
         </div>
         `;
@@ -225,11 +299,12 @@ function drag(id) {
 function inputfieldValue() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
-    document.getElementById('categoryList').value = '';
     document.getElementById('dueDate').value = '';
-    // document.getElementById('assignedTo').value = '';
-    document.getElementById('prio').value = '';
-    document.getElementById('subtask').value = '';
+    document.getElementById('assignedAddContact').innerHTML = '';
+    resetCheckboxes()
+    resetSettingsCategory()
+    resetSettingsChangeColor()
+    resetSubtasks()
 }
 
 /** Area for Category */
@@ -269,6 +344,8 @@ function selectCategory(id) {
     document.getElementById('borderButton').classList.remove('borderButton');
 
 
+
+
 }
 
 function selectNewCategory() {
@@ -297,6 +374,13 @@ function selectNewCategory() {
     newCategorySelected = true;
 }
 
+function resetSettingsCategory() {
+    let selectTaskCategory = document.getElementById("selectTaskCategory");
+    document.getElementById("selectTaskCategory").innerHTML = '';
+    document.getElementById('selectTaskCategory').style = 'margin-left: 0px;';
+    selectTaskCategory.innerHTML = "Select Task Category";
+}
+
 function selectNewCatagoryCancel() {
     document.getElementById('selectNewCategoryImg').classList.add('d-none');
     document.getElementById('containerColorPicker').classList.add('d-none');
@@ -316,12 +400,22 @@ function createNewCategory() {
         'color': currentCategoryColor,
     }
 
-    if (newCategory.length > 0 && currentCategoryColor.length > 0) {
-        allCategorys.push(jsonColor);
-        selectNewCatagoryCancel();
-        createnewCategoryAll();
-        newCategorySelected = false;
+    if (newCategory.length > 0) {
+        if (currentCategoryColor) {
+            let categoryExists = allCategorys.some(category => category.name === newCategory && category.color === currentCategoryColor);
+            if (!categoryExists) {
+                allCategorys.push(jsonColor);
+                selectNewCatagoryCancel();
+                createnewCategoryAll();
+                newCategorySelected = false;
+            } else {
+                alert("Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.");
+            }
+        } else {
+            alert("Bitte wählen Sie eine Farbe für die neue Kategorie aus.");
+        }
     }
+
 
     document.getElementById('bg-pink').style = 'box-shadow: none;';
     document.getElementById('bg-orange').style = 'box-shadow: none;';
@@ -410,14 +504,19 @@ function addContact() {
 
 }
 
+function resetCheckboxes() {
+    assignedChackedBox = [];
+
+    // Get all checkbox elements in the document
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    // Iterate over the checkboxes and set the checked property to false
+    checkboxes.forEach(checkbox => checkbox.checked = false);
+}
+
 function getFirstLetters(str) {
-    // Split the string into an array of words
     const words = str.split(' ');
-
-    // Map the array of words to an array of the first letters of each word
     const firstLetters = words.map(word => word[0]);
-
-    // Join the array of first letters into a single string and return it
     return firstLetters.join('');
 }
 
@@ -436,31 +535,56 @@ function subtasksCancel() {
     document.getElementById('subtsasksCancelImg').classList.add('d-none');
     document.getElementById('subtasksSubLine').classList.add('d-none');
     document.getElementById('subtasksChackImg').classList.add('d-none');
+    document.getElementById('openSubtasks').value = '';
 }
 
 function addSubtasks() {
     let openSubtasks = document.getElementById('openSubtasks').value;
 
+
     if (openSubtasks.length > 0) {
         allSubtasks.push(openSubtasks);
-        addAllSubtasks()
+        Subtasks()
     }
 
-    openSubtasks.value = '';
+    document.getElementById('openSubtasks').value = '';
 }
 
-function addAllSubtasks() {
-    let allAddSubtasks = document.getElementById('allAddSubtask');
 
+function Subtasks() {
+    let allAddSubtasks = document.getElementById('allAddSubtask');
+    allAddSubtasks.innerHTML = '';
 
     for (let i = 0; i < allSubtasks.length; i++) {
         const element = allSubtasks[i];
 
         allAddSubtasks.innerHTML += /*html*/ `
-        <input id="subtask" class="checkboxSubtasks" type="checkbox">
-        <p class="subtasksComent">${element}</p>
-        `;
+      <div class="checkboxSubtasksContainer">
+          <input id="subtask-${i}" class="checkboxSubtasks" type="checkbox" data-value="${element}">
+          <p class="subtasksComent">${element}</p>
+      </div>
+      `;
     }
 
+    document.querySelectorAll('.checkboxSubtasks').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const value = this.dataset.value;
+            if (this.checked) {
+                selectedSubtasks.push(value);
+            } else {
+                const index = selectedSubtasks.indexOf(value);
+                if (index > -1) {
+                    selectedSubtasks.splice(index, 1);
+                }
+            }
+        });
+    });
+
     subtasksCancel();
+}
+
+function resetSubtasks() {
+    document.getElementById('allAddSubtask').innerHTML = '';
+    selectedSubtasks = [];
+    allSubtasks = [];
 }
