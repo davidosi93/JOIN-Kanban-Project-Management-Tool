@@ -8,15 +8,15 @@ async function addUser() {
     let user = {
         'name': name,
         'email': email,
-        'password': password
+        'password': password,
     };
     users.push(user);
     await backend.setItem('users', JSON.stringify(users));
-    emptyInputFields()
+    emptySignUpInputFields()
     window.location.href = 'index.html';
 }
 
-function emptyInputFields() {
+function emptySignUpInputFields() {
     document.getElementById('input3name').value = '';
     document.getElementById('input1email').value = '';
     document.getElementById('input2password').value = '';

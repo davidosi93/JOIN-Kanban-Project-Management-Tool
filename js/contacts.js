@@ -1,7 +1,11 @@
 let allContacts = [];
 let letters = [];
+console.log(activeUser);
 
 
+function loadActiveUser() {
+    activeUser = localStorage.getItem('activeUser');
+}
 
 
 // display the box to create a new contact
@@ -44,18 +48,28 @@ async function addContact() {
         letters.push(firstLetter);
         letters.sort();
     }
+    pushToUsers(activeUser);
     sortNames();
     renderLetters();
+    await backend.setItem('users', JSON.stringify(users));
     emptyInputFields();
     closeContactBox();
     showContactBtn();
-    await backend.setItem('allContacts', JSON.stringify(allContacts));
+}
+
+
+function pushToUsers(activeUser) {
+    
+        users[activeUser]['contacts'] = allContacts;
+    
 }
 
 
 async function init() {
     await downloadFromServer();
-    allContacts = JSON.parse(backend.getItem('allContacts')) || [];
+    users = JSON.parse(backend.getItem('users')) || [];
+    includeHTML();
+    loadActiveUser();
 }
 
 
@@ -106,9 +120,12 @@ function renderLetters() {
 
 // empty the inputFields from the contact box
 function emptyInputFields() {
-    document.getElementById('input1').value = '';
-    document.getElementById('input2').value = '';
-    document.getElementById('input3').value = '';
+    let input1 = document.getElementById('input1');
+    let input2 = document.getElementById('input2');
+    let input3 = document.getElementById('input3');
+    input1.value = '';
+    input2.value = '';
+    input3.value = '';
 }
 
 
