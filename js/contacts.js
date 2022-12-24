@@ -3,11 +3,6 @@ let letters = [];
 console.log(activeUser);
 
 
-function loadActiveUser() {
-    activeUser = localStorage.getItem('activeUser');
-}
-
-
 // display the box to create a new contact
 function showContactBox() {
     document.getElementById('newContactBoxBckgr').style.display = 'block';
@@ -48,27 +43,30 @@ async function addContact() {
         letters.push(firstLetter);
         letters.sort();
     }
-    pushToUsers(activeUser);
     sortNames();
     renderLetters();
-    await backend.setItem('users', JSON.stringify(users));
+    await backend.setItem('allContacts', JSON.stringify(allContacts));
     emptyInputFields();
+    pushContactToUser();
     closeContactBox();
     showContactBtn();
 }
 
 
-function pushToUsers(activeUser) {
-    
-        users[activeUser]['contacts'] = allContacts;
-    
+function loadActiveUser() {
+    activeUser = JSON.parse(backend.getItem('activeUser')) || [];
+}
+
+
+function pushContactToUser() {
+    users[activeUser]['contacts'] = allContacts;
 }
 
 
 async function init() {
+    includeHTML();
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
-    includeHTML();
     loadActiveUser();
 }
 

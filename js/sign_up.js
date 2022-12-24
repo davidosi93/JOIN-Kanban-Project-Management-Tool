@@ -8,7 +8,7 @@ async function addUser() {
     let user = {
         'name': name,
         'email': email,
-        'password': password,
+        'password': password
     };
     users.push(user);
     await backend.setItem('users', JSON.stringify(users));
