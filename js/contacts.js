@@ -1,6 +1,5 @@
 let allContacts = [];
 let letters = [];
-console.log(activeUser);
 
 
 // display the box to create a new contact
@@ -38,6 +37,13 @@ async function addContact() {
         'color': color
     };
     allContacts.push(contacts);
+    if (!users[activeUser]) {
+        users[activeUser] = {};
+    }
+    if (!users[activeUser]['contacts']) {
+        users[activeUser]['contacts'] = [];
+    }
+    users[activeUser]['contacts'] = allContacts;
     let firstLetter = name.charAt(0);
     if (!letters.includes(firstLetter)) {
         letters.push(firstLetter);
@@ -45,29 +51,18 @@ async function addContact() {
     }
     sortNames();
     renderLetters();
-    await backend.setItem('allContacts', JSON.stringify(allContacts));
     emptyInputFields();
-    pushContactToUser();
+    await backend.setItem('users', JSON.stringify(users));
+    await backend.setItem('allContacts', JSON.stringify(allContacts));
     closeContactBox();
     showContactBtn();
 }
 
 
-function loadActiveUser() {
-    activeUser = JSON.parse(backend.getItem('activeUser')) || [];
-}
-
-
-function pushContactToUser() {
-    users[activeUser]['contacts'] = allContacts;
-}
-
-
 async function init() {
-    includeHTML();
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
-    loadActiveUser();
+    activeUser = backend.getItem('activeUser');
 }
 
 

@@ -6,6 +6,7 @@ async function addUser() {
     let email = document.getElementById('input1email').value;
     let password = document.getElementById('input2password').value;
     let user = {
+        'id': users.length,
         'name': name,
         'email': email,
         'password': password

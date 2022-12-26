@@ -4,8 +4,8 @@ function login() {
     let email = document.getElementById('input1');
     let password = document.getElementById('input2');
     let user = users.find(u => u.email == email.value && u.password == password.value);
-    window.activeUser = users.find(user => user.email == email.value);
     if (user) {
+        activeUser = user['id'];
         saveActiveUserToBackend(activeUser);
         document.getElementById('input1').value = '';
         document.getElementById('input2').value = '';
@@ -17,7 +17,14 @@ function login() {
 
 
 async function saveActiveUserToBackend(activeUser) {
-    await backend.setItem('activeUser', JSON.stringify(activeUser));
+    await backend.setItem('activeUser', activeUser);
+}
+
+
+async function init() {
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
+    activeUser = backend.getItem('activeUser');
 }
 
 
