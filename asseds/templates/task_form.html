@@ -16,51 +16,61 @@
                 <div class="leftContainer">
 
                     <p class="titleInputFields">Title</p>
-                    <input id="title" placeholder="Enter a title" required>
+                    <input id="title" placeholder="Enter a Title" required>
 
                     <p class="titleInputFields">Description</p>
                     <textarea id="description" required placeholder="Enter a Description"></textarea>
 
                     <p class="titleInputFields">Category</p>
-                    <div id="borderButton" class="categoryDiv" onclick="openCategory()">
-                        <p class="selectTaskCategory">Select Task Category</p>
-                        <img src="/asseds/img/Vector 2.png">
+                    <div id="borderButton" class="categoryDiv" onclick="openCategory();">
+                        <p id="selectTaskCategory" class="selectTaskCategory">Select Task Category</p>
+                        <img id="selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
+                        <input id="selectNewCategory" class="inputfieldNewCategory d-none" placeholder="New Catetogory Name">
+                        <div id="selectNewCategoryImg" class="selectNewCategory d-none">
+                            <img onclick="selectNewCatagoryCancel()" class="selectNewCategoryCancel" src="/asseds/img/cancel.png">
+                            <div class="subLine"></div>
+                            <img onclick="createNewCategory()" class="selectNewCategoryCheckmark" src="/asseds/img/hacken-schwarz.png">
+                        </div>
                     </div>
 
                     <ul id="categoryList" class="categoryList d-none">
-                        <div class="categoryMediaDivSmoll">
+                        <div onclick="selectNewCategory()" id="newCategory" class="categoryMediaDivSmoll">
                             <li class="taskCategory">New Category</li>
                         </div>
 
-                        <div class="categoryMediaDivSmoll">
-                            <li class="taskCategory">Media</li>
-                            <div class="categoryMedia bg-yellow"></div>
+                        <div id="createNewTategory">
+
                         </div>
-
-                        <div class="categoryMediaDivSmoll">
-                            <li class="taskCategory">Sales</li>
-                            <div class="categoryMedia bg-pink"></div>
-                        </div>
-
-
                     </ul>
-                    <!-- <select id="category" required placeholder="Select task category">
-                        <option >Select Task Category</option>
-                        <option value="1">Sales</option>
-                        <option value="2">Backoffice</option>
-                        <option value="3">Media</option>
-                        <option value="4">Marketing</option>
-                   
-                    </select> -->
+
+                    <div id="containerColorPicker" class="containerColorPicker d-none">
+                        <div id="bg-pink" onclick="newCategorySelectColor('bg-pink')" class="colorPicker bg-pink"></div>
+                        <div id="bg-orange" onclick="newCategorySelectColor('bg-orange')" class="colorPicker bg-orange"></div>
+                        <div id="bg-green" onclick="newCategorySelectColor('bg-green')" class="colorPicker bg-green"></div>
+                        <div id="bg-turquoise" onclick="newCategorySelectColor('bg-turquoise')" class="colorPicker bg-turquoise"></div>
+                        <div id="bg-yellow" onclick="newCategorySelectColor('bg-yellow')" class="colorPicker bg-yellow"></div>
+                        <div id="bg-blue" onclick="newCategorySelectColor('bg-blue')" class="colorPicker bg-blue"></div>
+                    </div>
+
 
                     <p class="titleInputFields">Assigned to</p>
-                    <select id="assignedTo" required placeholder="Select contacts to assign">
-                        <option >Select contacts to assign</option>
-                        <option value="1">Artur Marbach</option>
-                        <option value="2">David Osipov</option>
-                        <option value="3">Waldemar Neumann</option>
-                        <option value="4">Invite new contact</option>
-                    </select>
+                    <div id="openContact" onclick="openContacts()" class="assignedDiv">
+                        <p id="assignedContactsSelect">Select contacts to assigt</p>
+                        <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
+                    </div>
+
+                    <ul id="assignedToList" class="assignedToList d-none">
+
+                        <!-- <label class="assignedToListBox">
+                            <li class="taskAssignedTo">Artur Marbach</li>
+                            <input  onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="Artur Marbach" id="Artur_Marbach">
+                        </label> -->
+
+                    </ul>
+
+                    <div class="assignedAddContact" id="assignedAddContact">
+
+                    </div>
 
                 </div>
 
@@ -73,29 +83,31 @@
                     </div>
 
                     <p class="titleInputFields">Prio</p>
-                    <div id="prio" class="prio">
-                        <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
+                    <div class="prio">
+                        <div id="red" onclick="changeColor(id)" class="prioContainer">Urgent
                             <img id="redImg" src="/asseds/img/pfeil-oben-rot.png">
                         </div>
-                        <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
+                        <div id="yellow" onclick="changeColor(id)" class="prioContainer">Medium
                             <img id="yellowImg" class="medium" src="/asseds/img/medium-gelb.png">
                         </div>
-                        <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
+                        <div id="green" onclick="changeColor(id)" class="prioContainer">Low
                             <img id="greenImg" src="/asseds/img/pfeil-unten-grün.png">
                         </div>
                     </div>
 
                     <p class="titleInputFields">Subtasks</p>
                     <div class="relativeContainer">
-                        <input required>
-                        <img class="subtaskIMG" src="asseds/img/Vector (1).png">
+                        <input id="openSubtasks" onclick="openSubtask()" placeholder="Add new subtask">
+                        <img id="subtasksAddImg" class="subtaskIMG" src="asseds/img/Vector (1).png">
+                        <img onclick="subtasksCancel()" id="subtsasksCancelImg" class="subtsasksCancelImg d-none" src="/asseds/img/cancel.png">
+                        <div id="subtasksSubLine" class="subtasksSsubLine d-none"></div>
+                        <img onclick="addSubtasks()" id="subtasksChackImg" class="subtasksChackImg d-none" src="/asseds/img/hacken-schwarz.png">
+
                     </div>
 
-                    <div class="subtaskContainer">
-                        <input id="subtask" class="checkbox" type="checkbox">
-                        <p>Subtask 1</p>
-                    </div>
+                    <div id="allAddSubtask" class="subtaskContainer">
 
+                    </div>
 
                     <div class="btn">
                         <button onclick="closeContainer()" class="btnClear">Clear

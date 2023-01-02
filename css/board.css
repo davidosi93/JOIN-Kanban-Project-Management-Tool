@@ -204,6 +204,26 @@ body {
 .assignTask {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    margin-left: -10px;
+}
+
+.assignTaskSelect {
+    display: flex;
+    justify-content: space-between;
+}
+
+.assignTaskSelectName {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 260px;
+    margin-left: 10px;
+}
+
+.assignTaskSelectImage {
+    margin-right: 0px;
+    margin-top: 16px;
 }
 
 .divAssignTask {
@@ -215,6 +235,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 3px solid white;
+    color: white;
 }
 
 .checkTasking {
@@ -233,18 +255,25 @@ body {
 }
 
 .checkTaskSmall {
+    position: relative;
     background-color: #FFFFFF;
     width: 623px;
-    height: 80vh;
+    height: 87vh;
     border-radius: 30px;
-    margin-left: 230px;
-    margin-top: 70px;
+}
+
+.toEditTaskMainDiv {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 623px;
+    height: 87vh;
+    border-radius: 30px;
 }
 
 .closes2 {
     position: absolute;
-    top: 120px;
-    right: 400px;
+    top: 20px;
+    left: 570px;
     color: #5f5e5e;
     font-size: 40px;
     font-weight: bold;
@@ -257,4 +286,236 @@ body {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+.openCheckTaskBigDiv {
+    margin: 60px;
+}
+
+.openCheckTasksCategory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 142px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.openCheckTasksCategoryTesx {
+    font-size: 27px;
+    color: white;
+}
+
+.openCheckTasksTitle {
+    width: 523px;
+}
+
+.openCheckTasksTitleTest {
+    font-size: 61px;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.openCheckTasksDescription {
+    width: 523px;
+    font-size: 21px;
+}
+
+.openCheckTasksDescriptionText {
+    font-size: 21px;
+    word-wrap: break-word;
+}
+
+.openCheckTasksDateDiv {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.openCheckTasksDateText {
+    font-size: 21px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.openCheckTasksDateFormat {
+    font-size: 21px;
+}
+
+.openCheckTasksPrioDiv {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    position: relative;
+}
+
+.openCheckTasksPrioText {
+    font-size: 21px;
+    font-weight: bold;
+    color: #000000;
+    margin-right: 30px;
+}
+
+.openCheckTasksPrioTextDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 131px;
+    height: 33px;
+    border-radius: 10px;
+}
+
+.openCheckTasksPrioTextText {
+    font-size: 21px;
+    margin-right: 10px;
+}
+
+.openCheckTasksAssignedToSmallDiv {
+    display: flex;
+}
+
+.openCheckTasksAssignedToTitle {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.openCheckAssignTask {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.openCheckDivAssignTask {
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    background-color: aqua;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid white;
+    color: white;
+}
+
+.openCheckAssignTaskDivFullName {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.openCheckAssignTaskFullName {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 21px;
+    margin-left: 20px;
+    font-size: 21px;
+}
+
+.openCheckTasksAssignedToBoxFullName {
+    display: block;
+    margin-top: -5px;
+}
+
+.toEditopenCheckTaskBigDiv {
+    margin-top: 30px;
+    margin-left: 90px;
+    margin-right: 76px;
+}
+
+.toEditTaskButton {
+    width: 57px;
+    height: 57px;
+    background: #2A3647;
+    border-radius: 10px;
+    position: absolute;
+    top: 665px;
+    left: 530px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toEditTaskButton:hover {
+    background-color: #29ABE2;
+}
+
+.toEditTaskTitelInput {
+    width: 432px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.toEditTaskTitleDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.toEditTaskDescriptionInput {
+    width: 432px;
+    height: 70px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.toEditTaskSaveButton {
+    width: 75px;
+    height: 57px;
+    background: #2A3647;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 665px;
+    left: 510px;
+    cursor: pointer;
+}
+
+.toEditTaskSaveButton:hover {
+    background-color: #29ABE2;
+}
+
+.toEditTaskButtonText {
+    color: white;
+    font-size: 19px;
+    margin-right: 10px;
+}
+
+.assignedToListToEdit {
+    margin-top: 0px;
+    border: 1px solid lightgray;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 0px;
+    list-style-type: none;
+    height: 133px;
+    width: 435px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.assignedDivBorderToEdit {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: none !important;
+}
+
+.assignedContactsSelectToEdit {
+    font-size: 21px;
+}
+
+.assignedAddContactToEdit {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 10px;
 }
