@@ -9,6 +9,42 @@ let currentSelectedCategory;
 let currentDraggedElement;
 let currentCategoryColor;
 let newCategorySelected = false;
+let allContactsTest = [{
+        'color': '#3FB1C6',
+        'email': 'waldemar@gmx.de',
+        'name': 'Waldemar Neumann',
+        'phone': '15512 523555156',
+        // 'checked': false
+    },
+    {
+        'color': '#448243',
+        'email': 'david@gmx.de',
+        'name': 'David Osipov',
+        'phone': '15512 523555156',
+        // 'checked': false
+    },
+    {
+        'color': '#73EE11',
+        'email': 'artut@gmx.de',
+        'name': 'Artur Marbach',
+        'phone': '15512 523555156',
+        // 'checked': false
+    },
+    {
+        'color': '#BD012A',
+        'email': 'Jakob@gmx.de',
+        'name': 'Jakob Neumann',
+        'phone': '15512 523555156',
+        // 'checked': false
+    },
+    {
+        'color': '#017637',
+        'email': 'nikita@gmx.de',
+        'name': 'Nikita Neumann',
+        'phone': '15512 523555156',
+        // 'checked': false
+    }
+];
 
 
 async function init() {
@@ -27,29 +63,13 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+
+    openAllContacts()
 }
 
 
 function addTaskRight() {
     document.getElementById('addTaskRight').classList.remove('d-none');
-}
-
-function openCheckTask(taskIndex) {
-    document.getElementById('closeContainer2').classList.remove('d-none');
-    let container = document.getElementById('checkTaskSmall');
-    container.innerHTML = '';
-
-    let task = allTasks[taskIndex];
-
-    container.innerHTML = /*html*/ `
-    <div>
-      <h2>${task.title}</h2>
-      <p>${task.description}</p>
-      <p>Category: ${task.category.name}</p>
-      <p>Due Date: ${task.dueDate}</p>
-    </div>
-    `;
-    // // container.classList.add('visible');
 }
 
 function closeContainer1() {
@@ -126,7 +146,7 @@ function addTasking() {
 
         for (let j = 0; j < nameParts.length; j++) {
             let name = nameParts[j].split(' ');
-            initialsContainer += `
+            initialsContainer += /*html*/ `
             <div class="assignTask">
                 <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
             </div>
@@ -150,7 +170,7 @@ function addTasking() {
                     ${initialsContainer}
                 </div>
                 <div class="assignTaskSelectImage">
-                   <img src="${element['prio']['image']}">
+                   <img src="${element['prio']['coloredImage']}">
                 </div>
             </div>
         </div>
@@ -189,7 +209,7 @@ function addTasking() {
                     ${initialsContainer}
                 </div>
                 <div class="assignTaskSelectImage">
-                   <img src="${element['prio']['image']}">
+                   <img src="${element['prio']['coloredImage']}">
                 </div>
             </div>
         </div>
@@ -228,7 +248,7 @@ function addTasking() {
                     ${initialsContainer}
                 </div>
                 <div class="assignTaskSelectImage">
-                   <img src="${element['prio']['image']}">
+                   <img src="${element['prio']['coloredImage']}">
                 </div>
             </div>
         </div>
@@ -268,7 +288,7 @@ function addTasking() {
                     ${initialsContainer}
                 </div>
                 <div class="assignTaskSelectImage">
-                   <img src="${element['prio']['image']}">
+                   <img src="${element['prio']['coloredImage']}">
                 </div>
             </div>
         </div>
@@ -462,15 +482,15 @@ function openContacts() {
 
     if (allContacts.classList.contains('d-none')) {
         allContacts.classList.remove('d-none');
-        document.getElementById('openContact').classList.add('assignedDivBorder');
+        document.getElementById('openContact').classList.add('assignedDivBorderToEdit');
     } else {
         allContacts.classList.add('d-none');
-        document.getElementById('openContact').classList.remove('assignedDivBorder');
+        document.getElementById('openContact').classList.remove('assignedDivBorderToEdit');
 
     }
 }
 
-function selectContacted(id) {
+function selectContacted(id, i) {
 
     let chackedBox = document.getElementById(id);
 
@@ -481,21 +501,28 @@ function selectContacted(id) {
         assignedChackedBox = assignedChackedBox.filter(e => e !== chackedBox.value);
     }
 
-    addContact()
+    addContact(i);
 
 }
 
-function addContact() {
+function addContact(i) {
     let assignedAddContact = document.getElementById('assignedAddContact');
+
+
+    let contact = allContactsTest[i];
+    // Abrufen der Farbe des Kontakts
+    let color = contact.color;
+    console.log('Das ist die Farbe', color)
+
 
     assignedAddContact.innerHTML = '';
 
-    for (let i = 0; i < assignedChackedBox.length; i++) {
-        const element = assignedChackedBox[i];
+    for (let j = 0; j < assignedChackedBox.length; j++) {
+        const element = assignedChackedBox[j];
         const firstLetters = getFirstLetters(element);
 
         assignedAddContact.innerHTML += /*html*/ `
-        <div class="assignedAddContactDivs">
+       <div class="assignedAddContactDivs" style="background-color: ${color}">
         <p class="assignedAddContactLetters">${firstLetters}</p>          
         </div>
         `;
@@ -518,6 +545,23 @@ function getFirstLetters(str) {
     const words = str.split(' ');
     const firstLetters = words.map(word => word[0]);
     return firstLetters.join('');
+}
+
+function openAllContacts() {
+    let assignedToList = document.getElementById('assignedToList');
+    assignedToList.innerHTML = '';
+
+    for (let i = 0; i < allContactsTest.length; i++) {
+        const element = allContactsTest[i];
+
+        assignedToList.innerHTML += /*html*/ `
+        <label class="assignedToListBox">
+            <li class="taskAssignedTo">${element['name']}</li>
+            <input  onclick="selectContacted(id, ${i})" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}">
+        </label>
+    `;
+    }
+
 }
 
 /** Area for Subtask */
@@ -588,3 +632,348 @@ function resetSubtasks() {
     selectedSubtasks = [];
     allSubtasks = [];
 }
+
+/** Area for openCheckTask */
+
+function openCheckTask(taskIndex) {
+    document.getElementById('closeContainer2').classList.remove('d-none');
+    let container = document.getElementById('checkTaskSmall');
+    container.innerHTML = '';
+
+    let names = allTasks[taskIndex];
+    let nameParts = (names.assignedTo);
+    let initialsContainer = '';
+    for (let j = 0; j < nameParts.length; j++) {
+        let name = nameParts[j].split(' ');
+        initialsContainer += /*html*/ `
+        <div class="openCheckAssignTask">
+            <div class="openCheckDivAssignTask">${name[0][0]}${name[1][0]}</div>
+        </div>
+      `;
+    }
+
+    let fullNames = allTasks[taskIndex];
+    let fullNameParts = (fullNames.assignedTo);
+    let fullNameInitialsContainer = '';
+    for (let j = 0; j < fullNameParts.length; j++) {
+        let name = nameParts[j];
+        fullNameInitialsContainer += /*html*/ `
+        <div class="openCheckAssignTaskDivFullName">
+            <p class="openCheckAssignTaskFullName">${name}</p>
+        </div>    
+      `;
+    }
+
+
+    let task = allTasks[taskIndex];
+    let taskDate = new Date(task.dueDates);
+    let formattedDate = taskDate.toLocaleDateString('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    container.innerHTML = /*html*/ `
+        <div class="openCheckTaskBigDiv">
+            <div class="openCheckTasksCategory ${task.category.color}">
+                <p class="openCheckTasksCategoryTesx" >${task.category.name}</p>
+            </div>
+
+            <div class="openCheckTasksTitle">
+                <p class="openCheckTasksTitleTest">${task.title}</p>
+            </div>
+
+            <div class="openCheckTasksDescription">
+                <p class="openCheckTasksDescriptionTest">${task.description}</p>
+            </div>
+
+            <div class="openCheckTasksDateDiv">
+                <p class="openCheckTasksDateText">Due date:</p> <p class="openCheckTasksDateFormat">${formattedDate}</p>
+            </div>
+
+            <div class="openCheckTasksPrioDiv">
+                <div>
+                    <p class="openCheckTasksPrioText">Priority:</p>
+                </div>
+                <div class="openCheckTasksPrioTextDiv ${task.prio.color}">
+                    <p class="openCheckTasksPrioTextText">${task.prio.text}</p>
+                    <img  class="openCheckTasksPrioTextImage" src="${task.prio.whiteImage}">
+                </div>
+            </div>
+
+            <div>
+                <p class="openCheckTasksAssignedToTitle">Assigned To:</p>
+                <div class="openCheckTasksAssignedToSmallDiv">
+                    <div>
+                        ${initialsContainer}
+                    </div>
+                    <div class="openCheckTasksAssignedToBoxFullName">
+                       ${fullNameInitialsContainer}
+                    </div>
+                </div>
+            </div>
+
+            <button class="toEditTaskButton">
+                <img onclick="openTaskToEdit(${taskIndex})" class="toEditTaskImage" src="/asseds/img/Group 8.png">
+            </button>
+          <div onclick="closeContainer1()" class="closes2">&times;</div>
+        </div>
+       
+    `;
+}
+
+
+function openTaskToEdit(taskIndex) {
+    document.getElementById('checkTaskSmall').classList.add('d-none');
+    document.getElementById('toEditTaskMainDiv').classList.remove('d-none');
+    // let toEditTask = document.getElementById('toEditTaskMainDiv');
+    // toEditTask.innerHTML = '';
+
+    let task = allTasks[taskIndex];
+
+    let taskDate = new Date(task.dueDates);
+    let formattedDate = taskDate.toISOString().substring(0, 10);
+
+    // let nameParts = (task.assignedTo);
+    // let initialsContainer = '';
+
+    // for (let j = 0; j < nameParts.length; j++) {
+    //     let name = nameParts[j].split(' ');
+    //     initialsContainer += /*html*/ `
+    //         <div class="assignTask">
+    //             <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
+    //         </div>
+    //       `;
+    // }
+
+    let nameParts = (task.assignedTo);
+    let assignedToList = document.getElementById('assignedToListToEdit');
+
+    for (let j = 0; j < nameParts.length; j++) {
+        let name = nameParts[j].split(' ');
+
+        let label = document.createElement('label');
+        label.classList.add('assignedToListBox');
+
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = name;
+        checkbox.id = name + 'ToEdit';
+        checkbox.classList.add('inputCheckbox');
+        checkbox.setAttribute('onclick', "selectContactedToEdit(id, " + taskIndex + ")");
+        checkbox.checked = true;
+
+        let li = document.createElement('li');
+        li.classList.add('taskAssignedTo');
+        li.textContent = name;
+
+        let div = document.createElement('div');
+        div.classList.add('divAssignTask');
+        div.textContent = name[0][0] + name[1][0];
+
+        label.appendChild(checkbox);
+        label.appendChild(div);
+        label.appendChild(li);
+
+
+        console.log('das ist der assignedToList Wert', assignedToList);
+
+        assignedToList.appendChild(label);
+    }
+
+    let toEditTaskMainDiv = document.getElementById('toEditTaskMainDiv');
+    toEditTaskMainDiv.innerHTML = /*html*/ `
+        <div class="toEditopenCheckTaskBigDiv" id="editTaskForm">
+            <div class="toEditTaskTitleDiv">
+                <label class="titleInputFields" for="editTaskTitle">Title</label>
+                <input class="toEditTaskTitelInput" type="text" id="editTaskTitle" value="${task.title}">
+            </div>
+            
+            <div class="toEditTaskTitleDiv">
+                <label class="titleInputFields" for="editTaskDescription">Description</label>
+                <textarea class="toEditTaskDescriptionInput" id="editTaskDescription">${task.description}</textarea>
+            </div>
+
+            <div class="toEditTaskTitleDiv">
+                <label class="titleInputFields" for="editTaskDueDate">Due date</label>
+                <input class="toEditTaskTitelInput" type="date" id="editTaskDueDate" value="${formattedDate}">
+            </div>
+
+            <p class="titleInputFields">Prio</p>
+            <div id="prio" class="prio">
+                <div id="toEditRed" onclick="toEditChangeColor(id)" class="prioContainer">Urgent
+                    <img id="toEditRedImg" src="/asseds/img/pfeil-oben-rot.png">
+                </div>
+                <div id="toEditYellow" onclick="toEditChangeColor(id)" class="prioContainer">Medium
+                    <img id="toEditYellowImg" class="medium" src="/asseds/img/medium-gelb.png">
+                </div>
+                <div id="toEditGreen" onclick="toEditChangeColor(id)" class="prioContainer">Low
+                    <img id="toEditGreenImg" src="/asseds/img/pfeil-unten-grün.png">
+                </div>
+            </div>
+
+            <p class="titleInputFields">Assigned to</p>
+            <div id="openContactToEdit" onclick="openContactsToEdit()" class="assignedDiv">
+                <p class="assignedContactsSelectToEdit" id="assignedContactsSelect">Select contacts to assigt</p>
+                <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
+            </div>
+
+            <ul id="assignedToListToEdit" class="assignedToListToEdit d-none">
+                <label class="assignedToListBox">
+                    <li class="taskAssignedTo">You</li>
+                    <input onclick="selectContactedToEdit('You')" class="inputCheckbox" type="checkbox" value="You" id="You">
+                </label>
+
+
+                <label class="assignedToListBox">
+                    <li class="taskAssignedTo">Artur Marbach</li>
+                    <input  onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Artur Marbach" id="Artur_MarbachToEdit">
+                </label>
+
+                <label class="assignedToListBox">
+                    <li class="taskAssignedTo">David Osipov</li>
+                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="David Osipov" id="David_OsipovToEdit">
+                </label>
+
+                <label class="assignedToListBox">
+                    <li class="taskAssignedTo">Waldemar Neumann</li>
+                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Waldemar Neumann" id="Waldemar_NeumannToEdit">
+                </label>
+
+                <label class="assignedToListBox">
+                    <li class="taskAssignedTo">Jakob Neumann</li>
+                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Jakob Neumann" id="Jakob_NeumannToEdit">
+                </label>
+
+                <label class="assignedToListBox">
+                    <li class="taskAssignedTo">Oscar Neumann</li>
+                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Oscar Neuamnn" id="Oscar_NeumannToEdit">
+                </label>
+
+            </ul>
+
+            <div class="assignedAddContactToEdit" id="assignedAddContact">
+                ${initialsContainer}
+            </div>
+
+            <button class="toEditTaskSaveButton" onclick="closeTaskToEdit()">
+                <p class="toEditTaskButtonText">Ok</p>
+                <img class="toEditTaskImage" src="/asseds/img/check.png">
+            </button>
+
+            <div onclick="closeContainer1()" class="closes2">&times;</div>
+        </div>
+    `;
+
+    if (task.prio.text === 'Urgent') {
+        document.getElementById('toEditRed').classList.add('red');
+        document.getElementById('toEditRedImg').src = '/asseds/img/pfeil-oben-weiss.png';
+    } else if (task.prio.text === 'Medium') {
+        document.getElementById('toEditYellow').classList.add('yellow');
+        document.getElementById('toEditYellowImg').src = '/asseds/img/medium-weiss.png';
+    } else if (task.prio.text === 'Low') {
+        document.getElementById('toEditGreen').classList.add('green');
+        document.getElementById('toEditGreenImg').src = '/asseds/img/pfeil-unten-weiss.png';
+    }
+}
+
+function closeTaskToEdit() {
+    document.getElementById('checkTaskSmall').classList.remove('d-none');
+    document.getElementById('toEditTaskMainDiv').classList.add('d-none');
+}
+
+function openContactsToEdit() {
+    let allContacts = document.getElementById('assignedToListToEdit');
+
+    if (allContacts.classList.contains('d-none')) {
+        allContacts.classList.remove('d-none');
+        document.getElementById('openContactToEdit').classList.add('assignedDivBorder');
+    } else {
+        allContacts.classList.add('d-none');
+        document.getElementById('openContactToEdit').classList.remove('assignedDivBorder');
+    }
+}
+
+function selectContactedToEdit(id, taskIndex) {
+    let checkedBox = document.getElementById(id);
+    let value = checkedBox.value;
+
+    if (checkedBox.checked) {
+        // Only add value to the array if it is not already present
+        if (!allTasks[taskIndex].assignedTo.find(item => item === value)) {
+            allTasks[taskIndex].assignedTo.push(value);
+        }
+    } else {
+        // Remove value from the array when it is unchecked
+        allTasks[taskIndex].assignedTo = allTasks[taskIndex].assignedTo.filter(item => item !== value);
+    }
+
+    // openTaskToEdit();
+    // addTasking()
+}
+
+
+
+// function openTaskToEdit(taskIndex) {
+//     document.getElementById('checkTaskSmall').classList.add('d-none');
+//     document.getElementById('toEditTaskMainDiv').classList.remove('d-none');
+//     // let toEditTask = document.getElementById('toEditTaskMainDiv');
+//     // toEditTask.innerHTML = '';
+
+//     let task = allTasks[taskIndex];
+
+//     let toEditTaskMainDiv = document.getElementById('toEditTaskMainDiv');
+//     toEditTaskMainDiv.innerHTML = /*html*/ `
+//         <div class="toEditopenCheckTaskBigDiv" id="editTaskForm">
+//             <div class="toEditTaskTitleDiv">
+//                 <label class="titleInputFields" for="editTaskTitle">Title</label>
+//                 <input class="toEditTaskTitelInput" type="text" id="editTaskTitle" value="${task.title}">
+//             </div>
+
+//             <div class="toEditTaskTitleDiv">
+//             <label class="titleInputFields" for="editTaskDescription">Description</label>
+//             <textarea class="toEditTaskDescriptionInput" id="editTaskDescription">${task.description}</textarea>
+//         </div>
+
+//             <div class="toEditTaskTitleDiv">
+//                 <label class="titleInputFields" for="editTaskDueDate">Due date</label>
+//                 <input class="toEditTaskTitelInput" type="date" id="editTaskDueDate" value="${task.dueDate}">
+//             </div>
+
+
+//             <label for="editTaskPrio">Priority:</label>
+//             <select id="editTaskPrio">
+//                 <option value="low" ${task.prio === 'low' ? 'selected' : ''}>Low</option>
+//                 <option value="medium" ${task.prio === 'medium' ? 'selected' : ''}>Medium</option>
+//                 <option value="high" ${task.prio === 'high' ? 'selected' : ''}>High</option>
+//             </select>
+//             <br>
+//             <label for="editTaskAssignedTo">Assigned to:</label>
+//             <input type="text" id="editTaskAssignedTo" value="${task.assignedTo.join(', ')}">
+//             <br>
+//             <input type="submit" value="Save">
+//             <div onclick="closeContainer1()" class="closes2">&times;</div>
+//         </div>
+//     `;
+
+//     let form = document.getElementById('editTaskForm');
+//     form.addEventListener('submit', function(event) {
+//         event.preventDefault();
+
+//         let newTitle = document.getElementById('editTaskTitle').value;
+//         let newDescription = document.getElementById('editTaskDescription').value;
+//         let newDueDate = document.getElementById('editTaskDueDate').value;
+//         let newPrio = document.getElementById('editTaskPrio').value;
+//         let newAssignedTo = document.getElementById('editTaskAssignedTo').value.split(',').map(s => s.trim());
+
+//         allTasks[taskIndex].title = newTitle;
+//         allTasks[taskIndex].description = newDescription;
+//         allTasks[taskIndex].dueDate = newDueDate;
+//         allTasks[taskIndex].prio = newPrio;
+//         allTasks[taskIndex].assignedTo = newAssignedTo;
+
+//         // Update the task's details in the user interface
+//         // (e.g. by calling a function to render the updated task)
+//     });
+
+// }
