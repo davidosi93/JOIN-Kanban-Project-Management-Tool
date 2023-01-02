@@ -1,22 +1,7 @@
 let allTasks = [];
-let prio;
-let subtasks = [];
-i = 0;
-
-let categoriesName =['Sales', 'Backoffice'];
-let categoriesImg = ['asseds/img/violetter-kreis.png', 'asseds/img/hellblauer-kreis.png'];
-
-let newCategoryImg =['asseds/img/violetter-kreis.png', 'asseds/img/hellblauer-kreis.png','asseds/img/roter-kreis.png','asseds/img/oranger-kreis.png','asseds/img/blauer-kreis.png'];
-
-// setURL('http://developerakademie.com/smallest_backend_ever');
-
-// async function init() {
-//     await downloadFromServer();
-//     users = JSON.parse(backend.getItem('users')) || [];
-//     renderCategory();
-
-// }
-
+let red = false;
+let yellow = false;
+let green = false;
 
 function addTask() {
     let title = document.getElementById('title');
@@ -89,6 +74,7 @@ function changeColorYellow() {
     document.getElementById('yellow').classList.add('yellow');
     document.getElementById('yellowImg').src = 'asseds/img/medium-weiss.png';
 }
+
 function changeColorYellow() {
     console.log('yellow', yellow)
 
@@ -126,6 +112,7 @@ function changeColorGreen() {
     document.getElementById('green').classList.add('green');
     document.getElementById('greenImg').src = 'asseds/img/pfeil-unten-weiss.png';
 }
+
 function changeColorGreen() {
     console.log('green', green)
     if (green) {
@@ -184,7 +171,7 @@ function dropDownCategory() {
     document.getElementById("category").classList.toggle("show");
 
     // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         if (!event.target.matches('.drop')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
@@ -202,7 +189,7 @@ function dropDownAssign() {
     document.getElementById("assign").classList.toggle("show");
 
     // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         if (!event.target.matches('.drop')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
@@ -218,13 +205,8 @@ function dropDownAssign() {
 
 
 
-function renderCategory(){
+function renderCategory() {
     let content = document.getElementById('category');
-    
-    content.innerHTML ='';
-    content.innerHTML =`
-    <a onclick="newCategory()">New category</a>
-    `;
 
     for (let i = 0; i < categoriesName.length; i++) {
         const category = categoriesName[i];
@@ -233,12 +215,12 @@ function renderCategory(){
         
         <a class="categoryContainer" onclick="myCategory(${i})"><p>${category}</p> <img src="${img}"</a>
         `;
-        
+
     }
 
 }
 
-function myCategory(i){
+function myCategory(i) {
     let content = document.getElementById('selectCategory');
     content.innerHTML = '';
     content.innerHTML = `
@@ -250,11 +232,11 @@ function myCategory(i){
 }
 
 
-function newCategory(){
+function newCategory() {
     let content = document.getElementById('selectCategory');
-    
+
     content.innerHTML = '';
-    content.innerHTML +=`
+    content.innerHTML += `
     
     <input id="pushNewCategory" class="newCategoryText" placeholder="New category Name...">
     <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
@@ -263,32 +245,36 @@ function newCategory(){
 
     let contentImg = document.getElementById('category');
     contentImg.innerHTML = '';
-    contentImg.style.display="block";
+    contentImg.style.display = "block";
     for (let i = 0; i < newCategoryImg.length; i++) {
         const img = newCategoryImg[i];
-        contentImg.innerHTML +=`
+        contentImg.innerHTML += `
         <img onclick="newCategoryImages(${i})" class="newCategoryImg" src="${img}">
         `;
     }
 }
 
 
-function newCategoryImages(i){
+function newCategoryImages(i) {
     let content = document.getElementById('selectCategory');
+
+    content.innerHTML = '';
+    content.innerHTML += `
+    <img src="${newCategoryImg[i]}">
+    <input "required"  class="newCategoryText"  placeholder="New category Name...">
     
-    // content.innerHTML = '';
-    content.innerHTML +=`
-    <img class="updateImg" src="${newCategoryImg[i]}">
+    <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
+    <img class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
     `;
 
     document.getElementById('category').style.display="none";
 }
 
 
-function goToSelectCategory(){
+function goToSelectCategory() {
     let content = document.getElementById('selectCategory');
     let input = document.getElementById('category').innerHTML = '';
-    content.innerHTML=`
+    content.innerHTML = `
     Select task category<img src="/asseds/img/pfeil unten.png">
     `;
     renderCategory();

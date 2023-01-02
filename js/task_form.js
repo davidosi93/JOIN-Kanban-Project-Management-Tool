@@ -1,33 +1,11 @@
-let allTasks = [];
 let red = false;
 let yellow = false;
 let green = false;
 
-/**
- * Create Task and put it to the JSON allTasks
- * 
- */
-function addTask() {
-    let title = document.getElementById('').value;
-    let description = document.getElementById('').value;
-    let category = document.getElementById('').value;
-
-    let task = {
-        'title': title,
-        'description': description,
-        'category': category,
-        'createAt': new Date().getTime()
-    };
-
-
-    allTasks.push(task);
-
-    let allTasksAsString = JSON.stringify(allTasks);
-    localStorage.setItem('allTasks', allTasksAsString);
-}
 
 function closeContainer() {
     document.getElementById('addTaskRight').classList.add('d-none');
+
 }
 
 
@@ -61,7 +39,6 @@ function changeColorRed() {
         document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
     }
 
-
 }
 
 function changeColorYellow() {
@@ -73,21 +50,28 @@ function changeColorYellow() {
         red = false;
         yellow = false;
         green = false;
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('green').classList.remove('green');
+        document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
+
     } else {
         document.getElementById('yellow').classList.add('yellow');
         document.getElementById('yellowImg').src = '/asseds/img/medium-weiss.png';
         yellow = true;
         red = false;
         green = false;
+
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('green').classList.remove('green');
+        document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
     }
 
-
-
-    document.getElementById('red').classList.remove('red');
-    document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
-
-    document.getElementById('green').classList.remove('green');
-    document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
 }
 
 function changeColorGreen() {
@@ -98,20 +82,39 @@ function changeColorGreen() {
         red = false;
         yellow = false;
         green = false;
+
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('yellow').classList.remove('yellow');
+        document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
+
     } else {
         document.getElementById('green').classList.add('green');
         document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-weiss.png';
         green = true;
         red = false;
         yellow = false;
+
+        document.getElementById('red').classList.remove('red');
+        document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+
+        document.getElementById('yellow').classList.remove('yellow');
+        document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
     }
 
+}
 
-    document.getElementById('red').classList.remove('red');
-    document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
+/** Area for Category */
 
-    document.getElementById('yellow').classList.remove('yellow');
-    document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
-
-
+function openCategory() {
+    let category = document.getElementById('categoryList');
+    if (category.classList.contains('d-none')) {
+        category.classList.remove('d-none');
+        document.getElementById('borderButton').classList.add('borderButton');
+    } else {
+        category.classList.add('d-none');
+        document.getElementById('borderButton').classList.remove('borderButton');
+    }
 }
