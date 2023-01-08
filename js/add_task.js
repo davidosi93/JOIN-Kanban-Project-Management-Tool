@@ -213,7 +213,7 @@ function renderCategory() {
         const img = categoriesImg[i];
         content.innerHTML += `
         
-        <a onclick="myCategory(${i})">${category} <img src="${img}"</a>
+        <a class="categoryContainer" onclick="myCategory(${i})"><p>${category}</p> <img src="${img}"</a>
         `;
 
     }
@@ -238,9 +238,9 @@ function newCategory() {
     content.innerHTML = '';
     content.innerHTML += `
     
-    <input class="newCategoryText" placeholder="New category Name...">
+    <input id="pushNewCategory" class="newCategoryText" placeholder="New category Name...">
     <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
-    <img class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
+    <img onclick="pushCategoryToArray()" class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
     `;
 
     let contentImg = document.getElementById('category');
@@ -266,6 +266,8 @@ function newCategoryImages(i) {
     <img onclick="goToSelectCategory()" class="xBtn" src="/asseds/img/x-schwarz.png">
     <img class="hackenBtn" src="/asseds/img/hacken-schwarz.png">
     `;
+
+    document.getElementById('category').style.display="none";
 }
 
 
@@ -276,5 +278,14 @@ function goToSelectCategory() {
     Select task category<img src="/asseds/img/pfeil unten.png">
     `;
     renderCategory();
+   
+}
 
+function pushCategoryToArray(){
+    let newCategory = document.getElementById('pushNewCategory').value;
+    categoriesName.push(newCategory);
+    categoriesImg.push('Hallo');
+
+
+    
 }
