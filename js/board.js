@@ -141,6 +141,8 @@ function addTasking() {
     for (let i = 0; i < todos.length; i++) {
         const element = todos[i];
 
+        let totalNames = element['allTasks'].length;
+
         let nameParts = element['assignedTo'];
         let initialsContainer = '';
 
@@ -173,7 +175,7 @@ function addTasking() {
             <div class="progress-bar">
                 <div class="progress-bar-fill" style="width: ${progress}%;"></div>
             </div>
-            
+
             <div class="assignTaskSelect">
                 <div class="assignTaskSelectName">
                     ${initialsContainer}
