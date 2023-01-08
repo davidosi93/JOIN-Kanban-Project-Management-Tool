@@ -13,6 +13,21 @@ async function includeHTML() {
 }
 
 
+function showHeader(color, str) {
+    return `<div class="headerContent">
+                <p>Kanban Project Management Tool</p>
+
+                 <div class="headerContentRight">
+                    <div class="buttonsTopRight">
+                        <img onclick="help()" class="information" src="/asseds/img/information.png">
+                        <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}; cursor: pointer">${str}</div>
+                    </div>
+                    <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+                </div>
+            </div>`;
+}
+
+
 function contactLetterHeadline(firstChar) {
     return `<div id="contactLetter-${firstChar}" class="letter">
                 <p>${firstChar}</p>
@@ -102,6 +117,4 @@ function editContactBox(i, color, str) {
                         </div>
                     </div>
                 </div>`;
-
-
 }
