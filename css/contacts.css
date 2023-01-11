@@ -50,7 +50,7 @@ body {
     align-items: center;
     flex-direction: column;
     position: absolute;
-    top: 13%;
+    top: 10.5%;;
     right: 2%;
     width: 130px;
     height: 53px;
@@ -634,7 +634,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 143px;
-    height: 61px;
+    height: 51px;
     background: #2A3647;
     color: white;
     border-radius: 8px;
@@ -646,6 +646,31 @@ body {
 
 .saveButton:hover {
     background-color: #29ABE2;
+    transition: 125ms;
+    transform: scale(1.01);
+    box-shadow: 0px 8px 15px -7px gray;
+}
+
+.delete-button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 16px;
+    width: 136px;
+    height: 51px;
+    border: 1px solid #b81313;
+    border-radius: 8px;
+    color: #b81313;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.delete-button:hover {
+    border-color: #b81313;
+    color: #b81313;
     transition: 125ms;
     transform: scale(1.01);
     box-shadow: 0px 8px 15px -7px gray;

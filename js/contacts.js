@@ -77,12 +77,6 @@ async function addContact() {
         letters.push(firstLetter);
         letters.sort();
     }
-    if (!users[activeUser]) {
-        users[activeUser] = {};
-    }
-    if (!users[activeUser]['contacts']) {
-        users[activeUser]['contacts'] = [];
-    }
     users[activeUser].contacts.push(contact);
     sortNames();
     createLetters();
@@ -186,7 +180,6 @@ function showContact(i) {
     contactInfo.innerHTML += showBigConactDiv(getFirstLetters(name), name, email, phone, i, color);
     showContactAnimation(i);
     changeBckgrClr(i);
-
 }
 
 
@@ -259,6 +252,24 @@ async function saveContactChanges(i) {
     showContact(i);
     closeEditBox();
 }
+
+
+async function deleteContact(i) {
+    let deletedContact = users[activeUser]['contacts'][i];
+    let firstLetter = users[activeUser]['contacts'][i]['contactName'].charAt(0);
+    letters.splice(firstLetter, 2);
+    await backend.deleteItem('firstLetter', firstLetter);
+    await backend.setItem('letters', JSON.stringify(letters));
+    await backend.deleteItem('deletedContact', deletedContact);
+    users[activeUser]['contacts'].splice(i, 1);
+    await backend.setItem('users', JSON.stringify(users));
+    document.getElementById('bigContactSection').innerHTML = '';
+    loadLetters();
+    renderLetters();
+    renderContactList();
+    closeEditBox();
+}
+
 
 
 // show only the first letters of the name for the contact list

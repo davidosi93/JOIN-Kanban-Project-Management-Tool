@@ -111,6 +111,9 @@ function editContactBox(i, color, str) {
                         </form>
 
                         <div class="SaveButtonDiv">
+                            <div class="delete-button" onclick="deleteContact(${i})">
+                                <p>Delete</p>
+                            </div>
                             <div onclick="saveContactChanges(${i})" class="saveButton">
                                 <p>Save</p>
                             </div>
