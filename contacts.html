@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="template.js"></script>
+    <script src="./script.js"></script>
     <script src="./js/sign_up.js"></script>
     <script src="./js/logIn.js"></script>
     <script src="./js/contacts.js"></script>
@@ -16,19 +17,12 @@
 </head>
 
 <body onload="init(); includeHTML();">
-
+    <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
     <div class="content">
         <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
         <div class="rightContent">
-            <div class="headerContent">
-                <p>Kanban Project Management Tool</p>
-
-                <div class="headerContentRight">
-                    <img onclick="help()" class="information" src="/asseds/img/information.png">
-                    <img class="personLogIn" src="/asseds/img/logo.jpg">
-                </div>
-            </div>
+            <div id="headerContent"></div>
             <div class="mainContent">
 
                 <div id="contactList" class="contactList"></div>

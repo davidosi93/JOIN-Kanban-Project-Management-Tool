@@ -3,6 +3,7 @@ let allCategorys = [];
 let allSubtasks = [];
 let allContacts = [];
 let assignedChackedBox = [];
+let selectedSubtasksForProgress = [];
 let selectedSubtasks = [];
 let allLiCategory;
 let currentSelectedCategory;
@@ -36,35 +37,35 @@ let allContactsTest = [{
         'email': 'waldemar@gmx.de',
         'name': 'Waldemar Neumann',
         'phone': '15512 523555156',
-        // 'checked': false
+
     },
     {
         'color': '#448243',
         'email': 'david@gmx.de',
         'name': 'David Osipov',
         'phone': '15512 523555156',
-        // 'checked': false
+
     },
     {
         'color': '#73EE11',
         'email': 'artur@gmx.de',
         'name': 'Artur Marbach',
         'phone': '15512 523555156',
-        // 'checked': false
+
     },
     {
         'color': '#BD012A',
         'email': 'Jakob@gmx.de',
         'name': 'Jakob Neumann',
         'phone': '15512 523555156',
-        // 'checked': false
+
     },
     {
         'color': '#017637',
         'email': 'nikita@gmx.de',
         'name': 'Nikita Neumann',
         'phone': '15512 523555156',
-        // 'checked': false
+
     }
 ];
 
@@ -87,6 +88,7 @@ async function includeHTML() {
     }
 
     openAllContacts()
+
 }
 
 
@@ -96,11 +98,11 @@ function addTaskRight() {
 
 function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
+    selectedSubtasksForProgress = [];
 }
 
 function closeContainer() {
     document.getElementById('addTaskRight').classList.add('d-none');
-
 }
 
 function onSubmit(event) {
@@ -167,14 +169,19 @@ function addTasking() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j].split(' ');
+            let name = nameParts[j]['name'].split(' ');
+            let color = nameParts[j]['color'];
             initialsContainer += /*html*/ `
-            <div class="assignTask">
-                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
-            </div>
-          `;
+                <div class="assignTask">
+                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                </div>
+            `;
         }
 
+
+        let allNames = element['subtask'];
+        let currentName = selectedSubtasksForProgress.length
+        let progress = `${currentName}/${allNames.length} Done`;
 
         containerTodo.innerHTML += /*html*/ `
         <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -187,17 +194,27 @@ function addTasking() {
             <div>
                 <p>${element['description']}</p>
             </div>
+
+            <div class="progressContainer">
+                <div class="progressBarBig">
+                    <div id="progressBar" class="progressBar" style="width: 0%;">
+
+                    </div>
+                </div>
+                <span class="progressText">${progress}</span>
+                
+            </div>
+
             <div class="assignTaskSelect">
                 <div class="assignTaskSelectName">
                     ${initialsContainer}
                 </div>
                 <div class="assignTaskSelectImage">
-                   <img src="${element['prio']['coloredImage']}">
+                    <img src="${element['prio']['coloredImage']}">
                 </div>
             </div>
         </div>
         `;
-
     }
 
     for (let i = 0; i < progresses.length; i++) {
@@ -207,12 +224,13 @@ function addTasking() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j].split(' ');
-            initialsContainer += `
-            <div class="assignTask">
-                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
-            </div>
-          `;
+            let name = nameParts[j]['name'].split(' ');
+            let color = nameParts[j]['color'];
+            initialsContainer += /*html*/ `
+                <div class="assignTask">
+                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                </div>
+            `;
         }
 
         containerProgress.innerHTML += /*html*/ `
@@ -246,12 +264,13 @@ function addTasking() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j].split(' ');
-            initialsContainer += `
-            <div class="assignTask">
-                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
-            </div>
-          `;
+            let name = nameParts[j]['name'].split(' ');
+            let color = nameParts[j]['color'];
+            initialsContainer += /*html*/ `
+                <div class="assignTask">
+                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                </div>
+            `;
         }
 
         containerFeedback.innerHTML += /*html*/ `
@@ -285,14 +304,14 @@ function addTasking() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j].split(' ');
-            initialsContainer += `
-            <div class="assignTask">
-                <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
-            </div>
-          `;
+            let name = nameParts[j]['name'].split(' ');
+            let color = nameParts[j]['color'];
+            initialsContainer += /*html*/ `
+                <div class="assignTask">
+                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                </div>
+            `;
         }
-
 
         containerDone.innerHTML += /*html*/ `
        <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -347,6 +366,7 @@ function inputfieldValue() {
     resetSettingsCategory()
     resetSettingsChangeColor()
     resetSubtasks()
+    colorArray = [];
 }
 
 /** Area for Category */
@@ -512,40 +532,44 @@ function openContacts() {
     }
 }
 
-function selectContacted(id, i) {
-
+function selectContacted(id) {
     let chackedBox = document.getElementById(id);
 
     if (chackedBox.checked) {
-        assignedChackedBox.push(chackedBox.value);
+        // Add name and color to the assignedChackedBox array
+        let elementIndex = allContactsTest.findIndex(element => element.name === chackedBox.value);
+        let elementColor = allContactsTest[elementIndex]['color'];
+        assignedChackedBox.push({
+            'name': chackedBox.value,
+            'color': elementColor
+        });
     } else {
-        //remove value from array when it is unchecked
-        assignedChackedBox = assignedChackedBox.filter(e => e !== chackedBox.value);
+        // Remove name and color from the assignedChackedBox array when it is unchecked
+        assignedChackedBox = assignedChackedBox.filter(e => e.name !== chackedBox.value);
     }
 
-    addContact(i);
-
+    addContacts();
 }
 
-function addContact(i) {
+
+function addContacts() {
     let assignedAddContact = document.getElementById('assignedAddContact');
-
-
-    let contact = allContactsTest[i];
-    // Abrufen der Farbe des Kontakts
-    let color = contact.color;
-    console.log('Das ist die Farbe', color)
-
 
     assignedAddContact.innerHTML = '';
 
-    for (let j = 0; j < assignedChackedBox.length; j++) {
-        const element = assignedChackedBox[j];
-        const firstLetters = getFirstLetters(element);
+    for (let i = 0; i < assignedChackedBox.length; i++) {
+        const element = assignedChackedBox[i];
+
+        let nameParts = element['name'].split(' ');
+        let firstName = nameParts[0];
+        let lastName = nameParts[1];
+
+        // Display only the first letter of the first and last name
+        let addreviatedName = firstName[0] + lastName[0];
 
         assignedAddContact.innerHTML += /*html*/ `
-       <div class="assignedAddContactDivs" style="background-color: ${color}">
-        <p class="assignedAddContactLetters">${firstLetters}</p>          
+       <div class="assignedAddContactDivs" style="background-color: ${element['color']}">
+        <p class="assignedAddContactLetters">${addreviatedName}</p>          
         </div>
         `;
 
@@ -555,11 +579,7 @@ function addContact(i) {
 
 function resetCheckboxes() {
     assignedChackedBox = [];
-
-    // Get all checkbox elements in the document
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-    // Iterate over the checkboxes and set the checked property to false
     checkboxes.forEach(checkbox => checkbox.checked = false);
 }
 
@@ -579,7 +599,7 @@ function openAllContacts() {
         assignedToList.innerHTML += /*html*/ `
         <label class="assignedToListBox">
             <li class="taskAssignedTo">${element['name']}</li>
-            <input  onclick="selectContacted(id, ${i})" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}">
+            <input  onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}">
         </label>
     `;
     }
@@ -616,7 +636,6 @@ function addSubtasks() {
     document.getElementById('openSubtasks').value = '';
 }
 
-
 function Subtasks() {
     let allAddSubtasks = document.getElementById('allAddSubtask');
     allAddSubtasks.innerHTML = '';
@@ -636,7 +655,9 @@ function Subtasks() {
         checkbox.addEventListener('change', function() {
             const value = this.dataset.value;
             if (this.checked) {
-                selectedSubtasks.push(value);
+                if (!selectedSubtasks.includes(value)) {
+                    selectedSubtasks.push(value);
+                }
             } else {
                 const index = selectedSubtasks.indexOf(value);
                 if (index > -1) {
@@ -645,9 +666,8 @@ function Subtasks() {
             }
         });
     });
-
-    subtasksCancel();
 }
+
 
 function resetSubtasks() {
     document.getElementById('allAddSubtask').innerHTML = '';
@@ -657,45 +677,27 @@ function resetSubtasks() {
 
 /** Area for openCheckTask */
 
+
 function openCheckTask(taskIndex) {
     document.getElementById('closeContainer2').classList.remove('d-none');
     let container = document.getElementById('checkTaskSmall');
     container.innerHTML = '';
 
-    let names = allTasks[taskIndex];
-    let nameParts = (names.assignedTo);
-    let initialsContainer = '';
-    for (let j = 0; j < nameParts.length; j++) {
-        let name = nameParts[j].split(' ');
-        initialsContainer += /*html*/ `
-        <div class="openCheckAssignTask">
-            <div class="openCheckDivAssignTask">${name[0][0]}${name[1][0]}</div>
-        </div>
-      `;
-    }
-
-    let fullNames = allTasks[taskIndex];
-    let fullNameParts = (fullNames.assignedTo);
-    let fullNameInitialsContainer = '';
-    for (let j = 0; j < fullNameParts.length; j++) {
-        let name = nameParts[j];
-        fullNameInitialsContainer += /*html*/ `
-        <div class="openCheckAssignTaskDivFullName">
-            <p class="openCheckAssignTaskFullName">${name}</p>
-        </div>    
-      `;
-    }
-
+    let initialsName = openCheckTaskNames(taskIndex);
+    let fullinitialsName = openCheckTaskFullNames(taskIndex);
+    let subinitialContainer = openCheckTaskSubtasks(taskIndex);
+    let dateFormatted = dateOpenCheckTask(taskIndex);
 
     let task = allTasks[taskIndex];
-    let taskDate = new Date(task.dueDates);
-    let formattedDate = taskDate.toLocaleDateString('de-DE', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
 
-    container.innerHTML = /*html*/ `
+    container.innerHTML = openCheckTaskHTML(initialsName, fullinitialsName, subinitialContainer, dateFormatted, task, taskIndex);
+
+    openCheckTaskTakeInputValue()
+
+}
+
+function openCheckTaskHTML(initialsName, fullinitialsName, subinitialContainer, dateFormatted, task, taskIndex) {
+    return /*html*/ `
         <div class="openCheckTaskBigDiv">
             <div class="openCheckTasksCategory ${task.category.color}">
                 <p class="openCheckTasksCategoryTesx" >${task.category.name}</p>
@@ -710,7 +712,7 @@ function openCheckTask(taskIndex) {
             </div>
 
             <div class="openCheckTasksDateDiv">
-                <p class="openCheckTasksDateText">Due date:</p> <p class="openCheckTasksDateFormat">${formattedDate}</p>
+                <p class="openCheckTasksDateText">Due date:</p> <p class="openCheckTasksDateFormat">${dateFormatted}</p>
             </div>
 
             <div class="openCheckTasksPrioDiv">
@@ -727,84 +729,149 @@ function openCheckTask(taskIndex) {
                 <p class="openCheckTasksAssignedToTitle">Assigned To:</p>
                 <div class="openCheckTasksAssignedToSmallDiv">
                     <div>
-                        ${initialsContainer}
+                        ${initialsName}
                     </div>
                     <div class="openCheckTasksAssignedToBoxFullName">
-                       ${fullNameInitialsContainer}
+                    ${fullinitialsName}
                     </div>
                 </div>
+            </div>
+
+            <div id="openCheckTasksAssignedToTitle">
+                <p class="openCheckTasksAssignedToTitle">Subtasks:</p>
+                ${subinitialContainer}
             </div>
 
             <button class="toEditTaskButton">
                 <img onclick="openTaskToEdit(${taskIndex})" class="toEditTaskImage" src="/asseds/img/Group 8.png">
             </button>
-          <div onclick="closeContainer1()" class="closes2">&times;</div>
+            <div onclick="closeContainer1()" class="closes2">&times;</div>
         </div>
-       
+   
     `;
 }
+
+
+function dateOpenCheckTask(taskIndex) {
+    let task = allTasks[taskIndex];
+    let taskDate = new Date(task.dueDates);
+    let formattedDate = taskDate.toLocaleDateString('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    return formattedDate;
+}
+
+function openCheckTaskNames(taskIndex) {
+    let names = allTasks[taskIndex];
+    let nameParts = (names.assignedTo);
+    let initialsContainer = '';
+    for (let j = 0; j < nameParts.length; j++) {
+        let name = nameParts[j]['name'].split(' ');
+        let color = nameParts[j]['color'];
+        initialsContainer += /*html*/ `
+        <div class="openCheckAssignTask">
+            <div class="openCheckDivAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+        </div>
+      `;
+    }
+    return initialsContainer;
+
+}
+
+function openCheckTaskFullNames(taskIndex) {
+    let fullNames = allTasks[taskIndex];
+    let fullNameParts = (fullNames.assignedTo);
+    let fullNameInitialsContainer = '';
+    for (let j = 0; j < fullNameParts.length; j++) {
+        let name = fullNameParts[j]['name'];
+        fullNameInitialsContainer += /*html*/ `
+        <div class="openCheckAssignTaskDivFullName">
+            <p class="openCheckAssignTaskFullName">${name}</p>
+        </div>    
+      `;
+    }
+    return fullNameInitialsContainer;
+}
+
+function openCheckTaskSubtasks(taskIndex) {
+    let subtasks = allTasks[taskIndex];
+    let addSubtask = (subtasks.subtask);
+    let subtaskInitialsContainer = '';
+
+    if (addSubtask.length > 0) {
+        for (let i = 0; i < addSubtask.length; i++) {
+            let element = addSubtask[i];
+
+            subtaskInitialsContainer += /*html*/ `
+            <div class="checkboxSubtasksContainer">
+                <input onclick="putTheProgressBar(${taskIndex})" id="subtask-${i}" class="openCheckboxSubtasks" type="checkbox" data-value="${element}">
+                <p class="openSubtasksComent">${element}</p>
+          </div>   
+          `;
+        }
+        // else {
+        //     document.getElementById('openCheckTasksAssignedToTitle').classList.add('d-none');'
+    }
+
+    return subtaskInitialsContainer;
+}
+
+setTimeout(openCheckTaskTakeInputValue(), 10000);
+
+function putTheProgressBar(taskIndex) {
+    openCheckTaskTakeInputValue()
+    let task = allTasks[taskIndex];
+    let allNames = (task.subtask);
+    let currentName = selectedSubtasksForProgress.length;
+    let procent = allNames / currentName;
+    procent = Math.round(procent * 100);
+    document.getElementById('progressBar').style = `width: ${procent}%;`;
+    document.getElementById('progressBar').innerHTML = ``;
+}
+
+
+
+function openCheckTaskTakeInputValue() {
+    document.querySelectorAll('.openCheckboxSubtasks').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const value = this.dataset.value;
+            if (this.checked) {
+                if (!selectedSubtasksForProgress.includes(value)) {
+                    selectedSubtasksForProgress.push(value);
+                }
+            } else {
+                const index = selectedSubtasksForProgress.indexOf(value);
+                if (index > -1) {
+                    selectedSubtasksForProgress.splice(index, 1);
+                }
+            }
+        });
+    });
+}
+
 
 
 function openTaskToEdit(taskIndex) {
     document.getElementById('checkTaskSmall').classList.add('d-none');
     document.getElementById('toEditTaskMainDiv').classList.remove('d-none');
-    // let toEditTask = document.getElementById('toEditTaskMainDiv');
-    // toEditTask.innerHTML = '';
 
     let task = allTasks[taskIndex];
-
-    let taskDate = new Date(task.dueDates);
-    let formattedDate = taskDate.toISOString().substring(0, 10);
-
-    // let nameParts = (task.assignedTo);
-    // let initialsContainer = '';
-
-    // for (let j = 0; j < nameParts.length; j++) {
-    //     let name = nameParts[j].split(' ');
-    //     initialsContainer += /*html*/ `
-    //         <div class="assignTask">
-    //             <div class="divAssignTask">${name[0][0]}${name[1][0]}</div>
-    //         </div>
-    //       `;
-    // }
-
-    let nameParts = (task.assignedTo);
-    let assignedToList = document.getElementById('assignedToListToEdit');
-
-    for (let j = 0; j < nameParts.length; j++) {
-        let name = nameParts[j].split(' ');
-
-        let label = document.createElement('label');
-        label.classList.add('assignedToListBox');
-
-        let checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.value = name;
-        checkbox.id = name + 'ToEdit';
-        checkbox.classList.add('inputCheckbox');
-        checkbox.setAttribute('onclick', "selectContactedToEdit(id, " + taskIndex + ")");
-        checkbox.checked = true;
-
-        let li = document.createElement('li');
-        li.classList.add('taskAssignedTo');
-        li.textContent = name;
-
-        let div = document.createElement('div');
-        div.classList.add('divAssignTask');
-        div.textContent = name[0][0] + name[1][0];
-
-        label.appendChild(checkbox);
-        label.appendChild(div);
-        label.appendChild(li);
-
-
-        console.log('das ist der assignedToList Wert', assignedToList);
-
-        assignedToList.appendChild(label);
-    }
-
+    let duaDate = openTaskToEditDate(taskIndex);
     let toEditTaskMainDiv = document.getElementById('toEditTaskMainDiv');
-    toEditTaskMainDiv.innerHTML = /*html*/ `
+    toEditTaskMainDiv.innerHTML = openTaskToEditHTML(task, duaDate, taskIndex);
+
+    showContactsInToEdit(taskIndex);
+    let addContacts = openTaskToEditContacts();
+    document.getElementById('assignedAddContacts').innerHTML = addContacts;
+    openTaskToEditPrioImage(taskIndex);
+
+}
+
+function openTaskToEditHTML(task, duaDate, taskIndex) {
+    return /*html*/ `
         <div class="toEditopenCheckTaskBigDiv" id="editTaskForm">
             <div class="toEditTaskTitleDiv">
                 <label class="titleInputFields" for="editTaskTitle">Title</label>
@@ -818,7 +885,7 @@ function openTaskToEdit(taskIndex) {
 
             <div class="toEditTaskTitleDiv">
                 <label class="titleInputFields" for="editTaskDueDate">Due date</label>
-                <input class="toEditTaskTitelInput" type="date" id="editTaskDueDate" value="${formattedDate}">
+                <input class="toEditTaskTitelInput" type="date" id="editTaskDueDate" value="${duaDate}">
             </div>
 
             <p class="titleInputFields">Prio</p>
@@ -840,45 +907,15 @@ function openTaskToEdit(taskIndex) {
                 <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
             </div>
 
-            <ul id="assignedToListToEdit" class="assignedToListToEdit d-none">
-                <label class="assignedToListBox">
-                    <li class="taskAssignedTo">You</li>
-                    <input onclick="selectContactedToEdit('You')" class="inputCheckbox" type="checkbox" value="You" id="You">
-                </label>
-
-
-                <label class="assignedToListBox">
-                    <li class="taskAssignedTo">Artur Marbach</li>
-                    <input  onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Artur Marbach" id="Artur_MarbachToEdit">
-                </label>
-
-                <label class="assignedToListBox">
-                    <li class="taskAssignedTo">David Osipov</li>
-                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="David Osipov" id="David_OsipovToEdit">
-                </label>
-
-                <label class="assignedToListBox">
-                    <li class="taskAssignedTo">Waldemar Neumann</li>
-                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Waldemar Neumann" id="Waldemar_NeumannToEdit">
-                </label>
-
-                <label class="assignedToListBox">
-                    <li class="taskAssignedTo">Jakob Neumann</li>
-                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Jakob Neumann" id="Jakob_NeumannToEdit">
-                </label>
-
-                <label class="assignedToListBox">
-                    <li class="taskAssignedTo">Oscar Neumann</li>
-                    <input onclick="selectContactedToEdit(id, ${taskIndex})" class="inputCheckbox" type="checkbox" value="Oscar Neuamnn" id="Oscar_NeumannToEdit">
-                </label>
-
-            </ul>
-
-            <div class="assignedAddContactToEdit" id="assignedAddContact">
-                ${initialsContainer}
+            <div id="assignedToListToEdit" class="assignedToListToEdit d-none">
+            
             </div>
 
-            <button class="toEditTaskSaveButton" onclick="closeTaskToEdit()">
+            <div class="assignedAddContactToEdit" id="assignedAddContacts">
+              
+            </div>
+
+            <button class="toEditTaskSaveButton" onclick="saveTask(${taskIndex}); closeTaskToEdit();">
                 <p class="toEditTaskButtonText">Ok</p>
                 <img class="toEditTaskImage" src="/asseds/img/check.png">
             </button>
@@ -886,6 +923,34 @@ function openTaskToEdit(taskIndex) {
             <div onclick="closeContainer1()" class="closes2">&times;</div>
         </div>
     `;
+
+}
+
+
+function openTaskToEditDate(taskIndex) {
+    let task = allTasks[taskIndex];
+    let taskDate = new Date(task.dueDates);
+    let formattedDate = taskDate.toISOString().substring(0, 10);
+    return formattedDate;
+}
+
+function openTaskToEditContacts() {
+    let initialsContainer = '';
+    for (let j = 0; j < assignedChackedBox.length; j++) {
+        let name = assignedChackedBox[j]['name'].split(' ');
+        let color = assignedChackedBox[j]['color'];
+        initialsContainer += /*html*/ `
+            <div class="assignTask">
+                <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+            </div>
+          `;
+    }
+
+    return initialsContainer;
+}
+
+function openTaskToEditPrioImage(taskIndex) {
+    let task = allTasks[taskIndex];
 
     if (task.prio.text === 'Urgent') {
         document.getElementById('toEditRed').classList.add('red');
@@ -897,11 +962,14 @@ function openTaskToEdit(taskIndex) {
         document.getElementById('toEditGreen').classList.add('green');
         document.getElementById('toEditGreenImg').src = '/asseds/img/pfeil-unten-weiss.png';
     }
+
 }
 
 function closeTaskToEdit() {
     document.getElementById('checkTaskSmall').classList.remove('d-none');
     document.getElementById('toEditTaskMainDiv').classList.add('d-none');
+    assignedChackedBox = [];
+    colorArray = [];
 }
 
 function openContactsToEdit() {
@@ -914,88 +982,105 @@ function openContactsToEdit() {
         allContacts.classList.add('d-none');
         document.getElementById('openContactToEdit').classList.remove('assignedDivBorder');
     }
+
+
 }
 
-function selectContactedToEdit(id, taskIndex) {
-    let checkedBox = document.getElementById(id);
-    let value = checkedBox.value;
 
-    if (checkedBox.checked) {
-        // Only add value to the array if it is not already present
-        if (!allTasks[taskIndex].assignedTo.find(item => item === value)) {
-            allTasks[taskIndex].assignedTo.push(value);
-        }
+function selectContactedToEdit(id) {
+    let contact = allContactsTest.find(contact => contact.name === id);
+
+    let index = assignedChackedBox.findIndex(c => c.name === contact.name);
+    if (index === -1) {
+
+        assignedChackedBox.push({ name: contact.name, color: contact.color });
+
     } else {
-        // Remove value from the array when it is unchecked
-        allTasks[taskIndex].assignedTo = allTasks[taskIndex].assignedTo.filter(item => item !== value);
+
+        assignedChackedBox.splice(index, 1);
+    }
+    let addContactss = openTaskToEditContacts();
+    document.getElementById('assignedAddContacts').innerHTML = addContactss;
+}
+
+
+
+function showContactsInToEdit(taskIndex) {
+    let toEdit = document.getElementById('assignedToListToEdit');
+    toEdit.innerHTML = '';
+
+    let currentContacts = allTasks[taskIndex];
+
+    for (let i = 0; i < allContactsTest.length; i++) {
+        const element = allContactsTest[i];
+
+        let isAssigned = false;
+        for (let j = 0; j < currentContacts.assignedTo.length; j++) {
+            if (currentContacts.assignedTo[j].name === element['name']) {
+                isAssigned = true;
+                break;
+            }
+        }
+
+        if (isAssigned) {
+            toEdit.innerHTML += /*html*/ `
+              <label class="assignedToListBox">
+                  <li class="taskAssignedTo">${element['name']}</li>
+                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}" checked>
+
+              </label>
+          `;
+        } else {
+            toEdit.innerHTML += /*html*/ `
+              <label class="assignedToListBox">
+                  <li class="taskAssignedTo">${element['name']}</li>
+                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}">
+              </label>
+          `;
+        }
     }
 
-    // openTaskToEdit();
-    // addTasking()
+    showContactsInToEditPushInAssigned()
+
 }
 
+function showContactsInToEditPushInAssigned() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    for (let i = 0; i < checkboxes.length; i++) {
+        const checkbox = checkboxes[i];
+        const name = checkbox.value;
+        const color = allContactsTest.find(contact => contact.name === name).color;
+        assignedChackedBox.push({
+            name,
+            color
+        });
+    }
+}
+
+function saveTask(taskIndex) {
+    let updatedTitle = document.getElementById("editTaskTitle").value;
+    let updatedDescription = document.getElementById("editTaskDescription").value;
+    let updatedDueDate = document.getElementById("editTaskDueDate").value;
+
+    allTasks[taskIndex].title = updatedTitle;
+    allTasks[taskIndex].description = updatedDescription;
+    allTasks[taskIndex].dueDates = updatedDueDate;
+    if (Object.keys(colorArray).length > 0) {
+        allTasks[taskIndex].prio.color = colorArray.color;
+        allTasks[taskIndex].prio.text = colorArray.text;
+        allTasks[taskIndex].prio.coloredImage = colorArray.coloredImage;
+        allTasks[taskIndex].prio.whiteImage = colorArray.whiteImage;
+    }
+
+    for (let i = 0; i < assignedChackedBox.length; i++) {
+        if (allTasks[taskIndex].assignedTo.map(e => e.name).indexOf(assignedChackedBox[i].name) === -1) {
+            allTasks[taskIndex].assignedTo.push(assignedChackedBox[i]);
+        }
+    }
+
+    allTasks[taskIndex].assignedTo = allTasks[taskIndex].assignedTo.filter(e => assignedChackedBox.map(el => el.name).indexOf(e.name) !== -1);
 
 
-// function openTaskToEdit(taskIndex) {
-//     document.getElementById('checkTaskSmall').classList.add('d-none');
-//     document.getElementById('toEditTaskMainDiv').classList.remove('d-none');
-//     // let toEditTask = document.getElementById('toEditTaskMainDiv');
-//     // toEditTask.innerHTML = '';
-
-//     let task = allTasks[taskIndex];
-
-//     let toEditTaskMainDiv = document.getElementById('toEditTaskMainDiv');
-//     toEditTaskMainDiv.innerHTML = /*html*/ `
-//         <div class="toEditopenCheckTaskBigDiv" id="editTaskForm">
-//             <div class="toEditTaskTitleDiv">
-//                 <label class="titleInputFields" for="editTaskTitle">Title</label>
-//                 <input class="toEditTaskTitelInput" type="text" id="editTaskTitle" value="${task.title}">
-//             </div>
-
-//             <div class="toEditTaskTitleDiv">
-//             <label class="titleInputFields" for="editTaskDescription">Description</label>
-//             <textarea class="toEditTaskDescriptionInput" id="editTaskDescription">${task.description}</textarea>
-//         </div>
-
-//             <div class="toEditTaskTitleDiv">
-//                 <label class="titleInputFields" for="editTaskDueDate">Due date</label>
-//                 <input class="toEditTaskTitelInput" type="date" id="editTaskDueDate" value="${task.dueDate}">
-//             </div>
-
-
-//             <label for="editTaskPrio">Priority:</label>
-//             <select id="editTaskPrio">
-//                 <option value="low" ${task.prio === 'low' ? 'selected' : ''}>Low</option>
-//                 <option value="medium" ${task.prio === 'medium' ? 'selected' : ''}>Medium</option>
-//                 <option value="high" ${task.prio === 'high' ? 'selected' : ''}>High</option>
-//             </select>
-//             <br>
-//             <label for="editTaskAssignedTo">Assigned to:</label>
-//             <input type="text" id="editTaskAssignedTo" value="${task.assignedTo.join(', ')}">
-//             <br>
-//             <input type="submit" value="Save">
-//             <div onclick="closeContainer1()" class="closes2">&times;</div>
-//         </div>
-//     `;
-
-//     let form = document.getElementById('editTaskForm');
-//     form.addEventListener('submit', function(event) {
-//         event.preventDefault();
-
-//         let newTitle = document.getElementById('editTaskTitle').value;
-//         let newDescription = document.getElementById('editTaskDescription').value;
-//         let newDueDate = document.getElementById('editTaskDueDate').value;
-//         let newPrio = document.getElementById('editTaskPrio').value;
-//         let newAssignedTo = document.getElementById('editTaskAssignedTo').value.split(',').map(s => s.trim());
-
-//         allTasks[taskIndex].title = newTitle;
-//         allTasks[taskIndex].description = newDescription;
-//         allTasks[taskIndex].dueDate = newDueDate;
-//         allTasks[taskIndex].prio = newPrio;
-//         allTasks[taskIndex].assignedTo = newAssignedTo;
-
-//         // Update the task's details in the user interface
-//         // (e.g. by calling a function to render the updated task)
-//     });
-
-// }
+    addTasking();
+    openCheckTask(taskIndex);
+}

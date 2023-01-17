@@ -230,7 +230,6 @@ body {
     width: 35px;
     height: 35px;
     padding: 6px;
-    background-color: aqua;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -260,6 +259,13 @@ body {
     width: 623px;
     height: 87vh;
     border-radius: 30px;
+    overflow: scroll;
+}
+
+.checkTaskSmall::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 .toEditTaskMainDiv {
@@ -518,4 +524,129 @@ body {
     align-items: center;
     margin-top: 10px;
     margin-left: 10px;
+}
+
+.openCheckboxSubtasks {
+    max-width: 25px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.openSubtasksComent {
+    padding-left: 15px;
+    font-size: 21px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.progressContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.progressBarBig {
+    width: 80px !important;
+    height: 8px;
+    background-color: #f4f4f4;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressBar {
+    height: 100%;
+    background-color: #29ABE2;
+    border-radius: 2px;
+}
+
+.progressText {
+    white-space: nowrap;
+}
+
+@media(max-width: 1500px) {
+    .containerInputfield {
+        margin-left: 450px;
+    }
+}
+
+@media(max-width: 1450px) {
+    .containerInputfield {
+        margin-left: 400px;
+    }
+}
+
+@media(max-width: 1370px) {
+    .containerInputfield {
+        margin-left: 350px;
+    }
+}
+
+@media(max-width: 1310px) {
+    .containerTodoList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .containerInputfield {
+        margin-left: 300px;
+    }
+}
+
+@media(max-width: 1270px) {
+    .containerTodoList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .containerInputfield {
+        margin-left: 250px;
+    }
+}
+
+@media(max-width: 1215px) {
+    .containerTodoList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .containerInputfield {
+        margin-left: 200px;
+    }
+}
+
+@media(max-width: 1160px) {
+    .containerTodoList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .containerInputfield {
+        margin-left: 150px;
+    }
+}
+
+@media(max-width: 1105px) {
+    .containerTodoList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .containerInputfield {
+        margin-left: 100px;
+    }
+}
+
+@media(max-width: 1050px) {
+    .containerTodoList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .containerInputfield {
+        margin-left: 50px;
+    }
 }
