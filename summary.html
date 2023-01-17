@@ -11,12 +11,13 @@
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
     <script src="template.js"></script>
     <script src="js/summary.js"></script>
+    <script src="js/board.js"></script>
     <script src="/js/desktop_template.js"></script>
 
 
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), watchTask()">
     <div class="content">
         <div w3-include-html="/asseds/templates/desktop_template.html"></div>
 
@@ -57,8 +58,6 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
                 </div>
             </div>
-
-
             <div id="mainContainer">
                 <div class="mainContent">
                     <div class="headline">
@@ -67,33 +66,36 @@
 
                     </div>
                 </div>
-                <div class="taskContainer">
-                    <a href="board.html">
-                        <div class="boardContainer">
-                            <div><b>5</b></div>
-                            <p>Tasks in Board</p>
+                <div style="display:flex">
+                    <div class="left-Container">
+                        <div class="taskContainer">
+                            <a href="board.html">
+                                <div class="boardContainer">
+                                    <div id="task-board"><b>5</b></div>
+                                    <p>Tasks in<br> Board</p>
+                                </div>
+                            </a>
+                            <a href="board.html">
+                                <div class="boardContainer">
+                                    <div id="task-progress"><b>2</b></div>
+                                    <p>Tasks in <br>Progress</p>
+                                </div>
+                            </a>
+                            <a href="board.html">
+                                <div class="boardContainer">
+                                    <div id="task-feedback"><b>2</b></div>
+                                    <p>Awaiting  <br>Feedback</p>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                    <a href="board.html">
-                        <div class="boardContainer">
-                            <div><b>2</b></div>
-                            <p>Tasks in Progress</p>
-                        </div>
-                    </a>
-                    <a href="board.html">
-                        <div class="boardContainer">
-                            <div><b>2</b></div>
-                            <p>Awaiting Feedback</p>
-                        </div>
-                    </a>
-                </div>
 
+                        
                 <div class="deadlineContainer">
                     <a href="board.html">
                         <div class="deadlineTasks">
                             <img src="/asseds/img/Group 7.png">
                             <div>
-                                <div><b>1</b></div>
+                                <div id="task-urgent"><b>1</b></div>
                                 <p>Urgent</p>
                             </div>
 
@@ -102,20 +104,15 @@
                                 <p> Upcoming Deadline</p>
                             </div>
                         </div>
-                    </a>
-
-                    <div class="greet">Good Morning,<br>
-                        <p>Artur Marbach</p>
-                    </div>
+                    </a> 
                 </div>
-
 
                 <div class="finishTask">
                     <a href="board.html">
                         <div onmouseover="onHoverLeft()" onmouseout="offHoverLeft()" class="finishContainer">
                             <img id="left-img" href="board.html" src="/asseds/img/Frame 59.png">
                             <div>
-                                <div><b>1</b></div>
+                                <div id="task-todo"><b>1</b></div>
                                 <p>To-do</p>
                             </div>
                         </div>
@@ -124,17 +121,30 @@
                         <div onmouseover="onHoverRight()" onmouseout="offHoverRight()" class="finishContainer">
                             <img id="right-img" href="board.html" src="/asseds/img/Group 7 (1).png">
                             <div>
-                                <div><b>1</b></div>
+                                <div id="task-done"><b>1</b></div>
                                 <p>Done</p>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="greet">Good Morning,<br>
-                    <p>Artur Marbach</p>
+                    </div>
+                    <div class="right-Container">
+                        <div class="greet">Good Morning,<br>
+                            <p>Artur Marbach</p>
+                        </div>
+                    </div>
                 </div>
+                
+                
+
+
+
+                
+                
             </div>
         </div>
+
+           
 </body>
 
 </html>

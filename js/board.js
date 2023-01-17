@@ -9,6 +9,28 @@ let currentSelectedCategory;
 let currentDraggedElement;
 let currentCategoryColor;
 let newCategorySelected = false;
+
+function watchTask(){
+    document.getElementById('task-board').innerHTML ='';
+    document.getElementById('task-board').innerHTML =`<b>${allTasks.length}</b>`;
+
+    document.getElementById('task-progress').innerHTML ='';
+    document.getElementById('task-progress').innerHTML =`<b>${allTasks.length}</b>`;
+
+    document.getElementById('task-feedback').innerHTML ='';
+    document.getElementById('task-feedback').innerHTML =`<b>${allTasks.length}</b>`;
+
+    document.getElementById('task-urgent').innerHTML ='';
+    document.getElementById('task-urgent').innerHTML =`<b>${allTasks.length}</b>`;
+
+    document.getElementById('task-todo').innerHTML ='';
+    document.getElementById('task-todo').innerHTML =`<b>${allTasks.length}</b>`;
+
+    document.getElementById('task-done').innerHTML ='';
+    document.getElementById('task-done').innerHTML =`<b>${allTasks.length}</b>`;
+}
+
+
 let allContactsTest = [{
         'color': '#3FB1C6',
         'email': 'waldemar@gmx.de',
@@ -25,7 +47,7 @@ let allContactsTest = [{
     },
     {
         'color': '#73EE11',
-        'email': 'artut@gmx.de',
+        'email': 'artur@gmx.de',
         'name': 'Artur Marbach',
         'phone': '15512 523555156',
         // 'checked': false
