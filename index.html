@@ -20,12 +20,15 @@
 
 <body onload="init()">
     <div class="container">
+        <div class="mobile-background">
+            <div class="big-white-Logo"></div>
+        </div>
         <img class="big-Logo" src="asseds/img/biglogo.png">
+        <div class="sign-Up-area">
+            <p>Not a Join User?</p>
+            <a href="sign_up.html"><button>Sign Up</button></a>
+        </div>
         <div id="myElem">
-            <div class="sign-Up-area">
-                <p>Not a Join User?</p>
-                <a href="sign_up.html"><button>Sign Up</button></a>
-            </div>
             <form onsubmit="login(); return false" class="log-In-area">
                 <div class="header">
                     <h1>Log In</h1>
@@ -38,13 +41,13 @@
                     <div class="inputField">
                         <input id="input2" onkeyup="changeImg()" type="password" required placeholder="Password">
                         <img id="password" class="inputFieldIMG" src="asseds/img/password.png">
-                        <img id="password-nonvisible" onclick="setInputToText()" class="inputFieldIMG d-none" src="asseds/img/password_nonvisible.png">
+                        <img id="password-nonvisible" onclick="setInputToText()" class="inputFieldIMG d-none"
+                            src="asseds/img/password_nonvisible.png">
                         <img id="password-visible" class="inputFieldIMG d-none" src="asseds/img/password_visible.png">
                     </div>
                 </div>
                 <div id="wrongInput" class="d-none">
-                    <p>Sorry, it looks like your login information was incorrect. Please check your email and
-                        password and try again.</p>
+                    <p>Wrong Input!</p>
                 </div>
                 <div class="remem-me">
                     <div class="remember">

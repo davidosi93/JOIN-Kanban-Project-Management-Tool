@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    background-color: #F6F7F8;
+    overflow: hidden;
 }
 
 .d-none {
@@ -20,7 +22,6 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: #F6F7F8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,10 +32,6 @@ body {
     height: 10%;
     z-index: 2;
     position: absolute;
-    left: 5.35%;
-    right: 87.71%;
-    top: 7.81%;
-    bottom: 80.28%;
 }
 
 @keyframes myAnim {
@@ -62,7 +59,7 @@ body {
     width: 287px;
     height: 51px;
     right: 3%;
-    top: 67px;
+    top: 7%;
 }
 
 .sign-Up-area p {
@@ -94,9 +91,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 35px 0px;
-    width: 652px;
-    height: 513px;
+    width: 100%;
     background: #FFFFFF;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
@@ -185,7 +182,7 @@ body {
     gap: 35px;
     width: 335px;
     height: 19px;
-    margin-top: 10%;
+    margin-top: 6%;
 }
 
 .remem-me p {
@@ -224,7 +221,7 @@ body {
     gap: 35px;
     width: 341px;
     height: 51px;
-    margin-top: 7%;
+    margin-top: 5%;
 }
 
 .buttons a {
@@ -284,6 +281,12 @@ body {
 #myElem {
     animation: cssAnimation 400ms 600ms forwards;
     visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32rem;
+    position: relative;
+    top: 3%;
 }
 
 @keyframes cssAnimation {
@@ -305,5 +308,168 @@ body {
     100% {
         opacity: 1;
         visibility: visible;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .header {
+        width: 100%;
+    }
+
+    .header h1 {
+        font-size: 3rem;
+    }
+
+    .header:before {
+        width: 0px;
+        height: 88px;
+        border: 1px solid #29ABE2;
+        transform: rotate(90deg);
+        bottom: -60%;
+        left: 50%;
+    }
+
+    #myElem {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 2rem;
+        width: 90%;
+        margin-bottom: -10%;
+        top: unset;
+    }
+
+    .big-Logo {
+        opacity: 0;
+        animation: unset;
+        z-index: -4;
+    }
+
+    .mobile-background {
+        height: 100vh;
+        width: 100vw;
+        animation: mobileAnimation 600ms forwards;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    @keyframes mobileAnimation {
+        0% {
+            background-color: #2A3647;
+        }
+
+        25% {
+            background-color: #2A3647;
+        }
+
+        50% {
+            background-color: #2A3647;
+        }
+
+        75% {
+            background-color: #2A3647;
+        }
+
+        100% {
+            background-color: #F6F7F8;
+        }
+    }
+
+    .big-white-Logo {
+        opacity: 1;
+        animation: mobileLogoAnim 1s linear 200ms 1 normal both;
+        height: 11%;
+        width: 11%;
+        position: fixed;
+    }
+
+    @keyframes mobileLogoAnim {
+        0% {
+            transform: scale(3.5);
+            top: 40%;
+            left: 45%;
+            background-image: url('../asseds/img/bigWhiteLogo.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        50% {
+            background-image: url('../asseds/img/biglogo.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        100% {
+            background-image: url('../asseds/img/biglogo.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            transform: scale(1);
+            top: 3%;
+            left: 4%;
+        }
+    }
+
+    .sign-Up-area {
+        position: absolute;
+        top: 89%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+    }
+
+    .log-In-area {
+        Width: 100%;
+        Height: 20%;
+        gap: 20px;
+    }
+
+    #input1 {
+        margin-bottom: 8%;
+    }
+
+    .log-In-input {
+        width: 90%;
+        margin-top: 0;
+    }
+
+    .log-In-input input {
+        width: 100%;
+        height: 41px;
+    }
+
+    .remem-me {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 14px;
+        width: 90%;
+
+    }
+
+    .buttons {
+        gap: 15px;
+        height: 24%;
+        margin-top: 0;
+        width: unset;
+    }
+
+    .log-in-btn {
+        width: 180px;
+        height: 51px;
+        padding: 4px 0px;
+        font-size: 16px;
+    }
+
+    .log-in-guest {
+        width: 180px;
+        height: 51px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .buttons {
+        flex-direction: column;
     }
 }
