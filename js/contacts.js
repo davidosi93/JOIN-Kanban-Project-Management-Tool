@@ -1,6 +1,6 @@
 let letters = [];
 
-async function init() {
+async function contactInit() {
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
     letters = JSON.parse(backend.getItem('letters')) || [];
@@ -72,19 +72,25 @@ async function addContact() {
         'contactColor': color,
         'contactInitials': getFirstLetters(document.getElementById('input1').value),
     };
-    let firstLetter = contact.contactName.charAt(0);
+    pushLetterToArray(contact.contactName.charAt(0));
+    users[activeUser].contacts.push(contact);
+    sortNamesAndCreateLetters();
+    saveUsersAndLetters(users, letters);
+    lastStepsBeforeContactCreate();
+}
+
+
+function pushLetterToArray(firstLetter) {
     if (!letters.includes(firstLetter)) {
         letters.push(firstLetter);
         letters.sort();
     }
-    users[activeUser].contacts.push(contact);
+}
+
+
+function sortNamesAndCreateLetters() {
     sortNames();
     createLetters();
-    await backend.setItem('users', JSON.stringify(users));
-    await backend.setItem('letters', JSON.stringify(letters));
-    emptyInputFields();
-    closeContactBox();
-    showContactBtn();
 }
 
 
@@ -107,6 +113,12 @@ function createLetters() {
         contact.innerHTML += contactLetterHeadline(firstLetter);
     }
     createContact();
+}
+
+
+async function saveUsersAndLetters(users, letters) {
+    await backend.setItem('users', JSON.stringify(users));
+    await backend.setItem('letters', JSON.stringify(letters));
 }
 
 
@@ -136,6 +148,13 @@ function createBigSection(name, email, letter, color, firstLetter, i) {
         let contactDiv = showContactDiv(name, email, letter, color, i);
         contactList.innerHTML += contactDiv;
     }
+}
+
+
+function lastStepsBeforeContactCreate() {
+    emptyInputFields();
+    closeContactBox();
+    showContactBtn();
 }
 
 
@@ -257,7 +276,7 @@ async function saveContactChanges(i) {
 async function deleteContact(i) {
     let deletedContact = users[activeUser]['contacts'][i];
     let firstLetter = users[activeUser]['contacts'][i]['contactName'].charAt(0);
-    letters.splice(firstLetter, 2);
+    letters.splice(firstLetter);
     await backend.deleteItem('firstLetter', firstLetter);
     await backend.setItem('letters', JSON.stringify(letters));
     await backend.deleteItem('deletedContact', deletedContact);
