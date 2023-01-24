@@ -152,9 +152,9 @@ function filterInprogress() {
             `;
         }
 
-        // let allNames = element['subtask'];
-        // let currentName = element['subtaskChecked'];
-        // let progress = `${currentName.length}/${allNames.length} Done`;
+        let allNames = element['subtask'];
+        let currentName = element['subtaskChecked'];
+        let progress = `${currentName.length}/${allNames.length} Done`;
 
         renderProgress.innerHTML += /*html*/ `
             <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">

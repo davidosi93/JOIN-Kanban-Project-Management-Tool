@@ -1,5 +1,3 @@
-/* Ab hier wird der rechte Content bestimmt*/
-
 body {
     margin: 0;
 }
@@ -78,6 +76,18 @@ body {
     display: flex;
 }
 
+.left-Container{
+    width: 60%;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.right-Container{
+    width: 40%;
+    margin-right: 10%;
+    
+}
+
 .leftContent {
     width: 50%;
     margin-left: 10%;
@@ -100,9 +110,10 @@ body {
 }
 
 .boardContainer {
-    padding: 25px;
+    padding: 30px;
     background-color: white;
     border-radius: 10px;
+    border: 1px solid lightgray;
 }
 
 .boardContainer div {
@@ -129,11 +140,16 @@ body {
     justify-content: space-around;
     align-items: center;
     background-color: white;
-    margin-top: 20px;
-    padding: 25px;
+    margin-top: 30px;
+    padding: 5px;
     text-decoration: none;
     color: black;
     border-radius: 10px;
+}
+
+.deadlineContainer a{
+    text-decoration: none;
+    color: black;
 }
 
 
@@ -151,7 +167,8 @@ body {
 
 .deadlineContainer p {
     margin: 0;
-    font-size: 19px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .deadlineContainer:hover {
@@ -159,6 +176,18 @@ body {
     transform: scale(1.05);
     color: white;
     background-color: #2A3647;
+}
+
+.deadlineContainer a:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    color: white;
+    background-color: #2A3647;
+}
+
+.deadlineTasks{
+    display: flex;
+    margin: 10px;
 }
 
 .deatlineDate {
@@ -233,8 +262,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    font-size: 60px;
+    margin-top: 220px;
+    font-size: 50px;
     margin-left: 5%;
 }
 
@@ -243,6 +272,8 @@ body {
     margin-bottom: 0;
     color: #29ABE2;
 }
+
+
 
 
 
