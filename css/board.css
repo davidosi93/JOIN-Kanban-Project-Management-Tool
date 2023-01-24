@@ -164,7 +164,7 @@ body {
 
 .containerTodo {
     width: 250px;
-    height: 300px;
+    min-height: 470px;
     margin-top: 10px;
 }
 
@@ -439,7 +439,7 @@ body {
     background: #2A3647;
     border-radius: 10px;
     position: absolute;
-    top: 665px;
+    top: 650px;
     left: 530px;
     cursor: pointer;
     display: flex;
@@ -486,6 +486,29 @@ body {
 
 .toEditTaskSaveButton:hover {
     background-color: #29ABE2;
+}
+
+.deleteTaskButton {
+    width: 57px;
+    height: 57px;
+    background: #2A3647;
+    border-radius: 10px;
+    position: absolute;
+    top: 650px;
+    left: 450px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteTaskButton:hover {
+    background-color: #29ABE2;
+}
+
+.deleteTaskImage {
+    width: 30px;
+    height: 30px;
 }
 
 .toEditTaskButtonText {
@@ -567,6 +590,60 @@ body {
     white-space: nowrap;
 }
 
+.askDeleteTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.deleteTaskTesx {
+    font-size: 21px;
+}
+
+.deleteTaskAnswer {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #2A3647;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.bigDivDeleteTask {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+
+
+/* Area for render Tasks */
+
+.containerBlock {
+    padding: 20px;
+    background-color: white;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    height: fit-content;
+    cursor: pointer;
+}
+
 @media(max-width: 1500px) {
     .containerInputfield {
         margin-left: 450px;
@@ -575,22 +652,22 @@ body {
 
 @media(max-width: 1450px) {
     .containerInputfield {
-        margin-left: 400px;
+        margin-left: 380px;
     }
 }
 
 @media(max-width: 1370px) {
     .containerInputfield {
-        margin-left: 350px;
+        margin-left: 320px;
     }
-}
-
-@media(max-width: 1310px) {
     .containerTodoList {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
     }
+}
+
+@media(max-width: 1310px) {
     .containerInputfield {
         margin-left: 300px;
     }

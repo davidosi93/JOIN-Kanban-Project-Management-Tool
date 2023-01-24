@@ -130,9 +130,12 @@ body {
 }
 
 .relativeContainer {
-    position: relative;
     display: flex;
     align-items: center;
+}
+
+.smallRelativeContainer {
+    position: relative;
 }
 
 .dateImg {
@@ -145,8 +148,8 @@ body {
     width: 15px;
     height: 15px;
     position: absolute;
-    right: 35px;
-    top: 15px;
+    right: 20px;
+    top: -8px;
 }
 
 .checkbox {
@@ -172,6 +175,11 @@ body {
     cursor: pointer;
     font-size: 18px;
     background-color: #FFFFFF;
+}
+
+.btnClear:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
 }
 
 .btnCreate {
@@ -494,8 +502,8 @@ select {
 
 .subtsasksCancelImg {
     position: absolute;
-    right: 70px;
-    top: 10px;
+    right: 40px;
+    top: -12px;
     cursor: pointer;
 }
 
@@ -504,14 +512,14 @@ select {
     height: 30px;
     border: 1px solid lightgray;
     position: absolute;
-    right: 63px;
-    top: 8px;
+    right: 36px;
+    top: -15px;
 }
 
 .subtasksChackImg {
     position: absolute;
-    right: 35px;
-    top: 15px;
+    right: 11px;
+    top: -7px;
     cursor: pointer;
 }
 
@@ -530,8 +538,7 @@ select {
 }
 
 .btn {
-    position: absolute;
-    top: 665px;
+    margin-top: 40px;
 }
 
 .subtaskContainer {
@@ -554,18 +561,6 @@ select {
     .rightContainer {
         padding-left: 200px;
     }
-    /* .leftContainerI {
-        width: 120%;
-    }
-    .leftContainerTextarea {
-        width: 120%;
-    }
-    .categoryDiv {
-        width: 120%;
-    }
-    .assignedDiv {
-        width: 120%;
-    } */
 }
 
 @media(max-width: 1480px) {
@@ -816,6 +811,70 @@ select {
         padding-left: 60px;
     }
     .rightContainer {
-        padding-left: 27px;
+        padding-left: 25px;
+    }
+}
+
+@media(max-width: 1270px) {
+    .leftContainer {
+        padding-left: 60px;
+    }
+    .rightContainer {
+        padding-left: 20px;
+    }
+}
+
+@media(max-width: 1265px) {
+    .leftContainer {
+        padding-left: 60px;
+    }
+    .rightContainer {
+        padding-left: 15px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .leftContainer {
+        padding-left: 60px;
+    }
+    .rightContainer {
+        padding-left: 12px;
+    }
+}
+
+@media(max-width: 1258px) {
+    .containerForm {
+        display: block;
+    }
+    .middleLine {
+        border: none;
+    }
+    .mainContainerTaskForm {
+        width: auto;
+        overflow: scroll;
+    }
+    .leftContainer {
+        padding-left: 42px;
+        padding-right: 35px;
+    }
+    .rightContainer {
+        padding-left: 42px;
+    }
+    .mainContainerTaskForm::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        background: transparent;
+    }
+    .btn {
+        margin-bottom: 40px;
+    }
+    .subtsasksCancelImg {
+        right: 85px;
+    }
+    .subtasksSsubLine {
+        right: 78px;
+    }
+    .subtasksChackImg {
+        right: 52px;
     }
 }

@@ -7,18 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
     <link rel="stylesheet" href="/css/board.css">
+    <!-- <link rel="stylesheet" href="/desktop_template.css"> -->
 
     <script src="/js/board.js"></script>
     <script src="/js/task_form.js"></script>
     <script src="/js/desktop_template.js"></script>
-    <script src="/js/template.js"></script>
+    <script src="./mini_backend.js"></script>
+    <script src="template.js"></script>
+
 
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
 
 </head>
 
 
-<body onload="includeHTML()">
+<body onload="initLoadTasks(); includeHTML()">
 
     <div class="content">
         <div w3-include-html="/asseds/templates/desktop_template.html"></div>
@@ -39,8 +42,10 @@
                 <div class="headerUnderRightMenuHeader ">
                     <p class="headerUnderRightMenuHeaderHeadline ">Board</p>
                     <div class="containerInputfield ">
-                        <input class="headerUnderRightMenuHeaderInputfield " type="text " placeholder="Find Task ">
-                        <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
+                        <input class="headerUnderRightMenuHeaderInputfield " type="text " id="search" onkeyup="searchToTask()" placeholder="Find Task ">
+                        <div>
+                            <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
+                        </div>
                     </div>
                     <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
                 </div>
@@ -53,6 +58,10 @@
                     <div id="toEditTaskMainDiv" class="toEditTaskMainDiv d-none">
 
                     </div>
+                </div>
+
+                <div class="bigDivDeleteTask d-none" id="bigDivDeleteTask">
+
                 </div>
 
 

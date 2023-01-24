@@ -71,33 +71,34 @@ body {
     border: 1px solid lightgray;
 }
 
-.drop img{
+.drop img {
     object-fit: contain;
     width: 12px;
     height: 16px;
 }
 
-.selectImg{
+.selectImg {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-.updateImg{
+.updateImg {
     position: absolute;
     left: 10px;
-    
 }
 
-.categoryContainer{
+.categoryContainer {
     display: flex !important;
 }
 
-.categoryContainer p{
+.categoryContainer p {
     margin: 0;
-} 
+}
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {
+    background-color: #ddd;
+}
 
 .show {
     display: block !important;
@@ -109,26 +110,25 @@ body {
     background-color: white;
     width: 100%;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
+}
 
-  .dropdown-content input{
+.dropdown-content input {
     width: 100%!important;
-  }
+}
 
-  .dropdown-content img {
+.dropdown-content img {
     padding-left: 10px;
     object-fit: contain;
-  }
-  
-  .dropdown-content a {
+}
+
+.dropdown-content a {
     padding: 10px;
     color: black;
-    
     text-decoration: none;
     display: block;
-  }
+}
 
 .headline {
     display: flex;
@@ -259,9 +259,7 @@ body {
     cursor: pointer;
 }
 
-.assign-contact{
-
-}
+.assign-contact {}
 
 .checkbox {
     max-width: 25px;
@@ -350,23 +348,22 @@ select {
     color: white;
 }
 
-.category img{
+.category img {
     padding-left: 10px;
 }
 
-.newCategoryText{
-    
+.newCategoryText {
     border: none !important;
     display: flex !important;
     align-items: center !important;
 }
 
-.newCategoryImg{
+.newCategoryImg {
     margin: 10px;
     cursor: pointer;
 }
 
-.xBtn{
+.xBtn {
     position: absolute;
     right: 40px;
     width: 16px !important;
@@ -375,7 +372,7 @@ select {
     border-right: 2px solid black;
 }
 
-.hackenBtn{
+.hackenBtn {
     width: 16px !important;
     height: 16px !important;
     padding-left: 10px;
@@ -383,6 +380,6 @@ select {
     right: 10px;
 }
 
-.newCategoryText input:hover{
+.newCategoryText input:hover {
     border-right: none;
 }
