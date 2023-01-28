@@ -5,12 +5,14 @@
     <title>Forgot my password - Reset password</title>
     <link rel="stylesheet" href="css/reset_psw.css">
     <script src="js/forgot_psw.js"></script>
+    <script src="js/reset_psw.js"></script>
+    <script src="mini_backend.js"></script>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
 </head>
 
-<body>
+<body onload="resetPasswordInit()">
     <div class="container">
         <img class="big-Logo" src="asseds/img/biglogo.png">
         <div class="log-In-area">
@@ -23,19 +25,24 @@
             <div class="text">
                 <p>Change your account password</p>
             </div>
-            <div class="log-In-input">
-                <div class="inputField">
-                    <input id="input1ForgotPsw" type="password" required placeholder="New password">
-                    <img class="inputFieldIMG" src="asseds/img/password.png">
+            <form onsubmit="changePassword(); return false" class="form">
+                <div class="log-In-input">
+                    <div class="inputField">
+                        <input id="input1ForgotPsw" type="password" required placeholder="New password">
+                        <img class="inputFieldIMG" src="asseds/img/password.png">
+                    </div>
+                    <div class="inputField">
+                        <input id="input2ForgotPsw" type="password" required placeholder="Confirm password">
+                        <img class="inputFieldIMG" src="asseds/img/password.png">
+                    </div>
                 </div>
-                <div class="inputField">
-                    <input id="input2" type="password" required placeholder="Confirm password">
-                    <img class="inputFieldIMG" src="asseds/img/password.png">
+                <div id="wrongInput" class="falseInput d-none">
+                    <p>Passwords not matching!</p>
                 </div>
-            </div>
-            <div class="buttons">
-                <a href="javascript:delay('index.html')"><button onclick="showAnim()" class="log-in-btn">Continue</button></a>
-            </div>
+                <div class="buttons">
+                    <a><button class="log-in-btn">Continue</button></a>
+                </div>
+            </form>
         </div>
         <div id="email-confirm" class="email-confirm-background d-none">
             <div class="email-confirm">

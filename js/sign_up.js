@@ -28,7 +28,7 @@ function emptySignUpInputFields() {
 }
 
 
-async function init() {
+async function signUpInit() {
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
 }

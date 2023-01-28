@@ -76,7 +76,7 @@ body {
 }
 
 .header h1 {
-    margin-top: 0;
+    margin-top: 2%;
     margin-bottom: 0;
 }
 
@@ -119,6 +119,12 @@ body {
     width: 23px;
     right: 5%;
     top: 30%;
+}
+
+.falseInput p {
+    margin: 0;
+    color: red;
+    font-size: 11px;
 }
 
 .remem-me {

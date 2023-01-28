@@ -8,15 +8,17 @@
     <title>Forgot my password - send mail</title>
     <link rel="stylesheet" href="css/forgot_psw.css">
     <script src="js/forgot_psw.js"></script>
+    <script src="script.js"></script>
+    <script src="./mini_backend.js"></script>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
 </head>
 
-<body>
+<body onload="forgotPasswordinit()">
     <div class="container">
         <img class="big-Logo" src="asseds/img/biglogo.png">
-        <div class="log-In-area">
+        <form onsubmit="sendResetEmail(); return false" class="log-In-area">
             <div class="left-arrow">
                 <a href="index.html"><img src="asseds/img/arrow-left-line.png"></a>
             </div>
@@ -28,14 +30,17 @@
             </div>
             <div class="log-In-input">
                 <div class="inputField">
-                    <input id="input1" type="email" required placeholder="Email">
+                    <input required id="input1" type="email" required placeholder="Email">
                     <img class="inputFieldIMG" src="asseds/img/email.png">
                 </div>
             </div>
-            <div class="buttons">
-                <a href="javascript:delay('reset_psw.html')"><button onclick="showAnim()" class="log-in-btn">Send me the email</button></a>
+            <div id="wrongInput" class="falseInput d-none">
+                <p>E-Mail not found!</p>
             </div>
-        </div>
+            <div class="buttons">
+                <a><button class="log-in-btn">Send me the email</button></a>
+            </div>
+        </form>
         <div id="email-confirm" class="email-confirm-background d-none">
             <div class="email-confirm">
                 <img src="asseds/img/send.png">
