@@ -469,7 +469,7 @@ async function addTasking() {
         if (allNames.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: 0%;">
         
                     </div>
                 </div>
@@ -1027,6 +1027,7 @@ function addSubtasks() {
     }
 
     document.getElementById('openSubtasks').value = '';
+    subtasksCancel()
 }
 
 function Subtasks() {
@@ -1181,6 +1182,8 @@ async function deleteTask(taskIndex) {
     allTasks.splice(taskIndex, 1);
     await backend.deleteItem('allTasks', allTasks);
     addTasking();
+    filterTasks();
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
     closeContainer1();
     document.getElementById('bigDivDeleteTask').classList.add('d-none')
 }
