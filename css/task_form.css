@@ -337,6 +337,31 @@ select {
     cursor: pointer;
 }
 
+.categoryMediaDivSmollDiv {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.closes3 {
+    color: #bbb;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    font-family: none;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.closes3:hover,
+.closes3:focus {
+    color: #5f5e5e;
+    ;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .taskCategory {
     font-size: 21px;
     margin: 10px 19px;
@@ -482,6 +507,7 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 3px;
 }
 
 .addCategoryInTask {
