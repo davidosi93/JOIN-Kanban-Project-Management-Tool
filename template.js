@@ -28,6 +28,7 @@ function showHeader(color, str) {
 }
 
 
+// Templates von contact.js
 function contactLetterHeadline(firstChar) {
     return `<div id="contactLetter-${firstChar}" class="letter">
                 <p>${firstChar}</p>
@@ -36,7 +37,6 @@ function contactLetterHeadline(firstChar) {
 }
 
 
-// Templates contact.js von David
 function showContactDiv(name, email, str, color, i) {
     return `<div id="contactDiv${i}" onclick="showContact(${i});" class="contactDiv hover">
                     <div id="contactLetter${i}" style="background-color: ${color}" class="contactLetter">
