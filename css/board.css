@@ -452,9 +452,8 @@ body {
     height: 57px;
     background: #2A3647;
     border-radius: 10px;
-    position: absolute;
-    top: 650px;
-    left: 530px;
+    margin-top: -56px;
+    margin-left: 480px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -507,9 +506,8 @@ body {
     height: 57px;
     background: #2A3647;
     border-radius: 10px;
-    position: absolute;
-    top: 650px;
-    left: 450px;
+    margin-top: 50px;
+    margin-left: 400px;
     cursor: pointer;
     display: flex;
     justify-content: center;

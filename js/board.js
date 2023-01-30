@@ -102,22 +102,25 @@ async function filterTodo() {
             }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
         
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
+
 
 
         renderTodo.innerHTML += /*html*/ `
@@ -176,22 +179,25 @@ async function filterInprogress() {
             }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
-
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
+
 
 
         renderProgress.innerHTML += /*html*/ `
@@ -251,19 +257,21 @@ async function filterFeedback() {
             }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
         
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
@@ -325,23 +333,24 @@ async function filterDone() {
             }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
         
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
-
 
         doneRender.innerHTML += /*html*/ `
                 <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -412,7 +421,7 @@ async function createTask() {
         'subtask': selectedSubtasks,
         'subtaskChecked': selectedSubtasksForProgress,
         'id': new Date().getTime(),
-        'list': 'todo'
+        'list': 'todo',
 
     };
 
@@ -424,7 +433,7 @@ async function createTask() {
 
 async function addTasking() {
     let todos = allTasks.filter(t => t['list'] == 'todo');
-    let progresses = allTasks.filter(t => t['list'] == 'progress');
+    let progress = allTasks.filter(t => t['list'] == 'progress');
     let feedbacks = allTasks.filter(t => t['list'] == 'feedback');
     let dones = allTasks.filter(t => t['list'] == 'done');
 
@@ -461,19 +470,22 @@ async function addTasking() {
             }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
         
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
@@ -491,7 +503,7 @@ async function addTasking() {
                 <p>${element['description']}</p>
             </div>
 
-            <div class="progressContainer" id="progressContainer">
+            <div class="progressContainer" id="progressContainer-${i}">
               ${subtaskInitialsContainer}
             </div>
 
@@ -508,8 +520,8 @@ async function addTasking() {
 
     }
 
-    for (let i = 0; i < progresses.length; i++) {
-        const element = progresses[i];
+    for (let i = 0; i < progress.length; i++) {
+        const element = progress[i];
 
         let nameParts = element['assignedTo'];
         let initialsContainer = '';
@@ -529,24 +541,27 @@ async function addTasking() {
                 break;
             }
         }
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+
+
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-
-
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
         
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
+
 
 
         containerProgress.innerHTML += /*html*/ `
@@ -561,7 +576,7 @@ async function addTasking() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progressContainer">
+                <div class="progressContainer" id="progressContainer-${i}">
                     ${subtaskInitialsContainer}
                 </div>
 
@@ -600,22 +615,25 @@ async function addTasking() {
             }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
         
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
+
 
 
         containerFeedback.innerHTML += /*html*/ `
@@ -630,7 +648,7 @@ async function addTasking() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progressContainer">
+                <div class="progressContainer" id="progressContainer-${i}">
                     ${subtaskInitialsContainer}
                 </div>
 
@@ -669,19 +687,21 @@ async function addTasking() {
             }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progresses = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
         let subtaskInitialsContainer = '';
 
-        if (allNames.length > 0) {
+        if (allSubtasks.length > 0) {
             subtaskInitialsContainer += /*html*/ `
                 <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
         
                     </div>
                 </div>
-                <span id="progressText" class="progressText">${progresses}</span>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
 
         }
@@ -699,7 +719,7 @@ async function addTasking() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progressContainer">
+                <div class="progressContainer" id="progressContainer-${i}">
                     ${subtaskInitialsContainer}
                 </div>
 
@@ -1275,18 +1295,12 @@ async function putTheProgressBar(taskIndex) {
             }
         }
 
-
         allTasks[taskIndex].subtaskChecked = selectedSubtasksProgress;
-
-        let task = allTasks[taskIndex];
-        let allNames = (task.subtask);
-        let currentName = (task.subtaskChecked);
-        let procent = currentName.length / allNames.length;
-        procent = Math.round(procent * 100);
-        document.getElementById('progressBar').style = `width: ${procent}%;`;
+        selectedSubtasksForProgress = [];
 
     }, 200)
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    filterTasks()
     addTasking();
 
 }
@@ -1587,23 +1601,24 @@ function searchFilterTodo() {
                 }
             }
 
-            let allNames = element['subtask'];
-            let currentName = element['subtaskChecked'];
-            let progresses = `${currentName.length}/${allNames.length} Done`;
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
             let subtaskInitialsContainer = '';
 
-            if (allNames.length > 0) {
+            if (allSubtasks.length > 0) {
                 subtaskInitialsContainer += /*html*/ `
                     <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
             
                         </div>
                     </div>
-                    <span id="progressText" class="progressText">${progresses}</span>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
                 `;
 
             }
-
 
             filter.innerHTML += /*html*/ `
             <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -1670,19 +1685,21 @@ function searchFilterProgress() {
                 }
             }
 
-            let allNames = element['subtask'];
-            let currentName = element['subtaskChecked'];
-            let progresses = `${currentName.length}/${allNames.length} Done`;
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
             let subtaskInitialsContainer = '';
 
-            if (allNames.length > 0) {
+            if (allSubtasks.length > 0) {
                 subtaskInitialsContainer += /*html*/ `
                     <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
             
                         </div>
                     </div>
-                    <span id="progressText" class="progressText">${progresses}</span>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
                 `;
 
             }
@@ -1754,25 +1771,24 @@ function searchFilterFeedback() {
                 }
             }
 
-            let allNames = element['subtask'];
-            let currentName = element['subtaskChecked'];
-            let progresses = `${currentName.length}/${allNames.length} Done`;
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
             let subtaskInitialsContainer = '';
 
-
-
-            if (allNames.length > 0) {
+            if (allSubtasks.length > 0) {
                 subtaskInitialsContainer += /*html*/ `
                     <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
             
                         </div>
                     </div>
-                    <span id="progressText" class="progressText">${progresses}</span>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
                 `;
 
             }
-
 
             filter.innerHTML += /*html*/ `
             <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
@@ -1840,23 +1856,24 @@ function searchFilterDone() {
                 }
             }
 
-            let allNames = element['subtask'];
-            let currentName = element['subtaskChecked'];
-            let progresses = `${currentName.length}/${allNames.length} Done`;
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
             let subtaskInitialsContainer = '';
 
-            if (allNames.length > 0) {
+            if (allSubtasks.length > 0) {
                 subtaskInitialsContainer += /*html*/ `
                     <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
             
                         </div>
                     </div>
-                    <span id="progressText" class="progressText">${progresses}</span>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
                 `;
 
             }
-
 
 
             filter.innerHTML += /*html*/ `
