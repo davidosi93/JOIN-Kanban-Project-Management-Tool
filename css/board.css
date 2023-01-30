@@ -205,7 +205,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: -10px;
+    margin-left: -11px;
 }
 
 .assignTaskSelect {
@@ -236,6 +236,20 @@ body {
     align-items: center;
     border: 3px solid white;
     color: white;
+}
+
+.nameContainer {
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid white;
+    color: white;
+    background-color: #7e7c7c;
+    margin-left: -11px;
 }
 
 .checkTasking {
@@ -438,9 +452,8 @@ body {
     height: 57px;
     background: #2A3647;
     border-radius: 10px;
-    position: absolute;
-    top: 650px;
-    left: 530px;
+    margin-top: -56px;
+    margin-left: 480px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -493,9 +506,8 @@ body {
     height: 57px;
     background: #2A3647;
     border-radius: 10px;
-    position: absolute;
-    top: 650px;
-    left: 450px;
+    margin-top: 50px;
+    margin-left: 400px;
     cursor: pointer;
     display: flex;
     justify-content: center;

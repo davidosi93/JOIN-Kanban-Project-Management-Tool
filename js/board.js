@@ -19,7 +19,8 @@ let currentSelectedCategory;
 let currentDraggedElement;
 let currentCategoryColor;
 let newCategorySelected = false;
-let currentId = -1;
+let currentIndex = 0;
+let currentId = 0;
 let allContactsTest = [{
         'color': '#3FB1C6',
         'email': 'waldemar@gmx.de',
@@ -67,17 +68,19 @@ async function initLoadTasks() {
     users = JSON.parse(backend.getItem('users')) || [];
     activeUser = backend.getItem('activeUser') || 0;
     openAllContacts();
-    filterAllTasks()
+    filterTasks()
+    createnewCategoryAll()
 }
 
-function filterAllTasks() {
+function filterTasks() {
     filterTodo()
     filterFeedback()
     filterInprogress()
     filterDone()
 }
 
-function filterTodo() {
+
+async function filterTodo() {
     todo = allTasks.filter(t => t['list'] == 'todo');
     let renderTodo = document.getElementById('containerTodos');
     renderTodo.innerHTML = '';
@@ -89,21 +92,44 @@ function filterTodo() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
+
+
 
         renderTodo.innerHTML += /*html*/ `
-          <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+          <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
             <div class="addCategoryInTask ${element['category']['color']}">
                 <p>${element['category']['name']}</p>
             </div>
@@ -114,13 +140,8 @@ function filterTodo() {
                 <p>${element['description']}</p>
             </div>
 
-            <div class="progressContainer" id="progbar${currentId}">
-                <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                    </div>
-                </div>
-                <span id="progressText" class="progressText">${progress}</span>
+            <div class="progressContainer" id="progressContainer">
+                ${subtaskInitialsContainer}
             </div>
 
             <div class="assignTaskSelect">
@@ -136,7 +157,7 @@ function filterTodo() {
     }
 }
 
-function filterInprogress() {
+async function filterInprogress() {
     progress = allTasks.filter(t => t['list'] == 'progress');
     let renderProgress = document.getElementById('containerProgresses');
     renderProgress.innerHTML = '';
@@ -148,21 +169,44 @@ function filterInprogress() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
+
+
 
         renderProgress.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -173,13 +217,8 @@ function filterInprogress() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progbar${currentId}">
-                    <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                        </div>
-                    </div>
-                    <span id="progressText" class="progressText">${progress}</span>
+                <div class="progressContainer" id="progressContainer">
+                  ${subtaskInitialsContainer}
                 </div>
 
                 <div class="assignTaskSelect">
@@ -196,7 +235,7 @@ function filterInprogress() {
     }
 }
 
-function filterFeedback() {
+async function filterFeedback() {
     feedback = allTasks.filter(t => t['list'] == 'feedback');
     let feedbackRender = document.getElementById('containerFeedbacks');
     feedbackRender.innerHTML = '';
@@ -208,21 +247,43 @@ function filterFeedback() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
+
 
         feedbackRender.innerHTML += /*html*/ `
-          <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+          <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
             <div class="addCategoryInTask ${element['category']['color']}">
                 <p>${element['category']['name']}</p>
             </div>
@@ -233,13 +294,8 @@ function filterFeedback() {
                 <p>${element['description']}</p>
             </div>
 
-            <div class="progressContainer" id="progbar${currentId}">
-                <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                    </div>
-                </div>
-                <span id="progressText" class="progressText">${progress}</span>
+            <div class="progressContainer" id="progressContainer">
+                ${subtaskInitialsContainer}
             </div>
 
             <div class="assignTaskSelect">
@@ -255,7 +311,7 @@ function filterFeedback() {
     }
 }
 
-function filterDone() {
+async function filterDone() {
     done = allTasks.filter(t => t['list'] == 'done');
     let doneRender = document.getElementById('containerDones');
     doneRender.innerHTML = '';
@@ -267,21 +323,42 @@ function filterDone() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
 
         doneRender.innerHTML += /*html*/ `
-                <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+                <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -292,13 +369,8 @@ function filterDone() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progbar${currentId}">
-                    <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                        </div>
-                    </div>
-                    <span id="progressText" class="progressText">${progress}</span>
+                <div class="progressContainer" id="progressContainer">
+                    ${subtaskInitialsContainer}
                 </div>
 
                 <div class="assignTaskSelect">
@@ -315,22 +387,14 @@ function filterDone() {
 
 }
 
-
-// function loadAllTasks() {
-//     let allTasksAsString = localStorage.getItem('allTasks');
-//     allTasks = JSON.parse(allTasksAsString);
-//     console.log('loaded all Tasks', allTasks);
-// }
-
-
 function addTaskRight() {
     document.getElementById('addTaskRight').classList.remove('d-none');
 }
 
-function closeContainer1(taskIndex) {
+async function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
-
     selectedSubtasksProgress = [];
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
 function closeContainer() {
@@ -346,13 +410,11 @@ function onSubmit(event) {
 
 /** Area for Drag and Drop */
 
-function createTask() {
+async function createTask() {
     let titles = document.getElementById('title').value;
     let descriptions = document.getElementById('description').value;
     let dueDates = document.getElementById('dueDate').value;
-    // let assignedTos = document.getElementById('assignedTo').value;
-    // let prios = document.getElementById('prio').value;
-    // let subtasks = document.getElementById('subtask').value;
+
 
     let task = {
         'title': titles,
@@ -364,29 +426,19 @@ function createTask() {
         'subtask': selectedSubtasks,
         'subtaskChecked': selectedSubtasksForProgress,
         'id': new Date().getTime(),
-        'list': 'todo'
+        'list': 'todo',
 
     };
 
     allTasks.push(task);
     addTasking()
     inputfieldValue()
+
 }
-
-// function progressBar() {
-//     if (selectedSubtasks.length > 0) {
-//         let allNames = selectedSubtasks;
-//         let currentName = selectedSubtasksForProgress;
-//         let progress = `${currentName.length}/${allNames.length} Done`;
-//         return progress;
-//     }
-
-// }
-
 
 async function addTasking() {
     let todos = allTasks.filter(t => t['list'] == 'todo');
-    let progresses = allTasks.filter(t => t['list'] == 'progress');
+    let progress = allTasks.filter(t => t['list'] == 'progress');
     let feedbacks = allTasks.filter(t => t['list'] == 'feedback');
     let dones = allTasks.filter(t => t['list'] == 'done');
 
@@ -401,10 +453,6 @@ async function addTasking() {
     containerFeedback.innerHTML = '';
     containerDone.innerHTML = '';
 
-    // let progress = progressBar();
-    // document.getElementById('progressText').innerHTML = progress;
-
-
     for (let i = 0; i < todos.length; i++) {
         const element = todos[i];
 
@@ -412,21 +460,44 @@ async function addTasking() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
+
 
         containerTodo.innerHTML += /*html*/ `
-        <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
             <div class="addCategoryInTask ${element['category']['color']}">
                 <p>${element['category']['name']}</p>
             </div>
@@ -437,13 +508,8 @@ async function addTasking() {
                 <p>${element['description']}</p>
             </div>
 
-            <div class="progressContainer" id="progbar${currentId}">
-                <div class="progressBarBig">
-                    <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                    </div>
-                </div>
-                <span id="progressText" class="progressText">${progress}</span>
+            <div class="progressContainer" id="progressContainer-${i}">
+              ${subtaskInitialsContainer}
             </div>
 
             <div class="assignTaskSelect">
@@ -456,31 +522,55 @@ async function addTasking() {
             </div>
         </div>
         `;
-        currentId++;
+
     }
 
-    for (let i = 0; i < progresses.length; i++) {
-        const element = progresses[i];
+    for (let i = 0; i < progress.length; i++) {
+        const element = progress[i];
 
         let nameParts = element['assignedTo'];
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
+
+
 
         containerProgress.innerHTML += /*html*/ `
-           <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+           <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -491,13 +581,8 @@ async function addTasking() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progbar${currentId}">
-                    <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                        </div>
-                    </div>
-                    <span id="progressText" class="progressText">${progress}</span>
+                <div class="progressContainer" id="progressContainer-${i}">
+                    ${subtaskInitialsContainer}
                 </div>
 
                 <div class="assignTaskSelect">
@@ -520,21 +605,44 @@ async function addTasking() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
+
+
 
         containerFeedback.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -545,13 +653,8 @@ async function addTasking() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progbar${currentId}">
-                    <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                        </div>
-                    </div>
-                    <span id="progressText" class="progressText">${progress}</span>
+                <div class="progressContainer" id="progressContainer-${i}">
+                    ${subtaskInitialsContainer}
                 </div>
 
                 <div class="assignTaskSelect">
@@ -574,21 +677,43 @@ async function addTasking() {
         let initialsContainer = '';
 
         for (let j = 0; j < nameParts.length; j++) {
-            let name = nameParts[j]['name'].split(' ');
-            let color = nameParts[j]['color'];
-            initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+            if (j < 3) {
+                let name = nameParts[j]['name'].split(' ');
+                let color = nameParts[j]['color'];
+                initialsContainer += /*html*/ `
+                    <div class="assignTask">
+                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                    </div>
+                `;
+            } else {
+                initialsContainer += /*html*/ `
+                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                break;
+            }
         }
 
-        let allNames = element['subtask'];
-        let currentName = element['subtaskChecked'];
-        let progress = `${currentName.length}/${allNames.length} Done`;
+        let allSubtasks = element['subtask'];
+        let currentSubtask = element['subtaskChecked'];
+        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+        let procent = currentSubtask.length / allSubtasks.length;
+        procent = Math.round(procent * 100);
+        let subtaskInitialsContainer = '';
+
+        if (allSubtasks.length > 0) {
+            subtaskInitialsContainer += /*html*/ `
+                <div class="progressBarBig">
+                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+        
+                    </div>
+                </div>
+                <span id="progressText-${i}" class="progressText">${progresses}</span>
+            `;
+
+        }
+
 
         containerDone.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${i})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -599,13 +724,8 @@ async function addTasking() {
                     <p>${element['description']}</p>
                 </div>
 
-                <div class="progressContainer" id="progbar${currentId}">
-                    <div class="progressBarBig">
-                        <div id="progressBar" class="progressBar" style="width: 0%;">
-
-                        </div>
-                    </div>
-                    <span id="progressText" class="progressText">${progress}</span>
+                <div class="progressContainer" id="progressContainer-${i}">
+                    ${subtaskInitialsContainer}
                 </div>
 
                 <div class="assignTaskSelect">
@@ -621,7 +741,6 @@ async function addTasking() {
 
     }
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-
 }
 
 
@@ -629,10 +748,13 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drop(categorys) {
+async function drop(categorys) {
     let droppedTask = allTasks.filter(x => x.id == currentDraggedElement)
     droppedTask[0]['list'] = categorys;
     addTasking();
+    filterTasks();
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+
 }
 
 
@@ -675,24 +797,19 @@ function openCategory() {
 }
 
 function selectCategory(id) {
-    const selectedElement = document.getElementById(id);
+    const selectedElement = document.getElementById(`category-${id}`);
     const name = selectedElement.querySelector('.taskCategory').innerHTML;
     const color = selectedElement.querySelector('.categoryMedia').classList[1];
     allLiCategory = ({ name, color });
 
     let ulCategory = document.getElementById("categoryList");
-    let category = document.getElementById(id).innerHTML;
+    let category = selectedElement.querySelector('.categoryMediaDivSmollDiv').innerHTML;
 
     document.getElementById('selectTaskCategory').style = 'display: flex; align-items: center; list-style-type: none; margin-left: -18px;';
     document.getElementById("selectTaskCategory").innerHTML = category;
 
-
     ulCategory.classList.add('d-none');
     document.getElementById('borderButton').classList.remove('borderButton');
-
-
-
-
 }
 
 function selectNewCategory() {
@@ -739,7 +856,7 @@ function selectNewCatagoryCancel() {
 
 }
 
-function createNewCategory() {
+async function createNewCategory() {
     newCategory = document.getElementById('selectNewCategory').value;
     let jsonColor = {
         'name': newCategory,
@@ -764,6 +881,7 @@ function createNewCategory() {
         alert("Bitte wählen Sie eine Kategorie aus");
     }
 
+    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
 
     document.getElementById('bg-pink').style = 'box-shadow: none;';
     document.getElementById('bg-orange').style = 'box-shadow: none;';
@@ -778,7 +896,7 @@ function createNewCategory() {
 
 
 
-async function createnewCategoryAll() {
+function createnewCategoryAll() {
     newCategorys = document.getElementById('createNewTategory');
     newCategorys.innerHTML = '';
 
@@ -786,13 +904,16 @@ async function createnewCategoryAll() {
         const element = allCategorys[i];
 
         newCategorys.innerHTML += /*html*/ `
-            <div onclick="selectCategory(id)" id="${element['name']}" class="categoryMediaDivSmoll">
-                <li class="taskCategory">${element['name']}</li>
-                <div class="categoryMedia ${element['color']}"></div>
+            <div onclick="selectCategory(${currentIndex})" id="category-${currentIndex}" class="categoryMediaDivSmoll">
+                <div class="categoryMediaDivSmollDiv">
+                    <li class="taskCategory">${element['name']}</li>
+                    <div class="categoryMedia ${element['color']}"></div>
+                </div>
+                <div onclick="deleteCategory(${i})" class="closes3">&times;</div>
             </div>
         `;
+        currentIndex++;
     }
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
 }
 
 function newCategorySelectColor(id) {
@@ -805,6 +926,12 @@ function newCategorySelectColor(id) {
 
     document.getElementById(id).style = 'box-shadow: 0px 10px 12px -6px #000000;';
 
+}
+
+async function deleteCategory(i) {
+    allCategorys.splice(i, 1)
+    createnewCategoryAll()
+    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
 }
 
 
@@ -925,6 +1052,7 @@ function addSubtasks() {
     }
 
     document.getElementById('openSubtasks').value = '';
+    subtasksCancel()
 }
 
 function Subtasks() {
@@ -968,8 +1096,16 @@ function resetSubtasks() {
 
 /** Area for openCheckTask */
 
+function openCheckTask(Index) {
+    let openToCheck = allTasks.filter(x => x.id == Index);
+    let openTocheckRightTask = allTasks.indexOf(openToCheck[0]);
 
-function openCheckTask(taskIndex) {
+    openCheckTasks(openTocheckRightTask);
+
+}
+
+
+async function openCheckTasks(taskIndex) {
     document.getElementById('closeContainer2').classList.remove('d-none');
     let container = document.getElementById('checkTaskSmall');
     container.innerHTML = '';
@@ -985,6 +1121,7 @@ function openCheckTask(taskIndex) {
     document.getElementById('openCheckTasksAssignedToTitle').innerHTML = subinitialContainer;
     openCheckTaskTakeInputValue()
     selectedSubtasksProgress = allTasks[taskIndex].subtaskChecked;
+    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
 }
 
 function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, taskIndex) {
@@ -1034,19 +1171,20 @@ function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, 
             </div>
 
             <button class="deleteTaskButton">
-                <img onclick="askDeleteTask(${taskIndex})" class="deleteTaskImage" src="/asseds/img/delete-white.png">
+                <img onclick="toAskDeleteTask(${taskIndex})" class="deleteTaskImage" src="/asseds/img/delete-white.png">
             </button>
 
             <button class="toEditTaskButton">
                 <img onclick="openTaskToEdit(${taskIndex})" class="toEditTaskImage" src="/asseds/img/Group 8.png">
             </button>
-            <div onclick="closeContainer1(${taskIndex})" class="closes2">&times;</div>
+            <div onclick="closeContainer1()" class="closes2">&times;</div>
         </div>
    
     `;
+
 }
 
-function askDeleteTask(taskIndex) {
+function toAskDeleteTask(taskIndex) {
     document.getElementById('bigDivDeleteTask').classList.remove('d-none');
     let deleteTasks = document.getElementById('bigDivDeleteTask');
 
@@ -1054,21 +1192,23 @@ function askDeleteTask(taskIndex) {
         <div class="askDeleteTask">
             <p class="deleteTaskTesx">Möchten Sie die Task wirklich löschen?</p>
             <div>
-                <button class="deleteTaskAnswer" onclick="deleteTask()">Ja</button>
-                <button id="deleteTaskAnswer" onclick="NoDeleteTask(${taskIndex})" class="deleteTaskAnswer">Nein</button>
+                <button class="deleteTaskAnswer" onclick="deleteTask(${taskIndex})">Ja</button>
+                <button id="deleteTaskAnswer" onclick="NonDeleteTask()" class="deleteTaskAnswer">Nein</button>
             </div>
         </div>
     `;
 }
 
-function NoDeleteTask() {
+function NonDeleteTask() {
     document.getElementById('bigDivDeleteTask').classList.add('d-none');
 }
 
 async function deleteTask(taskIndex) {
     allTasks.splice(taskIndex, 1);
-    // await backend.deleteItem('allTasks', allTasks);
+    await backend.deleteItem('allTasks', allTasks);
     addTasking();
+    filterTasks();
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
     closeContainer1();
     document.getElementById('bigDivDeleteTask').classList.add('d-none')
 }
@@ -1150,7 +1290,7 @@ function openCheckTaskSubtasks(taskIndex) {
 
 
 
-function putTheProgressBar(taskIndex) {
+async function putTheProgressBar(taskIndex) {
     setTimeout(function() {
         openCheckTaskTakeInputValue()
 
@@ -1160,18 +1300,13 @@ function putTheProgressBar(taskIndex) {
             }
         }
 
-
         allTasks[taskIndex].subtaskChecked = selectedSubtasksProgress;
+        selectedSubtasksForProgress = [];
 
-        let task = allTasks[taskIndex];
-        let allNames = (task.subtask);
-        let currentName = (task.subtaskChecked);
-        let procent = currentName.length / allNames.length;
-        procent = Math.round(procent * 100);
-        document.getElementById('progressBar').style = `width: ${procent}%;`;
-        addTasking();
-    }, 500)
-
+    }, 200)
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    filterTasks()
+    addTasking();
 
 }
 
@@ -1398,7 +1533,7 @@ function showContactsInToEditPushInAssigned() {
     }
 }
 
-function saveTask(taskIndex) {
+async function saveTask(taskIndex) {
     let updatedTitle = document.getElementById("editTaskTitle").value;
     let updatedDescription = document.getElementById("editTaskDescription").value;
     let updatedDueDate = document.getElementById("editTaskDueDate").value;
@@ -1421,157 +1556,358 @@ function saveTask(taskIndex) {
 
     // allTasks[taskIndex].assignedTo = allTasks[taskIndex].assignedTo.filter(e => assignedChackedBox.map(el => el.name).indexOf(e.name) !== -1);
     allTasks[taskIndex].assignedTo = assignedChackedBox;
-    openCheckTask(taskIndex);
     addTasking();
-
+    filterTasks()
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    openCheckTasks(taskIndex);
 }
 
 /** Area for search to Task */
 
 function searchToTask() {
-    checkProgressbar()
-    filterTodo()
-    filterProgress()
-        // let search = document.getElementById('search').value;
-        // searchTodosFilter(search);
-        // searchProgeressesFilter(search);
-        // searchFeedbacksFilter(search);
-        // searchDonesFilter(search);
+    searchFilterTodo()
+    searchFilterProgress()
+    searchFilterFeedback()
+    searchFilterDone()
 }
 
-// function checkProgressbar() {
-//     for (let i = 0; i < allTasks.length; i++) {
-//         const progbar = allTasks[i];
-//         const progbarId = document.getElementById(`progbar${i}`)
-//         if (progbar['subtask'][0].sub.length == 0 && progbarId !== null) {
-//             document.getElementById(`progbar${i}`).innerHTML = '';
-//         }
-//         if (progbar['subtask'][0].sub.length > 0 && progbarId !== null) {
-//             checkProgressPercentage(progbar, i);
-//         }
-//     }
-// }
-
-// function checkProgressPercentage(progbar, i) {
-
-// }
-
-// function filterTodo() {
-//     let search = document.getElementById('search').value;
-//     search = search.toLowerCase();
 
 
-//     let filter = document.getElementById('containerTodos');
-//     filter.innerHTML = '';
+function searchFilterTodo() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
 
-//     for (let i = 0; i < todo.length; i++) {
-//         let headlines = todo[i]['title'];
-//         let descriptions = todo[i]['description'];
+    let filter = document.getElementById('containerTodos');
+    filter.innerHTML = '';
 
-//         if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
-//             let result = todo[i];
+    for (let i = 0; i < todo.length; i++) {
+        let headlines = todo[i]['title'];
+        let descriptions = todo[i]['description'];
 
-//             filter.innerHTML += newTaskHTML(result);
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+            let element = todo[i];
 
-//             redernTask(result);
-//             declarePriority(result);
-//         }
-//     }
+            let nameParts = element['assignedTo'];
+            let initialsContainer = '';
 
-// }
+            for (let j = 0; j < nameParts.length; j++) {
+                if (j < 3) {
+                    let name = nameParts[j]['name'].split(' ');
+                    let color = nameParts[j]['color'];
+                    initialsContainer += /*html*/ `
+                        <div class="assignTask">
+                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                        </div>
+                    `;
+                } else {
+                    initialsContainer += /*html*/ `
+                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                    break;
+                }
+            }
 
-// function filterProgress() {
-//     let search = document.getElementById('search').value;
-//     search = search.toLowerCase();
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
+            let subtaskInitialsContainer = '';
+
+            if (allSubtasks.length > 0) {
+                subtaskInitialsContainer += /*html*/ `
+                    <div class="progressBarBig">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+            
+                        </div>
+                    </div>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
+                `;
+
+            }
+
+            filter.innerHTML += /*html*/ `
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+                <div class="addCategoryInTask ${element['category']['color']}">
+                    <p>${element['category']['name']}</p>
+                </div>
+                <div>
+                    <p>${element['title']}</p>
+                </div>
+                <div>
+                    <p>${element['description']}</p>
+                </div>
+
+                <div class="progressContainer" id="progressContainer">
+                    ${subtaskInitialsContainer}
+                </div>
+
+                <div class="assignTaskSelect">
+                    <div class="assignTaskSelectName">
+                        ${initialsContainer}
+                    </div>
+                    <div class="assignTaskSelectImage">
+                        <img src="${element['prio']['coloredImage']}">
+                    </div>
+                </div>
+            </div>
+            `;
+
+        }
+    }
+
+}
+
+function searchFilterProgress() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+    let filter = document.getElementById('containerProgresses');
+    filter.innerHTML = '';
+
+    for (let i = 0; i < progress.length; i++) {
+        let headlines = progress[i]['title'];
+        let descriptions = progress[i]['description'];
+
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+            let element = progress[i];
+
+            let nameParts = element['assignedTo'];
+            let initialsContainer = '';
+
+            for (let j = 0; j < nameParts.length; j++) {
+                if (j < 3) {
+                    let name = nameParts[j]['name'].split(' ');
+                    let color = nameParts[j]['color'];
+                    initialsContainer += /*html*/ `
+                        <div class="assignTask">
+                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                        </div>
+                    `;
+                } else {
+                    initialsContainer += /*html*/ `
+                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                    break;
+                }
+            }
+
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
+            let subtaskInitialsContainer = '';
+
+            if (allSubtasks.length > 0) {
+                subtaskInitialsContainer += /*html*/ `
+                    <div class="progressBarBig">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+            
+                        </div>
+                    </div>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
+                `;
+
+            }
 
 
-//     let filter = document.getElementById('inProgress');
-//     filter.innerHTML = '';
+            filter.innerHTML += /*html*/ `
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+                <div class="addCategoryInTask ${element['category']['color']}">
+                    <p>${element['category']['name']}</p>
+                </div>
+                <div>
+                    <p>${element['title']}</p>
+                </div>
+                <div>
+                    <p>${element['description']}</p>
+                </div>
 
-//     for (let i = 0; i < progress.length; i++) {
-//         let headlines = progress[i]['headline'];
-//         let desc = progress[i]['desc'];
+                <div class="progressContainer" id="progressContainer">
+                    ${subtaskInitialsContainer}
+                </div>
 
-//         if (headlines.toLowerCase().includes(search) || desc.toLowerCase().includes(search)) {
-//             let result = progress[i];
+                <div class="assignTaskSelect">
+                    <div class="assignTaskSelectName">
+                        ${initialsContainer}
+                    </div>
+                    <div class="assignTaskSelectImage">
+                        <img src="${element['prio']['coloredImage']}">
+                    </div>
+                </div>
+            </div>
+            `;
 
-//             filter.innerHTML += newTaskHTML(result);
-//             /*checkBgColor(element);*/
-//             redernTask(result);
-//             declarePriority(result);
+        }
+    }
 
-//         }
-//     }
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
+function searchFilterFeedback() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+    let filter = document.getElementById('containerFeedbacks');
+    filter.innerHTML = '';
+
+    for (let i = 0; i < feedback.length; i++) {
+        let headlines = feedback[i]['title'];
+        let descriptions = feedback[i]['description'];
+
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+            let element = feedback[i];
+
+            let nameParts = element['assignedTo'];
+            let initialsContainer = '';
+
+            for (let j = 0; j < nameParts.length; j++) {
+                if (j < 3) {
+                    let name = nameParts[j]['name'].split(' ');
+                    let color = nameParts[j]['color'];
+                    initialsContainer += /*html*/ `
+                        <div class="assignTask">
+                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                        </div>
+                    `;
+                } else {
+                    initialsContainer += /*html*/ `
+                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                    break;
+                }
+            }
+
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
+            let subtaskInitialsContainer = '';
+
+            if (allSubtasks.length > 0) {
+                subtaskInitialsContainer += /*html*/ `
+                    <div class="progressBarBig">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+            
+                        </div>
+                    </div>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
+                `;
+
+            }
+
+            filter.innerHTML += /*html*/ `
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+                <div class="addCategoryInTask ${element['category']['color']}">
+                    <p>${element['category']['name']}</p>
+                </div>
+                <div>
+                    <p>${element['title']}</p>
+                </div>
+                <div>
+                    <p>${element['description']}</p>
+                </div>
+
+                <div class="progressContainer" id="progressContainer">
+                    ${subtaskInitialsContainer}
+                </div>
+
+                <div class="assignTaskSelect">
+                    <div class="assignTaskSelectName">
+                        ${initialsContainer}
+                    </div>
+                    <div class="assignTaskSelectImage">
+                        <img src="${element['prio']['coloredImage']}">
+                    </div>
+                </div>
+            </div>
+            `;
+
+        }
+    }
+
+}
+
+function searchFilterDone() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
 
 
+    let filter = document.getElementById('containerDones');
+    filter.innerHTML = '';
+
+    for (let i = 0; i < done.length; i++) {
+        let headlines = done[i]['title'];
+        let desc = done[i]['description'];
+
+        if (headlines.toLowerCase().includes(search) || desc.toLowerCase().includes(search)) {
+            let element = done[i];
+
+            let nameParts = element['assignedTo'];
+            let initialsContainer = '';
+
+            for (let j = 0; j < nameParts.length; j++) {
+                if (j < 3) {
+                    let name = nameParts[j]['name'].split(' ');
+                    let color = nameParts[j]['color'];
+                    initialsContainer += /*html*/ `
+                        <div class="assignTask">
+                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                        </div>
+                    `;
+                } else {
+                    initialsContainer += /*html*/ `
+                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
+                    break;
+                }
+            }
+
+            let allSubtasks = element['subtask'];
+            let currentSubtask = element['subtaskChecked'];
+            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+            let procent = currentSubtask.length / allSubtasks.length;
+            procent = Math.round(procent * 100);
+            let subtaskInitialsContainer = '';
+
+            if (allSubtasks.length > 0) {
+                subtaskInitialsContainer += /*html*/ `
+                    <div class="progressBarBig">
+                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+            
+                        </div>
+                    </div>
+                    <span id="progressText-${i}" class="progressText">${progresses}</span>
+                `;
+
+            }
 
 
+            filter.innerHTML += /*html*/ `
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+                <div class="addCategoryInTask ${element['category']['color']}">
+                    <p>${element['category']['name']}</p>
+                </div>
+                <div>
+                    <p>${element['title']}</p>
+                </div>
+                <div>
+                    <p>${element['description']}</p>
+                </div>
 
+                <div class="progressContainer" id="progressContainer">
+                    ${subtaskInitialsContainer}
+                </div>
 
+                <div class="assignTaskSelect">
+                    <div class="assignTaskSelectName">
+                        ${initialsContainer}
+                    </div>
+                    <div class="assignTaskSelectImage">
+                        <img src="${element['prio']['coloredImage']}">
+                    </div>
+                </div>
+            </div>
+            `;
 
-
-// function searchTodosFilter(search) {
-//     searchTodos = [];
-//     for (let i = 0; i < todo.length; i++) {
-//         const todo = todo[i];
-//         if (todo['title'].toLowerCase().includes(search)) {
-//             searchTodos.push(todo)
-//         } else if (todo['description'].toLowerCase().includes(search)) {
-//             searchTodos.push(todo)
-//         }
-//     }
-// }
-
-// function searchProgeressesFilter(search) {
-//     searchProgress = [];
-//     for (let i = 0; i < progress.length; i++) {
-//         const progress = progress[i];
-//         if (progress['title'].toLowerCase().includes(search)) {
-//             searchProgress.push(progress)
-//         } else if (progress['description'].toLowerCase().includes(search)) {
-//             searchProgress.push(progress)
-//         }
-//     }
-// }
-
-// function searchFeedbacksFilter(search) {
-//     searchFeedback = [];
-//     for (let i = 0; i < feedback.length; i++) {
-//         const feedback = feedback[i];
-//         if (feedback['title'].toLowerCase().includes(search)) {
-//             searchFeedback.push(feedback)
-//         } else if (feedback['description'].toLowerCase().includes(search)) {
-//             searchFeedback.push(feedback)
-//         }
-//     }
-// }
-
-// function searchDonesFilter(search) {
-//     searchDone = [];
-//     for (let i = 0; i < done.length; i++) {
-//         const done = done[i];
-//         if (done['title'].toLowerCase().includes(search)) {
-//             searchDone.push(done)
-//         } else if (done['description'].toLowerCase().includes(search)) {
-//             searchDone.push(done)
-//         }
-//     }
-// }
+        }
+    }
+}
