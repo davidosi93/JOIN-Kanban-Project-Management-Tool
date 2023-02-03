@@ -16,7 +16,7 @@ async function includeHTML() {
 function showHeader(color, str) {
     return `<div class="headerContent">
                 <p>Kanban Project Management Tool</p>
-
+                <img src="asseds/img/biglogo.png" class="d-none">
                  <div class="headerContentRight">
                     <div class="buttonsTopRight">
                         <img onclick="help()" class="information" src="/asseds/img/information.png">

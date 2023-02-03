@@ -19,10 +19,35 @@
 <body onload="contactInit(); includeHTML();">
     <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
     <div class="content">
-        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div class="desktopMenu" w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div class="mobileMenu d-none">
+            <a href="summary.html" class="buttonSection" id="navBarSummary">
+                <img src="./asseds/img/mobileSummary.png">
+                <p>Summary</p>
+            </a>
+            <a href="board.html" class="buttonSection" id="navBarBoard">
+                <img src="./asseds/img/mobileBoard.png">
+                <p>Board</p>
+            </a>
+            <a href="add_task.html" class="buttonSection" id="navBarAddTask">
+                <img src="./asseds/img/mobileAddTask.png">
+                <p>Add Task</p>
+            </a>
+            <a href="contacts.html" class="buttonSection" id="navBarContacts">
+                <img src="./asseds/img/mobileContacts.png">
+                <p>Contacts</p>
+            </a>
+        </div>
 
         <div class="rightContent">
             <div id="headerContent"></div>
+            <div class="new-contact-mobile-box">
+                <div onclick="showContactBox()" class="new-contact-mobile d-none">
+                    <p class="new-contact-btn">New Contact</p>
+                    <img src="asseds/img/new_contact.png">
+                </div>
+            </div>
+
             <div class="mainContent">
 
                 <div id="contactList" class="contactList"></div>
@@ -51,6 +76,7 @@
                 <div id="newContactBoxBckgr" style="display: none;" class="newContactBoxBckgr">
                     <div id="newContactBox" class="newContactBox">
                         <img onclick="closeContactBox()" class="closeImg" src="asseds/img/cross.png">
+                        <img onclick="closeContactBox()" class="closeImgMobile d-none" src="asseds/img/closewhite.png">
                         <div class="leftContent">
                             <img src="asseds/img/littleLogo.png">
                             <h1>Add Contact</h1>
