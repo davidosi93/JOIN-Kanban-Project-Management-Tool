@@ -24,7 +24,7 @@
 <body onload="initLoadTasks(); includeHTML()">
 
     <div class="content">
-        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div w3-include-html="/asseds/templates/desktop_template.html" class="rightTemplates"></div>
         <div id="addTaskRight" w3-include-html="/asseds/templates/task_form.html" class="d-none"></div>
 
         <div class="rightContent">
@@ -40,14 +40,26 @@
             <div class="mainContent">
 
                 <div class="headerUnderRightMenuHeader ">
-                    <p class="headerUnderRightMenuHeaderHeadline ">Board</p>
-                    <div class="containerInputfield ">
-                        <input class="headerUnderRightMenuHeaderInputfield " type="text " id="search" onkeyup="searchToTask()" placeholder="Find Task ">
-                        <div>
-                            <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
+                    <div class="headerUnderMenuSmollDiv">
+                        <div class="headerUnderMenuSmollDivDiv">
+                            <p class="headerContent1">Kanban Project Management Tool</p>
+                        </div>
+                        <div class="headerUnderRightMenuHeaderDiv">
+                            <p class="headerUnderRightMenuHeaderHeadline">Board</p>
+                            <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButtonSmall"><img class="addTaskImageSmall" src="/asseds/img/Group 11.png "></button>
                         </div>
                     </div>
-                    <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
+                    <div class="headerUnderRightMenuHeaderBigDiv">
+                        <div class="containerInputfield ">
+                            <input class="headerUnderRightMenuHeaderInputfield " type="text " id="search" onkeyup="searchToTask()" placeholder="Find Task ">
+                            <div class="searchImageDiv">
+                                <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
+
+                            </div>
+
+                        </div>
+                        <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
+                    </div>
                 </div>
 
 
@@ -72,7 +84,7 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div id="containerTodos" class="containerTodo" ondrop="drop('todo')" ondragover="allowDrop(event)">
+                        <div id="containerTodos" class="containerTodo" ondragleave="removeHighlight('containerTodos')" ondrop="drop('todo'); removeHighlight('containerTodos')" ondragover="allowDrop(event); highlight('containerTodos')">
 
                         </div>
 
@@ -84,7 +96,7 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div id="containerProgresses" class="containerTodo" ondrop="drop('progress')" ondragover="allowDrop(event)">
+                        <div id="containerProgresses" class="containerTodo" ondragleave="removeHighlight('containerProgresses')" ondrop="drop('progress'); removeHighlight('containerProgresses')" ondragover="allowDrop(event); highlight('containerProgresses')">
 
                         </div>
 
@@ -96,7 +108,7 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div id="containerFeedbacks" class="containerTodo" ondrop="drop('feedback')" ondragover="allowDrop(event)">
+                        <div id="containerFeedbacks" class="containerTodo" ondragleave="removeHighlight('containerFeedbacks')" ondrop="drop('feedback'); removeHighlight('containerFeedbacks')" ondragover="allowDrop(event); highlight('containerFeedbacks')">
 
                         </div>
 
@@ -108,7 +120,7 @@
                             <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
                         </div>
 
-                        <div id="containerDones" class="containerTodo" ondrop="drop('done')" ondragover="allowDrop(event)">
+                        <div id="containerDones" class="containerTodo" ondragleave="removeHighlight('containerDones')" ondrop="drop('done'); removeHighlight('containerDones')" ondragover="allowDrop(event); highlight('containerDones')">
 
                         </div>
 
