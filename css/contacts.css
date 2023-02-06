@@ -147,7 +147,7 @@ body {
     flex-direction: column;
 }
 
-.letter p {
+.letterP {
     font-weight: 400;
     font-size: 21px;
     padding-left: 20px;
@@ -165,7 +165,7 @@ body {
     flex-direction: row;
     align-items: center;
     padding: 15px 25px;
-    gap: 5%;
+    gap: 10%;
     height: 79px;
     cursor: pointer;
     border-radius: 10px;
@@ -210,6 +210,11 @@ body {
     gap: 5px;
     width: auto;
     height: 49px;
+}
+
+.contactName p {
+    font-weight: 400;
+    font-size: 21px;
 }
 
 .email {
@@ -268,7 +273,6 @@ body {
 }
 
 .contactBox {
-    width: 115%;
     height: 364px;
     margin-top: 60px;
     position: relative;
@@ -499,18 +503,17 @@ body {
 .contactRightContent {
     position: absolute;
     height: 100%;
-    width: 60%;
-    right: 0;
+    width: 58%;
+    right: 2%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .contactRightContentImg {
-    position: absolute;
+    position: unset;
     width: 120px;
     height: 120px;
-    left: 7%;
     background-color: #D1D1D1;
     border-radius: 100%;
     display: flex;
@@ -523,8 +526,6 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    left: 10%;
-    width: 100%;
 }
 
 .inputField input {
@@ -910,6 +911,7 @@ body {
 
     .contactRightContent {
         position: absolute;
+        right: unset;
         bottom: 0;
         height: 55%;
         width: 100%;
@@ -918,6 +920,7 @@ body {
     }
 
     .contactRightContentImg {
+        position: absolute;
         width: 100px;
         height: 100px;
         top: -21%;
