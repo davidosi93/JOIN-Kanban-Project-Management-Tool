@@ -61,10 +61,15 @@ let allContactsTest = [{
     }
 ];
 
+//users[activeUser]['tasks'].push(allCategorys);
+//await backend.setItem('users', JSON.stringify(users));
+
 async function initLoadTasks() {
     await downloadFromServer()
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     allCategorys = JSON.parse(backend.getItem('allCategorys')) || [];
+    users = JSON.parse(backend.getItem('users')) || [];
+    activeUser = backend.getItem('activeUser') || 0;
     openAllContacts();
     filterTasks()
     createnewCategoryAll()

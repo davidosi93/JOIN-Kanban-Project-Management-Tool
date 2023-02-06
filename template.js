@@ -16,7 +16,7 @@ async function includeHTML() {
 function showHeader(color, str) {
     return `<div class="headerContent">
                 <p>Kanban Project Management Tool</p>
-
+                <img src="asseds/img/biglogo.png" class="d-none">
                  <div class="headerContentRight">
                     <div class="buttonsTopRight">
                         <img onclick="help()" class="information" src="/asseds/img/information.png">
@@ -28,15 +28,15 @@ function showHeader(color, str) {
 }
 
 
+// Templates von contact.js
 function contactLetterHeadline(firstChar) {
     return `<div id="contactLetter-${firstChar}" class="letter">
-                <p>${firstChar}</p>
+                <p class="letterP">${firstChar}</p>
                 <div class="letterUnderline"></div>
             </div>`;
 }
 
 
-// Templates contact.js von David
 function showContactDiv(name, email, str, color, i) {
     return `<div id="contactDiv${i}" onclick="showContact(${i});" class="contactDiv hover">
                     <div id="contactLetter${i}" style="background-color: ${color}" class="contactLetter">

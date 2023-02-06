@@ -9,6 +9,7 @@ async function contactInit() {
     loadLetters();
     renderLetters();
     renderContactList();
+    navBarHighlight(4);
 }
 
 

@@ -15,7 +15,10 @@ body {
     justify-content: space-between;
     background-color: white;
     align-items: center;
-    height: 75px;
+    height: 8vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .headerContent p {
@@ -50,7 +53,7 @@ body {
     align-items: center;
     flex-direction: column;
     position: absolute;
-    top: 10.5%;;
+    top: 100%;
     right: 2%;
     width: 130px;
     height: 53px;
@@ -88,6 +91,8 @@ body {
 
 .mainContent {
     display: flex;
+    position: relative;
+    height: 100%;
 }
 
 
@@ -95,15 +100,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px;
     box-shadow: 4px 0px 6px rgb(0 0 0 / 8%);
     width: 35%;
-    height: 89.6vh;
-    left: 48px;
-    top: 2px;
+    height: 92vh;
     background: #FFFFFF;
     overflow: scroll;
     overflow-x: hidden;
+    position: absolute;
 }
 
 .contactList::-webkit-scrollbar {
@@ -117,8 +120,8 @@ body {
 
 .contactList::-webkit-scrollbar-button:single-button {
     border-style: solid;
-    height: 13px;
-    width: 16px;
+    height: 0;
+    width: 10px;
 }
 
 .contactList::-webkit-scrollbar-button:single-button:vertical:decrement {
@@ -138,12 +141,13 @@ body {
 }
 
 .letter {
+    width: 80%;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
-.letter p {
+.letterP {
     font-weight: 400;
     font-size: 21px;
     padding-left: 20px;
@@ -161,8 +165,7 @@ body {
     flex-direction: row;
     align-items: center;
     padding: 15px 25px;
-    gap: 35px;
-    width: 300px;
+    gap: 10%;
     height: 79px;
     cursor: pointer;
     border-radius: 10px;
@@ -209,6 +212,11 @@ body {
     height: 49px;
 }
 
+.contactName p {
+    font-weight: 400;
+    font-size: 21px;
+}
+
 .email {
     margin: 0;
     font-size: 16px !important;
@@ -225,7 +233,10 @@ body {
 .rightSection {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 65%;
+    position: absolute;
+    right: 0;
 }
 
 .rightArea {
@@ -235,10 +246,11 @@ body {
 }
 
 .showContactHeader {
-    width: 569px;
+    width: 100%;
     height: 73px;
     left: 743px;
     top: 171px;
+    gap: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -261,7 +273,6 @@ body {
 }
 
 .contactBox {
-    width: 115%;
     height: 364px;
     margin-top: 60px;
     position: relative;
@@ -492,19 +503,17 @@ body {
 .contactRightContent {
     position: absolute;
     height: 100%;
-    width: 60%;
-    right: 0;
+    width: 58%;
+    right: 2%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    gap: 10%;
 }
 
 .contactRightContentImg {
-    position: absolute;
+    position: unset;
     width: 120px;
     height: 120px;
-    left: 10%;
     background-color: #D1D1D1;
     border-radius: 100%;
     display: flex;
@@ -515,9 +524,8 @@ body {
 .inputFieldSection {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    right: 10%;
-    top: 25%;
+    align-items: center;
+    position: relative;
 }
 
 .inputField input {
@@ -531,7 +539,6 @@ body {
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    margin-bottom: 5%;
     margin-top: 5%;
 }
 
@@ -569,10 +576,6 @@ body {
     background: url('/asseds/img/phone-line.png') no-repeat;
     background-position-x: 95%;
     background-position-y: 50%;
-}
-
-.inputField {
-    position: relative;
 }
 
 .inputFieldIMG {
@@ -746,5 +749,261 @@ body {
 
     to {
         bottom: 20%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        overflow: hidden;
+    }
+
+    .desktopMenu {
+        display: none;
+    }
+
+    .headerContent {
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
+
+    .headerContent p {
+        display: none;
+    }
+
+    .headerContent img {
+        height: 50%;
+        display: block;
+        position: relative;
+        left: 3%;
+    }
+
+    .mainContent {
+        background-color: white;
+    }
+
+    .rightContent {
+        background-color: white;
+    }
+
+    .rightSection {
+        display: none;
+    }
+
+    .showContactHeader {
+        display: none;
+    }
+
+    .contactList {
+        padding: unset;
+        box-shadow: none;
+        width: 100%;
+        height: 70vh;
+    }
+
+    .contactList::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    .mobileMenu {
+        width: 100%;
+        height: 80px;
+        background-color: #2A3647;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .mobileMenu a {
+        text-decoration: none;
+    }
+
+    .new-contact {
+        display: none;
+    }
+
+    .new-contact-mobile {
+        padding: 4px 0px;
+        width: 193px;
+        height: 4%;
+        background: #2A3647;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 19px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        right: 2%;
+        top: 9%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .new-contact-mobile-box {
+        height: 75px;
+        background-color: white;
+    }
+
+    .buttonSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        width: 20vw;
+        height: 60px;
+        gap: 10px;
+        color: #CDCDCD;
+    }
+
+    .buttonSectionBackground {
+        background-color: #091931;
+    }
+
+    .buttonSection p {
+        margin: 0;
+    }
+
+    .newContactBox {
+        width: 95%;
+        height: 80%;
+        top: -10px;
+    }
+
+    .closeImg {
+        display: none;
+    }
+
+    .closeImgMobile {
+        position: absolute;
+        right: 05%;
+        top: 5%;
+        cursor: pointer;
+        z-index: 1;
+        display: block;
+    }
+
+    .leftContent {
+        width: 100%;
+        height: 45%;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 30px;
+        padding: unset;
+        align-items: center;
+    }
+
+    .leftContent img {
+        display: none;
+    }
+
+    .newContactBoxLine {
+        position: relative;
+        left: -60px;
+        width: 170px;
+    }
+
+    .contactRightContent {
+        position: absolute;
+        right: unset;
+        bottom: 0;
+        height: 55%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .contactRightContentImg {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: -21%;
+        left: unset;
+    }
+
+    .inputFieldSection {
+        top: unset;
+        right: unset;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .inputField {
+        position: unset;
+        width: 60%;
+    }
+
+    .inputField input {
+        height: unset;
+        margin-bottom: unset;
+        width: 100%;
+    }
+
+    .buttons {
+        justify-content: center;
+        margin-top: 3%;
+    }
+
+    .buttonImg {
+        background-position-x: 97%;
+        display: flex;
+        justify-content: stretch;
+        padding-left: 7%;
+    }
+
+    .log-in-guest {
+        display: none;
+    }
+
+    .log-in-btn {
+        padding-left: unset;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .inputField {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .new-contact-mobile {
+        height: 5%;
+    }
+
+    .contactDiv {
+        gap: unset;
+    }
+
+    .letter {
+        width: 85%;
+    }
+
+    .mobileMenu img {
+        width: 20px;
+    }
+
+    .buttonSection p {
+        font-size: 13px;
+    }
+
+    .leftContent h1 {
+        font-size: 250%;
+    }
+
+    .leftContent p {
+        font-size: 130%;
+    }
+
+    .newContactBoxLine {
+        width: 135px;
     }
 }
