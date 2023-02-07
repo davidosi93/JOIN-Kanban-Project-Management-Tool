@@ -1,8 +1,3 @@
-let allTasks = [];
-let todo = [];
-let progress = [];
-let feedback = [];
-let done = [];
 let allCategorys = [];
 let allSubtasks = [];
 let allContacts = [];
@@ -65,16 +60,18 @@ let allContactsTest = [{
 //await backend.setItem('users', JSON.stringify(users));
 
 async function initLoadTasks() {
-    await downloadFromServer()
-    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    includeHTML();
+    await getAllTasks();
+    filterAllTasks();
     allCategorys = JSON.parse(backend.getItem('allCategorys')) || [];
     users = JSON.parse(backend.getItem('users')) || [];
     activeUser = backend.getItem('activeUser') || 0;
     openAllContacts();
-    filterTasks();
-    loadActiveUser();
+    filterTasks()
     createnewCategoryAll()
 }
+
+
 
 function filterTasks() {
     filterTodo()
@@ -100,7 +97,7 @@ function goBacktoMainContainer() {
 
 
 async function filterTodo() {
-    todo = allTasks.filter(t => t['list'] == 'todo');
+
     let renderTodo = document.getElementById('containerTodos');
     renderTodo.innerHTML = '';
 
@@ -142,7 +139,6 @@ async function filterTodo() {
                 </div>
                 <span id="progressText-${i}" class="progressText">${progresses}</span>
             `;
-
         }
 
 
@@ -177,7 +173,7 @@ async function filterTodo() {
 }
 
 async function filterInprogress() {
-    progress = allTasks.filter(t => t['list'] == 'progress');
+
     let renderProgress = document.getElementById('containerProgresses');
     renderProgress.innerHTML = '';
 
@@ -255,7 +251,7 @@ async function filterInprogress() {
 }
 
 async function filterFeedback() {
-    feedback = allTasks.filter(t => t['list'] == 'feedback');
+
     let feedbackRender = document.getElementById('containerFeedbacks');
     feedbackRender.innerHTML = '';
 
@@ -331,7 +327,7 @@ async function filterFeedback() {
 }
 
 async function filterDone() {
-    done = allTasks.filter(t => t['list'] == 'done');
+
     let doneRender = document.getElementById('containerDones');
     doneRender.innerHTML = '';
 
@@ -835,7 +831,7 @@ async function drop(categorys) {
     addTasking();
     filterTasks();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    touchStartActive = false;
+    initLoadTasks();
 }
 
 function drag(id) {

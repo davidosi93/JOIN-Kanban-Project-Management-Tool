@@ -22,3 +22,22 @@ function navBarHighlight(item) {
         document.getElementById('navBarContacts').classList.add('buttonSectionBackground');
     }
 }
+
+let allTasks = [];
+
+async function getAllTasks(){
+    await downloadFromServer()
+    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+}
+
+let todo = [];
+let progress = [];
+let feedback = [];
+let done = [];
+
+async function filterAllTasks(){
+    todo = allTasks.filter(t => t['list'] == 'todo');
+    progress = allTasks.filter(t => t['list'] == 'progress');
+    feedback = allTasks.filter(t => t['list'] == 'feedback');
+    done = allTasks.filter(t => t['list'] == 'done');
+}

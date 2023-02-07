@@ -9,26 +9,42 @@
 
     <link rel="stylesheet" href="css/summary.css">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
+    <script src="mini_backend.js"></script>
+    <script src="script.js"></script>
     <script src="template.js"></script>
     <script src="js/summary.js"></script>
     <script src="js/board.js"></script>
     <script src="/js/desktop_template.js"></script>
+    <link rel="stylesheet" href="css/contacts.css">
 
 
 </head>
 
-<body onload="includeHTML(), watchTask()">
+<body onload="initSummary()">
     <div class="content">
-        <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div class="desktopMenu" w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div class="mobileMenu d-none">
+            <a href="summary.html" class="buttonSection" id="navBarSummary">
+                <img src="./asseds/img/mobileSummary.png">
+                <p>Summary</p>
+            </a>
+            <a href="board.html" class="buttonSection" id="navBarBoard">
+                <img src="./asseds/img/mobileBoard.png">
+                <p>Board</p>
+            </a>
+            <a href="add_task.html" class="buttonSection" id="navBarAddTask">
+                <img src="./asseds/img/mobileAddTask.png">
+                <p>Add Task</p>
+            </a>
+            <a href="contacts.html" class="buttonSection" id="navBarContacts">
+                <img src="./asseds/img/mobileContacts.png">
+                <p>Contacts</p>
+            </a>
+        </div>
 
         <div class="rightContent">
             <div class="headerContent">
                 <p>Kanban Project Management Tool</p>
-
-
-
-
-
                 <div class="headerContentRight">
                     <img onclick="help()" class="information" src="/asseds/img/information.png">
                     <img class="personLogIn" src="/asseds/img/logo.jpg">
@@ -127,7 +143,8 @@
                         </div>
                     </a>
                 </div>
-                    </div>
+                </div>
+                    
                     <div class="right-Container">
                         <div class="greet">Good Morning,<br>
                             <p>Artur Marbach</p>
