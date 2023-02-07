@@ -8,11 +8,11 @@
     <title>Board</title>
     <link rel="stylesheet" href="/css/board.css">
     <!-- <link rel="stylesheet" href="/desktop_template.css"> -->
-
+    <script src="./mini_backend.js"></script>
     <script src="/js/board.js"></script>
     <script src="/js/task_form.js"></script>
     <script src="/js/desktop_template.js"></script>
-    <script src="./mini_backend.js"></script>
+
     <script src="template.js"></script>
     <script src="script.js"></script>
 
@@ -39,7 +39,32 @@
                 </div>
             </div>
 
-            <div class="mainContent">
+            <div id="help" class="mainContainerHelp d-none">
+                <div class="headerHelp">
+                    <h1>Help</h1>
+                    <img onclick="goBacktoMainContainer()" src="asseds/img/Vector.png">
+                </div>
+
+                <h2>What is Join?</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                <h2>How to use it</h2>
+
+                <div class="flexContainer">
+                    <h3>1.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                </div>
+                <div class="flexContainer">
+                    <h3>2.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                </div>
+                <div class="flexContainer">
+                    <h3>3.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                </div>
+            </div>
+
+            <div class="mainContent" id="mainContent">
 
                 <div class="headerUnderRightMenuHeader ">
                     <div class="headerUnderMenuSmollDiv">

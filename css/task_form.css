@@ -230,6 +230,16 @@
         height: 90vh;
         border-radius: 30px;
         position: relative;
+        animation: slideInFromRight 0.5s forwards;
+    }
+    
+    @keyframes slideInFromRight {
+        from {
+            right: -300px;
+        }
+        to {
+            right: 0;
+        }
     }
     
     .closes {
@@ -1598,7 +1608,7 @@
             height: 90vh;
         }
         .mainContent {
-            height: 564px;
+            height: 560px;
         }
         .closes4 {
             left: 31%;

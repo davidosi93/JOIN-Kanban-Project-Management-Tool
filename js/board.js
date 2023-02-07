@@ -71,7 +71,8 @@ async function initLoadTasks() {
     users = JSON.parse(backend.getItem('users')) || [];
     activeUser = backend.getItem('activeUser') || 0;
     openAllContacts();
-    filterTasks()
+    filterTasks();
+    loadActiveUser();
     createnewCategoryAll()
 }
 
@@ -80,6 +81,21 @@ function filterTasks() {
     filterFeedback()
     filterInprogress()
     filterDone()
+
+}
+
+function loadActiveUser() {
+    let activeUser = document.getElementById('headerContent');
+}
+
+function help() {
+    document.getElementById('help').classList.remove('d-none');
+    document.getElementById('mainContent').classList.add('d-none');
+}
+
+function goBacktoMainContainer() {
+    document.getElementById('help').classList.add('d-none');
+    document.getElementById('mainContent').classList.remove('d-none');
 }
 
 
@@ -749,10 +765,7 @@ async function addTasking() {
 
 function touchstart(id) {
 
-    timer = setTimeout(() => {
-        onlongtouch(id);
-
-    }, 200);
+    timer = setTimeout(() => { onlongtouch(id); }, 200);
 }
 
 function touchend(id) {
@@ -797,7 +810,10 @@ function save(event) {
 
 function closeMoveToPoppupMobile() {
     filterTasks();
-    // touchStartActive = false;
+
+    setTimeout(function() {
+        touchStartActive = false;
+    }, 500);
 }
 
 function highlight(id) {
@@ -808,9 +824,6 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
 }
-
-
-
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -824,8 +837,6 @@ async function drop(categorys) {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     touchStartActive = false;
 }
-
-
 
 function drag(id) {
     currentDraggedElement = id;
