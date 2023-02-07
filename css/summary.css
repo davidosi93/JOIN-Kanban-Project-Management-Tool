@@ -128,7 +128,7 @@ body {
 
 .boardContainer:hover {
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1);
     color: white;
     background-color: #2A3647;
 }
@@ -173,14 +173,14 @@ body {
 
 .deadlineContainer:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1);
     color: white;
     background-color: #2A3647;
 }
 
 .deadlineContainer a:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1);
     color: white;
     background-color: #2A3647;
 }
@@ -221,9 +221,7 @@ body {
     margin-top: 20px;
     background-color: white;
     border-radius: 10px;
-    padding: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 10px;
 }
 
 
@@ -252,7 +250,7 @@ body {
 
 .finishContainer:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1);
     color: white;
     background-color: #2A3647;
 }
@@ -328,4 +326,63 @@ h3 {
     font-size: 20px;
     margin-top: 0;
     margin-bottom: 20px;
+}
+
+@media(max-width: 1290px) {
+    .left-Container{
+        width: 80%;
+    }
+}
+@media(max-width: 1100px) {
+    .headline p{
+        font-size: 25px;
+    }
+
+    .headerContent p{
+        margin-left: 5%;
+    }
+
+    .greet{
+        font-size: 40px;
+        margin-left: 10%;
+    }
+
+    .boardContainer {
+        padding: 10px;
+    }
+
+    .left-Container{
+        margin-left: 5%;
+    }
+
+    .finishContainer{
+        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+    }
+}
+
+@media(max-width: 900px){
+    .headerContent{
+        justify-content: end;
+    }
+
+    .right-Container {
+        display: none;
+    }
+
+    .left-Container{
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .taskContainer{
+        justify-content: space-around;
+    }
+
+    .finishTask{
+        justify-content: space-around;
+    }
+
 }
