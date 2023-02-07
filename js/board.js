@@ -16,6 +16,9 @@ let currentCategoryColor;
 let newCategorySelected = false;
 let currentIndex = 0;
 let currentId = 0;
+let timer;
+let timeIsup = false;
+let touchStartActive = false;
 let allContactsTest = [{
         'color': '#3FB1C6',
         'email': 'waldemar@gmx.de',
@@ -126,7 +129,7 @@ async function filterTodo() {
 
 
         renderTodo.innerHTML += /*html*/ `
-          <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
             <div class="addCategoryInTask ${element['category']['color']}">
                 <p>${element['category']['name']}</p>
             </div>
@@ -203,7 +206,7 @@ async function filterInprogress() {
 
 
         renderProgress.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -280,7 +283,7 @@ async function filterFeedback() {
 
 
         feedbackRender.innerHTML += /*html*/ `
-          <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
             <div class="addCategoryInTask ${element['category']['color']}">
                 <p>${element['category']['name']}</p>
             </div>
@@ -355,7 +358,7 @@ async function filterDone() {
         }
 
         doneRender.innerHTML += /*html*/ `
-                <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -494,7 +497,7 @@ async function addTasking() {
 
 
         containerTodo.innerHTML += /*html*/ `
-        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
             <div class="addCategoryInTask ${element['category']['color']}">
                 <p>${element['category']['name']}</p>
             </div>
@@ -567,7 +570,7 @@ async function addTasking() {
 
 
         containerProgress.innerHTML += /*html*/ `
-           <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+           <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -639,9 +642,9 @@ async function addTasking() {
 
 
         containerFeedback.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
+                    <p>${element['category']['name']}</p> 
                 </div>
                 <div>
                     <p>${element['title']}</p>
@@ -710,7 +713,7 @@ async function addTasking() {
 
 
         containerDone.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -739,6 +742,71 @@ async function addTasking() {
     }
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
+
+
+function touchstart(id) {
+
+    timer = setTimeout(() => {
+        onlongtouch(id);
+
+    }, 200);
+}
+
+function touchend(id) {
+
+    if (timer && !timeIsup) {
+        clearTimeout(timer);
+        openCheckTask(id);
+    }
+    setTimeout(() => timeIsup = false, 250)
+}
+
+
+function onlongtouch(id) {
+    timeIsup = true;
+    openMoveToPoppupMobile(id);
+}
+
+function openMoveToPoppupMobile(id) {
+    touchStartActive = true;
+    let task = document.getElementById('containerBlock-' + id);
+    currentDraggedElement = id;
+    task.innerHTML += openMoveToPoppupMobileHTML();
+
+}
+
+function openMoveToPoppupMobileHTML() {
+    return /*html*/ `
+    <div id="popupToMoveTaskMobile" class="popupToMoveTaskMobile" ontouchstart="save(event); closeMoveToPoppupMobile()">
+        <div class="popupToMoveTaskMobileSelections">
+            <div>Move to</div>
+            <span ontouchstart="save(event); drop('todo')">To do</span>
+            <span ontouchstart="save(event); drop('progress')">In Progress</span>
+            <span ontouchstart="save(event); drop('feedback')">Feedback</span>
+            <span ontouchstart="save(event); drop('done')">Done</span>
+        </div>
+    </div>`;
+}
+
+function save(event) {
+    event.stopPropagation();
+}
+
+function closeMoveToPoppupMobile() {
+    filterTasks();
+    // touchStartActive = false;
+}
+
+function highlight(id) {
+    document.getElementById(id).classList.add('dragAreaHighlight');
+}
+
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('dragAreaHighlight');
+}
+
+
 
 
 function allowDrop(ev) {
@@ -1094,11 +1162,11 @@ function resetSubtasks() {
 /** Area for openCheckTask */
 
 function openCheckTask(Index) {
-    let openToCheck = allTasks.filter(x => x.id == Index);
-    let openTocheckRightTask = allTasks.indexOf(openToCheck[0]);
-
-    openCheckTasks(openTocheckRightTask);
-
+    if (!touchStartActive) {
+        let openToCheck = allTasks.filter(x => x.id == Index);
+        let openTocheckRightTask = allTasks.indexOf(openToCheck[0]);
+        openCheckTasks(openTocheckRightTask);
+    }
 }
 
 
@@ -1175,6 +1243,7 @@ function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, 
                 <img onclick="openTaskToEdit(${taskIndex})" class="toEditTaskImage" src="/asseds/img/Group 8.png">
             </button>
             <div onclick="closeContainer1()" class="closes2">&times;</div>
+            <img onclick="closeContainer1()" class="closes4" src="/asseds/img/arrow-left-line.png">
         </div>
    
     `;
@@ -1377,7 +1446,7 @@ function openTaskToEditHTML(task, duaDate, taskIndex) {
             </div>
 
             <p class="titleInputFields">Assigned to</p>
-            <div id="openContactToEdit" onclick="openContactsToEdit()" class="assignedDiv">
+            <div id="openContactToEdit" onclick="openContactsToEdit()" class="assignedDiv1">
                 <p class="assignedContactsSelectToEdit" id="assignedContactsSelect">Select contacts to assigt</p>
                 <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
             </div>
@@ -1395,7 +1464,6 @@ function openTaskToEditHTML(task, duaDate, taskIndex) {
                 <img class="toEditTaskImage" src="/asseds/img/check.png">
             </button>
 
-            <div onclick="closeContainer1()" class="closes2">&times;</div>
         </div>
     `;
 
@@ -1412,13 +1480,19 @@ function openTaskToEditDate(taskIndex) {
 function openTaskToEditContacts() {
     let initialsContainer = '';
     for (let j = 0; j < assignedChackedBox.length; j++) {
-        let name = assignedChackedBox[j]['name'].split(' ');
-        let color = assignedChackedBox[j]['color'];
-        initialsContainer += /*html*/ `
-            <div class="assignTask">
-                <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-            </div>
-          `;
+        if (j < 3) {
+            let name = assignedChackedBox[j]['name'].split(' ');
+            let color = assignedChackedBox[j]['color'];
+            initialsContainer += /*html*/ `
+                <div class="assignTask">
+                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                </div>
+            `;
+        } else {
+            initialsContainer += /*html*/ `
+                <div class="nameContainer">+${assignedChackedBox.length - 3}</div>`;
+            break;
+        }
     }
 
     return initialsContainer;
@@ -1623,7 +1697,7 @@ function searchFilterTodo() {
             }
 
             filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -1708,7 +1782,7 @@ function searchFilterProgress() {
 
 
             filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -1793,7 +1867,7 @@ function searchFilterFeedback() {
             }
 
             filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>
@@ -1879,7 +1953,7 @@ function searchFilterDone() {
 
 
             filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" class="containerBlock">
+            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
                 <div class="addCategoryInTask ${element['category']['color']}">
                     <p>${element['category']['name']}</p>
                 </div>

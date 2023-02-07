@@ -31,7 +31,7 @@ function showHeader(color, str) {
 // Templates von contact.js
 function contactLetterHeadline(firstChar) {
     return `<div id="contactLetter-${firstChar}" class="letter">
-                <p>${firstChar}</p>
+                <p class="letterP">${firstChar}</p>
                 <div class="letterUnderline"></div>
             </div>`;
 }

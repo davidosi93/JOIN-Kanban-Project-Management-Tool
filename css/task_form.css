@@ -1,906 +1,1617 @@
-body {
-    margin: 0px;
-}
-
-.mainContent1 {
-    padding-left: 120px;
-    margin-top: -20px;
-}
-
-.headline {
-    display: flex;
-}
-
-.headline h1 {
-    padding-right: 30px;
-    font-size: 70px;
-    margin-bottom: 0;
-}
-
-.flexContainer {
-    display: flex;
-    padding-left: 70px;
-}
-
-.leftContainer {
-    padding-left: 120px;
-}
-
-.rightContainer {
-    display: flex;
-    flex-direction: column;
-    padding-left: 300px;
-}
-
-.containerForm {
-    display: flex;
-}
-
-.leftContainer p {
-    font-size: 21px;
-    font-weight: 400px;
-}
-
-.headlineTitel {
-    font-weight: bold;
-    font-size: 61px;
-    color: #000000;
-    margin-bottom: 20px;
-}
-
-.leftContainerI {
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    width: 420px;
-    height: 27px;
-    padding: 8px;
-    font-size: 21px;
-    cursor: pointer;
-}
-
-.leftContainerTextarea {
-    width: 420px;
-    height: 70px;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    padding: 8px;
-    font-size: 21px;
-    cursor: pointer;
-}
-
-.rightContainer input {
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    width: 420px;
-    height: 27px;
-    padding: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.flex p {
-    margin-bottom: 0;
-}
-
-.prio {
-    display: flex;
-}
-
-.prio img {
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-}
-
-.prioContainer {
-    padding: 10px;
-    margin-right: 18px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    font-size: 21px;
-    border: 1px solid #D1D1D1;
-    width: 112px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.prioContainer img {
-    padding-left: 0px;
-}
-
-.medium {
-    height: 10px !important;
-    padding-top: 4px;
-}
-
-.prioContainer:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    box-shadow: 2px 3px lightgray;
-}
-
-.middleLine {
-    position: absolute;
-    width: 0px;
-    height: 570px;
-    left: 50%;
-    top: 140px;
-    border: 1px solid #D1D1D1;
-}
-
-.relativeContainer {
-    display: flex;
-    align-items: center;
-}
-
-.smallRelativeContainer {
-    position: relative;
-}
-
-.dateImg {
-    width: 12px;
-    height: 12px;
-    background-color: white;
-}
-
-.subtaskIMG {
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    right: 20px;
-    top: -8px;
-}
-
-.checkbox {
-    max-width: 25px;
-    width: 16px;
-    height: 16px;
-    margin-left: 0;
-    margin-top: 6px;
-}
-
-.btn img {
-    width: 14px;
-    height: 14px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.btnClear {
-    padding: 10px;
-    border-radius: 10px;
-    border-color: lightgray;
-    margin-right: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    background-color: #FFFFFF;
-}
-
-.btnClear:hover {
-    color: #29ABE2;
-    border-color: #29ABE2;
-}
-
-.btnCreate {
-    padding: 10px;
-    border-radius: 10px;
-    border-color: lightgray;
-    background: #2A3647;
-    color: white;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.btnCreate:hover {
-    background-color: #29ABE2;
-}
-
-.pfeilUnten {
-    width: 8px;
-    height: 8px;
-}
-
-select {
-    width: 415px;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    padding: 8px;
-    cursor: pointer;
-}
-
-.mainContainer {
-    background-color: rgba(0, 0, 0, 0.3);
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 1;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    top: 0px;
-}
-
-.mainContainerTaskForm {
-    background-color: #FFFFFF;
-    width: 80vw;
-    height: 90vh;
-    border-radius: 30px;
-    position: relative;
-}
-
-.closes {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    color: #5f5e5e;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    font-family: none;
-}
-
-.closes:hover,
-.closes:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.d-none {
-    display: none !important;
-}
-
-.red {
-    background-color: #FF3D00;
-    color: white;
-}
-
-.yellow {
-    background-color: #FFA800;
-    color: white;
-}
-
-.green {
-    background-color: #7AE229;
-    color: white;
-}
-
-.titleInputFields {
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-size: 21px;
-}
-
-
-/** Area for Category **/
-
-.categoryDiv {
-    width: 400px;
-    height: 7px;
-    border-radius: 10px;
-    padding: 18px;
-    border: 1px solid lightgray;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.categoryMedia {
-    display: flex;
-    width: 15px;
-    height: 15px;
-    border-radius: 100%;
-}
-
-.selectTaskCategory {
-    font-size: 21px;
-    margin: 0px;
-}
-
-.bg-orange {
-    background-color: #FF3D00 !important;
-}
-
-.bg-yellow {
-    background-color: #FFA800 !important;
-}
-
-.bg-green {
-    background-color: #7AE229 !important;
-}
-
-.bg-pink {
-    background-color: #FC71FF;
-}
-
-.bg-turquoise {
-    background-color: #1FD7C1;
-}
-
-.bg-blue {
-    background-color: #0038FF;
-}
-
-.categoryMediaDivSmoll {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.categoryMediaDivSmoll:hover {
-    background-color: rgb(248, 244, 244);
-    cursor: pointer;
-}
-
-.categoryMediaDivSmollDiv {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.closes3 {
-    color: #bbb;
-    font-size: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-    font-family: none;
-    margin-right: 10px;
-    width: 40px;
-    height: 40px;
-}
-
-.closes3:hover,
-.closes3:focus {
-    color: #5f5e5e;
-    ;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.taskCategory {
-    font-size: 21px;
-    margin: 10px 19px;
-}
-
-.categoryList {
-    padding-left: 12px;
-    margin-top: 0px;
-    border: 1px solid lightgray;
-    border-top: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding-left: 0px;
-    list-style-type: none;
-    height: 133px;
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-.borderButton {
-    border-bottom: none;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
-.containerColorPicker {
-    display: flex;
-    justify-content: space-around;
-    width: 200px;
-    margin-top: 10px;
-}
-
-.colorPicker {
-    border-radius: 100%;
-    height: 17px;
-    width: 17px;
-    border: 2px solid white;
-    cursor: pointer;
-}
-
-.inputfieldNewCategory {
-    outline: none !important;
-    border: none !important;
-    z-index: 999 !important;
-    width: 300px;
-    height: 30px !important;
-}
-
-.selectNewCategory {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: -5px;
-}
-
-.subLine {
-    width: 0px;
-    height: 30px;
-    border: 1px solid lightgray;
-}
-
-.selectNewCategoryCancel {
-    padding-right: 5px;
-}
-
-.selectNewCategoryCheckmark {
-    padding-left: 12px;
-}
-
-
-/** Area for Assigned to **/
-
-.assignedDiv {
-    width: 400px;
-    height: 7px;
-    border-radius: 10px;
-    padding: 18px;
-    border: 1px solid lightgray;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.assignedDivBorder {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom: none !important;
-}
-
-.assignedToList {
-    padding-left: 12px;
-    margin-top: 0px;
-    border: 1px solid lightgray;
-    border-top: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding-left: 0px;
-    list-style-type: none;
-    height: 133px;
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-.taskAssignedTo {
-    font-size: 21px;
-    margin: 10px 19px;
-}
-
-.inputCheckbox {
-    height: 15px !important;
-    width: 15px !important;
-    margin-right: 20px;
-}
-
-.assignedToListBox {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.assignedToContactButton {
-    margin-right: 12px;
-    margin-bottom: 6px;
-}
-
-.assignedToListBox:hover {
-    background-color: rgb(248, 244, 244);
-    cursor: pointer;
-}
-
-.assignedAddContact {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.assignedAddContactDivs {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 3px;
-}
-
-.addCategoryInTask {
-    height: 30px;
-    width: 120px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.assignedAddContactLetters {
-    font-size: 15px !important;
-}
-
-
-/** Area for Subtasks **/
-
-.subtsasksCancelImg {
-    position: absolute;
-    right: 40px;
-    top: -12px;
-    cursor: pointer;
-}
-
-.subtasksSsubLine {
-    width: 0px;
-    height: 30px;
-    border: 1px solid lightgray;
-    position: absolute;
-    right: 36px;
-    top: -15px;
-}
-
-.subtasksChackImg {
-    position: absolute;
-    right: 11px;
-    top: -7px;
-    cursor: pointer;
-}
-
-.checkboxSubtasks {
-    max-width: 25px;
-    width: 16px;
-    height: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.checkboxSubtasksContainer {
-    display: flex;
-    align-items: center;
-}
-
-.btn {
-    margin-top: 40px;
-}
-
-.subtaskContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-.subtasksComent {
-    padding-left: 15px;
-    font-size: 15px;
-}
-
-@media(max-width: 1500px) {
-    .middleLine {
-        left: 50%;
+    body {
+        margin: 0px;
     }
+    
+    .mainContent1 {
+        padding-left: 120px;
+        margin-top: -20px;
+    }
+    
+    .headline {
+        display: flex;
+    }
+    
+    .headline h1 {
+        padding-right: 30px;
+        font-size: 70px;
+        margin-bottom: 0;
+    }
+    
+    .flexContainer {
+        display: flex;
+        padding-left: 70px;
+    }
+    
     .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 200px;
-    }
-}
-
-@media(max-width: 1480px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 190px;
-    }
-}
-
-@media(max-width: 1470px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 180px;
-    }
-}
-
-@media(max-width: 1460px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 170px;
-    }
-}
-
-@media(max-width: 1450px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 160px;
-    }
-}
-
-@media(max-width: 1440px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 150px;
-    }
-}
-
-@media(max-width: 1430px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 140px;
-    }
-}
-
-@media(max-width: 1420px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
-        padding-left: 130px;
-    }
-}
-
-@media(max-width: 1410px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
-    .rightContainer {
         padding-left: 120px;
     }
-}
-
-@media(max-width: 1400px) {
-    .leftContainer {
-        padding-left: 60px;
-    }
+    
     .rightContainer {
-        padding-left: 110px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 300px;
     }
-}
-
-@media(max-width: 1390px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .containerForm {
+        display: flex;
     }
-    .rightContainer {
-        padding-left: 105px;
+    
+    .leftContainer p {
+        font-size: 21px;
+        font-weight: 400px;
     }
-}
-
-@media(max-width: 1380px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .headlineTitel {
+        font-weight: bold;
+        font-size: 61px;
+        color: #000000;
+        margin-bottom: 20px;
     }
-    .rightContainer {
-        padding-left: 100px;
+    
+    .leftContainerI {
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        width: 420px;
+        height: 27px;
+        padding: 8px;
+        font-size: 21px;
+        cursor: pointer;
     }
-}
-
-@media(max-width: 1370px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .leftContainerTextarea {
+        width: 420px;
+        height: 70px;
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        padding: 8px;
+        font-size: 21px;
+        cursor: pointer;
     }
-    .rightContainer {
-        padding-left: 95px;
+    
+    .rightContainer input {
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        width: 420px;
+        height: 27px;
+        padding: 8px;
+        font-size: 16px;
+        cursor: pointer;
     }
-}
-
-@media(max-width: 1360px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .flex p {
+        margin-bottom: 0;
     }
-    .rightContainer {
-        padding-left: 85px;
+    
+    .prio {
+        display: flex;
     }
-}
-
-@media(max-width: 1350px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .prio img {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
     }
-    .rightContainer {
-        padding-left: 80px;
+    
+    .prioContainer {
+        padding: 10px;
+        margin-right: 18px;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        font-size: 21px;
+        border: 1px solid #D1D1D1;
+        width: 112px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-}
-
-@media(max-width: 1340px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .prioContainer img {
+        padding-left: 0px;
     }
-    .rightContainer {
-        padding-left: 78px;
+    
+    .medium {
+        height: 10px !important;
+        padding-top: 4px;
     }
-}
-
-@media(max-width: 1335px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .prioContainer:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        box-shadow: 2px 3px lightgray;
     }
-    .rightContainer {
-        padding-left: 75px;
+    
+    .middleLine {
+        position: absolute;
+        width: 0px;
+        height: 570px;
+        left: 50%;
+        top: 140px;
+        border: 1px solid #D1D1D1;
     }
-}
-
-@media(max-width: 1330px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .relativeContainer {
+        display: flex;
+        align-items: center;
     }
-    .rightContainer {
-        padding-left: 68px;
+    
+    .smallRelativeContainer {
+        position: relative;
     }
-}
-
-@media(max-width: 1325px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .dateImg {
+        width: 12px;
+        height: 12px;
+        background-color: white;
     }
-    .rightContainer {
-        padding-left: 64px;
+    
+    .subtaskIMG {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        right: 20px;
+        top: -8px;
     }
-}
-
-@media(max-width: 1320px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .checkbox {
+        max-width: 25px;
+        width: 16px;
+        height: 16px;
+        margin-left: 0;
+        margin-top: 6px;
     }
-    .rightContainer {
-        padding-left: 60px;
+    
+    .btn img {
+        width: 14px;
+        height: 14px;
+        padding-left: 5px;
+        padding-right: 5px;
     }
-}
-
-@media(max-width: 1315px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .btnClear {
+        padding: 10px;
+        border-radius: 10px;
+        border-color: lightgray;
+        margin-right: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        background-color: #FFFFFF;
     }
-    .rightContainer {
-        padding-left: 55px;
+    
+    .btnClear:hover {
+        color: #29ABE2;
+        border-color: #29ABE2;
     }
-}
-
-@media(max-width: 1310px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .btnCreate {
+        padding: 10px;
+        border-radius: 10px;
+        border-color: lightgray;
+        background: #2A3647;
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
     }
-    .rightContainer {
-        padding-left: 52px;
+    
+    .btnCreate:hover {
+        background-color: #29ABE2;
     }
-}
-
-@media(max-width: 1305px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .pfeilUnten {
+        width: 8px;
+        height: 8px;
     }
-    .rightContainer {
-        padding-left: 48px;
+    
+    select {
+        width: 415px;
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        padding: 8px;
+        cursor: pointer;
     }
-}
-
-@media(max-width: 1300px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .mainContainer {
+        background-color: rgba(0, 0, 0, 0.3);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 1;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
     }
-    .rightContainer {
-        padding-left: 45px;
+    
+    .mainContainerTaskForm {
+        background-color: #FFFFFF;
+        width: 80vw;
+        height: 90vh;
+        border-radius: 30px;
+        position: relative;
     }
-}
-
-@media(max-width: 1295px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .closes {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        color: #5f5e5e;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        font-family: none;
     }
-    .rightContainer {
-        padding-left: 40px;
+    
+    .closes:hover,
+    .closes:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
     }
-}
-
-@media(max-width: 1290px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .d-none {
+        display: none !important;
     }
-    .rightContainer {
-        padding-left: 35px;
+    
+    .red {
+        background-color: #FF3D00;
+        color: white;
     }
-}
-
-@media(max-width: 1285px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .yellow {
+        background-color: #FFA800;
+        color: white;
     }
-    .rightContainer {
-        padding-left: 32px;
+    
+    .green {
+        background-color: #7AE229;
+        color: white;
     }
-}
-
-@media(max-width: 1280px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .titleInputFields {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        font-size: 21px;
     }
-    .rightContainer {
-        padding-left: 30px;
+    /** Area for Category **/
+    
+    .categoryDiv {
+        width: 400px;
+        height: 7px;
+        border-radius: 10px;
+        padding: 18px;
+        border: 1px solid lightgray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
     }
-}
-
-@media(max-width: 1275px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .categoryMedia {
+        display: flex;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
     }
-    .rightContainer {
-        padding-left: 25px;
+    
+    .selectTaskCategory {
+        font-size: 21px;
+        margin: 0px;
     }
-}
-
-@media(max-width: 1270px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .bg-orange {
+        background-color: #FF3D00 !important;
     }
-    .rightContainer {
-        padding-left: 20px;
+    
+    .bg-yellow {
+        background-color: #FFA800 !important;
     }
-}
-
-@media(max-width: 1265px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .bg-green {
+        background-color: #7AE229 !important;
     }
-    .rightContainer {
-        padding-left: 15px;
+    
+    .bg-pink {
+        background-color: #FC71FF;
     }
-}
-
-@media(max-width: 1260px) {
-    .leftContainer {
-        padding-left: 60px;
+    
+    .bg-turquoise {
+        background-color: #1FD7C1;
     }
-    .rightContainer {
+    
+    .bg-blue {
+        background-color: #0038FF;
+    }
+    
+    .categoryMediaDivSmoll {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .categoryMediaDivSmoll:hover {
+        background-color: rgb(248, 244, 244);
+        cursor: pointer;
+    }
+    
+    .categoryMediaDivSmollDiv {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .closes3 {
+        color: #bbb;
+        font-size: 30px;
+        font-weight: bold;
+        transition: 0.3s;
+        font-family: none;
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .closes3:hover,
+    .closes3:focus {
+        color: #5f5e5e;
+        ;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .taskCategory {
+        font-size: 21px;
+        margin: 10px 19px;
+    }
+    
+    .categoryList {
+        padding-left: 12px;
+        margin-top: 0px;
+        border: 1px solid lightgray;
+        border-top: none;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-left: 0px;
+        list-style-type: none;
+        height: 133px;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    
+    .borderButton {
+        border-bottom: none;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    
+    .containerColorPicker {
+        display: flex;
+        justify-content: space-around;
+        width: 200px;
+        margin-top: 10px;
+    }
+    
+    .colorPicker {
+        border-radius: 100%;
+        height: 17px;
+        width: 17px;
+        border: 2px solid white;
+        cursor: pointer;
+    }
+    
+    .inputfieldNewCategory {
+        outline: none !important;
+        border: none !important;
+        z-index: 999 !important;
+        width: 300px;
+        height: 30px !important;
+    }
+    
+    .selectNewCategory {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: -5px;
+    }
+    
+    .subLine {
+        width: 0px;
+        height: 30px;
+        border: 1px solid lightgray;
+    }
+    
+    .selectNewCategoryCancel {
+        padding-right: 5px;
+    }
+    
+    .selectNewCategoryCheckmark {
         padding-left: 12px;
     }
-}
-
-@media(max-width: 1258px) {
-    .containerForm {
-        display: block;
+    /** Area for Assigned to **/
+    
+    .assignedDiv {
+        width: 400px;
+        height: 7px;
+        border-radius: 10px;
+        padding: 18px;
+        border: 1px solid lightgray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
     }
-    .middleLine {
-        border: none;
+    
+    .assignedDivBorder {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom: none !important;
     }
-    .mainContainerTaskForm {
-        width: auto;
+    
+    .assignedDivBorderToEdit {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom: none !important;
+    }
+    
+    .assignedToList {
+        padding-left: 12px;
+        margin-top: 0px;
+        border: 1px solid lightgray;
+        border-top: none;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-left: 0px;
+        list-style-type: none;
+        height: 133px;
         overflow: scroll;
+        overflow-x: hidden;
     }
-    .leftContainer {
-        padding-left: 42px;
-        padding-right: 35px;
+    
+    .taskAssignedTo {
+        font-size: 21px;
+        margin: 10px 19px;
     }
-    .rightContainer {
-        padding-left: 42px;
+    
+    .inputCheckbox {
+        height: 15px !important;
+        width: 15px !important;
+        margin-right: 20px;
     }
-    .mainContainerTaskForm::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-        background: transparent;
+    
+    .assignedToListBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
-    .btn {
-        margin-bottom: 40px;
+    
+    .assignedToContactButton {
+        margin-right: 12px;
+        margin-bottom: 6px;
     }
+    
+    .assignedToListBox:hover {
+        background-color: rgb(248, 244, 244);
+        cursor: pointer;
+    }
+    
+    .assignedAddContact {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 10px;
+    }
+    
+    .assignedAddContactDivs {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 3px;
+    }
+    
+    .addCategoryInTask {
+        height: 30px;
+        width: 120px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .assignedAddContactLetters {
+        font-size: 15px !important;
+    }
+    /** Area for Subtasks **/
+    
     .subtsasksCancelImg {
-        right: 85px;
+        position: absolute;
+        right: 40px;
+        top: -12px;
+        cursor: pointer;
     }
+    
     .subtasksSsubLine {
-        right: 78px;
+        width: 0px;
+        height: 30px;
+        border: 1px solid lightgray;
+        position: absolute;
+        right: 36px;
+        top: -15px;
     }
+    
     .subtasksChackImg {
-        right: 52px;
+        position: absolute;
+        right: 11px;
+        top: -7px;
+        cursor: pointer;
     }
-}
+    
+    .checkboxSubtasks {
+        max-width: 25px;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .checkboxSubtasksContainer {
+        display: flex;
+        align-items: center;
+    }
+    
+    .btn {
+        margin-top: 40px;
+    }
+    
+    .subtaskContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .subtasksComent {
+        padding-left: 15px;
+        font-size: 15px;
+    }
+    
+    .closes5 {
+        position: absolute;
+        top: 26px;
+        left: 533px;
+        display: none;
+        cursor: pointer;
+    }
+    
+    @media(max-width: 1500px) {
+        .middleLine {
+            left: 50%;
+        }
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 200px;
+        }
+    }
+    
+    @media(max-width: 1480px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 190px;
+        }
+    }
+    
+    @media(max-width: 1470px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 180px;
+        }
+    }
+    
+    @media(max-width: 1460px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 170px;
+        }
+    }
+    
+    @media(max-width: 1450px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 160px;
+        }
+    }
+    
+    @media(max-width: 1440px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 150px;
+        }
+    }
+    
+    @media(max-width: 1430px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 140px;
+        }
+    }
+    
+    @media(max-width: 1420px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 130px;
+        }
+    }
+    
+    @media(max-width: 1410px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 120px;
+        }
+    }
+    
+    @media(max-width: 1400px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 110px;
+        }
+    }
+    
+    @media(max-width: 1390px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 105px;
+        }
+    }
+    
+    @media(max-width: 1380px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 100px;
+        }
+    }
+    
+    @media(max-width: 1370px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 95px;
+        }
+    }
+    
+    @media(max-width: 1360px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 85px;
+        }
+    }
+    
+    @media(max-width: 1350px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 80px;
+        }
+    }
+    
+    @media(max-width: 1340px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 78px;
+        }
+    }
+    
+    @media(max-width: 1335px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 75px;
+        }
+    }
+    
+    @media(max-width: 1330px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 68px;
+        }
+    }
+    
+    @media(max-width: 1325px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 64px;
+        }
+    }
+    
+    @media(max-width: 1320px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 60px;
+        }
+    }
+    
+    @media(max-width: 1315px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 55px;
+        }
+    }
+    
+    @media(max-width: 1310px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 52px;
+        }
+    }
+    
+    @media(max-width: 1305px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 48px;
+        }
+    }
+    
+    @media(max-width: 1300px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 45px;
+        }
+    }
+    
+    @media(max-width: 1295px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 40px;
+        }
+    }
+    
+    @media(max-width: 1290px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 35px;
+        }
+    }
+    
+    @media(max-width: 1285px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 32px;
+        }
+    }
+    
+    @media(max-width: 1280px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 30px;
+        }
+        .toEditTaskMainDiv {
+            width: auto;
+            height: 543px;
+            border-radius: 0px;
+            position: relative;
+            overflow: scroll;
+        }
+    }
+    
+    @media(max-width: 1275px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 25px;
+        }
+    }
+    
+    @media(max-width: 1270px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 20px;
+        }
+    }
+    
+    @media(max-width: 1265px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 15px;
+        }
+    }
+    
+    @media(max-width: 1260px) {
+        .leftContainer {
+            padding-left: 60px;
+        }
+        .rightContainer {
+            padding-left: 12px;
+        }
+    }
+    
+    @media(max-width: 1258px) {
+        .containerForm {
+            display: block;
+        }
+        .middleLine {
+            border: none;
+        }
+        .mainContainerTaskForm {
+            width: auto;
+            overflow: scroll;
+        }
+        .leftContainer {
+            padding-left: 42px;
+            padding-right: 35px;
+        }
+        .rightContainer {
+            padding-left: 42px;
+        }
+        .mainContainerTaskForm::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background: transparent;
+        }
+        .btn {
+            margin-bottom: 40px;
+        }
+    }
+    
+    @media(max-width: 1024px) {
+        .toEditTaskMainDiv {
+            width: auto;
+            height: 543px;
+            border-radius: 0px;
+            position: relative;
+            overflow: scroll;
+        }
+        .assignedToListToEdit {
+            width: 436px;
+        }
+    }
+    
+    @media(max-width: 912px) {
+        .toEditTaskMainDiv {
+            height: 55vh;
+        }
+        .checkTaskSmall {
+            position: relative;
+            background-color: #FFFFFF;
+            width: 623px;
+            height: 52vh;
+            border-radius: 30px;
+            overflow: scroll;
+        }
+        .mainContainerTaskForm {
+            height: 75vh;
+        }
+    }
+    
+    @media(max-width: 820px) {
+        .toEditTaskMainDiv {
+            height: 65vh;
+        }
+        .checkTaskSmall {
+            height: 60vh;
+        }
+    }
+    
+    @media(max-width: 812px) {
+        .mainContainer {
+            background-color: white;
+            width: auto;
+            height: 907px;
+            top: 92px;
+        }
+        .leftContainerI {
+            width: 96%;
+            height: 27px;
+            font-size: 21px;
+        }
+        .leftContainerTextarea {
+            width: 96%;
+            height: 70px;
+            font-size: 21px;
+        }
+        .categoryDiv {
+            width: 93%;
+            height: 7px;
+            background-color: white;
+        }
+        .assignedDiv {
+            width: 93%;
+            height: 7px;
+            background-color: white;
+        }
+        .mainContainerTaskForm {
+            background-color: #F5F5F5 !important;
+            width: auto;
+            height: 90vh;
+            border-radius: 0px;
+        }
+        .categoryList {
+            background-color: white;
+            width: 107.5%;
+        }
+        .assignedToList {
+            background-color: white;
+            width: 107.5%;
+        }
+        .rightContainer input {
+            width: 91%;
+        }
+        .prioContainer {
+            width: 167px;
+            margin-right: 47px;
+        }
+        .mainContent1 {
+            padding-left: 40px;
+            margin-top: -20px;
+        }
+        .prio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .closes {
+            display: none;
+        }
+        .closes5 {
+            position: absolute;
+            top: 38px;
+            left: 88%;
+            display: flex;
+        }
+    }
+    
+    @media(max-width: 768px) {
+        .mainContainer {
+            height: 941px;
+            width: 751px;
+        }
+        .checkTasking {
+            height: 936px;
+        }
+        .checkTaskSmall {
+            height: 101vh;
+        }
+        .toEditTaskSaveButton {
+            top: 96%;
+            left: 80%;
+        }
+        .toEditopenCheckTaskBigDiv {
+            margin-top: 30px;
+            margin-left: 68px;
+            margin-right: 35px;
+        }
+        .prioContainer {
+            width: 167px;
+            margin-right: 42px;
+        }
+        .checkTaskSmall {
+            width: 750px;
+        }
+        .closes4 {
+            width: 50px;
+            height: 50px;
+        }
+        .assignedToListToEdit {
+            width: 93.5%;
+        }
+        .toEditTaskSaveButton {
+            position: revert;
+            margin-top: 20px;
+        }
+        .mainContainerTaskForm {
+            background-color: #F5F5F5 !important;
+            width: 751px;
+            height: 92vh;
+            border-radius: 0px;
+        }
+    }
+    
+    @media(max-width: 750px) {
+        .prioContainer {
+            margin-right: 44px;
+        }
+    }
+    
+    @media(max-width: 700px) {
+        .prioContainer {
+            margin-right: 40px;
+        }
+    }
+    
+    @media(max-width: 650px) {
+        .prioContainer {
+            margin-right: 35px;
+        }
+    }
+    
+    @media(max-width: 600px) {
+        .prioContainer {
+            margin-right: 33px;
+            font-size: 16px;
+        }
+        .leftContainerTextarea {
+            width: 97%;
+            font-size: 16px;
+        }
+        .leftContainerI {
+            width: 97%;
+            font-size: 16px;
+        }
+        .mainContainerTaskForm {
+            margin-left: -12px;
+        }
+        .headlineTitel {
+            font-size: 50px;
+        }
+        .leftContainer p {
+            font-size: 16px;
+        }
+        .titleInputFields {
+            font-size: 16px;
+        }
+    }
+    
+    @media(max-width: 550px) {
+        .prioContainer {
+            margin-right: 30px;
+        }
+        .rightContainer input {
+            width: 90%;
+        }
+    }
+    
+    @media(max-width: 540px) {
+        .mainContainer {
+            height: 647px;
+            width: auto;
+        }
+        .openCheckTasksCategoryTesx {
+            font-size: 21px;
+            color: white;
+        }
+        .openCheckTasksTitleTest {
+            font-size: 36px;
+        }
+        .openCheckTaskBigDiv {
+            margin-top: 31px;
+            margin-right: 60px;
+            margin-left: 30px;
+        }
+        .openCheckTasksDescription {
+            font-size: 16px;
+        }
+        .openCheckTasksDateText {
+            font-size: 16px;
+        }
+        .openCheckTasksDateFormat {
+            font-size: 16px;
+        }
+        .openCheckTasksPrioText {
+            font-size: 16px;
+        }
+        .openCheckTasksPrioTextText {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .openCheckTasksPrioTextDiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 108px;
+            height: 29px;
+            border-radius: 10px;
+        }
+        .openCheckTasksPrioTextImage {
+            height: 15px;
+            width: 21px;
+        }
+        .openCheckTasksCategory {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 115px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        .openCheckTasksAssignedToTitle {
+            font-size: 16px;
+        }
+        .openCheckDivAssignTask {
+            width: 27px;
+            height: 27px;
+        }
+        .openCheckAssignTaskFullName {
+            font-size: 17px;
+        }
+        .closes4 {
+            top: 30px;
+            left: 77%;
+        }
+        .deleteTaskButton {
+            width: 48px;
+            height: 48px;
+            margin-left: 52%;
+        }
+        .toEditTaskButton {
+            width: 48px;
+            height: 48px;
+            margin-top: -48px;
+            margin-left: 63%;
+        }
+        .toEditTaskMainDiv {
+            background-color: #F5F5F5 !important;
+            width: auto;
+            height: 543px;
+            border-radius: 0px;
+            position: relative;
+            overflow: scroll;
+        }
+        .toEditTaskSaveButton {
+            top: 116%;
+            left: 80%;
+        }
+        .assignedToListToEdit {
+            width: 92.2%;
+        }
+        .closes4 {
+            top: 30px;
+            left: 61%;
+        }
+    }
+    
+    @media(max-width: 470px) {
+        .prioContainer {
+            margin-right: 26px;
+        }
+    }
+    
+    @media(max-width: 440px) {
+        .prioContainer {
+            margin-right: 23px;
+        }
+        .leftContainerTextarea {
+            width: 98%;
+        }
+        .leftContainerI {
+            width: 98%;
+        }
+        .mainContainerTaskForm {
+            margin-left: -20px;
+        }
+        .openCheckTasksCategoryTesx {
+            font-size: 21px;
+        }
+        .openCheckTasksCategory {
+            width: 127px;
+            height: 33px;
+        }
+        .openCheckTasksTitleTest {
+            font-size: 36px;
+        }
+        .openCheckTasksDescription {
+            font-size: 16px;
+        }
+        .openCheckTasksDateText {
+            font-size: 16px;
+        }
+        .openCheckTasksDateFormat {
+            font-size: 16px;
+        }
+        .openCheckTasksPrioText {
+            font-size: 16px;
+        }
+        .openCheckTasksPrioTextText {
+            font-size: 16px;
+        }
+        .openCheckTasksPrioTextDiv {
+            width: 115px;
+            height: 27px;
+        }
+        .openCheckTasksPrioTextImage {
+            width: 19px;
+            height: 12px;
+        }
+        .openCheckTasksAssignedToTitle {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .openCheckDivAssignTask {
+            width: 25px;
+            height: 25px;
+        }
+        .openCheckAssignTaskFullName {
+            font-size: 16px;
+        }
+        .openSubtasksComent {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+        .openCheckboxSubtasks {
+            width: 15px;
+            height: 15px;
+        }
+        .deleteTaskButton {
+            width: 40px;
+            height: 40px;
+            margin-top: -30px;
+        }
+        .toEditTaskButton {
+            width: 40px;
+            height: 40px;
+            margin-top: -40px;
+        }
+        .deleteTaskImage {
+            width: 25px;
+            height: 25px;
+        }
+    }
+    
+    @media(max-width: 414px) {
+        .mainContainer {
+            height: 816px;
+        }
+        .mainContainerTaskForm {
+            height: 91vh;
+        }
+        .toEditTaskSaveButton {
+            position: static;
+            margin-top: 20px;
+        }
+        .assignedToListToEdit {
+            width: 95%;
+        }
+        .checkTasking {
+            top: 91px;
+        }
+        .toEditopenCheckTaskBigDiv {
+            margin-top: 0px;
+            margin-left: 37px;
+            margin-right: 42px;
+        }
+        .toEditTaskDescriptionInput {
+            width: 99%;
+        }
+        .assignedDiv1 {
+            width: 89%;
+        }
+        .assignedToListToEdit {
+            width: 99.5%;
+            height: 133px;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+        .assignedToListBox:hover {
+            background-color: white;
+        }
+        .openCheckTaskBigDiv {
+            margin-top: 30px;
+        }
+        .closes4 {
+            top: 21px;
+            left: 45%;
+        }
+        .deleteTaskButton {
+            margin-left: 40%;
+            margin-top: -1px;
+        }
+        .toEditTaskButton {
+            width: 40px;
+            height: 40px;
+            margin-top: -40px;
+            margin-left: 49%;
+        }
+    }
+    
+    @media(max-width: 412px) {
+        .mainContainer {
+            height: 834px;
+        }
+        .checkTasking {
+            height: 825px;
+        }
+        .toEditTaskMainDiv {
+            height: 762px;
+        }
+        .deleteTaskButton {
+            width: 48px;
+            height: 48px;
+            margin-top: 17px;
+            margin-left: 34%;
+        }
+        .toEditTaskButton {
+            width: 48px;
+            height: 48px;
+            margin-top: -48px;
+            margin-left: 45%;
+        }
+        .closes4 {
+            left: 44%;
+            top: 27px;
+            width: 40px;
+            height: 40px;
+        }
+    }
+    
+    @media(max-width: 400px) {
+        .prioContainer {
+            margin-right: 20px;
+        }
+    }
+    
+    @media(max-width: 390px) {
+        .mainContainer {
+            height: 769px;
+        }
+        .prioContainer {
+            margin-right: 11px;
+        }
+        .assignedToListToEdit {
+            width: 100.5%;
+        }
+    }
+    
+    @media(max-width: 393px) {
+        .mainContainer {
+            height: 777px;
+        }
+        .prioContainer {
+            margin-right: 11px;
+        }
+        .toEditopenCheckTaskBigDiv {
+            margin-top: 0px;
+            margin-left: 40px;
+            margin-right: 42px;
+        }
+        .assignedToListToEdit {
+            width: 100.5%;
+        }
+    }
+    
+    @media(max-width: 375px) {
+        .mainContainer {
+            height: 578px;
+        }
+        .mainContainerTaskForm {
+            height: 87vh;
+        }
+        .checkTasking {
+            top: 91px;
+        }
+        .openCheckTaskBigDiv {
+            margin-top: 21px;
+            margin-left: 37px;
+        }
+        .closes4 {
+            top: 20px;
+            left: 42%;
+        }
+        .toEditopenCheckTaskBigDiv {
+            margin-top: 0px;
+            margin-left: 23px;
+            margin-right: 23px;
+        }
+        .toEditTaskDescriptionInput {
+            width: 99.5%;
+        }
+        .assignedDiv1 {
+            width: 89%;
+        }
+        .assignedToListToEdit {
+            width: 100%;
+        }
+        .toEditTaskSaveButton {
+            position: static;
+            margin-top: 20px;
+        }
+        .toEditTaskMainDiv {
+            background-color: #F5F5F5 !important;
+            width: auto;
+            height: 543px;
+            border-radius: 0px;
+            position: relative;
+            overflow: scroll;
+        }
+        .toEditTaskButton {
+            margin-left: 40%;
+        }
+        .prioContainer {
+            margin-right: 18px;
+        }
+        .deleteTaskButton {
+            margin-left: 30%;
+        }
+    }
+    
+    @media(max-width: 370px) {
+        .prioContainer {
+            margin-right: 15px;
+        }
+    }
+    
+    @media(max-width: 360px) {
+        .prioContainer {
+            margin-right: 10px;
+        }
+        .mainContainer {
+            height: 649px;
+        }
+        .mainContainerTaskForm {
+            height: 88vh;
+        }
+        .toEditopenCheckTaskBigDiv {
+            margin-top: 0px;
+            margin-left: 30px;
+            margin-right: 31px;
+        }
+        .checkTaskSmall {
+            height: 77vh;
+        }
+        .closes4 {
+            top: 18px;
+            left: 40%;
+        }
+        .deleteTaskButton {
+            margin-left: 28%;
+        }
+        .toEditTaskButton {
+            margin-left: 38%;
+        }
+        .assignedToListToEdit {
+            width: 101%;
+        }
+    }
+    
+    @media(max-width: 360px) {
+        .prioContainer {
+            margin-right: 6px;
+        }
+    }
+    
+    @media(max-width: 280px) {
+        .mainContainer {
+            height: 574px;
+        }
+        .mainContainerTaskForm {
+            height: 88vh;
+        }
+        .headlineTitel {
+            font-size: 39px;
+        }
+        .prio {
+            display: flex;
+            flex-direction: column;
+        }
+        .prioContainer {
+            margin-bottom: 10px;
+            margin-right: 23px;
+        }
+        .closes5 {
+            top: 23px;
+            left: 81%;
+        }
+        .categoryDiv {
+            width: 89%;
+        }
+        .assignedDiv {
+            width: 89%;
+        }
+        .categoryList {
+            width: 105%;
+        }
+        .assignedToList {
+            width: 105%;
+        }
+        .rightContainer input {
+            width: 85%;
+        }
+        .assignedDiv1 {
+            width: 84%;
+        }
+        .assignedToListToEdit {
+            width: 100.5%;
+        }
+        .prioContainer {
+            margin-bottom: 10px;
+            margin-right: 0px;
+        }
+        .assignedContactsSelectToEdit {
+            font-size: 15px;
+        }
+        .taskAssignedTo {
+            font-size: 16px;
+            margin: 10px 19px;
+        }
+        .deleteTaskButton {
+            width: 40px;
+            height: 40px;
+            margin-top: -1px;
+            margin-left: 22%;
+        }
+        .toEditTaskButton {
+            margin-left: 30%;
+            width: 40px;
+            height: 40px;
+            margin-top: -40px;
+        }
+        .checkTaskSmall {
+            height: 89vh;
+        }
+        .checkTaskSmall {
+            height: 90vh;
+        }
+        .mainContent {
+            height: 564px;
+        }
+        .closes4 {
+            left: 31%;
+            top: 23px;
+            width: 30px;
+            height: 30px;
+        }
+        .toEditTaskSaveButton {
+            width: 66px;
+            height: 48px;
+        }
+        .divAssignTask {
+            width: 28px;
+            height: 28px;
+        }
+    }
