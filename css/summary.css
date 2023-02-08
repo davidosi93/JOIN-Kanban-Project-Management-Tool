@@ -22,6 +22,16 @@ body {
     margin-bottom: 0;
 }
 
+.kanban-mobile {
+    border-bottom: none !important;
+    display: none !important;
+    margin-top: 100px !important;
+}
+
+.headline h2 {
+    display: none;
+}
+
 .personLogIn {
     object-fit: cover;
     width: 40px;
@@ -76,16 +86,16 @@ body {
     display: flex;
 }
 
-.left-Container{
+.left-Container {
     width: 60%;
     margin-left: 10%;
     margin-top: 10px;
 }
 
-.right-Container{
+.right-Container {
     width: 40%;
     margin-right: 10%;
-    
+
 }
 
 .leftContent {
@@ -145,9 +155,11 @@ body {
     text-decoration: none;
     color: black;
     border-radius: 10px;
+    border: 1px solid lightgray;
+
 }
 
-.deadlineContainer a{
+.deadlineContainer a {
     text-decoration: none;
     color: black;
 }
@@ -163,18 +175,20 @@ body {
     font-size: 40px;
     text-align: center;
     padding-top: 0;
+
 }
 
 .deadlineContainer p {
     margin: 0;
     font-size: 18px;
     margin-top: 10px;
+    padding-left: 30px;
 }
 
 .deadlineContainer:hover {
     cursor: pointer;
     transform: scale(1);
-    color: white;
+    color: yellow;
     background-color: #2A3647;
 }
 
@@ -185,14 +199,18 @@ body {
     background-color: #2A3647;
 }
 
-.deadlineTasks{
+.deadlineTasks {
     display: flex;
     margin: 10px;
 }
 
+.deadlinetask p{
+    margin: 0;
+}
+
 .deatlineDate {
     margin-left: 50px;
-    padding-left: 30px;
+    /* padding-left: 30px; */
     border-left: 3px solid lightgray;
 }
 
@@ -222,6 +240,7 @@ body {
     background-color: white;
     border-radius: 10px;
     padding: 10px;
+    border: 1px solid lightgray;
 }
 
 
@@ -329,20 +348,37 @@ h3 {
 }
 
 @media(max-width: 1290px) {
-    .left-Container{
+    .left-Container {
         width: 80%;
     }
+
+    .date {
+        font-size: 20px !important;
+    }
+
+    .deadlineContainer p {
+        font-size: 18px !important;
+    }
 }
+
 @media(max-width: 1100px) {
-    .headline p{
+    .headline p {
         font-size: 25px;
     }
 
-    .headerContent p{
+    .date {
+        font-size: 18px !important;
+    }
+
+    .deadlineContainer p {
+        font-size: 16px !important;
+    }
+
+    .headerContent p {
         margin-left: 5%;
     }
 
-    .greet{
+    .greet {
         font-size: 40px;
         margin-left: 10%;
     }
@@ -351,38 +387,172 @@ h3 {
         padding: 10px;
     }
 
-    .left-Container{
+    .left-Container {
         margin-left: 5%;
     }
 
-    .finishContainer{
+    .finishContainer {
         padding: 0;
         padding-left: 0;
         padding-right: 0;
-        padding-top: 10px;
+        padding: 15px;
+    }
+
+    .finishContainer img{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .finishContainer p{
+        padding-right: 10px;
     }
 }
+@media(max-width: 1000px){
+    .headline p{
+        font-size: 20px;
+    }
+}
+@media(max-width: 940px) {
+    .date {
+        font-size: 16px !important;
+    }
 
-@media(max-width: 900px){
-    .headerContent{
-        justify-content: end;
+}
+
+@media(max-width: 900px) {
+
+    .headline {
+        flex-direction: column;
+    }
+
+    .headline h2 {
+        display: contents;
+
+    }
+
+    .headline h1 {
+        border: none;
+        font-size: 50px;
+        margin-top: 5px;
+    }
+
+    .mainContent {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .headline p {
+        border-bottom: 3px solid #29ABE2;
+        padding-left: 0;
+        margin-top: 5px;
+    }
+
+    .headerContent {
+        justify-content: end !important;
     }
 
     .right-Container {
         display: none;
     }
 
-    .left-Container{
+    .left-Container {
         margin-left: 0;
         width: 100%;
+        margin-top: 0;
     }
 
-    .taskContainer{
-        justify-content: space-around;
+    .deadlineContainer {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 15px;
+
     }
 
-    .finishTask{
-        justify-content: space-around;
+    .taskContainer {
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 15px;
     }
 
+    .finishTask {
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 15px;
+    }
+
+    .finishContainer {
+        margin-top: 0;
+        padding-bottom: 10px;
+
+    }
+
+    .kanban-mobile {
+        display: contents !important;
+
+    }
+}
+
+@media(max-width: 550px) {
+
+    .mainContent{
+        margin-top: 20px;
+    }
+    .boardContainer p {
+        font-size: 14px !important;
+    }
+
+    .deadlineContainer p {
+        font-size: 14px !important;
+    }
+
+    .deadlineContainer img {
+        width: 60px;
+        height: 60px;
+        margin-top: 20px;
+    }
+
+    .finishContainer img {
+        width: 60px;
+        height: 60px;
+    }
+
+    @media(max-width: 500px) {
+        .finishContainer img {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .deatlineDate {
+            margin-left: 15px ;
+        }
+    }
+
+    @media(max-width: 450px){
+
+        .headline p{
+            font-size: 20px;
+        }
+        .finishContainer p{
+            font-size: 16px;
+        }
+    }
+
+    .deadlineContainer img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .finishContainer img {
+        width: 40px;
+        height: 40px;
+    }
+
+    @media(max-width: 450px){
+        .finishContainer{
+            padding: 8px;
+        }
+    }
 }
