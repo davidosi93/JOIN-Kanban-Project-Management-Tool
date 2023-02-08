@@ -182,7 +182,7 @@ body {
     margin: 0;
     font-size: 18px;
     margin-top: 10px;
-    padding-left: 30px;
+    /* padding-left: 30px; */
 }
 
 .deadlineContainer:hover {
@@ -248,7 +248,7 @@ body {
     text-align: center;
     font-size: 40px;
     padding-top: 0;
-    padding-right: 25px;
+    /* padding-right: 25px; */
 }
 
 .finishContainer p {
@@ -408,6 +408,9 @@ h3 {
     }
 }
 @media(max-width: 1000px){
+    .headerContent p{
+        font-size: 26px !important;
+    }
     .headline p{
         font-size: 20px;
     }
@@ -439,6 +442,7 @@ h3 {
     .mainContent {
         display: flex;
         justify-content: center;
+        margin-top: 20px;
 
     }
 
