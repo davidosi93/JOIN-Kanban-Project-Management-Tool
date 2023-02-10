@@ -23,24 +23,7 @@
 <body onload="initSummary()">
     <div class="content">
         <div class="desktopMenu" w3-include-html="/asseds/templates/desktop_template.html"></div>
-        <div class="mobileMenu d-none">
-            <a href="summary.html" class="buttonSection" id="navBarSummary">
-                <img src="./asseds/img/mobileSummary.png">
-                <p>Summary</p>
-            </a>
-            <a href="board.html" class="buttonSection" id="navBarBoard">
-                <img src="./asseds/img/mobileBoard.png">
-                <p>Board</p>
-            </a>
-            <a href="add_task.html" class="buttonSection" id="navBarAddTask">
-                <img src="./asseds/img/mobileAddTask.png">
-                <p>Add Task</p>
-            </a>
-            <a href="contacts.html" class="buttonSection" id="navBarContacts">
-                <img src="./asseds/img/mobileContacts.png">
-                <p>Contacts</p>
-            </a>
-        </div>
+        <div w3-include-html="/asseds/templates/mobileMenu.html"></div>
 
         <div class="rightContent">
             <div class="headerContent">
@@ -77,6 +60,7 @@
             <div id="mainContainer">
                 <div class="mainContent">
                     <div class="headline">
+                        <p class="kanban-mobile">Kanban Project Management Tool</p>
                         <h1>Summary</h1>
                         <p>Everythihng in a nutshell!</p>
 
