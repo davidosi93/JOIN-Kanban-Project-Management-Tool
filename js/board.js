@@ -1381,6 +1381,7 @@ async function putTheProgressBar(taskIndex) {
 
     }, 200)
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('users', JSON.stringify(users));
     filterTasks()
     addTasking();
 

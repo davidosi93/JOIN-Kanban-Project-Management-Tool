@@ -335,7 +335,7 @@ body {
     position: relative;
     background-color: #FFFFFF;
     width: 623px;
-    height: 87vh;
+    height: auto;
     border-radius: 30px;
     overflow: scroll;
     animation: slideInFromRight 0.5s forwards;
@@ -1165,6 +1165,9 @@ h3 {
     .closes4 {
         top: 61px;
         left: 85%;
+        display: flex;
+    }
+    .mobileMenu {
         display: flex;
     }
 }

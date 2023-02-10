@@ -8,6 +8,7 @@
     <title>Add Task</title>
 
     <link rel="stylesheet" href="css/add_task.css">
+    <link rel="stylesheet" href="css/contacts.css">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
     <script src="./mini_backend.js"></script>
     <script src="script.js"></script>
@@ -21,6 +22,8 @@
 
         <div class="content">
             <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+            <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
+            <div w3-include-html="/asseds/templates/mobileMenu.html"></div>
 
             <div class="rightContent">
                 <div class="headerContent" id="headerContents">
@@ -65,18 +68,17 @@
                         <div class="middleLine"></div>
                         <div class="flexContainer">
                             <div class="leftContainer">
-                                <p>Title</p>
-
-                                <input id="titles" placeholder="Enter a title" required>
-                                <p>Description</p>
+                                <p class="addTask_titleInputFields">Title</p>
+                                <input id="titles" class="titlesInputfild" placeholder="Enter a title" required>
+                                <p class="addTask_titleInputFields">Description</p>
                                 <textarea id="descriptions" required placeholder="Enter a Description"></textarea>
 
                                 <p class="addTask_titleInputFields">Category</p>
-                                <div id="borderButton" class="addTask_categoryDiv" onclick="openCategory();">
-                                    <p id="selectTaskCategory" class="addTask_selectTaskCategory">Select Task Category</p>
-                                    <img id="selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
-                                    <input id="selectNewCategory" class="addTask_inputfieldNewCategory d-none" placeholder="New Catetogory Name">
-                                    <div id="selectNewCategoryImg" class="addTask_selectNewCategory d-none">
+                                <div id="addTask_borderButton" class="addTask_categoryDiv" onclick="openCategory();">
+                                    <p id="addTask_selectTaskCategory" class="addTask_selectTaskCategory">Select Task Category</p>
+                                    <img id="addTask_selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
+                                    <input id="addTask_selectNewCategory" class="addTask_inputfieldNewCategory d-none" placeholder="New Catetogory Name">
+                                    <div id="addTask_selectNewCategoryImg" class="addTask_selectNewCategory d-none">
                                         <img onclick="selectNewCatagoryCancel()" class="addTask_selectNewCategoryCancel" src="/asseds/img/cancel.png">
                                         <div class="addTask_subLine"></div>
                                         <img onclick="createNewCategory()" class="addTask_selectNewCategoryCheckmark" src="/asseds/img/hacken-schwarz.png">
@@ -88,12 +90,12 @@
                                         <li class="addTask_taskCategory">New Category</li>
                                     </div>
 
-                                    <div id="createNewTategory">
+                                    <div id="addTask_createNewTategory">
 
                                     </div>
                                 </ul>
 
-                                <div id="containerColorPicker" class="addTask_containerColorPicker d-none">
+                                <div id="addTask_containerColorPicker" class="addTask_containerColorPicker d-none">
                                     <div id="bg-pink" onclick="newCategorySelectColor('bg-pink')" class="addTask_colorPicker bg-pink"></div>
                                     <div id="bg-orange" onclick="newCategorySelectColor('bg-orange')" class="addTask_colorPicker bg-orange"></div>
                                     <div id="bg-green" onclick="newCategorySelectColor('bg-green')" class="addTask_colorPicker bg-green"></div>
@@ -102,53 +104,63 @@
                                     <div id="bg-blue" onclick="newCategorySelectColor('bg-blue')" class="addTask_colorPicker bg-blue"></div>
                                 </div>
 
+                                <p class="addTask_titleInputFields">Assigned to</p>
+                                <div id="addTask_openContact" onclick="openContactss()" class="assignedDiv">
+                                    <p id="assignedContactsSelect" class="assignedToArea">Select contacts to assigt</p>
+                                    <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
+                                </div>
 
-                                <!-- <p>Category</p>
-                                <div class="dropdown">
-                                    <div id="selectCategory" onclick="dropDownCategory()" class="drop selectImg">Select task category<img src="/asseds/img/pfeil unten.png"></div>
-                                    <div id="category" class="dropdown-content">
-                                        <a onclick="newCategory()">New category</a>
+                                <ul id="addTask_assignedToList" class="assignedToList d-none">
 
-                                    </div>
-                                </div> -->
-                                <p>Assigned to</p>
-                                <div class="dropdown">
-                                    <div onclick="dropDownAssign()" class="drop">Select contacts to assign<img src="/asseds/img/pfeil unten.png"></div>
-                                    <div id="assign" class="dropdown-content assign-contact">
-                                        <a>Artur Marbach <input type="checkbox"></a>
-                                        <a>Waldemar Neumann <input type="checkbox"></a>
-                                        <a>Invite new contact</a>
-                                    </div>
+                                </ul>
+
+                                <div class="assignedAddContact" id="addTask_assignedAddContact">
+
                                 </div>
                             </div>
 
                             <div class="rightContainer">
-                                <p>Due date</p>
+                                <p class="addTask_titleInputFields">Due date</p>
                                 <div>
                                     <input id="dueDates" type="date" placeholder="dd/mm/yyyy" required>
-
                                 </div>
-                                <p>Prio</p>
+
+                                <p class="addTask_titleInputFields">Prio</p>
                                 <div class="prio">
-                                    <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
-                                        <img id="redImg" src="asseds/img/pfeil-oben-rot.png">
+                                    <div id="addTask_Red" onclick="changeColors(id)" class="prioContainer">Urgent
+                                        <img id="addRedImg" src="/asseds/img/pfeil-oben-rot.png">
                                     </div>
-                                    <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
-                                        <img id="yellowImg" class="medium" src="asseds/img/medium-gelb.png">
+                                    <div id="addTask_Yellow" onclick="changeColors(id)" class="prioContainer">Medium
+                                        <img id="addYellowImg" class="medium" src="/asseds/img/medium-gelb.png">
                                     </div>
-                                    <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
-                                        <img id="greenImg" src="asseds/img/pfeil-unten-grün.png">
+                                    <div id="addTask_Green" onclick="changeColors(id)" class="prioContainer">Low
+                                        <img id="addGreenImg" src="/asseds/img/pfeil-unten-grün.png">
                                     </div>
                                 </div>
 
-                                <p>Subtasks</p>
+                                <!-- <p>Subtasks</p>
 
                                 <div class="relativeContainer">
                                     <input id="subtask" required placeholder="Enter a Subtask...">
                                     <img onclick="renderSubtask()" class="subtaskIMG" src="asseds/img/Vector (1).png">
                                 </div>
 
-                                <div id="renderSubtask"></div>
+                                <div id="renderSubtask"></div> -->
+
+                                <p class="addTask_titleInputFields">Subtasks</p>
+                                <div class="relativeContainer">
+                                    <input id="addTask_openSubtasks" onclick="openSubtasks()" placeholder="Add new subtask">
+                                    <div class="smallRelativeContainer">
+                                        <img id="addTask_subtasksAddImg" class="subtaskIMG" src="asseds/img/Vector (1).png">
+                                        <img onclick="subtasksCancels()" id="addTask_subtsasksCancelImg" class="subtsasksCancelImg d-none" src="/asseds/img/cancel.png">
+                                        <div id="addTask_subtasksSubLine" class="subtasksSsubLine d-none"></div>
+                                        <img onclick="addSubtaskss()" id="addTask_subtasksChackImg" class="subtasksChackImg d-none" src="/asseds/img/hacken-schwarz.png">
+                                    </div>
+                                </div>
+
+                                <div id="addTask_allAddSubtask" class="subtaskContainer">
+
+                                </div>
 
                                 <div class="btn">
                                     <button class="btnClear">Clear
