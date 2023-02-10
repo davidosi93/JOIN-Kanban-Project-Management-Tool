@@ -12,7 +12,8 @@ async function addUser() {
         'color': color,
         'initials': initials,
         'contacts': [],
-        'tasks': []
+        'tasks': [],
+        'categorys': []
     };
     users.push(user);
     await backend.setItem('users', JSON.stringify(users));

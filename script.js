@@ -25,9 +25,12 @@ function navBarHighlight(item) {
 
 let allTasks = [];
 
-async function getAllTasks(){
+async function getAllTasks() {
     await downloadFromServer()
-    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+        // allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    allCategorys = JSON.parse(backend.getItem('allCategorys')) || [];
+    users = JSON.parse(backend.getItem('users')) || [];
+    activeUser = backend.getItem('activeUser') || 0;
 }
 
 let todo = [];
@@ -35,9 +38,9 @@ let progress = [];
 let feedback = [];
 let done = [];
 
-async function filterAllTasks(){
-    todo = allTasks.filter(t => t['list'] == 'todo');
-    progress = allTasks.filter(t => t['list'] == 'progress');
-    feedback = allTasks.filter(t => t['list'] == 'feedback');
-    done = allTasks.filter(t => t['list'] == 'done');
+async function filterAllTasks() {
+    todo = users[activeUser]['tasks'].filter(t => t['list'] == 'todo');
+    progress = users[activeUser]['tasks'].filter(t => t['list'] == 'progress');
+    feedback = users[activeUser]['tasks'].filter(t => t['list'] == 'feedback');
+    done = users[activeUser]['tasks'].filter(t => t['list'] == 'done');
 }

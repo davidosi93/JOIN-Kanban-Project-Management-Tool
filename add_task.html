@@ -9,106 +9,165 @@
 
     <link rel="stylesheet" href="css/add_task.css">
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
+    <script src="./mini_backend.js"></script>
+    <script src="script.js"></script>
     <script src="js/add_task.js"></script>
     <script src="template.js"></script>
     <script src="/js/desktop_template.js"></script>
-    <script src="./mini_backend.js"></script>
+    <script src="/js/contacts.js"></script>
 
-    <body onload="includeHTML();renderCategory()">
+
+    <body onload="initLoadTasksAddTask()">
 
         <div class="content">
             <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+            <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
 
             <div class="rightContent">
-                <div class="headerContent">
-                    <p>Kanban Project Management Tool</p>
+                <div class="headerContent" id="headerContents">
 
-                    <div class="headerContentRight">
-                        <img onclick="help()" class="information" src="/asseds/img/information.png">
-                        <img class="personLogIn" src="/asseds/img/logo.jpg">
+                </div>
+
+                <div id="help" class="mainContainerHelp d-none">
+                    <div class="headerHelp">
+                        <h1>Help</h1>
+                        <img onclick="goBacktoMainContainer()" src="asseds/img/Vector.png">
+                    </div>
+
+                    <h2>What is Join?</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                    <h2>How to use it</h2>
+
+                    <div class="flexContainer">
+                        <h3>1.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                    </div>
+                    <div class="flexContainer">
+                        <h3>2.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                    </div>
+                    <div class="flexContainer">
+                        <h3>3.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
                     </div>
                 </div>
 
-                <div class="mainContent">
-                    <div class="headline">
-                        <h1>Add Task</h1>
+
+
+                <div class="mainContents" id="mainContents">
+                    <div class="mainContent">
+                        <div class="headline">
+                            <h1>Add Task</h1>
+                        </div>
                     </div>
+
+                    <form onsubmit="onSubmits(event);">
+                        <div class="middleLine"></div>
+                        <div class="flexContainer">
+                            <div class="leftContainer">
+                                <p>Title</p>
+
+                                <input id="titles" placeholder="Enter a title" required>
+                                <p>Description</p>
+                                <textarea id="descriptions" required placeholder="Enter a Description"></textarea>
+
+                                <p class="addTask_titleInputFields">Category</p>
+                                <div id="borderButton" class="addTask_categoryDiv" onclick="openCategory();">
+                                    <p id="selectTaskCategory" class="addTask_selectTaskCategory">Select Task Category</p>
+                                    <img id="selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
+                                    <input id="selectNewCategory" class="addTask_inputfieldNewCategory d-none" placeholder="New Catetogory Name">
+                                    <div id="selectNewCategoryImg" class="addTask_selectNewCategory d-none">
+                                        <img onclick="selectNewCatagoryCancel()" class="addTask_selectNewCategoryCancel" src="/asseds/img/cancel.png">
+                                        <div class="addTask_subLine"></div>
+                                        <img onclick="createNewCategory()" class="addTask_selectNewCategoryCheckmark" src="/asseds/img/hacken-schwarz.png">
+                                    </div>
+                                </div>
+
+                                <ul id="addTask_categoryList" class="addTask_categoryList d-none">
+                                    <div onclick="selectNewCategory()" id="newCategory" class="addTask_categoryMediaDivSmoll">
+                                        <li class="addTask_taskCategory">New Category</li>
+                                    </div>
+
+                                    <div id="createNewTategory">
+
+                                    </div>
+                                </ul>
+
+                                <div id="containerColorPicker" class="addTask_containerColorPicker d-none">
+                                    <div id="bg-pink" onclick="newCategorySelectColor('bg-pink')" class="addTask_colorPicker bg-pink"></div>
+                                    <div id="bg-orange" onclick="newCategorySelectColor('bg-orange')" class="addTask_colorPicker bg-orange"></div>
+                                    <div id="bg-green" onclick="newCategorySelectColor('bg-green')" class="addTask_colorPicker bg-green"></div>
+                                    <div id="bg-turquoise" onclick="newCategorySelectColor('bg-turquoise')" class="addTask_colorPicker bg-turquoise"></div>
+                                    <div id="bg-yellow" onclick="newCategorySelectColor('bg-yellow')" class="addTask_colorPicker bg-yellow"></div>
+                                    <div id="bg-blue" onclick="newCategorySelectColor('bg-blue')" class="addTask_colorPicker bg-blue"></div>
+                                </div>
+
+
+                                <!-- <p>Category</p>
+                                <div class="dropdown">
+                                    <div id="selectCategory" onclick="dropDownCategory()" class="drop selectImg">Select task category<img src="/asseds/img/pfeil unten.png"></div>
+                                    <div id="category" class="dropdown-content">
+                                        <a onclick="newCategory()">New category</a>
+
+                                    </div>
+                                </div> -->
+                                <p>Assigned to</p>
+                                <div class="dropdown">
+                                    <div onclick="dropDownAssign()" class="drop">Select contacts to assign<img src="/asseds/img/pfeil unten.png"></div>
+                                    <div id="assign" class="dropdown-content assign-contact">
+                                        <a>Artur Marbach <input type="checkbox"></a>
+                                        <a>Waldemar Neumann <input type="checkbox"></a>
+                                        <a>Invite new contact</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rightContainer">
+                                <p>Due date</p>
+                                <div>
+                                    <input id="dueDates" type="date" placeholder="dd/mm/yyyy" required>
+
+                                </div>
+                                <p>Prio</p>
+                                <div class="prio">
+                                    <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
+                                        <img id="redImg" src="asseds/img/pfeil-oben-rot.png">
+                                    </div>
+                                    <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
+                                        <img id="yellowImg" class="medium" src="asseds/img/medium-gelb.png">
+                                    </div>
+                                    <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
+                                        <img id="greenImg" src="asseds/img/pfeil-unten-grün.png">
+                                    </div>
+                                </div>
+
+                                <p>Subtasks</p>
+
+                                <div class="relativeContainer">
+                                    <input id="subtask" required placeholder="Enter a Subtask...">
+                                    <img onclick="renderSubtask()" class="subtaskIMG" src="asseds/img/Vector (1).png">
+                                </div>
+
+                                <div id="renderSubtask"></div>
+
+                                <div class="btn">
+                                    <button class="btnClear">Clear
+                                    X
+                                </button>
+                                    <button class="btnCreate"> Create Task
+                                    <img src="asseds/img/hacken.png">
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
 
-
-
-
-            <form onsubmit="addTask(); return false;">
-                <div class="middleLine"></div>
-                <div class="flexContainer">
-                    <div class="leftContainer">
-                        <p>Title</p>
-
-                        <input id="title" placeholder="Enter a title" required>
-                        <p>Description</p>
-                        <textarea id="description" required placeholder="Enter a Description"></textarea>
-                        <p>Category</p>
-                        <div class="dropdown">
-                            <div id="selectCategory" onclick="dropDownCategory()" class="drop selectImg">Select task category<img src="/asseds/img/pfeil unten.png"></div>
-                            <div id="category" class="dropdown-content">
-                                <a onclick="newCategory()">New category</a>
-                                
-                            </div>
-                        </div>
-                        <p>Assigned to</p>
-                        <div class="dropdown">
-                            <div onclick="dropDownAssign()" class="drop">Select contacts to assign<img src="/asseds/img/pfeil unten.png"></div>
-                            <div id="assign" class="dropdown-content assign-contact">
-                                <a >Artur Marbach <input type="checkbox"></a>
-                                <a >Waldemar Neumann <input type="checkbox"></a>
-                                <a >Invite new contact</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rightContainer">
-                        <p>Due date</p>
-                        <div>
-                            <input id="dueDate" type="date" placeholder="dd/mm/yyyy" required>
-
-                        </div>
-                        <p>Prio</p>
-                        <div class="prio">
-                            <div id="red" onclick="changeColorRed()" class="prioContainer">Urgent
-                                <img id="redImg" src="asseds/img/pfeil-oben-rot.png">
-                            </div>
-                            <div id="yellow" onclick="changeColorYellow()" class="prioContainer">Medium
-                                <img id="yellowImg" class="medium" src="asseds/img/medium-gelb.png">
-                            </div>
-                            <div id="green" onclick="changeColorGreen()" class="prioContainer">Low
-                                <img id="greenImg" src="asseds/img/pfeil-unten-grün.png">
-                            </div>
-                        </div>
-
-                        <p>Subtasks</p>
-
-                        <div class="relativeContainer">
-                            <input id="subtask" required placeholder="Enter a Subtask...">
-                            <img onclick="renderSubtask()" class="subtaskIMG" src="asseds/img/Vector (1).png">
-                        </div>
-
-                        <div id="renderSubtask"></div>
-
-                        <div class="btn">
-                            <button class="btnClear">Clear
-                                X
-                            </button>
-                            <button class="btnCreate"> Create Task
-                                <img src="asseds/img/hacken.png">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
+            </div>
         </div>
-    </div>
 
-</body>
+    </body>
 
 </html>

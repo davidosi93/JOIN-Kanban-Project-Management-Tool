@@ -19,42 +19,7 @@ let currentId = 0;
 let timer;
 let timeIsup = false;
 let touchStartActive = false;
-let allContactsTest = [{
-        'color': '#3FB1C6',
-        'email': 'waldemar@gmx.de',
-        'name': 'Waldemar Neumann',
-        'phone': '15512 523555156',
 
-    },
-    {
-        'color': '#448243',
-        'email': 'david@gmx.de',
-        'name': 'David Osipov',
-        'phone': '15512 523555156',
-
-    },
-    {
-        'color': '#73EE11',
-        'email': 'artut@gmx.de',
-        'name': 'Artur Marbach',
-        'phone': '15512 523555156',
-
-    },
-    {
-        'color': '#BD012A',
-        'email': 'Jakob@gmx.de',
-        'name': 'Jakob Neumann',
-        'phone': '15512 523555156',
-
-    },
-    {
-        'color': '#017637',
-        'email': 'nikita@gmx.de',
-        'name': 'Nikita Neumann',
-        'phone': '15512 523555156',
-
-    }
-];
 
 //users[activeUser]['tasks'].push(allCategorys);
 //await backend.setItem('users', JSON.stringify(users));
@@ -63,15 +28,11 @@ async function initLoadTasks() {
     includeHTML();
     await getAllTasks();
     filterAllTasks();
-    allCategorys = JSON.parse(backend.getItem('allCategorys')) || [];
-    users = JSON.parse(backend.getItem('users')) || [];
-    activeUser = backend.getItem('activeUser') || 0;
     openAllContacts();
     filterTasks()
     createnewCategoryAll()
+    loadActiveUser()
 }
-
-
 
 function filterTasks() {
     filterTodo()
@@ -82,7 +43,24 @@ function filterTasks() {
 }
 
 function loadActiveUser() {
-    let activeUser = document.getElementById('headerContent');
+    let activeUsers = document.getElementById('headerContent');
+    activeUsers.innerHTML = '';
+
+    const name = users[activeUser]['initials'];
+    const color = users[activeUser]['color'];
+    activeUsers.innerHTML = /*html*/ `
+            <p>Kanban Project Management Tool</p>
+
+            <div class="headerContentRight">
+                <img onclick="help()" class="information" src="/asseds/img/information.png">
+                <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
+                    ${name}
+                </div>
+                <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+            </div>
+        `;
+
+
 }
 
 function help() {
@@ -446,16 +424,18 @@ async function createTask() {
     };
 
     allTasks.push(task);
+    users[activeUser]['tasks'].push(task);
+
     addTasking()
     inputfieldValue()
 
 }
 
 async function addTasking() {
-    let todos = allTasks.filter(t => t['list'] == 'todo');
-    let progress = allTasks.filter(t => t['list'] == 'progress');
-    let feedbacks = allTasks.filter(t => t['list'] == 'feedback');
-    let dones = allTasks.filter(t => t['list'] == 'done');
+    let todos = users[activeUser]['tasks'].filter(t => t['list'] == 'todo');
+    let progress = users[activeUser]['tasks'].filter(t => t['list'] == 'progress');
+    let feedbacks = users[activeUser]['tasks'].filter(t => t['list'] == 'feedback');
+    let dones = users[activeUser]['tasks'].filter(t => t['list'] == 'done');
 
 
     let containerTodo = document.getElementById('containerTodos');
@@ -756,6 +736,7 @@ async function addTasking() {
 
     }
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('users', JSON.stringify(users));
 }
 
 
@@ -826,12 +807,12 @@ function allowDrop(ev) {
 }
 
 async function drop(categorys) {
-    let droppedTask = allTasks.filter(x => x.id == currentDraggedElement)
+    let droppedTask = users[activeUser]['tasks'].filter(x => x.id == currentDraggedElement)
     droppedTask[0]['list'] = categorys;
-    addTasking();
     filterTasks();
+    addTasking();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    initLoadTasks();
+    await backend.setItem('users', JSON.stringify(users));
 }
 
 function drag(id) {
@@ -942,6 +923,7 @@ async function createNewCategory() {
             let categoryExists = allCategorys.some(category => category.name === newCategory && category.color === currentCategoryColor);
             if (!categoryExists) {
                 allCategorys.push(jsonColor);
+                users[activeUser]['categorys'].push(jsonColor);
                 currentCategoryColor = null;
                 selectNewCatagoryCancel();
                 createnewCategoryAll();
@@ -957,6 +939,7 @@ async function createNewCategory() {
     }
 
     await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+    await backend.setItem('users', JSON.stringify(users));
 
     document.getElementById('bg-pink').style = 'box-shadow: none;';
     document.getElementById('bg-orange').style = 'box-shadow: none;';
@@ -971,12 +954,13 @@ async function createNewCategory() {
 
 
 
+
 function createnewCategoryAll() {
     newCategorys = document.getElementById('createNewTategory');
     newCategorys.innerHTML = '';
 
-    for (let i = 0; i < allCategorys.length; i++) {
-        const element = allCategorys[i];
+    for (let i = 0; i < users[activeUser]['categorys'].length; i++) {
+        const element = users[activeUser]['categorys'][i];
 
         newCategorys.innerHTML += /*html*/ `
             <div onclick="selectCategory(${currentIndex})" id="category-${currentIndex}" class="categoryMediaDivSmoll">
@@ -1005,8 +989,11 @@ function newCategorySelectColor(id) {
 
 async function deleteCategory(i) {
     allCategorys.splice(i, 1)
+    users[activeUser]['categorys'].splice(i, 1);
+    await backend.deleteItem('users', users);
     createnewCategoryAll()
     await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+    await backend.setItem('users', JSON.stringify(users));
 }
 
 
@@ -1029,20 +1016,27 @@ function selectContacted(id) {
     let chackedBox = document.getElementById(id);
 
     if (chackedBox.checked) {
-        // Add name and color to the assignedChackedBox array
-        let elementIndex = allContactsTest.findIndex(element => element.name === chackedBox.value);
-        let elementColor = allContactsTest[elementIndex]['color'];
+
+        let elementColor;
+        for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
+            if (users[activeUser]['contacts'][i].contactName === id) {
+                elementColor = users[activeUser]['contacts'][i].contactColor;
+                break;
+            }
+        }
+
         assignedChackedBox.push({
             'name': chackedBox.value,
             'color': elementColor
         });
     } else {
-        // Remove name and color from the assignedChackedBox array when it is unchecked
+
         assignedChackedBox = assignedChackedBox.filter(e => e.name !== chackedBox.value);
     }
 
     addContacts();
 }
+
 
 
 function addContacts() {
@@ -1086,18 +1080,19 @@ function openAllContacts() {
     let assignedToList = document.getElementById('assignedToList');
     assignedToList.innerHTML = '';
 
-    for (let i = 0; i < allContactsTest.length; i++) {
-        const element = allContactsTest[i];
+    for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
+        const name = users[activeUser]['contacts'][i]['contactName'];
 
         assignedToList.innerHTML += /*html*/ `
         <label class="assignedToListBox">
-            <li class="taskAssignedTo">${element['name']}</li>
-            <input  onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}">
+            <li class="taskAssignedTo">${name}</li>
+            <input  onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="${name}" id="${name}">
         </label>
     `;
     }
 
 }
+
 
 /** Area for Subtask */
 
@@ -1173,8 +1168,8 @@ function resetSubtasks() {
 
 function openCheckTask(Index) {
     if (!touchStartActive) {
-        let openToCheck = allTasks.filter(x => x.id == Index);
-        let openTocheckRightTask = allTasks.indexOf(openToCheck[0]);
+        let openToCheck = users[activeUser]['tasks'].filter(x => x.id == Index);
+        let openTocheckRightTask = users[activeUser]['tasks'].indexOf(openToCheck[0]);
         openCheckTasks(openTocheckRightTask);
     }
 }
@@ -1189,13 +1184,13 @@ async function openCheckTasks(taskIndex) {
     let fullinitialsName = openCheckTaskFullNames(taskIndex);
     let dateFormatted = dateOpenCheckTask(taskIndex);
 
-    let task = allTasks[taskIndex];
+    let task = users[activeUser]['tasks'][taskIndex];
 
     container.innerHTML = openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, taskIndex);
     let subinitialContainer = openCheckTaskSubtasks(taskIndex);
     document.getElementById('openCheckTasksAssignedToTitle').innerHTML = subinitialContainer;
     openCheckTaskTakeInputValue()
-    selectedSubtasksProgress = allTasks[taskIndex].subtaskChecked;
+    selectedSubtasksProgress = users[activeUser]['tasks'][taskIndex].subtaskChecked;
     await backend.setItem('allCategorys', JSON.stringify(allCategorys));
 }
 
@@ -1266,7 +1261,7 @@ function toAskDeleteTask(taskIndex) {
 
     deleteTasks.innerHTML = /*html*/ `
         <div class="askDeleteTask">
-            <p class="deleteTaskTesx">Möchten Sie die Task wirklich löschen?</p>
+            <p class="deleteTaskTesx">Möchten Sie diese Task wirklich löschen?</p>
             <div>
                 <button class="deleteTaskAnswer" onclick="deleteTask(${taskIndex})">Ja</button>
                 <button id="deleteTaskAnswer" onclick="NonDeleteTask()" class="deleteTaskAnswer">Nein</button>
@@ -1281,17 +1276,22 @@ function NonDeleteTask() {
 
 async function deleteTask(taskIndex) {
     allTasks.splice(taskIndex, 1);
+    users[activeUser]['tasks'].splice(taskIndex, 1);
     await backend.deleteItem('allTasks', allTasks);
-    addTasking();
+    await backend.deleteItem('users', users);
     filterTasks();
+    addTasking();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('users', JSON.stringify(users));
     closeContainer1();
     document.getElementById('bigDivDeleteTask').classList.add('d-none')
+
+
 }
 
 
 function dateOpenCheckTask(taskIndex) {
-    let task = allTasks[taskIndex];
+    let task = users[activeUser]['tasks'][taskIndex];
     let taskDate = new Date(task.dueDates);
     let formattedDate = taskDate.toLocaleDateString('de-DE', {
         day: '2-digit',
@@ -1303,7 +1303,7 @@ function dateOpenCheckTask(taskIndex) {
 }
 
 function openCheckTaskNames(taskIndex) {
-    let names = allTasks[taskIndex];
+    let names = users[activeUser]['tasks'][taskIndex];
     let nameParts = (names.assignedTo);
     let initialsContainer = '';
     for (let j = 0; j < nameParts.length; j++) {
@@ -1320,7 +1320,7 @@ function openCheckTaskNames(taskIndex) {
 }
 
 function openCheckTaskFullNames(taskIndex) {
-    let fullNames = allTasks[taskIndex];
+    let fullNames = users[activeUser]['tasks'][taskIndex];
     let fullNameParts = (fullNames.assignedTo);
     let fullNameInitialsContainer = '';
     for (let j = 0; j < fullNameParts.length; j++) {
@@ -1335,7 +1335,7 @@ function openCheckTaskFullNames(taskIndex) {
 }
 
 function openCheckTaskSubtasks(taskIndex) {
-    let subtasks = allTasks[taskIndex];
+    let subtasks = users[activeUser]['tasks'][taskIndex];
     let addSubtask = (subtasks.subtask);
     let selectedSubtasks = (subtasks.subtaskChecked) || [];
     let subtaskInitialsContainer = '';
@@ -1412,7 +1412,7 @@ function openTaskToEdit(taskIndex) {
     document.getElementById('checkTaskSmall').classList.add('d-none');
     document.getElementById('toEditTaskMainDiv').classList.remove('d-none');
 
-    let task = allTasks[taskIndex];
+    let task = users[activeUser]['tasks'][taskIndex];
     let duaDate = openTaskToEditDate(taskIndex);
     let toEditTaskMainDiv = document.getElementById('toEditTaskMainDiv');
     toEditTaskMainDiv.innerHTML = openTaskToEditHTML(task, duaDate, taskIndex);
@@ -1481,7 +1481,7 @@ function openTaskToEditHTML(task, duaDate, taskIndex) {
 
 
 function openTaskToEditDate(taskIndex) {
-    let task = allTasks[taskIndex];
+    let task = users[activeUser]['tasks'][taskIndex];
     let taskDate = new Date(task.dueDates);
     let formattedDate = taskDate.toISOString().substring(0, 10);
     return formattedDate;
@@ -1509,7 +1509,7 @@ function openTaskToEditContacts() {
 }
 
 function openTaskToEditPrioImage(taskIndex) {
-    let task = allTasks[taskIndex];
+    let task = users[activeUser]['tasks'][taskIndex];
 
     if (task.prio.text === 'Urgent') {
         document.getElementById('toEditRed').classList.add('red');
@@ -1547,12 +1547,12 @@ function openContactsToEdit() {
 
 
 function selectContactedToEdit(id) {
-    let contact = allContactsTest.find(contact => contact.name === id);
+    let contact = users[activeUser]['contacts'].find(contact => contact.contactName === id);
 
-    let index = assignedChackedBox.findIndex(c => c.name === contact.name);
+    let index = assignedChackedBox.findIndex(c => c.name === contact.contactName);
     if (index === -1) {
 
-        assignedChackedBox.push({ name: contact.name, color: contact.color });
+        assignedChackedBox.push({ name: contact.contactName, color: contact.contactColor });
 
     } else {
 
@@ -1560,20 +1560,23 @@ function selectContactedToEdit(id) {
     }
     let addContactss = openTaskToEditContacts();
     document.getElementById('assignedAddContacts').innerHTML = addContactss;
+
+
 }
+
 
 function showContactsInToEdit(taskIndex) {
     let toEdit = document.getElementById('assignedToListToEdit');
     toEdit.innerHTML = '';
 
-    let currentContacts = allTasks[taskIndex];
+    let currentContacts = users[activeUser]['tasks'][taskIndex];
 
-    for (let i = 0; i < allContactsTest.length; i++) {
-        const element = allContactsTest[i];
+    for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
+        const element = users[activeUser]['contacts'][i]['contactName'];
 
         let isAssigned = false;
         for (let j = 0; j < currentContacts.assignedTo.length; j++) {
-            if (currentContacts.assignedTo[j].name === element['name']) {
+            if (currentContacts.assignedTo[j].name === element) {
                 isAssigned = true;
                 break;
             }
@@ -1582,16 +1585,16 @@ function showContactsInToEdit(taskIndex) {
         if (isAssigned) {
             toEdit.innerHTML += /*html*/ `
               <label class="assignedToListBox">
-                  <li class="taskAssignedTo">${element['name']}</li>
-                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}" checked>
+                  <li class="taskAssignedTo">${element}</li>
+                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element}" id="${element}" checked>
 
               </label>
           `;
         } else {
             toEdit.innerHTML += /*html*/ `
               <label class="assignedToListBox">
-                  <li class="taskAssignedTo">${element['name']}</li>
-                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element['name']}" id="${element['name']}">
+                  <li class="taskAssignedTo">${element}</li>
+                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element}" id="${element}">
               </label>
           `;
         }
@@ -1606,7 +1609,13 @@ function showContactsInToEditPushInAssigned() {
     for (let i = 0; i < checkboxess.length; i++) {
         const checkboxx = checkboxess[i];
         const name = checkboxx.value;
-        const color = allContactsTest.find(contact => contact.name === name).color;
+        let color;
+        for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
+            if (users[activeUser]['contacts'][i].contactName === name) {
+                color = users[activeUser]['contacts'][i].contactColor;
+                break;
+            }
+        }
         assignedChackedBox.push({
             name,
             color
@@ -1619,27 +1628,28 @@ async function saveTask(taskIndex) {
     let updatedDescription = document.getElementById("editTaskDescription").value;
     let updatedDueDate = document.getElementById("editTaskDueDate").value;
 
-    allTasks[taskIndex].title = updatedTitle;
-    allTasks[taskIndex].description = updatedDescription;
-    allTasks[taskIndex].dueDates = updatedDueDate;
+    users[activeUser]['tasks'][taskIndex].title = updatedTitle;
+    users[activeUser]['tasks'][taskIndex].description = updatedDescription;
+    users[activeUser]['tasks'][taskIndex].dueDates = updatedDueDate;
     if (Object.keys(colorArray).length > 0) {
-        allTasks[taskIndex].prio.color = colorArray.color;
-        allTasks[taskIndex].prio.text = colorArray.text;
-        allTasks[taskIndex].prio.coloredImage = colorArray.coloredImage;
-        allTasks[taskIndex].prio.whiteImage = colorArray.whiteImage;
+        users[activeUser]['tasks'][taskIndex].prio.color = colorArray.color;
+        users[activeUser]['tasks'][taskIndex].prio.text = colorArray.text;
+        users[activeUser]['tasks'][taskIndex].prio.coloredImage = colorArray.coloredImage;
+        users[activeUser]['tasks'][taskIndex].prio.whiteImage = colorArray.whiteImage;
     }
 
     for (let i = 0; i < assignedChackedBox.length; i++) {
-        if (allTasks[taskIndex].assignedTo.map(e => e.name).indexOf(assignedChackedBox[i].name) === -1) {
-            allTasks[taskIndex].assignedTo.push(assignedChackedBox[i]);
+        if (users[activeUser]['tasks'][taskIndex].assignedTo.map(e => e.name).indexOf(assignedChackedBox[i].name) === -1) {
+            users[activeUser]['tasks'][taskIndex].assignedTo.push(assignedChackedBox[i]);
         }
     }
 
     // allTasks[taskIndex].assignedTo = allTasks[taskIndex].assignedTo.filter(e => assignedChackedBox.map(el => el.name).indexOf(e.name) !== -1);
-    allTasks[taskIndex].assignedTo = assignedChackedBox;
+    users[activeUser]['tasks'][taskIndex].assignedTo = assignedChackedBox;
+    filterTasks();
     addTasking();
-    filterTasks()
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('users', JSON.stringify(users));
     openCheckTasks(taskIndex);
 }
 

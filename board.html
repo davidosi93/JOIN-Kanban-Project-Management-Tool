@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
     <link rel="stylesheet" href="/css/board.css">
-    <!-- <link rel="stylesheet" href="/desktop_template.css"> -->
+
+
     <script src="./mini_backend.js"></script>
+    <script src="script.js"></script>
     <script src="/js/board.js"></script>
     <script src="/js/task_form.js"></script>
     <script src="/js/desktop_template.js"></script>
-
     <script src="template.js"></script>
-    <script src="script.js"></script>
+    <script src="./template.js"></script>
+    <script src="/js/contacts.js"></script>
 
 
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
@@ -27,16 +29,11 @@
     <div class="content">
         <div w3-include-html="/asseds/templates/desktop_template.html" class="rightTemplates"></div>
         <div id="addTaskRight" w3-include-html="/asseds/templates/task_form.html" class="d-none"></div>
-
+        <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
 
         <div class="rightContent">
             <div class="headerContent" id="headerContent">
-                <p>Kanban Project Management Tool</p>
 
-                <div class="headerContentRight">
-                    <img onclick="help()" class="information" src="/asseds/img/information.png">
-                    <img class="personLogIn" src="/asseds/img/logo.jpg">
-                </div>
             </div>
 
             <div id="help" class="mainContainerHelp d-none">
