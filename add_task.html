@@ -18,10 +18,14 @@
     <script src="/js/contacts.js"></script>
 
 
+
+
     <body onload="initLoadTasksAddTask()">
 
         <div class="content">
             <div w3-include-html="/asseds/templates/desktop_template.html"></div>
+            <div w3-include-html="/asseds/templates/mobileMenu.html"></div>
+
             <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
             <div w3-include-html="/asseds/templates/mobileMenu.html"></div>
 
@@ -75,7 +79,8 @@
 
                                 <p class="addTask_titleInputFields">Category</p>
                                 <div id="addTask_borderButton" class="addTask_categoryDiv" onclick="openCategory();">
-                                    <p id="addTask_selectTaskCategory" class="addTask_selectTaskCategory">Select Task Category</p>
+                                    <p id="addTask_selectTaskCategory" class="addTask_selectTaskCategory">Select Task Category
+                                    </p>
                                     <img id="addTask_selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
                                     <input id="addTask_selectNewCategory" class="addTask_inputfieldNewCategory d-none" placeholder="New Catetogory Name">
                                     <div id="addTask_selectNewCategoryImg" class="addTask_selectNewCategory d-none">
@@ -92,81 +97,37 @@
 
                                     <div id="addTask_createNewTategory">
 
-                                    </div>
-                                </ul>
+                                        <p class="addTask_titleInputFields">Subtasks</p>
+                                        <div class="relativeContainer">
+                                            <input id="addTask_openSubtasks" onclick="openSubtasks()" placeholder="Add new subtask">
+                                            <div class="smallRelativeContainer">
+                                                <img id="addTask_subtasksAddImg" class="subtaskIMG" src="asseds/img/Vector (1).png">
+                                                <img onclick="subtasksCancels()" id="addTask_subtsasksCancelImg" class="subtsasksCancelImg d-none" src="/asseds/img/cancel.png">
+                                                <div id="addTask_subtasksSubLine" class="subtasksSsubLine d-none"></div>
+                                                <img onclick="addSubtaskss()" id="addTask_subtasksChackImg" class="subtasksChackImg d-none" src="/asseds/img/hacken-schwarz.png">
+                                            </div>
+                                        </div>
 
-                                <div id="addTask_containerColorPicker" class="addTask_containerColorPicker d-none">
-                                    <div id="bg-pink" onclick="newCategorySelectColor('bg-pink')" class="addTask_colorPicker bg-pink"></div>
-                                    <div id="bg-orange" onclick="newCategorySelectColor('bg-orange')" class="addTask_colorPicker bg-orange"></div>
-                                    <div id="bg-green" onclick="newCategorySelectColor('bg-green')" class="addTask_colorPicker bg-green"></div>
-                                    <div id="bg-turquoise" onclick="newCategorySelectColor('bg-turquoise')" class="addTask_colorPicker bg-turquoise"></div>
-                                    <div id="bg-yellow" onclick="newCategorySelectColor('bg-yellow')" class="addTask_colorPicker bg-yellow"></div>
-                                    <div id="bg-blue" onclick="newCategorySelectColor('bg-blue')" class="addTask_colorPicker bg-blue"></div>
-                                </div>
+                                        <div id="addTask_allAddSubtask" class="subtaskContainer">
 
-                                <p class="addTask_titleInputFields">Assigned to</p>
-                                <div id="addTask_openContact" onclick="openContactss()" class="assignedDiv">
-                                    <p id="assignedContactsSelect" class="assignedToArea">Select contacts to assigt</p>
-                                    <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
-                                </div>
+                                        </div>
 
-                                <ul id="addTask_assignedToList" class="assignedToList d-none">
-
-                                </ul>
-
-                                <div class="assignedAddContact" id="addTask_assignedAddContact">
-
-                                </div>
-                            </div>
-
-                            <div class="rightContainer">
-                                <p class="addTask_titleInputFields">Due date</p>
-                                <div>
-                                    <input id="dueDates" type="date" placeholder="dd/mm/yyyy" required>
-                                </div>
-
-                                <p class="addTask_titleInputFields">Prio</p>
-                                <div class="prio">
-                                    <div id="addTask_Red" onclick="changeColors(id)" class="prioContainer">Urgent
-                                        <img id="addRedImg" src="/asseds/img/pfeil-oben-rot.png">
-                                    </div>
-                                    <div id="addTask_Yellow" onclick="changeColors(id)" class="prioContainer">Medium
-                                        <img id="addYellowImg" class="medium" src="/asseds/img/medium-gelb.png">
-                                    </div>
-                                    <div id="addTask_Green" onclick="changeColors(id)" class="prioContainer">Low
-                                        <img id="addGreenImg" src="/asseds/img/pfeil-unten-grün.png">
-                                    </div>
-                                </div>
-
-                                <p class="addTask_titleInputFields">Subtasks</p>
-                                <div class="relativeContainer">
-                                    <input id="addTask_openSubtasks" onclick="openSubtasks()" placeholder="Add new subtask">
-                                    <div class="smallRelativeContainer">
-                                        <img id="addTask_subtasksAddImg" class="subtaskIMG" src="asseds/img/Vector (1).png">
-                                        <img onclick="subtasksCancels()" id="addTask_subtsasksCancelImg" class="subtsasksCancelImg d-none" src="/asseds/img/cancel.png">
-                                        <div id="addTask_subtasksSubLine" class="subtasksSsubLine d-none"></div>
-                                        <img onclick="addSubtaskss()" id="addTask_subtasksChackImg" class="subtasksChackImg d-none" src="/asseds/img/hacken-schwarz.png">
-                                    </div>
-                                </div>
-
-                                <div id="addTask_allAddSubtask" class="subtaskContainer">
-
-                                </div>
-
-                                <div class="btn">
-                                    <button class="btnClear">Clear
+                                        <div class="btn">
+                                            <button class="btnClear">Clear
                                     X
                                 </button>
-                                    <button class="btnCreate"> Create Task
+                                            <button class="btnCreate"> Create Task
                                     <img src="asseds/img/hacken.png">
                                 </button>
-                                </div>
-                            </div>
+                                        </div>
+                                    </div>
 
-                        </div>
+                            </div>
                     </form>
 
                     <div class="selectionMessage d-none" id="div"></div>
+
+                    </div>
 
                 </div>
 
