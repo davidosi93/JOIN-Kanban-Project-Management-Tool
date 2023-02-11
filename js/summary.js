@@ -30,8 +30,29 @@ async function initSummary(){
     await getAllTasks();
     filterAllTasks();
     watchTask();
+    loadActiveUsers();
 }
 
+function loadActiveUsers() {
+    let activeUsers = document.getElementById('headerContents');
+    activeUsers.innerHTML = '';
+
+    const name = users[activeUser]['initials'];
+    const color = users[activeUser]['color'];
+    activeUsers.innerHTML = /*html*/ `
+            <p>Kanban Project Management Tool</p>
+
+            <div class="headerContentRight">
+                <img onclick="help()" class="information" src="/asseds/img/information.png">
+                <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
+                    ${name}
+                </div>
+                <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+            </div>
+        `;
+
+
+}
 function watchTask(){
     let watchBoard = document.getElementById('task-board');
     let watchTodo = document.getElementById('task-todo');

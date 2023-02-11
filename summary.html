@@ -13,6 +13,7 @@
     <script src="script.js"></script>
     <script src="template.js"></script>
     <script src="js/summary.js"></script>
+    <script src="js/contacts.js"></script>
     <script src="js/board.js"></script>
     <script src="/js/desktop_template.js"></script>
     <link rel="stylesheet" href="css/contacts.css">
@@ -23,16 +24,13 @@
 <body onload="initSummary()">
     <div class="content">
         <div class="desktopMenu" w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
         <div w3-include-html="/asseds/templates/mobileMenu.html"></div>
 
         <div class="rightContent">
-            <div class="headerContent">
-                <p>Kanban Project Management Tool</p>
-                <div class="headerContentRight">
-                    <img onclick="help()" class="information" src="/asseds/img/information.png">
-                    <img class="personLogIn" src="/asseds/img/logo.jpg">
-                </div>
-            </div>
+           
+                <div class="headerContent" id="headerContents"></div>
+              
             <div id="help" class="mainContainerHelp d-none">
                 <div class="headerHelp">
                     <h1>Help</h1>
@@ -62,7 +60,7 @@
                     <div class="headline">
                         <p class="kanban-mobile">Kanban Project Management Tool</p>
                         <h1>Summary</h1>
-                        <p>Everythihng in a nutshell!</p>
+                        <p>Everything in a nutshell!</p>
 
                     </div>
                 </div>
