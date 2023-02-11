@@ -811,3 +811,19 @@ select {
     padding-left: 15px;
     font-size: 15px;
 }
+
+.selectionMessage {
+    padding: 30px;
+    width: 326px;
+    height: 74px;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    position: fixed;
+    left: 50%;
+    font-weight: 400;
+    font-size: 21px;
+    color: #FFFFFF;
+    animation: contactAnim 400ms normal forwards;
+    text-align: center;
+}

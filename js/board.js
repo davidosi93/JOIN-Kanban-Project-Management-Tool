@@ -920,7 +920,7 @@ async function createNewCategory() {
     }
     if (newCategory) {
         if (currentCategoryColor) {
-            let categoryExists = allCategorys.some(category => category.name === newCategory && category.color === currentCategoryColor);
+            let categoryExists = users[activeUser]['categorys'].some(category => category.name === newCategory && category.color === currentCategoryColor);
             if (!categoryExists) {
                 allCategorys.push(jsonColor);
                 users[activeUser]['categorys'].push(jsonColor);
@@ -938,7 +938,7 @@ async function createNewCategory() {
         alert("Bitte wählen Sie eine Kategorie aus");
     }
 
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+    // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 
     document.getElementById('bg-pink').style = 'box-shadow: none;';
@@ -992,7 +992,7 @@ async function deleteCategory(i) {
     users[activeUser]['categorys'].splice(i, 1);
     await backend.deleteItem('users', users);
     createnewCategoryAll()
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+        // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -1191,7 +1191,7 @@ async function openCheckTasks(taskIndex) {
     document.getElementById('openCheckTasksAssignedToTitle').innerHTML = subinitialContainer;
     openCheckTaskTakeInputValue()
     selectedSubtasksProgress = users[activeUser]['tasks'][taskIndex].subtaskChecked;
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+    // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
 }
 
 function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, taskIndex) {
@@ -1277,11 +1277,11 @@ function NonDeleteTask() {
 async function deleteTask(taskIndex) {
     allTasks.splice(taskIndex, 1);
     users[activeUser]['tasks'].splice(taskIndex, 1);
-    await backend.deleteItem('allTasks', allTasks);
+    // await backend.deleteItem('allTasks', allTasks);
     await backend.deleteItem('users', users);
     filterTasks();
     addTasking();
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
     closeContainer1();
     document.getElementById('bigDivDeleteTask').classList.add('d-none')
