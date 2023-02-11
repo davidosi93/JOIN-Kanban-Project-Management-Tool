@@ -30,6 +30,7 @@ async function initSummary(){
     await getAllTasks();
     filterAllTasks();
     watchTask();
+    navBarHighlight(1);
 }
 
 function watchTask(){

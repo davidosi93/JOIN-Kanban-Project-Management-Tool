@@ -81,13 +81,17 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                         <p class="phoneNumber">${phone}</p>
                     </div>
                 </div>
+                <div onclick="showEditContactBox(${i})" class="editMobileBox d-none">
+                    <img src="asseds/img/whitePencil.png">
+                </div>
             </div>`;
 }
 
 
 function editContactBox(i, color, str) {
-    return `    <div id="editContactBox${i}" class="newContactBox">
-                    <img onclick="closeEditBox()" class="closeImg" src="asseds/img/cross.png">
+    return `<div id="editContactBox${i}" class="newContactBox">
+                <img onclick="closeEditBox()" class="closeImg" src="asseds/img/cross.png">
+                <img onclick="closeEditBox()" class="closeImgMobile d-none" src="asseds/img/closewhite.png">
                     <div class="leftContent">
                             <img src="asseds/img/littleLogo.png">
                             <h1>Edit Contact</h1>

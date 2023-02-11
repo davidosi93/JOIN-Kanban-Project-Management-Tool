@@ -253,8 +253,11 @@ body {
     gap: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-top: 60px;
+}
+
+.mobileHeader {
+    display: none;
 }
 
 .line {
@@ -789,10 +792,124 @@ body {
 
     .rightSection {
         display: none;
+        position: fixed;
+        background: #F5F5F5;
+        height: 100%;
+        width: 100%;
+        top: 65px;
+        left: 1000px;
+        right: unset;
+        animation: mobileAnim 0.1s normal both;
+    }
+
+    @keyframes mobileAnim {
+        from {
+            left: 1000px;
+        }
+
+        to {
+            left: 0;
+        }
+    }
+
+    .closeAnimation {
+        animation: closeMobileAnim 0.1s normal both;
+    }
+
+    @keyframes closeMobileAnim {
+        from {
+            left: 0;
+        }
+
+        to {
+            left: 1000px;
+        }
+    }
+
+    .rightArea {
+        gap: 50px;
     }
 
     .showContactHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1vh;
+        height: unset;
+        position: relative;
+        top: unset;
+        left: unset;
+        margin-top: 4%;
+    }
+
+    .showContactHeaderH1 {
+        font-size: 8vw;
+    }
+
+    .showContactHeader p {
+        margin: 0;
+        font-size: 4vw;
+    }
+
+    .closeArrow {
+        display: block;
+        position: absolute;
+        right: 2vw;
+        top: 7vh;
+    }
+
+    .editMobileBox {
+        display: block;
+        background: #2A3647;
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 91vw;
+        bottom: 7vh;
+    }
+
+    .SaveButtonDiv {
+        position: unset;
+        margin-top: 2vh;
+    }
+
+    .mobileHeader {
+        display: block;
+    }
+
+    .line {
+        width: 12vw;
+        bottom: -1vw;
+        position: absolute;
+        height: unset;
+    }
+
+    .contact {
+        gap: 6vw;
+    }
+
+    .contactBox {
+        margin-top: unset;
+    }
+
+    .contactNameRightP {
+        font-size: 6vw;
+    }
+
+    .contactInfoEdit {
         display: none;
+    }
+
+    .phoneMailBox {
+        bottom: unset;
+        gap: unset;
+    }
+
+    .mail {
+        gap: unset;
     }
 
     .contactList {
@@ -936,6 +1053,20 @@ body {
     .inputField {
         width: 70%;
     }
+
+    .showContactHeader p {
+        font-size: 5vw;
+    }
+
+    .saveButton {
+        width: 30vw;
+        height: 5vh;
+    }
+
+    .delete-button {
+        width: 30vw;
+        height: 5vh;
+    }
 }
 
 @media screen and (max-width: 380px) {
@@ -944,7 +1075,7 @@ body {
     }
 
     .contactDiv {
-        gap: unset;
+        gap: 10px;
     }
 
     .letter {
@@ -969,5 +1100,9 @@ body {
 
     .newContactBoxLine {
         width: 135px;
+    }
+
+    .showContactHeaderH1 {
+        font-size: 9vw;
     }
 }
