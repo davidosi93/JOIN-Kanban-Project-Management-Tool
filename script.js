@@ -49,6 +49,7 @@ async function getAllTasks() {
 
 
 async function filterAllTasks() {
+    // urgent = users[activeUser]['tasks']['prio'].filter(t => t['text'] == '');
     todo = users[activeUser]['tasks'].filter(t => t['list'] == 'todo');
     progress = users[activeUser]['tasks'].filter(t => t['list'] == 'progress');
     feedback = users[activeUser]['tasks'].filter(t => t['list'] == 'feedback');

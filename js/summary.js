@@ -52,21 +52,23 @@ function loadActiveUsers() {
             </div>
         `;
 
-
+    greet();
 }
 
 function watchTask() {
+    let watchUrgent = document.getElementById('task-urgent');
     let watchBoard = document.getElementById('task-board');
     let watchTodo = document.getElementById('task-todo');
     let watchDone = document.getElementById('task-done');
     let watchProgress = document.getElementById('task-progress');
     let watchFeedback = document.getElementById('task-feedback');
-    clearDivs(watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
-    watchtasksLength(watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
+    clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
+    watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
 
 }
 
-function clearDivs(watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
+function clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
+    watchUrgent.innerHTML = '';
     watchTodo.innerHTML = '';
     watchDone.innerHTML = '';
     watchBoard.innerHTML = '';
@@ -74,10 +76,27 @@ function clearDivs(watchBoard, watchTodo, watchDone, watchProgress, watchFeedbac
     watchFeedback.innerHTML = '';
 }
 
-function watchtasksLength(watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
+function watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
+    watchUrgent.innerHTML += `<b>${users[activeUser]['tasks'].length}</b>`;
     watchBoard.innerHTML += `<b>${users[activeUser]['tasks'].length}</b>`;
     watchProgress.innerHTML += `<b>${progress.length}</b>`;
     watchFeedback.innerHTML += `<b>${feedback.length}</b>`;
     watchTodo.innerHTML += `<b>${todo.length}</b>`;
     watchDone.innerHTML += `<b>${done.length}</b>`;
+}
+
+
+function greet() {
+    let greet = document.getElementById('greetTime');
+    greet.innerHTML = '';
+    let today = new Date()
+    let curHr = today.getHours()
+
+    if (curHr < 12) {
+        greet.innerHTML = `good morning<br><p>${users[activeUser]['name']}</p>`;
+    } else if (curHr < 18) {
+        greet.innerHTML = `good afternoon<br><p>${users[activeUser]['name']}</p>`;
+    } else {
+        greet.innerHTML = `good evening<br><p>${users[activeUser]['name']}</p>`;
+    }
 }
