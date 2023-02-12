@@ -21,6 +21,7 @@ async function initLoadTasksAddTask() {
     openAllContactss();
     createnewCategoryAlls();
     loadActiveUsers();
+    navBarHighlight(3)
 }
 
 
@@ -200,14 +201,40 @@ async function createNewCategory() {
                 selectNewCatagoryCancel();
                 createnewCategoryAlls();
                 newCategorySelected = false;
+
+                let successContainer = document.getElementById('div');
+                successContainer.classList.remove('d-none');
+                successContainer.innerHTML = 'Eine neue Kategorie wurde erfolgreich erstellt.';
+                successContainer.style.display = 'block';
+                setTimeout(function() {
+                    successContainer.style.display = 'none';
+                }, 4000);
             } else {
-                alert("Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.");
+                let errorContainer = document.getElementById('div');
+                errorContainer.classList.remove('d-none');
+                errorContainer.innerHTML = 'Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.';
+                errorContainer.style.display = 'block';
+                setTimeout(function() {
+                    errorContainer.style.display = 'none';
+                }, 4000);
             }
         } else {
-            alert("Bitte wählen Sie eine Farbe für die neue Kategorie aus.");
+            let errorContainer = document.getElementById('div');
+            errorContainer.classList.remove('d-none');
+            errorContainer.innerHTML = 'Bitte wählen Sie eine Farbe für die neue Kategorie aus.';
+            errorContainer.style.display = 'block';
+            setTimeout(function() {
+                errorContainer.style.display = 'none';
+            }, 4000);
         }
     } else {
-        alert("Bitte wählen Sie eine Kategorie aus");
+        let errorContainer = document.getElementById('div');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 4000);
     }
 
     // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
@@ -221,6 +248,7 @@ async function createNewCategory() {
     document.getElementById('bg-blue').style = 'box-shadow: none;';
     currentCategoryColor = null;
 }
+
 
 function newCategorySelectColor(id) {
     currentCategoryColor = id;

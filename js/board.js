@@ -31,6 +31,7 @@ async function initLoadTasks() {
     filterTasks()
     createnewCategoryAll()
     loadActiveUser()
+    navBarHighlight(2)
 }
 
 function filterTasks() {
@@ -979,7 +980,7 @@ async function createNewCategory() {
 
                 let successContainer = document.getElementById('taskDiv1');
                 successContainer.classList.remove('d-none');
-                successContainer.innerHTML = 'Neue Kategorie erfolgreich erstellt.';
+                successContainer.innerHTML = 'Eine neue Kategorie wurde erfolgreich erstellt.';
                 successContainer.style.display = 'block';
                 setTimeout(function() {
                     successContainer.style.display = 'none';

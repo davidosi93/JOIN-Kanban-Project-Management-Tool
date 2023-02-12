@@ -827,3 +827,7 @@ select {
     animation: contactAnim 400ms normal forwards;
     text-align: center;
 }
+
+.buttonSectionBackground {
+    background-color: #091931;
+}

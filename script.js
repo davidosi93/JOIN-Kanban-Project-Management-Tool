@@ -17,15 +17,23 @@ async function init() {
 function navBarHighlight(item) {
     if (item == 1) {
         document.getElementById('navBarSummary').classList.add('buttonSectionBackground');
+        document.getElementById('summary').classList.add('buttonSectionBackground');
+
     }
     if (item == 2) {
         document.getElementById('navBarBoard').classList.add('buttonSectionBackground');
+        document.getElementById('board').classList.add('buttonSectionBackground');
+        document.getElementById('boardNavBarBoard').classList.add('buttonSectionBackground');
     }
     if (item == 3) {
         document.getElementById('navBarAddTask').classList.add('buttonSectionBackground');
+        document.getElementById('addTask').classList.add('buttonSectionBackground');
+
     }
     if (item == 4) {
         document.getElementById('navBarContacts').classList.add('buttonSectionBackground');
+        document.getElementById('contacts').classList.add('buttonSectionBackground');
+
     }
 }
 

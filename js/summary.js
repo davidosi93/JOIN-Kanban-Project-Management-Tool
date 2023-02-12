@@ -31,6 +31,7 @@ async function initSummary() {
     filterAllTasks();
     watchTask();
     loadActiveUsers();
+    navBarHighlight(1);
 }
 
 function loadActiveUsers() {
