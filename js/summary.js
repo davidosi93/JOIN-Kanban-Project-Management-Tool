@@ -52,7 +52,7 @@ function loadActiveUsers() {
             </div>
         `;
 
-greet(name);
+greet();
 }
 function watchTask() {
     let watchUrgent = document.getElementById('task-urgent');
@@ -61,12 +61,12 @@ function watchTask() {
     let watchDone = document.getElementById('task-done');
     let watchProgress = document.getElementById('task-progress');
     let watchFeedback = document.getElementById('task-feedback');
-    clearDivs(watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
+    clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
     watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
 
 }
 
-function clearDivs(watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
+function clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
     watchUrgent.innerHTML = '';
     watchTodo.innerHTML = '';
     watchDone.innerHTML = '';
@@ -76,7 +76,7 @@ function clearDivs(watchBoard, watchTodo, watchDone, watchProgress, watchFeedbac
 }
 
 function watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
-    watchUrgent.innerHTML += `<b>${users[activeUser]['tasks']['prio'].length}</b>`;
+    watchUrgent.innerHTML += `<b>${users[activeUser]['tasks'].length}</b>`;
     watchBoard.innerHTML += `<b>${users[activeUser]['tasks'].length}</b>`;
     watchProgress.innerHTML += `<b>${progress.length}</b>`;
     watchFeedback.innerHTML += `<b>${feedback.length}</b>`;
@@ -85,17 +85,17 @@ function watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchPr
 }
 
 
-function greet(name) {
+function greet() {
     let greet = document.getElementById('greetTime');
     greet.innerHTML = '';
     let today = new Date()
     let curHr = today.getHours()
 
     if (curHr < 12) {
-        greet.innerHTML =`good morning<br><p>${name}</p>`;
+        greet.innerHTML =`good morning<br><p>${users[activeUser]['name']}</p>`;
     } else if (curHr < 18) {
-                greet.innerHTML =`good afternoon<br><p>${name}</p>`;
+                greet.innerHTML =`good afternoon<br><p>${users[activeUser]['name']}</p>`;
     } else {
-                greet.innerHTML =`good evening<br><p>${name}</p>`;
+                greet.innerHTML =`good evening<br><p>${users[activeUser]['name']}</p>`;
     }
 }

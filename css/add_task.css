@@ -17,7 +17,7 @@ body {
 }
 
 .d-none {
-    display: none !important;
+    display: none ;
 }
 
 .logOutBackground {
@@ -826,4 +826,48 @@ select {
     color: #FFFFFF;
     animation: contactAnim 400ms normal forwards;
     text-align: center;
+}
+
+.mobileText{
+    display: none;
+}
+
+@media screen and (max-width: 900px){
+    .header{
+        display: none !important;
+    }
+
+    .headerContent p{
+        display: none;
+    }
+
+    .headerContent {
+        justify-content: end;
+    }
+
+    .information{
+        display: none;
+    }
+
+   
+
+    .headline {
+        flex-direction: column;
+    }
+
+    .mainContents{
+        margin-top: 0;
+    }
+
+    .flexContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn{
+        display: none;
+    }
+
+    .middleLine{
+        display: none;
+    }
 }
