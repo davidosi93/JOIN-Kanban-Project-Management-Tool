@@ -15,14 +15,18 @@ async function includeHTML() {
 
 function showHeader(color, str) {
     return `<div class="headerContent">
-                <p>Kanban Project Management Tool</p>
+                <p class="headerContentText">Kanban Project Management Tool</p>
                 <img src="asseds/img/biglogo.png" class="d-none">
                  <div class="headerContentRight">
                     <div class="buttonsTopRight">
                         <img onclick="help()" class="information" src="/asseds/img/information.png">
                         <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}; cursor: pointer">${str}</div>
                     </div>
-                    <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+                    <div id="logOutButton" class="logOutButton d-none">
+                        <p class="logOutButtonText d-none">Help</p>
+                        <p class="logOutButtonText d-none">Legal Notice</p>
+                        <p onclick="logOut()" class="logOutButtonText">Log Out</p>
+                    </div>
                 </div>
             </div>`;
 }
@@ -56,10 +60,10 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                     <p style="background-color: ${color}" class="contactP">${str}</p>
                     <div class="contactNameRight">
                         <p class="contactNameRightP">${name}</p>
-                        <div class="addTaskBox">
+                        <a href="add_task.html"><div class="addTaskBox">
                             <img src="asseds/img/blueplus.png">
                             <p class="addTask">Add Task</p>
-                        </div>
+                        </div></a>
                     </div>
                  </div>
 
@@ -81,9 +85,9 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                         <p class="phoneNumber">${phone}</p>
                     </div>
                 </div>
-                <div onclick="showEditContactBox(${i})" class="editMobileBox d-none">
-                    <img src="asseds/img/whitePencil.png">
-                </div>
+            </div>
+            <div onclick="showEditContactBox(${i})" class="editMobileBox d-none">
+                <img src="asseds/img/whitePencil.png">
             </div>`;
 }
 

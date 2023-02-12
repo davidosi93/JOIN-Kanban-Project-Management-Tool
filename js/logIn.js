@@ -7,7 +7,7 @@ async function login() {
         await backend.setItem('activeUser', activeUser);
         document.getElementById('input1').value = '';
         document.getElementById('input2').value = '';
-        window.location.href = 'contacts.html';
+        window.location.href = 'summary.html';
     } else {
         document.getElementById('wrongInput').classList.remove('d-none');
     }
