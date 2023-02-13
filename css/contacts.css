@@ -784,7 +784,7 @@ body {
         width: 100%;
     }
 
-    .headerContent p {
+    .headerContentText {
         display: none;
     }
     .headerContent img {
@@ -1038,6 +1038,19 @@ body {
 
     .contactCreated {
         left: unset;
+    }
+
+    .logOutButton {
+        height: 120px;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        padding-left: 10px;
+    }
+
+    .logOutButtonText {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 }
 
