@@ -217,7 +217,6 @@ body {
     width: 250px;
     min-height: 250px;
     margin-top: 10px;
-    position: relative;
 }
 
 .containerBlock {
@@ -228,6 +227,7 @@ body {
     border-radius: 30px;
     height: fit-content;
     cursor: pointer;
+    position: relative;
 }
 
 .sticky {
@@ -335,10 +335,16 @@ body {
     position: relative;
     background-color: #FFFFFF;
     width: 623px;
-    height: auto;
+    height: 781px;
     border-radius: 30px;
     overflow: scroll;
     animation: slideInFromRight 0.5s forwards;
+}
+
+.checkTaskSmall::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 
@@ -352,7 +358,7 @@ body {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .headerHelp {
@@ -443,12 +449,6 @@ h3 {
     to {
         right: 0;
     }
-}
-
-.checkTaskSmall::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    background: transparent;
 }
 
 .toEditTaskMainDiv {
@@ -898,7 +898,7 @@ h3 {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     position: fixed;
-    left: 40%;
+    left: 37%;
     top: 75%;
     font-weight: 400;
     font-size: 21px;
@@ -921,10 +921,10 @@ h3 {
     background-color: #2A3647;
     position: fixed;
     bottom: 0;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 10;
 }
 
 .miniTemplate a {
@@ -1178,7 +1178,7 @@ h3 {
         margin-top: 15px;
     }
     .toEditTaskButton {
-        margin-left: 90%;
+        margin-left: 70%;
     }
     .toEditTaskMainDiv {
         background-color: #F5F5F5 !important;
@@ -1226,6 +1226,8 @@ h3 {
     }
     .miniTemplate {
         display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -1309,33 +1311,33 @@ h3 {
 
 @media(max-height: 1024px) {
     .mainContent {
-        height: 932px;
+        height: 840px;
     }
 }
 
 @media(max-height: 915px) {
     .mainContent {
-        height: 822px;
+        height: 747px;
         margin-top: 3px;
     }
 }
 
 @media(max-height: 896px) {
     .mainContent {
-        height: 804px;
+        height: 730px;
     }
 }
 
 @media(max-height: 851px) {
     .mainContent {
-        height: 758px;
+        height: 685px;
         margin-top: 3px;
     }
 }
 
 @media(max-height: 844px) {
     .mainContent {
-        height: 751px;
+        height: 680px;
         margin-top: 3px;
     }
 }
@@ -1348,19 +1350,25 @@ h3 {
 
 @media(max-height: 740px) {
     .mainContent {
-        height: 648px;
+        height: 575px;
     }
 }
 
 @media(max-height: 720px) {
     .mainContent {
-        height: 629px;
+        height: 550px;
     }
 }
 
 @media(max-height: 667px) {
     .mainContent {
-        height: 575px;
+        height: 502px;
+    }
+}
+
+@media(max-height: 653px) {
+    .mainContent {
+        height: 502px;
     }
 }
 

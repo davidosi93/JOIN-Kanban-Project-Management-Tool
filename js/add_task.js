@@ -82,15 +82,13 @@ async function addTasks() {
 
     inputfieldsValues()
 
-    if (users[activeUser]['tasks'].push(task)) {
-        let successContainer = document.getElementById('div');
-        successContainer.classList.remove('d-none');
-        successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
-        successContainer.style.display = 'block';
-        setTimeout(function() {
-            successContainer.style.display = 'none';
-        }, 2000);
-    }
+    let successContainer = document.getElementById('div');
+    successContainer.classList.remove('d-none');
+    successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
+    successContainer.style.display = 'block';
+    setTimeout(function() {
+        successContainer.style.display = 'none';
+    }, 2000);
 
 }
 
