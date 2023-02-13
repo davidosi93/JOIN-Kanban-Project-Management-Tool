@@ -56,7 +56,6 @@ body {
 }
 
 
-
 /* Hier beginnt der Content*/
 
 .headline {
@@ -95,7 +94,6 @@ body {
 .right-Container {
     width: 40%;
     margin-right: 10%;
-
 }
 
 .leftContent {
@@ -107,7 +105,6 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-
 }
 
 .taskContainer a {
@@ -143,8 +140,6 @@ body {
     background-color: #2A3647;
 }
 
-
-
 .deadlineContainer {
     display: flex;
     justify-content: space-around;
@@ -156,14 +151,12 @@ body {
     color: black;
     border-radius: 10px;
     border: 1px solid lightgray;
-
 }
 
 .deadlineContainer a {
     text-decoration: none;
     color: black;
 }
-
 
 .deadlineContainer img {
     width: 90px;
@@ -175,7 +168,6 @@ body {
     font-size: 40px;
     text-align: center;
     padding-top: 0;
-
 }
 
 .deadlineContainer p {
@@ -204,7 +196,7 @@ body {
     margin: 10px;
 }
 
-.deadlinetask p{
+.deadlinetask p {
     margin: 0;
 }
 
@@ -223,14 +215,12 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-
 }
 
 .finishTask a {
     text-decoration: none;
     color: black;
 }
-
 
 .finishContainer {
     display: flex;
@@ -242,7 +232,6 @@ body {
     padding: 10px;
     border: 1px solid lightgray;
 }
-
 
 .finishContainer div div {
     text-align: center;
@@ -263,9 +252,7 @@ body {
     width: 80px;
     padding-left: 25px;
     padding-right: 25px;
-
 }
-
 
 .finishContainer:hover {
     cursor: pointer;
@@ -289,10 +276,6 @@ body {
     margin-bottom: 0;
     color: #29ABE2;
 }
-
-
-
-
 
 
 /*Ab hier Help Container*/
@@ -347,15 +330,17 @@ h3 {
     margin-bottom: 20px;
 }
 
+.buttonSectionBackground {
+    background-color: #091931;
+}
+
 @media(max-width: 1290px) {
     .left-Container {
         width: 80%;
     }
-
     .date {
         font-size: 20px !important;
     }
-
     .deadlineContainer p {
         font-size: 18px !important;
     }
@@ -365,197 +350,160 @@ h3 {
     .headline p {
         font-size: 25px;
     }
-
     .date {
         font-size: 18px !important;
     }
-
     .deadlineContainer p {
         font-size: 16px !important;
     }
-
     .headerContent p {
         margin-left: 5%;
     }
-
     .greet {
         font-size: 40px;
         margin-left: 10%;
     }
-
     .boardContainer {
         padding: 10px;
     }
-
     .left-Container {
         margin-left: 5%;
     }
-
     .finishContainer {
         padding: 0;
         padding-left: 0;
         padding-right: 0;
         padding: 15px;
     }
-
-    .finishContainer img{
+    .finishContainer img {
         padding-left: 10px;
         padding-right: 10px;
     }
-
-    .finishContainer p{
+    .finishContainer p {
         padding-right: 10px;
     }
 }
-@media(max-width: 1000px){
-    .headerContent p{
+
+@media(max-width: 1000px) {
+    .headerContent p {
         font-size: 26px !important;
     }
-    .headline p{
+    .headline p {
         font-size: 20px;
     }
 }
+
 @media(max-width: 940px) {
     .date {
         font-size: 16px !important;
     }
-
 }
 
 @media(max-width: 900px) {
-
     .headline {
         flex-direction: column;
     }
-
     .headline h2 {
         display: contents;
-
     }
-
     .headline h1 {
         border: none;
         font-size: 50px;
         margin-top: 5px;
     }
-
     .mainContent {
         display: flex;
         justify-content: center;
         margin-top: 20px;
-
     }
-
     .headline p {
         border-bottom: 3px solid #29ABE2;
         padding-left: 0;
         margin-top: 5px;
     }
-
     .headerContent {
         justify-content: end !important;
     }
-
     .right-Container {
         display: none;
     }
-
     .left-Container {
         margin-left: 0;
         width: 100%;
         margin-top: 0;
     }
-
     .deadlineContainer {
         margin-left: 10%;
         margin-right: 10%;
         margin-top: 15px;
-
     }
-
     .taskContainer {
         justify-content: space-between;
         margin-left: 10%;
         margin-right: 10%;
         margin-top: 15px;
     }
-
     .finishTask {
         justify-content: space-between;
         margin-left: 10%;
         margin-right: 10%;
         margin-top: 15px;
     }
-
     .finishContainer {
         margin-top: 0;
         padding-bottom: 10px;
-
     }
-
     .kanban-mobile {
         display: contents !important;
-
     }
 }
 
 @media(max-width: 550px) {
-
-    .mainContent{
+    .mainContent {
         margin-top: 20px;
     }
     .boardContainer p {
         font-size: 14px !important;
     }
-
     .deadlineContainer p {
         font-size: 14px !important;
     }
-
     .deadlineContainer img {
         width: 60px;
         height: 60px;
         margin-top: 20px;
     }
-
     .finishContainer img {
         width: 60px;
         height: 60px;
     }
-
     @media(max-width: 500px) {
         .finishContainer img {
             padding-left: 15px;
             padding-right: 15px;
         }
-
         .deatlineDate {
-            margin-left: 15px ;
+            margin-left: 15px;
         }
     }
-
-    @media(max-width: 450px){
-
-        .headline p{
+    @media(max-width: 450px) {
+        .headline p {
             font-size: 20px;
         }
-        .finishContainer p{
+        .finishContainer p {
             font-size: 16px;
         }
     }
-
     .deadlineContainer img {
         width: 40px;
         height: 40px;
     }
-
     .finishContainer img {
         width: 40px;
         height: 40px;
     }
-
-    @media(max-width: 450px){
-        .finishContainer{
+    @media(max-width: 450px) {
+        .finishContainer {
             padding: 8px;
         }
     }

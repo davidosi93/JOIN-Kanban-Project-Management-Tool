@@ -21,6 +21,7 @@ async function initLoadTasksAddTask() {
     openAllContactss();
     createnewCategoryAlls();
     loadActiveUsers();
+    navBarHighlight(3)
 }
 
 
@@ -42,15 +43,55 @@ async function addTasks() {
         'list': 'todo',
     };
 
-    allTasks.push(task);
+    if (!task.category || task.category.length === 0) {
+        let errorContainer = document.getElementById('div');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+    if (!task.assignedTo || task.assignedTo.length === 0) {
+        let errorContainer = document.getElementById('div');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie die Verantwortlichen.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+    if (!task.prio || task.prio.length === 0) {
+        let errorContainer = document.getElementById('div');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Priorität.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+    // allTasks.push(task);
     users[activeUser]['tasks'].push(task);
     await backend.setItem('users', JSON.stringify(users));
 
     inputfieldsValues()
+
+    let successContainer = document.getElementById('div');
+    successContainer.classList.remove('d-none');
+    successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
+    successContainer.style.display = 'block';
+    setTimeout(function() {
+        successContainer.style.display = 'none';
+    }, 2000);
+
 }
 
-
-//-- Ab hier beginnt der Code von Waldemar 
 
 function loadActiveUsers() {
     let activeUsers = document.getElementById('headerContents');
@@ -92,6 +133,8 @@ function inputfieldsValues() {
     resetSettingsCategorys();
     resetSettingsChangeColors();
     resetSubtaskss();
+
+
 }
 
 /** Area for Category */
@@ -148,25 +191,51 @@ async function createNewCategory() {
     }
     if (newCategory) {
         if (currentCategoryColor) {
-            let categoryExists = allCategorys.some(category => category.name === newCategory && category.color === currentCategoryColor);
+            let categoryExists = users[activeUser]['categorys'].some(category => category.name === newCategory && category.color === currentCategoryColor);
             if (!categoryExists) {
-                allCategorys.push(jsonColor);
+                // allCategorys.push(jsonColor);
                 users[activeUser]['categorys'].push(jsonColor);
                 currentCategoryColor = null;
                 selectNewCatagoryCancel();
                 createnewCategoryAlls();
                 newCategorySelected = false;
+
+                let successContainer = document.getElementById('div');
+                successContainer.classList.remove('d-none');
+                successContainer.innerHTML = 'Eine neue Kategorie wurde erfolgreich erstellt.';
+                successContainer.style.display = 'block';
+                setTimeout(function() {
+                    successContainer.style.display = 'none';
+                }, 4000);
             } else {
-                alert("Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.");
+                let errorContainer = document.getElementById('div');
+                errorContainer.classList.remove('d-none');
+                errorContainer.innerHTML = 'Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.';
+                errorContainer.style.display = 'block';
+                setTimeout(function() {
+                    errorContainer.style.display = 'none';
+                }, 4000);
             }
         } else {
-            alert("Bitte wählen Sie eine Farbe für die neue Kategorie aus.");
+            let errorContainer = document.getElementById('div');
+            errorContainer.classList.remove('d-none');
+            errorContainer.innerHTML = 'Bitte wählen Sie eine Farbe für die neue Kategorie aus.';
+            errorContainer.style.display = 'block';
+            setTimeout(function() {
+                errorContainer.style.display = 'none';
+            }, 4000);
         }
     } else {
-        alert("Bitte wählen Sie eine Kategorie aus");
+        let errorContainer = document.getElementById('div');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 4000);
     }
 
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+    // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 
     document.getElementById('bg-pink').style = 'box-shadow: none;';
@@ -177,6 +246,7 @@ async function createNewCategory() {
     document.getElementById('bg-blue').style = 'box-shadow: none;';
     currentCategoryColor = null;
 }
+
 
 function newCategorySelectColor(id) {
     currentCategoryColor = id;
@@ -239,11 +309,11 @@ function selectCategory(id) {
 }
 
 async function deleteCategory(i) {
-    allCategorys.splice(i, 1)
+    // allCategorys.splice(i, 1)
     users[activeUser]['categorys'].splice(i, 1);
     await backend.deleteItem('users', users);
     createnewCategoryAlls()
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+        // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -252,6 +322,7 @@ function resetSettingsCategorys() {
     document.getElementById("addTask_selectTaskCategory").innerHTML = '';
     document.getElementById('addTask_selectTaskCategory').style = 'margin-left: 0px;';
     selectTaskCategory.innerHTML = "Select Task Category";
+    allLiCategorys = [];
 }
 
 /** Area for Assigned To */
@@ -339,7 +410,7 @@ function addContactss() {
 }
 
 function resetCheckboxes() {
-    assignedChackedBox = [];
+    assignedChackedBoxes = [];
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => checkbox.checked = false);
 }
@@ -398,6 +469,7 @@ function resetSettingsChangeColors() {
     document.getElementById('addYellowImg').src = '/asseds/img/medium-gelb.png';
     document.getElementById('addTask_Green').classList.remove('green');
     document.getElementById('addGreenImg').src = '/asseds/img/pfeil-unten-grün.png';
+    colorArray = [];
 }
 
 /** Area for Subtasks */

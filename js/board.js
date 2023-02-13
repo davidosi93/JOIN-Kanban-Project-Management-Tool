@@ -21,8 +21,7 @@ let timeIsup = false;
 let touchStartActive = false;
 
 
-//users[activeUser]['tasks'].push(allCategorys);
-//await backend.setItem('users', JSON.stringify(users));
+
 
 async function initLoadTasks() {
     includeHTML();
@@ -32,6 +31,7 @@ async function initLoadTasks() {
     filterTasks()
     createnewCategoryAll()
     loadActiveUser()
+    navBarHighlight(2)
 }
 
 function filterTasks() {
@@ -387,7 +387,8 @@ function addTaskRight() {
 async function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
     selectedSubtasksProgress = [];
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('users', JSON.stringify(users));
 }
 
 function closeContainer() {
@@ -398,7 +399,7 @@ function closeContainer() {
 function onSubmit(event) {
     event.preventDefault();
     createTask();
-    closeContainer()
+
 }
 
 /** Area for Drag and Drop */
@@ -423,11 +424,56 @@ async function createTask() {
 
     };
 
-    allTasks.push(task);
+    if (!task.category || task.category.length === 0) {
+        let errorContainer = document.getElementById('taskDiv1');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+    if (!task.assignedTo || task.assignedTo.length === 0) {
+        let errorContainer = document.getElementById('taskDiv1');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie die Verantwortlichen.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+    if (!task.prio || task.prio.length === 0) {
+        let errorContainer = document.getElementById('taskDiv1');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Priorität.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+
+    // allTasks.push(task);
     users[activeUser]['tasks'].push(task);
+
 
     addTasking()
     inputfieldValue()
+
+    let successContainer = document.getElementById('taskDiv');
+    successContainer.classList.remove('d-none');
+    successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
+    successContainer.style.display = 'block';
+    setTimeout(function() {
+        successContainer.style.display = 'none';
+    }, 2000);
+
+    closeContainer()
 
 }
 
@@ -735,14 +781,14 @@ async function addTasking() {
         `;
 
     }
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
 
 function touchstart(id) {
 
-    timer = setTimeout(() => { onlongtouch(id); }, 200);
+    timer = setTimeout(() => onlongtouch(id), 200);
 }
 
 function touchend(id) {
@@ -811,7 +857,7 @@ async function drop(categorys) {
     droppedTask[0]['list'] = categorys;
     filterTasks();
     addTasking();
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -830,6 +876,7 @@ function inputfieldValue() {
     resetSettingsChangeColor()
     resetSubtasks()
     colorArray = [];
+    allLiCategory = [];
 }
 
 /** Area for Category */
@@ -912,6 +959,8 @@ function selectNewCatagoryCancel() {
 
 }
 
+
+
 async function createNewCategory() {
     newCategory = document.getElementById('selectNewCategory').value;
     let jsonColor = {
@@ -920,25 +969,51 @@ async function createNewCategory() {
     }
     if (newCategory) {
         if (currentCategoryColor) {
-            let categoryExists = allCategorys.some(category => category.name === newCategory && category.color === currentCategoryColor);
+            let categoryExists = users[activeUser]['categorys'].some(category => category.name === newCategory && category.color === currentCategoryColor);
             if (!categoryExists) {
-                allCategorys.push(jsonColor);
+                // allCategorys.push(jsonColor);
                 users[activeUser]['categorys'].push(jsonColor);
                 currentCategoryColor = null;
                 selectNewCatagoryCancel();
                 createnewCategoryAll();
                 newCategorySelected = false;
+
+                let successContainer = document.getElementById('taskDiv1');
+                successContainer.classList.remove('d-none');
+                successContainer.innerHTML = 'Eine neue Kategorie wurde erfolgreich erstellt.';
+                successContainer.style.display = 'block';
+                setTimeout(function() {
+                    successContainer.style.display = 'none';
+                }, 4000);
             } else {
-                alert("Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.");
+                let errorContainer = document.getElementById('taskDiv1');
+                errorContainer.classList.remove('d-none');
+                errorContainer.innerHTML = 'Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.';
+                errorContainer.style.display = 'block';
+                setTimeout(function() {
+                    errorContainer.style.display = 'none';
+                }, 4000);
             }
         } else {
-            alert("Bitte wählen Sie eine Farbe für die neue Kategorie aus.");
+            let errorContainer = document.getElementById('taskDiv1');
+            errorContainer.classList.remove('d-none');
+            errorContainer.innerHTML = 'Bitte wählen Sie eine Farbe für die neue Kategorie aus.';
+            errorContainer.style.display = 'block';
+            setTimeout(function() {
+                errorContainer.style.display = 'none';
+            }, 4000);
         }
     } else {
-        alert("Bitte wählen Sie eine Kategorie aus");
+        let errorContainer = document.getElementById('taskDiv1');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 4000);
     }
 
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+    // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 
     document.getElementById('bg-pink').style = 'box-shadow: none;';
@@ -949,6 +1024,7 @@ async function createNewCategory() {
     document.getElementById('bg-blue').style = 'box-shadow: none;';
     currentCategoryColor = null;
 }
+
 
 
 
@@ -992,7 +1068,7 @@ async function deleteCategory(i) {
     users[activeUser]['categorys'].splice(i, 1);
     await backend.deleteItem('users', users);
     createnewCategoryAll()
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+        // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -1172,6 +1248,7 @@ function openCheckTask(Index) {
         let openTocheckRightTask = users[activeUser]['tasks'].indexOf(openToCheck[0]);
         openCheckTasks(openTocheckRightTask);
     }
+    touchStartActive = false;
 }
 
 
@@ -1191,7 +1268,7 @@ async function openCheckTasks(taskIndex) {
     document.getElementById('openCheckTasksAssignedToTitle').innerHTML = subinitialContainer;
     openCheckTaskTakeInputValue()
     selectedSubtasksProgress = users[activeUser]['tasks'][taskIndex].subtaskChecked;
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+
 }
 
 function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, taskIndex) {
@@ -1275,13 +1352,13 @@ function NonDeleteTask() {
 }
 
 async function deleteTask(taskIndex) {
-    allTasks.splice(taskIndex, 1);
+    // allTasks.splice(taskIndex, 1);
     users[activeUser]['tasks'].splice(taskIndex, 1);
-    await backend.deleteItem('allTasks', allTasks);
+    // await backend.deleteItem('allTasks', allTasks);
     await backend.deleteItem('users', users);
     filterTasks();
     addTasking();
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
     closeContainer1();
     document.getElementById('bigDivDeleteTask').classList.add('d-none')
@@ -1368,19 +1445,19 @@ function openCheckTaskSubtasks(taskIndex) {
 
 async function putTheProgressBar(taskIndex) {
     setTimeout(function() {
-        openCheckTaskTakeInputValue()
+            openCheckTaskTakeInputValue()
 
-        for (let i = 0; i < selectedSubtasksProgress.length; i++) {
-            if (allTasks[taskIndex].subtaskChecked.indexOf(selectedSubtasksProgress[i]) === -1) {
-                allTasks[taskIndex].subtaskChecked.push(selectedSubtasksProgress[i]);
+            for (let i = 0; i < selectedSubtasksProgress.length; i++) {
+                if (users[activeUser]['tasks'][taskIndex].subtaskChecked.indexOf(selectedSubtasksProgress[i]) === -1) {
+                    users[activeUser]['tasks'][taskIndex].subtaskChecked.push(selectedSubtasksProgress[i]);
+                }
             }
-        }
 
-        allTasks[taskIndex].subtaskChecked = selectedSubtasksProgress;
-        selectedSubtasksForProgress = [];
+            users[activeUser]['tasks'][taskIndex].subtaskChecked = selectedSubtasksProgress;
+            selectedSubtasksForProgress = [];
 
-    }, 200)
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+        }, 200)
+        // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
     filterTasks()
     addTasking();
@@ -1649,7 +1726,7 @@ async function saveTask(taskIndex) {
     users[activeUser]['tasks'][taskIndex].assignedTo = assignedChackedBox;
     filterTasks();
     addTasking();
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
     openCheckTasks(taskIndex);
 }
