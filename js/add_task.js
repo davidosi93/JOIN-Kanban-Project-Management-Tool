@@ -21,7 +21,56 @@ async function initLoadTasksAddTask() {
     openAllContactss();
     createnewCategoryAlls();
     loadActiveUsers();
+    controllMediaQuery();
+
 }
+
+
+
+function controllMediaQuery() {
+    let header = document.getElementById('userButton');
+    let content = document.getElementById('addTaskatMobile');
+    let x = window.matchMedia("(max-width: 900px)")
+    if (x.matches) {
+        // content.innerHTML = '';
+        // watchAddTaskOnMobileVersion(content);
+        header.classList.add('d-none');
+        document.getElementById('createTask').classList.remove('d-none');
+        document.getElementById('logoMobile').classList.remove('d-none');
+    } else {
+        document.getElementById('createTask').classList.add('d-none');
+        document.getElementById('logoMobile').classList.add('d-none');
+    }
+}
+
+// function watchAddTaskOnMobileVersion(content) {
+//     let category = document.getElementById('category');
+//     let categoryDiv = document.getElementById('addTask_borderButton');
+//     let categoryList = document.getElementById('addTask_categoryList');
+//     let categoryColor = document.getElementById('addTask_containerColorPicker');
+//     let assigned = document.getElementById('assigned');
+//     let assignedDiv = document.getElementById('addTask_openContact');
+//     let dueDate = document.getElementById('dueDate');
+//     let dueDates = document.getElementById('dueDates');
+//     let subtask = document.getElementById('subtask');
+//     let subtaskDiv = document.getElementById('subtaskDiv');
+
+
+
+
+
+//     subtaskDiv.classList.add('display-none');
+//     subtask.classList.add('display-none');
+//     dueDates.classList.add('display-none');
+//     dueDate.classList.add('display-none');
+//     assignedDiv.classList.add('display-none');
+//     assigned.classList.add('display-none');
+//     categoryColor.classList.add('display-none');
+//     categoryList.classList.add('display-none');
+//     categoryDiv.classList.add('display-none');
+//     category.classList.add('display-none');
+      
+// }
 
 
 async function addTasks() {
@@ -47,7 +96,7 @@ async function addTasks() {
         errorContainer.classList.remove('d-none');
         errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus.';
         errorContainer.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
             errorContainer.style.display = 'none';
         }, 2000);
         return;
@@ -58,7 +107,7 @@ async function addTasks() {
         errorContainer.classList.remove('d-none');
         errorContainer.innerHTML = 'Bitte wählen Sie die Verantwortlichen.';
         errorContainer.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
             errorContainer.style.display = 'none';
         }, 2000);
         return;
@@ -69,7 +118,7 @@ async function addTasks() {
         errorContainer.classList.remove('d-none');
         errorContainer.innerHTML = 'Bitte wählen Sie eine Priorität.';
         errorContainer.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
             errorContainer.style.display = 'none';
         }, 2000);
         return;
@@ -86,7 +135,7 @@ async function addTasks() {
         successContainer.classList.remove('d-none');
         successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
         successContainer.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
             successContainer.style.display = 'none';
         }, 2000);
     }
@@ -102,11 +151,16 @@ function loadActiveUsers() {
     const color = users[activeUser]['color'];
     activeUsers.innerHTML = /*html*/ `
         <p>Kanban Project Management Tool</p>
-
+        <img id="logoMobile" class="logoMobile d-none" src="asseds/img/biglogo.png">
         <div class="headerContentRight">
-            <img onclick="help()" class="information" src="/asseds/img/information.png">
+            
+        <button id="createTask" class="btnForMobile d-none"> Create Task
+                        <img src="asseds/img/hacken.png">
+                    </button>
+            <img id="closeImgForMobile" onclick="help()" class="information" src="/asseds/img/information.png">
             <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
                     ${name}
+                    
             </div>
             <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
         </div>
@@ -287,7 +341,7 @@ async function deleteCategory(i) {
     users[activeUser]['categorys'].splice(i, 1);
     await backend.deleteItem('users', users);
     createnewCategoryAlls()
-        // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+    // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -493,7 +547,7 @@ function Subtaskss() {
     }
 
     document.querySelectorAll('.checkboxSubtasks').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
+        checkbox.addEventListener('change', function () {
             const value = this.dataset.value;
             if (this.checked) {
                 if (!selectedSubtaskss.includes(value)) {

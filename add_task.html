@@ -27,7 +27,7 @@
 
             <div class="rightContent">
                 <div class="headerContent" id="headerContents">
-
+                    
                 </div>
 
                 <div id="help" class="mainContainerHelp d-none">
@@ -67,14 +67,14 @@
 
                     <form onsubmit="onSubmits(event);">
                         <div class="middleLine"></div>
-                        <div class="flexContainer">
+                        <div id="addTaskatMobile" class="flexContainer">
                             <div class="leftContainer">
-                                <p class="addTask_titleInputFields">Title</p>
+                                <p id="title" class="addTask_titleInputFields">Title</p>
                                 <input id="titles" class="titlesInputfild" placeholder="Enter a title" required>
                                 <p class="addTask_titleInputFields">Description</p>
                                 <textarea id="descriptions" required placeholder="Enter a Description"></textarea>
 
-                                <p class="addTask_titleInputFields">Category</p>
+                                <p id="category" class="addTask_titleInputFields">Category</p>
                                 <div id="addTask_borderButton" class="addTask_categoryDiv" onclick="openCategory();">
                                     <p id="addTask_selectTaskCategory" class="addTask_selectTaskCategory">Select Task Category</p>
                                     <img id="addTask_selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
@@ -105,7 +105,7 @@
                                     <div id="bg-blue" onclick="newCategorySelectColor('bg-blue')" class="addTask_colorPicker bg-blue"></div>
                                 </div>
 
-                                <p class="addTask_titleInputFields">Assigned to</p>
+                                <p id="assigned" class="addTask_titleInputFields">Assigned to</p>
                                 <div id="addTask_openContact" onclick="openContactss()" class="assignedDiv">
                                     <p id="assignedContactsSelect" class="assignedToArea">Select contacts to assigt</p>
                                     <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
@@ -121,7 +121,7 @@
                             </div>
 
                             <div class="rightContainer">
-                                <p class="addTask_titleInputFields">Due date</p>
+                                <p id="dueDate" class="addTask_titleInputFields">Due date</p>
                                 <div>
                                     <input id="dueDates" type="date" placeholder="dd/mm/yyyy" required>
                                 </div>
@@ -139,8 +139,8 @@
                                     </div>
                                 </div>
 
-                                <p class="addTask_titleInputFields">Subtasks</p>
-                                <div class="relativeContainer">
+                                <p id="subtask" class="addTask_titleInputFields">Subtasks</p>
+                                <div id="subtaskDiv" class="relativeContainer">
                                     <input id="addTask_openSubtasks" onclick="openSubtasks()" placeholder="Add new subtask">
                                     <div class="smallRelativeContainer">
                                         <img id="addTask_subtasksAddImg" class="subtaskIMG" src="asseds/img/Vector (1).png">
