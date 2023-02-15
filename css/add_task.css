@@ -263,7 +263,7 @@ h2 {
 .titlesInputfild {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    width: 400px;
+    width: 31vw;
     padding: 8px;
     cursor: pointer;
     padding-left: 20px;
@@ -277,7 +277,7 @@ h2 {
 }
 
 .leftContainer textarea {
-    width: 400px;
+    width: 32vw;
     height: 70px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -290,7 +290,7 @@ h2 {
 .rightContainer input {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    width: 400px;
+    width: 31vw;
     padding: 8px;
     font-size: 16px;
     cursor: pointer;
@@ -500,7 +500,7 @@ select {
 }
 
 .addTask_categoryDiv {
-    width: 400px;
+    width: 31vw;
     height: 7px;
     border-radius: 10px;
     padding: 18px;
@@ -656,7 +656,7 @@ select {
 }
 
 .assignedDiv {
-    width: 400px;
+    width: 31vw;
     height: 7px;
     border-radius: 10px;
     padding: 18px;
@@ -745,7 +745,7 @@ select {
     border-radius: 10px;
     font-size: 21px;
     border: 1px solid #D1D1D1;
-    width: 112px;
+    width: 8vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -852,6 +852,66 @@ select {
 
 .buttonSectionBackground {
     background-color: #091931;
+}
+
+@media (max-width: 1250px){
+    .mainContents{
+        margin-top: 20px;
+    }
+
+    .btn{
+        right: 100px !important;
+    }
+    .flexContainer{
+        padding-left: 50px ;
+    }
+
+    .mainContent{
+        padding-left: 50px;
+    }
+}
+
+@media (max-width: 1100px){
+
+    
+    .btn{
+        right: 50px !important;
+    }
+    .titlesInputfild{
+        width: 28vw;
+    }
+
+    .leftContainer textarea{
+        width: 29vw;
+    }
+
+    .addTask_categoryDiv {
+        width: 28vw;
+    }
+
+    .assignedDiv{
+        width: 28vw;
+    }
+
+    .assignedDiv{
+        width: 28vw;
+    }
+
+    .rightContainer input{
+        width: 28vw;
+    }
+
+    .prioContainer{
+        width: 8vw;
+        font-size: 16px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 1000px){
+    .addTask_selectTaskCategory{
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 900px) {
