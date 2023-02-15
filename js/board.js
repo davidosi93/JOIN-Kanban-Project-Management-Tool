@@ -45,22 +45,19 @@ function filterTasks() {
 function loadActiveUser() {
     let activeUsers = document.getElementById('headerContent');
     activeUsers.innerHTML = '';
-
     const name = users[activeUser]['initials'];
     const color = users[activeUser]['color'];
     activeUsers.innerHTML = /*html*/ `
-            <p>Kanban Project Management Tool</p>
+        <p>Kanban Project Management Tool</p>
 
-            <div class="headerContentRight">
-                <img onclick="help()" class="information" src="/asseds/img/information.png">
-                <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
-                    ${name}
-                </div>
-                <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+        <div class="headerContentRight">
+            <img onclick="help()" class="information" src="/asseds/img/information.png">
+            <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
+                ${name}
             </div>
-        `;
-
-
+            <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+        </div>
+    `;
 }
 
 function help() {
@@ -73,8 +70,53 @@ function goBacktoMainContainer() {
     document.getElementById('mainContent').classList.remove('d-none');
 }
 
+function createTaskAssignedTo(element) {
+    let nameParts = element['assignedTo'];
+    let initialsContainer = '';
 
-async function filterTodo() {
+    for (let j = 0; j < nameParts.length; j++) {
+        if (j < 3) {
+            let name = nameParts[j]['name'].split(' ');
+            let color = nameParts[j]['color'];
+            initialsContainer += /*html*/ `
+                <div class="assignTask">
+                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+                </div>
+            `;
+        } else {
+            initialsContainer += /*html*/ `
+                <div class="nameContainer">+${nameParts.length - 3}</div>`;
+            break;
+        }
+    }
+
+    return initialsContainer;
+}
+
+function createTaskProgressbar(element, i) {
+    let allSubtasks = element['subtask'];
+    let currentSubtask = element['subtaskChecked'];
+    let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
+    let procent = currentSubtask.length / allSubtasks.length;
+    procent = Math.round(procent * 100);
+    let subtaskInitialsContainer = '';
+
+    if (allSubtasks.length > 0) {
+        subtaskInitialsContainer += /*html*/ `
+            <div class="progressBarBig">
+                <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
+    
+                </div>
+            </div>
+            <span id="progressText-${i}" class="progressText">${progresses}</span>
+        `;
+    }
+    return subtaskInitialsContainer;
+
+}
+
+
+function filterTodo() {
 
     let renderTodo = document.getElementById('containerTodos');
     renderTodo.innerHTML = '';
@@ -82,75 +124,14 @@ async function filterTodo() {
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
 
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
+        let initialsContainer = createTaskAssignedTo(element)
+        let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-        }
-
-
-
-        renderTodo.innerHTML += /*html*/ `
-        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-            <div class="addCategoryInTask ${element['category']['color']}">
-                <p>${element['category']['name']}</p>
-            </div>
-            <div>
-                <p>${element['title']}</p>
-            </div>
-            <div>
-                <p>${element['description']}</p>
-            </div>
-
-            <div class="progressContainer" id="progressContainer">
-                ${subtaskInitialsContainer}
-            </div>
-
-            <div class="assignTaskSelect">
-                <div class="assignTaskSelectName">
-                    ${initialsContainer}
-                </div>
-                <div class="assignTaskSelectImage">
-                    <img src="${element['prio']['coloredImage']}">
-                </div>
-            </div>
-        </div>
-        `;
+        renderTodo.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
     }
 }
 
-async function filterInprogress() {
+function filterInprogress() {
 
     let renderProgress = document.getElementById('containerProgresses');
     renderProgress.innerHTML = '';
@@ -158,77 +139,14 @@ async function filterInprogress() {
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
 
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
+        let initialsContainer = createTaskAssignedTo(element)
+        let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-
-        }
-
-
-
-        renderProgress.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer">
-                  ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-        `;
-
+        renderProgress.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
     }
 }
 
-async function filterFeedback() {
+function filterFeedback() {
 
     let feedbackRender = document.getElementById('containerFeedbacks');
     feedbackRender.innerHTML = '';
@@ -236,75 +154,14 @@ async function filterFeedback() {
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
 
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
+        let initialsContainer = createTaskAssignedTo(element)
+        let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-
-        }
-
-
-        feedbackRender.innerHTML += /*html*/ `
-        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-            <div class="addCategoryInTask ${element['category']['color']}">
-                <p>${element['category']['name']}</p>
-            </div>
-            <div>
-                <p>${element['title']}</p>
-            </div>
-            <div>
-                <p>${element['description']}</p>
-            </div>
-
-            <div class="progressContainer" id="progressContainer">
-                ${subtaskInitialsContainer}
-            </div>
-
-            <div class="assignTaskSelect">
-                <div class="assignTaskSelectName">
-                    ${initialsContainer}
-                </div>
-                <div class="assignTaskSelectImage">
-                    <img src="${element['prio']['coloredImage']}">
-                </div>
-            </div>
-        </div>
-        `;
+        feedbackRender.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
     }
 }
 
-async function filterDone() {
+function filterDone() {
 
     let doneRender = document.getElementById('containerDones');
     doneRender.innerHTML = '';
@@ -312,70 +169,10 @@ async function filterDone() {
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
 
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
+        let initialsContainer = createTaskAssignedTo(element)
+        let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-
-        }
-
-        doneRender.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-        `;
+        doneRender.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
     }
 
 }
@@ -387,7 +184,7 @@ function addTaskRight() {
 async function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
     selectedSubtasksProgress = [];
-    // await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -402,13 +199,81 @@ function onSubmit(event) {
 
 }
 
-/** Area for Drag and Drop */
+function addInfoToTakeCategory(task) {
+    if (!task.category || task.category.length === 0) {
+        let errorContainer = document.getElementById('taskDiv1');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+    return true;
+}
+
+function addInfoToTakeAssignedTo(task) {
+    if (!task.assignedTo || task.assignedTo.length === 0) {
+        let errorContainer = document.getElementById('taskDiv1');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie die Verantwortlichen.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+    return true;
+}
+
+function addInfoToTakePrio(task) {
+    if (!task.prio || task.prio.length === 0) {
+        let errorContainer = document.getElementById('taskDiv1');
+        errorContainer.classList.remove('d-none');
+        errorContainer.innerHTML = 'Bitte wählen Sie eine Priorität.';
+        errorContainer.style.display = 'block';
+        setTimeout(function() {
+            errorContainer.style.display = 'none';
+        }, 2000);
+        return;
+    }
+    return true;
+}
+
+function addInfoToTakeAnTask() {
+    let successContainer = document.getElementById('taskDiv');
+    successContainer.classList.remove('d-none');
+    successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
+    successContainer.style.display = 'block';
+    setTimeout(function() {
+        successContainer.style.display = 'none';
+    }, 2000);
+
+}
+
+function validateTask(task) {
+    if (!addInfoToTakeCategory(task)) {
+        return false;
+    }
+
+    if (!addInfoToTakeAssignedTo(task)) {
+        return false;
+    }
+
+    if (!addInfoToTakePrio(task)) {
+        return false;
+    }
+
+    return true;
+}
 
 async function createTask() {
+
     let titles = document.getElementById('title').value;
     let descriptions = document.getElementById('description').value;
     let dueDates = document.getElementById('dueDate').value;
-
 
     let task = {
         'title': titles,
@@ -424,66 +289,30 @@ async function createTask() {
 
     };
 
-    if (!task.category || task.category.length === 0) {
-        let errorContainer = document.getElementById('taskDiv1');
-        errorContainer.classList.remove('d-none');
-        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus.';
-        errorContainer.style.display = 'block';
-        setTimeout(function() {
-            errorContainer.style.display = 'none';
-        }, 2000);
-        return;
-    }
-
-    if (!task.assignedTo || task.assignedTo.length === 0) {
-        let errorContainer = document.getElementById('taskDiv1');
-        errorContainer.classList.remove('d-none');
-        errorContainer.innerHTML = 'Bitte wählen Sie die Verantwortlichen.';
-        errorContainer.style.display = 'block';
-        setTimeout(function() {
-            errorContainer.style.display = 'none';
-        }, 2000);
-        return;
-    }
-
-    if (!task.prio || task.prio.length === 0) {
-        let errorContainer = document.getElementById('taskDiv1');
-        errorContainer.classList.remove('d-none');
-        errorContainer.innerHTML = 'Bitte wählen Sie eine Priorität.';
-        errorContainer.style.display = 'block';
-        setTimeout(function() {
-            errorContainer.style.display = 'none';
-        }, 2000);
+    if (!validateTask(task)) {
         return;
     }
 
 
-    // allTasks.push(task);
+    allTasks.push(task);
     users[activeUser]['tasks'].push(task);
-
-
-    addTasking()
-    inputfieldValue()
-
-    let successContainer = document.getElementById('taskDiv');
-    successContainer.classList.remove('d-none');
-    successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
-    successContainer.style.display = 'block';
-    setTimeout(function() {
-        successContainer.style.display = 'none';
-    }, 2000);
-
-    closeContainer()
+    addTasking();
+    inputfieldValue();
+    addInfoToTakeAnTask();
+    closeContainer();
 
 }
 
-async function addTasking() {
+function filterTasksForCreate() {
     let todos = users[activeUser]['tasks'].filter(t => t['list'] == 'todo');
     let progress = users[activeUser]['tasks'].filter(t => t['list'] == 'progress');
     let feedbacks = users[activeUser]['tasks'].filter(t => t['list'] == 'feedback');
     let dones = users[activeUser]['tasks'].filter(t => t['list'] == 'done');
 
+    return { todos, progress, feedbacks, dones };
+}
 
+function getTaskContainers() {
     let containerTodo = document.getElementById('containerTodos');
     let containerProgress = document.getElementById('containerProgresses');
     let containerFeedback = document.getElementById('containerFeedbacks');
@@ -494,294 +323,29 @@ async function addTasking() {
     containerFeedback.innerHTML = '';
     containerDone.innerHTML = '';
 
-    for (let i = 0; i < todos.length; i++) {
-        const element = todos[i];
+    return { containerTodo, containerProgress, containerFeedback, containerDone };
+}
 
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
-
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-
-        }
-
-
-        containerTodo.innerHTML += /*html*/ `
-        <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-            <div class="addCategoryInTask ${element['category']['color']}">
-                <p>${element['category']['name']}</p>
-            </div>
-            <div>
-                <p>${element['title']}</p>
-            </div>
-            <div>
-                <p>${element['description']}</p>
-            </div>
-
-            <div class="progressContainer" id="progressContainer-${i}">
-              ${subtaskInitialsContainer}
-            </div>
-
-            <div class="assignTaskSelect">
-                <div class="assignTaskSelectName">
-                    ${initialsContainer}
-                </div>
-                <div class="assignTaskSelectImage">
-                    <img src="${element['prio']['coloredImage']}">
-                </div>
-            </div>
-        </div>
-        `;
-
+function addTasksToContainer(container, tasks) {
+    container.innerHTML = '';
+    for (let i = 0; i < tasks.length; i++) {
+        const element = tasks[i];
+        let initialsContainer = createTaskAssignedTo(element);
+        let subtaskInitialsContainer = createTaskProgressbar(element, i);
+        container.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element);
     }
+}
 
-    for (let i = 0; i < progress.length; i++) {
-        const element = progress[i];
+async function addTasking() {
+    const { todos, progress, feedbacks, dones } = filterTasksForCreate();
+    const { containerTodo, containerProgress, containerFeedback, containerDone } = getTaskContainers();
 
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
+    addTasksToContainer(containerTodo, todos);
+    addTasksToContainer(containerProgress, progress);
+    addTasksToContainer(containerFeedback, feedbacks);
+    addTasksToContainer(containerDone, dones);
 
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-
-        }
-
-
-
-        containerProgress.innerHTML += /*html*/ `
-           <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer-${i}">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-        `;
-
-    }
-
-    for (let i = 0; i < feedbacks.length; i++) {
-        const element = feedbacks[i];
-
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
-
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-
-        }
-
-
-
-        containerFeedback.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p> 
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer-${i}">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-        `;
-
-    }
-
-    for (let i = 0; i < dones.length; i++) {
-        const element = dones[i];
-
-        let nameParts = element['assignedTo'];
-        let initialsContainer = '';
-
-        for (let j = 0; j < nameParts.length; j++) {
-            if (j < 3) {
-                let name = nameParts[j]['name'].split(' ');
-                let color = nameParts[j]['color'];
-                initialsContainer += /*html*/ `
-                    <div class="assignTask">
-                        <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                    </div>
-                `;
-            } else {
-                initialsContainer += /*html*/ `
-                    <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                break;
-            }
-        }
-
-        let allSubtasks = element['subtask'];
-        let currentSubtask = element['subtaskChecked'];
-        let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-        let procent = currentSubtask.length / allSubtasks.length;
-        procent = Math.round(procent * 100);
-        let subtaskInitialsContainer = '';
-
-        if (allSubtasks.length > 0) {
-            subtaskInitialsContainer += /*html*/ `
-                <div class="progressBarBig">
-                    <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-        
-                    </div>
-                </div>
-                <span id="progressText-${i}" class="progressText">${progresses}</span>
-            `;
-
-        }
-
-
-        containerDone.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer-${i}">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-        `;
-
-    }
-    // await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -797,7 +361,7 @@ function touchend(id) {
         clearTimeout(timer);
         openCheckTask(id);
     }
-    setTimeout(() => timeIsup = false, 250)
+    setTimeout(() => timeIsup = false, 300)
 }
 
 
@@ -836,7 +400,7 @@ function closeMoveToPoppupMobile() {
 
     setTimeout(function() {
         touchStartActive = false;
-    }, 500);
+    }, 1000);
 }
 
 function highlight(id) {
@@ -857,8 +421,9 @@ async function drop(categorys) {
     droppedTask[0]['list'] = categorys;
     filterTasks();
     addTasking();
-    // await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
+    touchStartActive = false;
 }
 
 function drag(id) {
@@ -879,370 +444,10 @@ function inputfieldValue() {
     allLiCategory = [];
 }
 
-/** Area for Category */
-
-function openCategory() {
-
-    if (newCategorySelected) {
-        return; // Funktion abbrechen
-    }
-
-    // Öffnen - Wird nicht ausgeführt nach einem return
-    let category = document.getElementById('categoryList');
-    if (category.classList.contains('d-none')) {
-        category.classList.remove('d-none');
-        document.getElementById('borderButton').classList.add('borderButton');
-    } else {
-        category.classList.add('d-none');
-        document.getElementById('borderButton').classList.remove('borderButton');
-    }
-
-}
-
-function selectCategory(id) {
-    const selectedElement = document.getElementById(`category-${id}`);
-    const name = selectedElement.querySelector('.taskCategory').innerHTML;
-    const color = selectedElement.querySelector('.categoryMedia').classList[1];
-    allLiCategory = ({ name, color });
-
-    let ulCategory = document.getElementById("categoryList");
-    let category = selectedElement.querySelector('.categoryMediaDivSmollDiv').innerHTML;
-
-    document.getElementById('selectTaskCategory').style = 'display: flex; align-items: center; list-style-type: none; margin-left: -18px;';
-    document.getElementById("selectTaskCategory").innerHTML = category;
-
-    ulCategory.classList.add('d-none');
-    document.getElementById('borderButton').classList.remove('borderButton');
-}
-
-function selectNewCategory() {
-
-    let selectNewCategory = document.getElementById('selectNewCategory');
-    selectNewCategory.value = ``;
-    if (selectNewCategory.classList.contains('d-none')) {
-        selectNewCategory.classList.remove('d-none');
-        document.getElementById('selectTaskCategory').classList.add('d-none');
-        document.getElementById('categoryList').classList.add('d-none');
-        document.getElementById('borderButton').classList.remove('borderButton');
-        document.getElementById('containerColorPicker').classList.remove('d-none');
-        document.getElementById('selectNewCategoryImg').classList.remove('d-none');
-        document.getElementById('selectTaskCategoryImg').classList.add('d-none');
-
-    } else {
-        selectNewCategory.classList.add('d-none');
-        document.getElementById('selectTaskCategory').classList.remove('d-none');
-        document.getElementById('categoryList').classList.remove('d-none');
-        document.getElementById('borderButton').classList.add('borderButton');
-        document.getElementById('containerColorPicker').classList.add('d-none');
-        document.getElementById('selectNewCategoryImg').classList.add('d-none');
-        document.getElementById('selectTaskCategoryImg').classList.remove('d-none');
-    }
-
-    newCategorySelected = true;
-}
-
-function resetSettingsCategory() {
-    let selectTaskCategory = document.getElementById("selectTaskCategory");
-    document.getElementById("selectTaskCategory").innerHTML = '';
-    document.getElementById('selectTaskCategory').style = 'margin-left: 0px;';
-    selectTaskCategory.innerHTML = "Select Task Category";
-}
-
-function selectNewCatagoryCancel() {
-    document.getElementById('selectNewCategoryImg').classList.add('d-none');
-    document.getElementById('containerColorPicker').classList.add('d-none');
-    document.getElementById('selectNewCategory').classList.add('d-none');
-    document.getElementById('selectTaskCategory').classList.remove('d-none');
-    document.getElementById('selectTaskCategoryImg').classList.remove('d-none');
-    document.getElementById('categoryList').classList.remove('d-none');
-    newCategorySelected = false;
-
-}
-
-
-
-async function createNewCategory() {
-    newCategory = document.getElementById('selectNewCategory').value;
-    let jsonColor = {
-        'name': newCategory,
-        'color': currentCategoryColor,
-    }
-    if (newCategory) {
-        if (currentCategoryColor) {
-            let categoryExists = users[activeUser]['categorys'].some(category => category.name === newCategory && category.color === currentCategoryColor);
-            if (!categoryExists) {
-                // allCategorys.push(jsonColor);
-                users[activeUser]['categorys'].push(jsonColor);
-                currentCategoryColor = null;
-                selectNewCatagoryCancel();
-                createnewCategoryAll();
-                newCategorySelected = false;
-
-                let successContainer = document.getElementById('taskDiv1');
-                successContainer.classList.remove('d-none');
-                successContainer.innerHTML = 'Eine neue Kategorie wurde erfolgreich erstellt.';
-                successContainer.style.display = 'block';
-                setTimeout(function() {
-                    successContainer.style.display = 'none';
-                }, 4000);
-            } else {
-                let errorContainer = document.getElementById('taskDiv1');
-                errorContainer.classList.remove('d-none');
-                errorContainer.innerHTML = 'Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.';
-                errorContainer.style.display = 'block';
-                setTimeout(function() {
-                    errorContainer.style.display = 'none';
-                }, 4000);
-            }
-        } else {
-            let errorContainer = document.getElementById('taskDiv1');
-            errorContainer.classList.remove('d-none');
-            errorContainer.innerHTML = 'Bitte wählen Sie eine Farbe für die neue Kategorie aus.';
-            errorContainer.style.display = 'block';
-            setTimeout(function() {
-                errorContainer.style.display = 'none';
-            }, 4000);
-        }
-    } else {
-        let errorContainer = document.getElementById('taskDiv1');
-        errorContainer.classList.remove('d-none');
-        errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus';
-        errorContainer.style.display = 'block';
-        setTimeout(function() {
-            errorContainer.style.display = 'none';
-        }, 4000);
-    }
-
-    // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
-    await backend.setItem('users', JSON.stringify(users));
-
-    document.getElementById('bg-pink').style = 'box-shadow: none;';
-    document.getElementById('bg-orange').style = 'box-shadow: none;';
-    document.getElementById('bg-green').style = 'box-shadow: none;';
-    document.getElementById('bg-turquoise').style = 'box-shadow: none;';
-    document.getElementById('bg-yellow').style = 'box-shadow: none;';
-    document.getElementById('bg-blue').style = 'box-shadow: none;';
-    currentCategoryColor = null;
-}
-
-
-
-
-
-
-
-function createnewCategoryAll() {
-    newCategorys = document.getElementById('createNewTategory');
-    newCategorys.innerHTML = '';
-
-    for (let i = 0; i < users[activeUser]['categorys'].length; i++) {
-        const element = users[activeUser]['categorys'][i];
-
-        newCategorys.innerHTML += /*html*/ `
-            <div onclick="selectCategory(${currentIndex})" id="category-${currentIndex}" class="categoryMediaDivSmoll">
-                <div class="categoryMediaDivSmollDiv">
-                    <li class="taskCategory">${element['name']}</li>
-                    <div class="categoryMedia ${element['color']}"></div>
-                </div>
-                <div onclick="deleteCategory(${i})" class="closes3">&times;</div>
-            </div>
-        `;
-        currentIndex++;
-    }
-}
-
-function newCategorySelectColor(id) {
-    currentCategoryColor = id;
-    let colorPickers = document.getElementsByClassName('colorPicker')
-
-    for (let item of colorPickers) {
-        item.style = '';
-    }
-
-    document.getElementById(id).style = 'box-shadow: 0px 10px 12px -6px #000000;';
-
-}
-
-async function deleteCategory(i) {
-    allCategorys.splice(i, 1)
-    users[activeUser]['categorys'].splice(i, 1);
-    await backend.deleteItem('users', users);
-    createnewCategoryAll()
-        // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
-    await backend.setItem('users', JSON.stringify(users));
-}
-
-
-/** Area for Assigned To */
-
-function openContacts() {
-    let allContacts = document.getElementById('assignedToList');
-
-    if (allContacts.classList.contains('d-none')) {
-        allContacts.classList.remove('d-none');
-        document.getElementById('openContact').classList.add('assignedDivBorderToEdit');
-    } else {
-        allContacts.classList.add('d-none');
-        document.getElementById('openContact').classList.remove('assignedDivBorderToEdit');
-
-    }
-}
-
-function selectContacted(id) {
-    let chackedBox = document.getElementById(id);
-
-    if (chackedBox.checked) {
-
-        let elementColor;
-        for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
-            if (users[activeUser]['contacts'][i].contactName === id) {
-                elementColor = users[activeUser]['contacts'][i].contactColor;
-                break;
-            }
-        }
-
-        assignedChackedBox.push({
-            'name': chackedBox.value,
-            'color': elementColor
-        });
-    } else {
-
-        assignedChackedBox = assignedChackedBox.filter(e => e.name !== chackedBox.value);
-    }
-
-    addContacts();
-}
-
-
-
-function addContacts() {
-    let assignedAddContact = document.getElementById('assignedAddContact');
-
-    assignedAddContact.innerHTML = '';
-
-    for (let i = 0; i < assignedChackedBox.length; i++) {
-        const element = assignedChackedBox[i];
-
-        let nameParts = element['name'].split(' ');
-        let firstName = nameParts[0];
-        let lastName = nameParts[1];
-
-        // Display only the first letter of the first and last name
-        let addreviatedName = firstName[0] + lastName[0];
-
-        assignedAddContact.innerHTML += /*html*/ `
-       <div class="assignedAddContactDivs" style="background-color: ${element['color']}">
-        <p class="assignedAddContactLetters">${addreviatedName}</p>          
-        </div>
-        `;
-
-    }
-
-}
-
-function resetCheckboxes() {
-    assignedChackedBox = [];
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => checkbox.checked = false);
-}
-
-function getFirstLetters(str) {
-    const words = str.split(' ');
-    const firstLetters = words.map(word => word[0]);
-    return firstLetters.join('');
-}
-
-function openAllContacts() {
-    let assignedToList = document.getElementById('assignedToList');
-    assignedToList.innerHTML = '';
-
-    for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
-        const name = users[activeUser]['contacts'][i]['contactName'];
-
-        assignedToList.innerHTML += /*html*/ `
-        <label class="assignedToListBox">
-            <li class="taskAssignedTo">${name}</li>
-            <input  onclick="selectContacted(id)" class="inputCheckbox" type="checkbox" value="${name}" id="${name}">
-        </label>
-    `;
-    }
-
-}
-
-
-/** Area for Subtask */
-
-function openSubtask() {
-    document.getElementById('subtasksAddImg').classList.add('d-none');
-    document.getElementById('subtsasksCancelImg').classList.remove('d-none');
-    document.getElementById('subtasksSubLine').classList.remove('d-none');
-    document.getElementById('subtasksChackImg').classList.remove('d-none');
-
-}
-
-function subtasksCancel() {
-    document.getElementById('subtasksAddImg').classList.remove('d-none');
-    document.getElementById('subtsasksCancelImg').classList.add('d-none');
-    document.getElementById('subtasksSubLine').classList.add('d-none');
-    document.getElementById('subtasksChackImg').classList.add('d-none');
-    document.getElementById('openSubtasks').value = '';
-}
-
-function addSubtasks() {
-    let openSubtasks = document.getElementById('openSubtasks').value;
-
-
-    if (openSubtasks.length > 0) {
-        allSubtasks.push(openSubtasks);
-        Subtasks()
-    }
-
-    document.getElementById('openSubtasks').value = '';
-    subtasksCancel()
-}
-
-function Subtasks() {
-    let allAddSubtasks = document.getElementById('allAddSubtask');
-    allAddSubtasks.innerHTML = '';
-
-    for (let i = 0; i < allSubtasks.length; i++) {
-        const element = allSubtasks[i];
-
-        allAddSubtasks.innerHTML += /*html*/ `
-      <div class="checkboxSubtasksContainer">
-          <input id="subtask-${i}" class="checkboxSubtasks" type="checkbox" data-value="${element}">
-          <p class="subtasksComent">${element}</p>
-      </div>
-      `;
-    }
-
-    document.querySelectorAll('.checkboxSubtasks').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            const value = this.dataset.value;
-            if (this.checked) {
-                if (!selectedSubtasks.includes(value)) {
-                    selectedSubtasks.push(value);
-                }
-            } else {
-                const index = selectedSubtasks.indexOf(value);
-                if (index > -1) {
-                    selectedSubtasks.splice(index, 1);
-                }
-            }
-        });
-    });
-}
-
-
-function resetSubtasks() {
-    document.getElementById('allAddSubtask').innerHTML = '';
-    selectedSubtasks = [];
-    allSubtasks = [];
-}
-
 /** Area for openCheckTask */
 
 function openCheckTask(Index) {
+    console.log(touchStartActive)
     if (!touchStartActive) {
         let openToCheck = users[activeUser]['tasks'].filter(x => x.id == Index);
         let openTocheckRightTask = users[activeUser]['tasks'].indexOf(openToCheck[0]);
@@ -1271,67 +476,6 @@ async function openCheckTasks(taskIndex) {
 
 }
 
-function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, taskIndex) {
-    return /*html*/ `
-        <div class="openCheckTaskBigDiv">
-            <div class="openCheckTasksCategory ${task.category.color}">
-                <p class="openCheckTasksCategoryTesx" >${task.category.name}</p>
-            </div>
-
-            <div class="openCheckTasksTitle">
-                <p class="openCheckTasksTitleTest">${task.title}</p>
-            </div>
-
-            <div class="openCheckTasksDescription">
-                <p class="openCheckTasksDescriptionTest">${task.description}</p>
-            </div>
-
-            <div class="openCheckTasksDateDiv">
-                <p class="openCheckTasksDateText">Due date:</p> <p class="openCheckTasksDateFormat">${dateFormatted}</p>
-            </div>
-
-            <div class="openCheckTasksPrioDiv">
-                <div>
-                    <p class="openCheckTasksPrioText">Priority:</p>
-                </div>
-                <div class="openCheckTasksPrioTextDiv ${task.prio.color}">
-                    <p class="openCheckTasksPrioTextText">${task.prio.text}</p>
-                    <img  class="openCheckTasksPrioTextImage" src="${task.prio.whiteImage}">
-                </div>
-            </div>
-
-            <div>
-                <p class="openCheckTasksAssignedToTitle">Assigned To:</p>
-                <div class="openCheckTasksAssignedToSmallDiv">
-                    <div>
-                        ${initialsName}
-                    </div>
-                    <div class="openCheckTasksAssignedToBoxFullName">
-                    ${fullinitialsName}
-                    </div>
-                </div>
-            </div>
-
-            <p id="openCheckTasksAssignedToTitleDelete" class="openCheckTasksAssignedToTitle">Subtasks:</p>
-            <div id="openCheckTasksAssignedToTitle">
-
-            </div>
-
-            <button class="deleteTaskButton">
-                <img onclick="toAskDeleteTask(${taskIndex})" class="deleteTaskImage" src="/asseds/img/delete-white.png">
-            </button>
-
-            <button class="toEditTaskButton">
-                <img onclick="openTaskToEdit(${taskIndex})" class="toEditTaskImage" src="/asseds/img/Group 8.png">
-            </button>
-            <div onclick="closeContainer1()" class="closes2">&times;</div>
-            <img onclick="closeContainer1()" class="closes4" src="/asseds/img/arrow-left-line.png">
-        </div>
-   
-    `;
-
-}
-
 function toAskDeleteTask(taskIndex) {
     document.getElementById('bigDivDeleteTask').classList.remove('d-none');
     let deleteTasks = document.getElementById('bigDivDeleteTask');
@@ -1352,18 +496,16 @@ function NonDeleteTask() {
 }
 
 async function deleteTask(taskIndex) {
-    // allTasks.splice(taskIndex, 1);
+    allTasks.splice(taskIndex, 1);
     users[activeUser]['tasks'].splice(taskIndex, 1);
-    // await backend.deleteItem('allTasks', allTasks);
+    await backend.deleteItem('allTasks', allTasks);
     await backend.deleteItem('users', users);
     filterTasks();
     addTasking();
-    // await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
     closeContainer1();
     document.getElementById('bigDivDeleteTask').classList.add('d-none')
-
-
 }
 
 
@@ -1412,59 +554,49 @@ function openCheckTaskFullNames(taskIndex) {
 }
 
 function openCheckTaskSubtasks(taskIndex) {
-    let subtasks = users[activeUser]['tasks'][taskIndex];
-    let addSubtask = (subtasks.subtask);
-    let selectedSubtasks = (subtasks.subtaskChecked) || [];
+    const { subtask, subtaskChecked = [] } = users[activeUser]['tasks'][taskIndex];
     let subtaskInitialsContainer = '';
 
-    if (addSubtask.length > 0) {
-        for (let i = 0; i < addSubtask.length; i++) {
-            let element = addSubtask[i];
-            let checked = '';
-            for (let j = 0; j < selectedSubtasks.length; j++) {
-                if (selectedSubtasks[j] === element) {
-                    checked = 'checked';
-                    break;
-                }
-            }
-
-            subtaskInitialsContainer += /*html*/ `
+    subtask.forEach((element, i) => {
+        const checked = subtaskChecked.includes(element) ? 'checked' : '';
+        subtaskInitialsContainer += /*html*/ `
             <div class="checkboxSubtasksContainer">
                 <input onclick="putTheProgressBar(${taskIndex})" id="subtask-${i}" class="openCheckboxSubtasks" type="checkbox" data-value="${element}" ${checked}>
                 <p class="openSubtasksComent">${element}</p>
-          </div>   
-          `;
-        }
-    } else {
+            </div>   
+        `;
+    });
+
+    if (!subtask.length) {
         document.getElementById('openCheckTasksAssignedToTitleDelete').classList.add('d-none');
     }
+
     return subtaskInitialsContainer;
 }
 
 
 
+
 async function putTheProgressBar(taskIndex) {
     setTimeout(function() {
-            openCheckTaskTakeInputValue()
+        openCheckTaskTakeInputValue()
 
-            for (let i = 0; i < selectedSubtasksProgress.length; i++) {
-                if (users[activeUser]['tasks'][taskIndex].subtaskChecked.indexOf(selectedSubtasksProgress[i]) === -1) {
-                    users[activeUser]['tasks'][taskIndex].subtaskChecked.push(selectedSubtasksProgress[i]);
-                }
+        for (let i = 0; i < selectedSubtasksProgress.length; i++) {
+            if (users[activeUser]['tasks'][taskIndex].subtaskChecked.indexOf(selectedSubtasksProgress[i]) === -1) {
+                users[activeUser]['tasks'][taskIndex].subtaskChecked.push(selectedSubtasksProgress[i]);
             }
+        }
 
-            users[activeUser]['tasks'][taskIndex].subtaskChecked = selectedSubtasksProgress;
-            selectedSubtasksForProgress = [];
+        users[activeUser]['tasks'][taskIndex].subtaskChecked = selectedSubtasksProgress;
+        selectedSubtasksForProgress = [];
 
-        }, 200)
-        // await backend.setItem('allTasks', JSON.stringify(allTasks));
+    }, 200)
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
     filterTasks()
     addTasking();
 
 }
-
-
 
 function openCheckTaskTakeInputValue() {
 
@@ -1499,61 +631,6 @@ function openTaskToEdit(taskIndex) {
     let addContacts = openTaskToEditContacts();
     document.getElementById('assignedAddContacts').innerHTML = addContacts;
     openTaskToEditPrioImage(taskIndex);
-
-}
-
-function openTaskToEditHTML(task, duaDate, taskIndex) {
-    return /*html*/ `
-        <div class="toEditopenCheckTaskBigDiv" id="editTaskForm">
-            <div class="toEditTaskTitleDiv">
-                <label class="titleInputFields" for="editTaskTitle">Title</label>
-                <input class="toEditTaskTitelInput" type="text" id="editTaskTitle" value="${task.title}">
-            </div>
-            
-            <div class="toEditTaskTitleDiv">
-                <label class="titleInputFields" for="editTaskDescription">Description</label>
-                <textarea class="toEditTaskDescriptionInput" id="editTaskDescription">${task.description}</textarea>
-            </div>
-
-            <div class="toEditTaskTitleDiv">
-                <label class="titleInputFields" for="editTaskDueDate">Due date</label>
-                <input class="toEditTaskTitelInput" type="date" id="editTaskDueDate" value="${duaDate}">
-            </div>
-
-            <p class="titleInputFields">Prio</p>
-            <div id="prio" class="prio">
-                <div id="toEditRed" onclick="toEditChangeColor(id)" class="prioContainer">Urgent
-                    <img id="toEditRedImg" src="/asseds/img/pfeil-oben-rot.png">
-                </div>
-                <div id="toEditYellow" onclick="toEditChangeColor(id)" class="prioContainer">Medium
-                    <img id="toEditYellowImg" class="medium" src="/asseds/img/medium-gelb.png">
-                </div>
-                <div id="toEditGreen" onclick="toEditChangeColor(id)" class="prioContainer">Low
-                    <img id="toEditGreenImg" src="/asseds/img/pfeil-unten-grün.png">
-                </div>
-            </div>
-
-            <p class="titleInputFields">Assigned to</p>
-            <div id="openContactToEdit" onclick="openContactsToEdit()" class="assignedDiv1">
-                <p class="assignedContactsSelectToEdit" id="assignedContactsSelect">Select contacts to assigt</p>
-                <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
-            </div>
-
-            <div id="assignedToListToEdit" class="assignedToListToEdit d-none">
-            
-            </div>
-
-            <div class="assignedAddContactToEdit" id="assignedAddContacts">
-              
-            </div>
-
-            <button class="toEditTaskSaveButton" onclick="saveTask(${taskIndex}); closeTaskToEdit();">
-                <p class="toEditTaskButtonText">Ok</p>
-                <img class="toEditTaskImage" src="/asseds/img/check.png">
-            </button>
-
-        </div>
-    `;
 
 }
 
@@ -1620,7 +697,6 @@ function openContactsToEdit() {
         document.getElementById('openContactToEdit').classList.remove('assignedDivBorder');
     }
 
-
 }
 
 
@@ -1639,48 +715,28 @@ function selectContactedToEdit(id) {
     let addContactss = openTaskToEditContacts();
     document.getElementById('assignedAddContacts').innerHTML = addContactss;
 
-
 }
 
 
 function showContactsInToEdit(taskIndex) {
-    let toEdit = document.getElementById('assignedToListToEdit');
+    const toEdit = document.getElementById('assignedToListToEdit');
     toEdit.innerHTML = '';
 
-    let currentContacts = users[activeUser]['tasks'][taskIndex];
-
-    for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
-        const element = users[activeUser]['contacts'][i]['contactName'];
-
-        let isAssigned = false;
-        for (let j = 0; j < currentContacts.assignedTo.length; j++) {
-            if (currentContacts.assignedTo[j].name === element) {
-                isAssigned = true;
-                break;
-            }
-        }
-
-        if (isAssigned) {
-            toEdit.innerHTML += /*html*/ `
-              <label class="assignedToListBox">
-                  <li class="taskAssignedTo">${element}</li>
-                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element}" id="${element}" checked>
-
-              </label>
-          `;
-        } else {
-            toEdit.innerHTML += /*html*/ `
-              <label class="assignedToListBox">
-                  <li class="taskAssignedTo">${element}</li>
-                  <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element}" id="${element}">
-              </label>
-          `;
-        }
-    }
+    const currentContacts = users[activeUser]['tasks'][taskIndex];
+    users[activeUser]['contacts'].forEach(contact => {
+        const element = contact['contactName'];
+        const isAssigned = currentContacts.assignedTo.some(a => a.name === element);
+        toEdit.innerHTML += /*html*/ `
+          <label class="assignedToListBox">
+              <li class="taskAssignedTo">${element}</li>
+              <input  onclick="selectContactedToEdit(id)" class="inputCheckbox" type="checkbox" value="${element}" id="${element}"${isAssigned ? ' checked' : ''}>
+          </label>
+      `;
+    });
 
     showContactsInToEditPushInAssigned()
-
 }
+
 
 function showContactsInToEditPushInAssigned() {
     const checkboxess = document.querySelectorAll('input.inputCheckbox:checked');
@@ -1702,34 +758,43 @@ function showContactsInToEditPushInAssigned() {
 }
 
 async function saveTask(taskIndex) {
-    let updatedTitle = document.getElementById("editTaskTitle").value;
-    let updatedDescription = document.getElementById("editTaskDescription").value;
-    let updatedDueDate = document.getElementById("editTaskDueDate").value;
+    const updatedTitle = document.getElementById("editTaskTitle").value;
+    const updatedDescription = document.getElementById("editTaskDescription").value;
+    const updatedDueDate = document.getElementById("editTaskDueDate").value;
+    const task = users[activeUser]['tasks'][taskIndex];
 
-    users[activeUser]['tasks'][taskIndex].title = updatedTitle;
-    users[activeUser]['tasks'][taskIndex].description = updatedDescription;
-    users[activeUser]['tasks'][taskIndex].dueDates = updatedDueDate;
-    if (Object.keys(colorArray).length > 0) {
-        users[activeUser]['tasks'][taskIndex].prio.color = colorArray.color;
-        users[activeUser]['tasks'][taskIndex].prio.text = colorArray.text;
-        users[activeUser]['tasks'][taskIndex].prio.coloredImage = colorArray.coloredImage;
-        users[activeUser]['tasks'][taskIndex].prio.whiteImage = colorArray.whiteImage;
-    }
+    Object.assign(task, { title: updatedTitle, description: updatedDescription, dueDates: updatedDueDate });
 
-    for (let i = 0; i < assignedChackedBox.length; i++) {
-        if (users[activeUser]['tasks'][taskIndex].assignedTo.map(e => e.name).indexOf(assignedChackedBox[i].name) === -1) {
-            users[activeUser]['tasks'][taskIndex].assignedTo.push(assignedChackedBox[i]);
-        }
-    }
+    updateTaskPriority(task, colorArray);
 
-    // allTasks[taskIndex].assignedTo = allTasks[taskIndex].assignedTo.filter(e => assignedChackedBox.map(el => el.name).indexOf(e.name) !== -1);
-    users[activeUser]['tasks'][taskIndex].assignedTo = assignedChackedBox;
+    assignedChackedBox.filter(box => !task.assignedTo.some(a => a.name === box.name)).forEach(box => {
+        task.assignedTo.push(box);
+    });
+
+    task.assignedTo = assignedChackedBox;
+
     filterTasks();
     addTasking();
-    // await backend.setItem('allTasks', JSON.stringify(allTasks));
-    await backend.setItem('users', JSON.stringify(users));
+
+    await Promise.all([
+        backend.setItem('allTasks', JSON.stringify(allTasks)),
+        backend.setItem('users', JSON.stringify(users))
+    ]);
+
     openCheckTasks(taskIndex);
 }
+
+function updateTaskPriority(task, colorArray) {
+    if (Object.keys(colorArray).length > 0) {
+        Object.assign(task.prio, {
+            color: colorArray.color,
+            text: colorArray.text,
+            coloredImage: colorArray.coloredImage,
+            whiteImage: colorArray.whiteImage
+        });
+    }
+}
+
 
 /** Area for search to Task */
 
@@ -1739,8 +804,6 @@ function searchToTask() {
     searchFilterFeedback()
     searchFilterDone()
 }
-
-
 
 function searchFilterTodo() {
     let search = document.getElementById('search').value;
@@ -1756,70 +819,10 @@ function searchFilterTodo() {
         if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
             let element = todo[i];
 
-            let nameParts = element['assignedTo'];
-            let initialsContainer = '';
+            let initialsContainer = createTaskAssignedTo(element)
+            let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-            for (let j = 0; j < nameParts.length; j++) {
-                if (j < 3) {
-                    let name = nameParts[j]['name'].split(' ');
-                    let color = nameParts[j]['color'];
-                    initialsContainer += /*html*/ `
-                        <div class="assignTask">
-                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                        </div>
-                    `;
-                } else {
-                    initialsContainer += /*html*/ `
-                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                    break;
-                }
-            }
-
-            let allSubtasks = element['subtask'];
-            let currentSubtask = element['subtaskChecked'];
-            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-            let procent = currentSubtask.length / allSubtasks.length;
-            procent = Math.round(procent * 100);
-            let subtaskInitialsContainer = '';
-
-            if (allSubtasks.length > 0) {
-                subtaskInitialsContainer += /*html*/ `
-                    <div class="progressBarBig">
-                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-            
-                        </div>
-                    </div>
-                    <span id="progressText-${i}" class="progressText">${progresses}</span>
-                `;
-
-            }
-
-            filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-            `;
+            filter.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
 
         }
     }
@@ -1840,71 +843,10 @@ function searchFilterProgress() {
         if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
             let element = progress[i];
 
-            let nameParts = element['assignedTo'];
-            let initialsContainer = '';
+            let initialsContainer = createTaskAssignedTo(element)
+            let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-            for (let j = 0; j < nameParts.length; j++) {
-                if (j < 3) {
-                    let name = nameParts[j]['name'].split(' ');
-                    let color = nameParts[j]['color'];
-                    initialsContainer += /*html*/ `
-                        <div class="assignTask">
-                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                        </div>
-                    `;
-                } else {
-                    initialsContainer += /*html*/ `
-                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                    break;
-                }
-            }
-
-            let allSubtasks = element['subtask'];
-            let currentSubtask = element['subtaskChecked'];
-            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-            let procent = currentSubtask.length / allSubtasks.length;
-            procent = Math.round(procent * 100);
-            let subtaskInitialsContainer = '';
-
-            if (allSubtasks.length > 0) {
-                subtaskInitialsContainer += /*html*/ `
-                    <div class="progressBarBig">
-                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-            
-                        </div>
-                    </div>
-                    <span id="progressText-${i}" class="progressText">${progresses}</span>
-                `;
-
-            }
-
-
-            filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-            `;
+            filter.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
 
         }
     }
@@ -1926,70 +868,10 @@ function searchFilterFeedback() {
         if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
             let element = feedback[i];
 
-            let nameParts = element['assignedTo'];
-            let initialsContainer = '';
+            let initialsContainer = createTaskAssignedTo(element)
+            let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-            for (let j = 0; j < nameParts.length; j++) {
-                if (j < 3) {
-                    let name = nameParts[j]['name'].split(' ');
-                    let color = nameParts[j]['color'];
-                    initialsContainer += /*html*/ `
-                        <div class="assignTask">
-                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                        </div>
-                    `;
-                } else {
-                    initialsContainer += /*html*/ `
-                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                    break;
-                }
-            }
-
-            let allSubtasks = element['subtask'];
-            let currentSubtask = element['subtaskChecked'];
-            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-            let procent = currentSubtask.length / allSubtasks.length;
-            procent = Math.round(procent * 100);
-            let subtaskInitialsContainer = '';
-
-            if (allSubtasks.length > 0) {
-                subtaskInitialsContainer += /*html*/ `
-                    <div class="progressBarBig">
-                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-            
-                        </div>
-                    </div>
-                    <span id="progressText-${i}" class="progressText">${progresses}</span>
-                `;
-
-            }
-
-            filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-            `;
+            filter.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
 
         }
     }
@@ -2011,71 +893,10 @@ function searchFilterDone() {
         if (headlines.toLowerCase().includes(search) || desc.toLowerCase().includes(search)) {
             let element = done[i];
 
-            let nameParts = element['assignedTo'];
-            let initialsContainer = '';
+            let initialsContainer = createTaskAssignedTo(element)
+            let subtaskInitialsContainer = createTaskProgressbar(element, i)
 
-            for (let j = 0; j < nameParts.length; j++) {
-                if (j < 3) {
-                    let name = nameParts[j]['name'].split(' ');
-                    let color = nameParts[j]['color'];
-                    initialsContainer += /*html*/ `
-                        <div class="assignTask">
-                            <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                        </div>
-                    `;
-                } else {
-                    initialsContainer += /*html*/ `
-                        <div class="nameContainer">+${nameParts.length - 3}</div>`;
-                    break;
-                }
-            }
-
-            let allSubtasks = element['subtask'];
-            let currentSubtask = element['subtaskChecked'];
-            let progresses = `${currentSubtask.length}/${allSubtasks.length} Done`;
-            let procent = currentSubtask.length / allSubtasks.length;
-            procent = Math.round(procent * 100);
-            let subtaskInitialsContainer = '';
-
-            if (allSubtasks.length > 0) {
-                subtaskInitialsContainer += /*html*/ `
-                    <div class="progressBarBig">
-                        <div id="progressBar-${i}" class="progressBar" style="width: ${procent}%;">
-            
-                        </div>
-                    </div>
-                    <span id="progressText-${i}" class="progressText">${progresses}</span>
-                `;
-
-            }
-
-
-            filter.innerHTML += /*html*/ `
-            <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
-                <div class="addCategoryInTask ${element['category']['color']}">
-                    <p>${element['category']['name']}</p>
-                </div>
-                <div>
-                    <p>${element['title']}</p>
-                </div>
-                <div>
-                    <p>${element['description']}</p>
-                </div>
-
-                <div class="progressContainer" id="progressContainer">
-                    ${subtaskInitialsContainer}
-                </div>
-
-                <div class="assignTaskSelect">
-                    <div class="assignTaskSelectName">
-                        ${initialsContainer}
-                    </div>
-                    <div class="assignTaskSelectImage">
-                        <img src="${element['prio']['coloredImage']}">
-                    </div>
-                </div>
-            </div>
-            `;
+            filter.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
 
         }
     }

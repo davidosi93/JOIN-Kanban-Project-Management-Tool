@@ -866,6 +866,7 @@
             height: 189px;
             width: 51%;
             padding: 10px;
+            z-index: 10;
         }
         .popupToMoveTaskMobileSelections div {
             width: 100%;
