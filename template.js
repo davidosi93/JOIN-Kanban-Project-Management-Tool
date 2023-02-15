@@ -121,3 +121,150 @@ function editContactBox(i, color, str) {
                     </div>
                 </div>`;
 }
+
+// template for Board
+
+function createTaskHTML(initialsContainer, subtaskInitialsContainer, element) {
+    return /*html*/ `
+    <div onclick="openCheckTask(${element['id']})" draggable="true" ondragstart="drag(${element['id']})" ontouchstart="touchstart(${element['id']})" ontouchend="touchend(${element['id']})" class="containerBlock" id="containerBlock-${element['id']}">
+        <div class="addCategoryInTask ${element['category']['color']}">
+            <p>${element['category']['name']}</p>
+        </div>
+        <div>
+            <p>${element['title']}</p>
+        </div>
+        <div>
+            <p>${element['description']}</p>
+        </div>
+
+        <div class="progressContainer" id="progressContainer">
+            ${subtaskInitialsContainer}
+        </div>
+
+        <div class="assignTaskSelect">
+            <div class="assignTaskSelectName">
+                ${initialsContainer}
+            </div>
+            <div class="assignTaskSelectImage">
+                <img src="${element['prio']['coloredImage']}">
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, taskIndex) {
+    return /*html*/ `
+        <div class="openCheckTaskBigDiv">
+            <div class="openCheckTasksCategory ${task.category.color}">
+                <p class="openCheckTasksCategoryTesx" >${task.category.name}</p>
+            </div>
+
+            <div class="openCheckTasksTitle">
+                <p class="openCheckTasksTitleTest">${task.title}</p>
+            </div>
+
+            <div class="openCheckTasksDescription">
+                <p class="openCheckTasksDescriptionTest">${task.description}</p>
+            </div>
+
+            <div class="openCheckTasksDateDiv">
+                <p class="openCheckTasksDateText">Due date:</p> <p class="openCheckTasksDateFormat">${dateFormatted}</p>
+            </div>
+
+            <div class="openCheckTasksPrioDiv">
+                <div>
+                    <p class="openCheckTasksPrioText">Priority:</p>
+                </div>
+                <div class="openCheckTasksPrioTextDiv ${task.prio.color}">
+                    <p class="openCheckTasksPrioTextText">${task.prio.text}</p>
+                    <img  class="openCheckTasksPrioTextImage" src="${task.prio.whiteImage}">
+                </div>
+            </div>
+
+            <div>
+                <p class="openCheckTasksAssignedToTitle">Assigned To:</p>
+                <div class="openCheckTasksAssignedToSmallDiv">
+                    <div>
+                        ${initialsName}
+                    </div>
+                    <div class="openCheckTasksAssignedToBoxFullName">
+                    ${fullinitialsName}
+                    </div>
+                </div>
+            </div>
+
+            <p id="openCheckTasksAssignedToTitleDelete" class="openCheckTasksAssignedToTitle">Subtasks:</p>
+            <div id="openCheckTasksAssignedToTitle">
+
+            </div>
+
+            <button class="deleteTaskButton">
+                <img onclick="toAskDeleteTask(${taskIndex})" class="deleteTaskImage" src="/asseds/img/delete-white.png">
+            </button>
+
+            <button class="toEditTaskButton">
+                <img onclick="openTaskToEdit(${taskIndex})" class="toEditTaskImage" src="/asseds/img/Group 8.png">
+            </button>
+            <div onclick="closeContainer1()" class="closes2">&times;</div>
+            <img onclick="closeContainer1()" class="closes4" src="/asseds/img/arrow-left-line.png">
+        </div>
+   
+    `;
+
+}
+
+function openTaskToEditHTML(task, duaDate, taskIndex) {
+    return /*html*/ `
+        <div class="toEditopenCheckTaskBigDiv" id="editTaskForm">
+            <div class="toEditTaskTitleDiv">
+                <label class="titleInputFields" for="editTaskTitle">Title</label>
+                <input class="toEditTaskTitelInput" type="text" id="editTaskTitle" value="${task.title}">
+            </div>
+            
+            <div class="toEditTaskTitleDiv">
+                <label class="titleInputFields" for="editTaskDescription">Description</label>
+                <textarea class="toEditTaskDescriptionInput" id="editTaskDescription">${task.description}</textarea>
+            </div>
+
+            <div class="toEditTaskTitleDiv">
+                <label class="titleInputFields" for="editTaskDueDate">Due date</label>
+                <input class="toEditTaskTitelInput" type="date" id="editTaskDueDate" value="${duaDate}">
+            </div>
+
+            <p class="titleInputFields">Prio</p>
+            <div id="prio" class="prio">
+                <div id="toEditRed" onclick="toEditChangeColor(id)" class="prioContainer">Urgent
+                    <img id="toEditRedImg" src="/asseds/img/pfeil-oben-rot.png">
+                </div>
+                <div id="toEditYellow" onclick="toEditChangeColor(id)" class="prioContainer">Medium
+                    <img id="toEditYellowImg" class="medium" src="/asseds/img/medium-gelb.png">
+                </div>
+                <div id="toEditGreen" onclick="toEditChangeColor(id)" class="prioContainer">Low
+                    <img id="toEditGreenImg" src="/asseds/img/pfeil-unten-grün.png">
+                </div>
+            </div>
+
+            <p class="titleInputFields">Assigned to</p>
+            <div id="openContactToEdit" onclick="openContactsToEdit()" class="assignedDiv1">
+                <p class="assignedContactsSelectToEdit" id="assignedContactsSelect">Select contacts to assigt</p>
+                <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
+            </div>
+
+            <div id="assignedToListToEdit" class="assignedToListToEdit d-none">
+            
+            </div>
+
+            <div class="assignedAddContactToEdit" id="assignedAddContacts">
+              
+            </div>
+
+            <button class="toEditTaskSaveButton" onclick="saveTask(${taskIndex}); closeTaskToEdit();">
+                <p class="toEditTaskButtonText">Ok</p>
+                <img class="toEditTaskImage" src="/asseds/img/check.png">
+            </button>
+
+        </div>
+    `;
+
+}
