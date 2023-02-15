@@ -191,6 +191,8 @@ function closeContactBtn() {
 
 // show the whole information of a contact
 function showContact(i) {
+    document.getElementById('rightSection').style = 'display: block;'
+    document.getElementById('rightSection').classList.remove('closeAnimation');
     let contactInfo = document.getElementById('bigContactSection');
     contactInfo.innerHTML = '';
     let name = users[activeUser]['contacts'][i]['contactName'];
@@ -325,4 +327,8 @@ async function logOut() {
     await backend.deleteItem('activeUser');
     await backend.deleteItem('letters');
     window.location.href = 'index.html';
+}
+
+function closeMobileContactInfo() {
+    document.getElementById('rightSection').classList.add('closeAnimation');
 }

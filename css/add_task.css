@@ -2,6 +2,7 @@ body {
     margin: 0;
 }
 
+
 .rightContent {
     height: 100vh;
     width: 100vw;
@@ -16,8 +17,29 @@ body {
     box-shadow: -1px 2px lightgrey;
 }
 
-.d-none {
+.btnForMobile {
+    background-color: #2A3647;
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.logoMobile {
+    width: 30px;
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 20px;
+
+}
+
+.display-none{
     display: none !important;
+}
+
+.d-none {
+    display: none ;
 }
 
 .logOutBackground {
@@ -190,7 +212,7 @@ h2 {
 }
 
 .dropdown-content input {
-    width: 100%!important;
+    width: 100% !important;
 }
 
 .dropdown-content img {
@@ -831,3 +853,127 @@ select {
 .buttonSectionBackground {
     background-color: #091931;
 }
+
+@media (max-width: 900px) {
+    .header{
+        display: none !important;
+    }
+
+    .flexContainer{
+        display: block;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-left: 0;
+    }
+
+    #btn{
+        display: none;
+    }
+
+    .rightContent{
+        height: unset;
+    }
+
+    .titlesInputfild{
+        width: 80vw;
+    }
+
+    .leftContainer textarea{
+        width: 80vw;
+    }
+
+    .addTask_categoryDiv {
+        width: 80vw;
+    }
+
+    .assignedDiv{
+        width: 80vw;
+    }
+
+    .assignedDiv{
+        width: 80vw;
+    }
+
+    .rightContainer input{
+        width: 80vw;
+    }
+
+    .middleLine{
+      display: none;
+    }
+
+    .headerContent p{
+        display: none;
+    }
+
+    .personLogIn{
+        display: none;
+    }
+
+    .information{
+        display: none;
+    }
+
+    .logOutButton{
+        display: none;
+    }
+
+    .headline{
+        display: block;
+    }
+
+    .mainContent{
+        padding: 0;
+        margin-left: 5%;
+    }
+
+    .prioContainer{
+        width: 24vw;
+    }
+
+    .relativeContainer{
+        margin-bottom: 100px;
+    }
+  }
+
+
+  @media (max-width: 500px){
+    .titlesInputfild{
+        width: 78vw;
+    }
+
+    .leftContainer textarea{
+        width: 78vw;
+    }
+
+    .addTask_categoryDiv {
+        width: 78vw;
+    }
+
+    .assignedDiv{
+        width: 78vw;
+    }
+
+    .assignedDiv{
+        width: 78vw;
+    }
+
+    .rightContainer input{
+        width: 78vw;
+    }
+
+    .prioContainer{
+        width: 22vw;
+    }
+  }
+
+  @media (max-width: 400px){
+    .prioContainer{
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .addTask_selectTaskCategory{
+        font-size: 18px;
+    }
+  }
