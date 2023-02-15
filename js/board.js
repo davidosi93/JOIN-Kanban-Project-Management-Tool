@@ -21,7 +21,7 @@ let timeIsup = false;
 let touchStartActive = false;
 
 
-
+// load all first functions for show the site
 
 async function initLoadTasks() {
     includeHTML();
@@ -34,6 +34,9 @@ async function initLoadTasks() {
     navBarHighlight(2)
 }
 
+
+// main filter function of tasks after load the site new
+
 function filterTasks() {
     filterTodo()
     filterFeedback()
@@ -42,33 +45,60 @@ function filterTasks() {
 
 }
 
-function loadActiveUser() {
-    let activeUsers = document.getElementById('headerContent');
-    activeUsers.innerHTML = '';
-    const name = users[activeUser]['initials'];
-    const color = users[activeUser]['color'];
-    activeUsers.innerHTML = /*html*/ `
-        <p>Kanban Project Management Tool</p>
 
+// load the html date for show the activeuser, help information and log aut button
+
+function loadActiveUserHTML(name, color) {
+    return /*html*/ `
+        <img class="headerImageLeft" src="/asseds/img/biglogo.png">
+        <p>Kanban Project Management Tool</p>
+    
         <div class="headerContentRight">
             <img onclick="help()" class="information" src="/asseds/img/information.png">
             <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
                 ${name}
             </div>
+            
             <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+            <div id="bigLogOutButton" class="bigLogOutButton d-none">
+                <div onclick="help()">Help</div>
+                <div>Legal Notice</div>
+                <div id="logOutButton" onclick="logOut()">Log Out</div>
+            </div>
         </div>
     `;
 }
 
+
+// load the activeuser information 
+
+function loadActiveUser() {
+    let activeUsers = document.getElementById('headerContent');
+    activeUsers.innerHTML = '';
+    const name = users[activeUser]['initials'];
+    const color = users[activeUser]['color'];
+    activeUsers.innerHTML = loadActiveUserHTML(name, color);
+}
+
+
+// open the help container
+
 function help() {
     document.getElementById('help').classList.remove('d-none');
     document.getElementById('mainContent').classList.add('d-none');
+    document.getElementById('bigLogOutButton').classList.add('d-none');
 }
+
+
+// close the global container after log out
 
 function goBacktoMainContainer() {
     document.getElementById('help').classList.add('d-none');
     document.getElementById('mainContent').classList.remove('d-none');
 }
+
+
+// create the information for assigned To in the task
 
 function createTaskAssignedTo(element) {
     let nameParts = element['assignedTo'];
@@ -93,6 +123,9 @@ function createTaskAssignedTo(element) {
     return initialsContainer;
 }
 
+
+// show the progressbar in the task of subtasks
+
 function createTaskProgressbar(element, i) {
     let allSubtasks = element['subtask'];
     let currentSubtask = element['subtaskChecked'];
@@ -116,6 +149,8 @@ function createTaskProgressbar(element, i) {
 }
 
 
+// filter the tasks for todo after load the site new
+
 function filterTodo() {
 
     let renderTodo = document.getElementById('containerTodos');
@@ -130,6 +165,9 @@ function filterTodo() {
         renderTodo.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
     }
 }
+
+
+// filter the tasks for progress after load the site new
 
 function filterInprogress() {
 
@@ -146,6 +184,9 @@ function filterInprogress() {
     }
 }
 
+
+// filter the tasks for feedback after load the site new
+
 function filterFeedback() {
 
     let feedbackRender = document.getElementById('containerFeedbacks');
@@ -160,6 +201,9 @@ function filterFeedback() {
         feedbackRender.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element)
     }
 }
+
+
+// filter the tasks for done after load the site new
 
 function filterDone() {
 
@@ -177,9 +221,15 @@ function filterDone() {
 
 }
 
+
+// the container for create an task 
+
 function addTaskRight() {
     document.getElementById('addTaskRight').classList.remove('d-none');
 }
+
+
+// close the task container after create an task
 
 async function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
@@ -188,16 +238,25 @@ async function closeContainer1() {
     await backend.setItem('users', JSON.stringify(users));
 }
 
+
+// close the task container after to edit the task
+
 function closeContainer() {
     document.getElementById('addTaskRight').classList.add('d-none');
     inputfieldValue()
 }
+
+
+// onclick function at html site 
 
 function onSubmit(event) {
     event.preventDefault();
     createTask();
 
 }
+
+
+// create a massege when the category array is empty
 
 function addInfoToTakeCategory(task) {
     if (!task.category || task.category.length === 0) {
@@ -212,6 +271,9 @@ function addInfoToTakeCategory(task) {
     }
     return true;
 }
+
+
+// create a massege when the assigned to array is empty
 
 function addInfoToTakeAssignedTo(task) {
     if (!task.assignedTo || task.assignedTo.length === 0) {
@@ -228,6 +290,9 @@ function addInfoToTakeAssignedTo(task) {
     return true;
 }
 
+
+// create a massege when the prio array is empty
+
 function addInfoToTakePrio(task) {
     if (!task.prio || task.prio.length === 0) {
         let errorContainer = document.getElementById('taskDiv1');
@@ -242,6 +307,9 @@ function addInfoToTakePrio(task) {
     return true;
 }
 
+
+// create a massege when create an task is done
+
 function addInfoToTakeAnTask() {
     let successContainer = document.getElementById('taskDiv');
     successContainer.classList.remove('d-none');
@@ -252,6 +320,9 @@ function addInfoToTakeAnTask() {
     }, 2000);
 
 }
+
+
+// return the information in create an task for massege
 
 function validateTask(task) {
     if (!addInfoToTakeCategory(task)) {
@@ -268,6 +339,9 @@ function validateTask(task) {
 
     return true;
 }
+
+
+// preparing to create a task
 
 async function createTask() {
 
@@ -303,6 +377,9 @@ async function createTask() {
 
 }
 
+
+// to filter the tasks 
+
 function filterTasksForCreate() {
     let todos = users[activeUser]['tasks'].filter(t => t['list'] == 'todo');
     let progress = users[activeUser]['tasks'].filter(t => t['list'] == 'progress');
@@ -311,6 +388,9 @@ function filterTasksForCreate() {
 
     return { todos, progress, feedbacks, dones };
 }
+
+
+// get container for tasks
 
 function getTaskContainers() {
     let containerTodo = document.getElementById('containerTodos');
@@ -326,6 +406,9 @@ function getTaskContainers() {
     return { containerTodo, containerProgress, containerFeedback, containerDone };
 }
 
+
+//create the tasks to the container
+
 function addTasksToContainer(container, tasks) {
     container.innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
@@ -335,6 +418,9 @@ function addTasksToContainer(container, tasks) {
         container.innerHTML += createTaskHTML(initialsContainer, subtaskInitialsContainer, element);
     }
 }
+
+
+//create an task
 
 async function addTasking() {
     const { todos, progress, feedbacks, dones } = filterTasksForCreate();
@@ -350,10 +436,14 @@ async function addTasking() {
 }
 
 
-function touchstart(id) {
+// checks how long task is touched on mobile
 
+function touchstart(id) {
     timer = setTimeout(() => onlongtouch(id), 200);
 }
+
+
+//checks if touch on mobile has ended
 
 function touchend(id) {
 
@@ -365,10 +455,15 @@ function touchend(id) {
 }
 
 
+//action that is performed if mobile display is touched long enough
+
 function onlongtouch(id) {
     timeIsup = true;
     openMoveToPoppupMobile(id);
 }
+
+
+// opens container that allows shifting tasks between states on mobile devices
 
 function openMoveToPoppupMobile(id) {
     touchStartActive = true;
@@ -377,6 +472,9 @@ function openMoveToPoppupMobile(id) {
     task.innerHTML += openMoveToPoppupMobileHTML();
 
 }
+
+
+//open the poppup for Mobile
 
 function openMoveToPoppupMobileHTML() {
     return /*html*/ `
@@ -391,9 +489,15 @@ function openMoveToPoppupMobileHTML() {
     </div>`;
 }
 
+
+//to stop the onclick
+
 function save(event) {
     event.stopPropagation();
 }
+
+
+// filters board after performing a change in status on mobile devices
 
 function closeMoveToPoppupMobile() {
     filterTasks();
@@ -403,18 +507,29 @@ function closeMoveToPoppupMobile() {
     }, 1000);
 }
 
+
+//add the backgroundarea from task
+
 function highlight(id) {
     document.getElementById(id).classList.add('dragAreaHighlight');
 }
 
 
+//remove the backgroundarea from task
+
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
 }
 
+
+//allow Drop funktion for the task
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
+
+//drop funktion to filter the task 
 
 async function drop(categorys) {
     let droppedTask = users[activeUser]['tasks'].filter(x => x.id == currentDraggedElement)
@@ -426,10 +541,15 @@ async function drop(categorys) {
     touchStartActive = false;
 }
 
+
+// create an variable for id
+
 function drag(id) {
     currentDraggedElement = id;
 }
 
+
+//reset the fields by create an task  
 
 function inputfieldValue() {
     document.getElementById('title').value = '';
@@ -444,7 +564,12 @@ function inputfieldValue() {
     allLiCategory = [];
 }
 
+
+
 /** Area for openCheckTask */
+
+
+//filter the onclick task for open the task 
 
 function openCheckTask(Index) {
     console.log(touchStartActive)
@@ -456,6 +581,8 @@ function openCheckTask(Index) {
     touchStartActive = false;
 }
 
+
+//open the task
 
 async function openCheckTasks(taskIndex) {
     document.getElementById('closeContainer2').classList.remove('d-none');
@@ -476,6 +603,9 @@ async function openCheckTasks(taskIndex) {
 
 }
 
+
+//create the date for open the task
+
 function toAskDeleteTask(taskIndex) {
     document.getElementById('bigDivDeleteTask').classList.remove('d-none');
     let deleteTasks = document.getElementById('bigDivDeleteTask');
@@ -491,9 +621,15 @@ function toAskDeleteTask(taskIndex) {
     `;
 }
 
+
+// open the container for text delete task
+
 function NonDeleteTask() {
     document.getElementById('bigDivDeleteTask').classList.add('d-none');
 }
+
+
+//delete task
 
 async function deleteTask(taskIndex) {
     allTasks.splice(taskIndex, 1);
@@ -509,6 +645,8 @@ async function deleteTask(taskIndex) {
 }
 
 
+// show the date in the task
+
 function dateOpenCheckTask(taskIndex) {
     let task = users[activeUser]['tasks'][taskIndex];
     let taskDate = new Date(task.dueDates);
@@ -520,6 +658,9 @@ function dateOpenCheckTask(taskIndex) {
 
     return formattedDate;
 }
+
+
+//shows the first letter of the name in the task
 
 function openCheckTaskNames(taskIndex) {
     let names = users[activeUser]['tasks'][taskIndex];
@@ -538,6 +679,9 @@ function openCheckTaskNames(taskIndex) {
 
 }
 
+
+// show the full name in the task
+
 function openCheckTaskFullNames(taskIndex) {
     let fullNames = users[activeUser]['tasks'][taskIndex];
     let fullNameParts = (fullNames.assignedTo);
@@ -552,6 +696,9 @@ function openCheckTaskFullNames(taskIndex) {
     }
     return fullNameInitialsContainer;
 }
+
+
+//shows the subtasks in the task
 
 function openCheckTaskSubtasks(taskIndex) {
     const { subtask, subtaskChecked = [] } = users[activeUser]['tasks'][taskIndex];
@@ -575,7 +722,7 @@ function openCheckTaskSubtasks(taskIndex) {
 }
 
 
-
+// calculates the progress of the subtasks
 
 async function putTheProgressBar(taskIndex) {
     setTimeout(function() {
@@ -598,6 +745,8 @@ async function putTheProgressBar(taskIndex) {
 
 }
 
+// ticks the already selected subtasks
+
 function openCheckTaskTakeInputValue() {
 
     document.querySelectorAll('.openCheckboxSubtasks').forEach(checkbox => {
@@ -618,6 +767,8 @@ function openCheckTaskTakeInputValue() {
 
 }
 
+// open the task for to edit 
+
 function openTaskToEdit(taskIndex) {
     document.getElementById('checkTaskSmall').classList.add('d-none');
     document.getElementById('toEditTaskMainDiv').classList.remove('d-none');
@@ -635,12 +786,17 @@ function openTaskToEdit(taskIndex) {
 }
 
 
+// show the date to edit
+
 function openTaskToEditDate(taskIndex) {
     let task = users[activeUser]['tasks'][taskIndex];
     let taskDate = new Date(task.dueDates);
     let formattedDate = taskDate.toISOString().substring(0, 10);
     return formattedDate;
 }
+
+
+// show the contacts to edit in the list
 
 function openTaskToEditContacts() {
     let initialsContainer = '';
@@ -663,6 +819,9 @@ function openTaskToEditContacts() {
     return initialsContainer;
 }
 
+
+// show the prio buttons to edit  
+
 function openTaskToEditPrioImage(taskIndex) {
     let task = users[activeUser]['tasks'][taskIndex];
 
@@ -679,12 +838,18 @@ function openTaskToEditPrioImage(taskIndex) {
 
 }
 
+
+// close the container for task to edit
+
 function closeTaskToEdit() {
     document.getElementById('checkTaskSmall').classList.remove('d-none');
     document.getElementById('toEditTaskMainDiv').classList.add('d-none');
     assignedChackedBox = [];
     colorArray = [];
 }
+
+
+// open the list for edit the contacts
 
 function openContactsToEdit() {
     let allContacts = document.getElementById('assignedToListToEdit');
@@ -699,6 +864,8 @@ function openContactsToEdit() {
 
 }
 
+
+// edit the contacts and push in the array
 
 function selectContactedToEdit(id) {
     let contact = users[activeUser]['contacts'].find(contact => contact.contactName === id);
@@ -717,6 +884,8 @@ function selectContactedToEdit(id) {
 
 }
 
+
+// show the contacts under the list
 
 function showContactsInToEdit(taskIndex) {
     const toEdit = document.getElementById('assignedToListToEdit');
@@ -738,6 +907,8 @@ function showContactsInToEdit(taskIndex) {
 }
 
 
+// show the selected contacts in the list
+
 function showContactsInToEditPushInAssigned() {
     const checkboxess = document.querySelectorAll('input.inputCheckbox:checked');
     for (let i = 0; i < checkboxess.length; i++) {
@@ -756,6 +927,9 @@ function showContactsInToEditPushInAssigned() {
         });
     }
 }
+
+
+// save the date what is to edit
 
 async function saveTask(taskIndex) {
     const updatedTitle = document.getElementById("editTaskTitle").value;
@@ -784,6 +958,9 @@ async function saveTask(taskIndex) {
     openCheckTasks(taskIndex);
 }
 
+
+// save the prio date
+
 function updateTaskPriority(task, colorArray) {
     if (Object.keys(colorArray).length > 0) {
         Object.assign(task.prio, {
@@ -798,12 +975,18 @@ function updateTaskPriority(task, colorArray) {
 
 /** Area for search to Task */
 
+
+// main funktion to filter the task in the find function 
+
 function searchToTask() {
     searchFilterTodo()
     searchFilterProgress()
     searchFilterFeedback()
     searchFilterDone()
 }
+
+
+// filter the task what is in todo list
 
 function searchFilterTodo() {
     let search = document.getElementById('search').value;
@@ -828,6 +1011,9 @@ function searchFilterTodo() {
     }
 
 }
+
+
+// filter the task what is in progress list
 
 function searchFilterProgress() {
     let search = document.getElementById('search').value;
@@ -854,6 +1040,8 @@ function searchFilterProgress() {
 }
 
 
+// filter the task what is in feedback list
+
 function searchFilterFeedback() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
@@ -877,6 +1065,9 @@ function searchFilterFeedback() {
     }
 
 }
+
+
+// filter the task what is in done list
 
 function searchFilterDone() {
     let search = document.getElementById('search').value;

@@ -313,6 +313,7 @@ function getRandomColor() {
 
 function showLogOutButton() {
     document.getElementById('logOutButton').classList.remove('d-none');
+    document.getElementById('bigLogOutButton').classList.remove('d-none');
     document.getElementById('logOutBackground').classList.remove('d-none');
     document.getElementById('userButton').style.removeProperty('cursor: pointer');
 }
@@ -320,6 +321,7 @@ function showLogOutButton() {
 function hideLogOutButton() {
     document.getElementById('logOutButton').classList.add('d-none');
     document.getElementById('logOutBackground').classList.add('d-none');
+    document.getElementById('bigLogOutButton').classList.add('d-none');
 }
 
 

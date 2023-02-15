@@ -1,9 +1,9 @@
 let colorArray = [];
 
 
-//select the color and image of priority at create an task
+// container for select the color and image of priority at create an task
 
-function changeColor(color) {
+function containerForChangeColor() {
     const redElement = document.getElementById('red');
     const yellowElement = document.getElementById('yellow');
     const greenElement = document.getElementById('green');
@@ -15,6 +15,15 @@ function changeColor(color) {
     document.getElementById('redImg').src = '/asseds/img/pfeil-oben-rot.png';
     document.getElementById('yellowImg').src = '/asseds/img/medium-gelb.png';
     document.getElementById('greenImg').src = '/asseds/img/pfeil-unten-grün.png';
+
+    return { redElement, yellowElement, greenElement };
+}
+
+
+// select the color and image of priority at create an task
+
+function changeColor(color) {
+    const { redElement, yellowElement, greenElement } = containerForChangeColor();
 
     let text;
     let coloredImage;
@@ -43,9 +52,9 @@ function changeColor(color) {
 }
 
 
-//select the color and image of priority at to edit an task
+// container for select the color and image of priority at to edit an task
 
-function toEditChangeColor(color) {
+function containerToEditChangeColor() {
     const redElement = document.getElementById('toEditRed');
     const yellowElement = document.getElementById('toEditYellow');
     const greenElement = document.getElementById('toEditGreen');
@@ -57,6 +66,15 @@ function toEditChangeColor(color) {
     document.getElementById('toEditRedImg').src = '/asseds/img/pfeil-oben-rot.png';
     document.getElementById('toEditYellowImg').src = '/asseds/img/medium-gelb.png';
     document.getElementById('toEditGreenImg').src = '/asseds/img/pfeil-unten-grün.png';
+
+    return { redElement, yellowElement, greenElement };
+}
+
+
+// select the color and image of priority at to edit an task
+
+function toEditChangeColor(color) {
+    const { redElement, yellowElement, greenElement } = containerToEditChangeColor();
 
     let text;
     let coloredImage;
@@ -89,7 +107,7 @@ function toEditChangeColor(color) {
 }
 
 
-//clears the color-button and arrays
+// clears the color-button and arrays
 
 function resetSettingsChangeColor() {
     document.getElementById('red').classList.remove('red');
@@ -101,12 +119,10 @@ function resetSettingsChangeColor() {
 }
 
 
-
-
 /** Area for Category */
 
 
-//open the category list
+// open the category list
 
 function openCategory() {
     if (newCategorySelected) {
@@ -125,7 +141,7 @@ function openCategory() {
 }
 
 
-//choose a category
+// choose a category
 
 function selectCategory(id) {
     const selectedElement = document.getElementById(`category-${id}`);
@@ -144,7 +160,7 @@ function selectCategory(id) {
 }
 
 
-//uses the original format
+// uses the original format
 
 function resetCategoryListAtCoinst() {
     document.getElementById('selectTaskCategory').classList.add('d-none');
@@ -156,7 +172,7 @@ function resetCategoryListAtCoinst() {
 }
 
 
-//uses the original format
+// uses the original format
 
 function resetCategoryList() {
     document.getElementById('selectTaskCategory').classList.remove('d-none');
@@ -168,7 +184,7 @@ function resetCategoryList() {
 }
 
 
-//open the craate inputfield 
+// open the craate inputfield 
 
 function selectNewCategory() {
 
@@ -186,7 +202,7 @@ function selectNewCategory() {
     newCategorySelected = true;
 }
 
-//reset the category field
+// reset the category field
 
 function resetSettingsCategory() {
     let selectTaskCategory = document.getElementById("selectTaskCategory");
@@ -196,7 +212,7 @@ function resetSettingsCategory() {
 }
 
 
-//close the inputlied
+// close the inputlied
 
 function selectNewCatagoryCancel() {
     document.getElementById('selectNewCategoryImg').classList.add('d-none');
@@ -210,7 +226,7 @@ function selectNewCatagoryCancel() {
 }
 
 
-//create a neu category
+// create a neu category
 
 async function createNewCategory() {
     const newCategory = document.getElementById('selectNewCategory').value;
@@ -265,7 +281,7 @@ function showSuccess(message) {
 }
 
 
-//show a massege
+// show a massege
 
 function showMessage(message, type) {
     const container = document.getElementById('taskDiv1');
@@ -280,7 +296,7 @@ function showMessage(message, type) {
 }
 
 
-//reset the colorpiker
+// reset the colorpiker
 
 function resetCategoryColors() {
     const colors = ['pink', 'orange', 'green', 'turquoise', 'yellow', 'blue'];
@@ -290,7 +306,7 @@ function resetCategoryColors() {
 }
 
 
-
+// create a new category
 
 function createnewCategoryAll() {
     newCategorys = document.getElementById('createNewTategory');
@@ -312,6 +328,9 @@ function createnewCategoryAll() {
     }
 }
 
+
+// select the color for category
+
 function newCategorySelectColor(id) {
     currentCategoryColor = id;
     let colorPickers = document.getElementsByClassName('colorPicker')
@@ -324,6 +343,9 @@ function newCategorySelectColor(id) {
 
 }
 
+
+// delete the category
+
 async function deleteCategory(i) {
     allCategorys.splice(i, 1)
     users[activeUser]['categorys'].splice(i, 1);
@@ -334,10 +356,9 @@ async function deleteCategory(i) {
 }
 
 
-
 /** Area for Assigned To */
 
-//open the list of contacts
+// open the list of contacts
 function openContacts() {
     let allContacts = document.getElementById('assignedToList');
 
@@ -351,7 +372,7 @@ function openContacts() {
     }
 }
 
-//push and delete the name and color in Array 
+// push and delete the name and color in Array 
 function selectContacted(id) {
     let chackedBox = document.getElementById(id);
 
@@ -378,7 +399,7 @@ function selectContacted(id) {
 }
 
 
-//displays the selected name and color
+// displays the selected name and color
 function addContacts() {
     let assignedAddContact = document.getElementById('assignedAddContact');
 
@@ -403,21 +424,21 @@ function addContacts() {
 
 }
 
-//clears the input field and arrays
+// clears the input field and arrays
 function resetCheckboxes() {
     assignedChackedBox = [];
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => checkbox.checked = false);
 }
 
-//abbreviates the name to letters
+// abbreviates the name to letters
 function getFirstLetters(str) {
     const words = str.split(' ');
     const firstLetters = words.map(word => word[0]);
     return firstLetters.join('');
 }
 
-//show all contacts
+// show all contacts
 function openAllContacts() {
     let assignedToList = document.getElementById('assignedToList');
     assignedToList.innerHTML = '';
@@ -447,7 +468,7 @@ function openSubtask() {
 
 }
 
-//closes the bar
+// closes the bar
 function subtasksCancel() {
     document.getElementById('subtasksAddImg').classList.remove('d-none');
     document.getElementById('subtsasksCancelImg').classList.add('d-none');
@@ -456,7 +477,7 @@ function subtasksCancel() {
     document.getElementById('openSubtasks').value = '';
 }
 
-//push the value in Array
+// push the value in Array
 function addSubtasks() {
     let openSubtasks = document.getElementById('openSubtasks').value;
 
@@ -470,7 +491,7 @@ function addSubtasks() {
     subtasksCancel()
 }
 
-//create an task
+// create an subtask
 function Subtasks() {
     let allAddSubtasks = document.getElementById('allAddSubtask');
     allAddSubtasks.innerHTML = '';
@@ -490,7 +511,7 @@ function Subtasks() {
     addCheckboxListeners();
 }
 
-//adds and deletes a task in the array
+// adds and deletes a subtask in the array
 function addCheckboxListeners() {
     document.querySelectorAll('.checkboxSubtasks').forEach(checkbox => {
         checkbox.addEventListener('change', function() {
