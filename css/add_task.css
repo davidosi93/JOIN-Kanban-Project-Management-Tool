@@ -2,6 +2,7 @@ body {
     margin: 0;
 }
 
+
 .rightContent {
     height: 100vh;
     width: 100vw;
@@ -22,6 +23,7 @@ body {
     font-size: 16px;
     padding: 5px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .logoMobile {
@@ -32,12 +34,12 @@ body {
 
 }
 
-.d-none {
-    display: none;
+.display-none{
+    display: none !important;
 }
 
-.display-none {
-    display: none !important;
+.d-none {
+    display: none ;
 }
 
 .logOutBackground {
@@ -848,198 +850,130 @@ select {
     text-align: center;
 }
 
-.mobileText {
-    display: none;
+.buttonSectionBackground {
+    background-color: #091931;
 }
 
-@media screen and (max-width: 900px) {
-    .header {
+@media (max-width: 900px) {
+    .header{
         display: none !important;
     }
 
-    .headerContent p {
-        display: none;
-    }
-
-
-
-    .information {
-        display: none;
-    }
-
-
-
-    .headline {
-        flex-direction: column;
-    }
-
-    .mainContents {
-        margin-top: 0;
-    }
-
-    .flexContainer {
-        flex-direction: column;
+    .flexContainer{
+        display: block;
+        margin-left: 5%;
+        margin-right: 5%;
         padding-left: 0;
-        margin-left: 20%;
     }
 
-    .btn {
+    #btn{
         display: none;
     }
 
-    .middleLine {
+    .rightContent{
+        height: unset;
+    }
+
+    .titlesInputfild{
+        width: 80vw;
+    }
+
+    .leftContainer textarea{
+        width: 80vw;
+    }
+
+    .addTask_categoryDiv {
+        width: 80vw;
+    }
+
+    .assignedDiv{
+        width: 80vw;
+    }
+
+    .assignedDiv{
+        width: 80vw;
+    }
+
+    .rightContainer input{
+        width: 80vw;
+    }
+
+    .middleLine{
+      display: none;
+    }
+
+    .headerContent p{
         display: none;
     }
 
-    .logOutButton {
+    .personLogIn{
         display: none;
     }
 
-
-
-    .rightContent {
-        height: 1200px;
-    }
-
-    .personLogIn {
+    .information{
         display: none;
     }
 
-
-    .prioContainer {
-        padding: 15px;
-        font-size: 25px;
+    .logOutButton{
+        display: none;
     }
 
-    .rightContainer{
-        width: 100%;
+    .headline{
+        display: block;
     }
 
-    .leftContainer{
-        width: 100%;
+    .mainContent{
+        padding: 0;
+        margin-left: 5%;
     }
 
-    @media screen and (max-width: 700px) {
-
-        .flexContainer {
-            margin-left: 5%;
-        }
-
-        .titlesInputfild {
-            width: 90%;
-        }
-
-        .leftContainer textarea{
-            width: 90%;
-        }
-
-        .addTask_categoryDiv{
-            width: 90%;
-        }
-
-       
-
-        .assignedDiv{
-            width: 90%;
-        }
-
-
-        .rightContainer input{
-            width: 90%;
-        }
-
-        .prioContainer{
-            padding: 20px;
-            font-size: 30px;
-            margin-right: 12%;
-        }
-
-        #addTask_openSubtasks{
-            width: 90%;
-        }
-
+    .prioContainer{
+        width: 24vw;
     }
 
+    .relativeContainer{
+        margin-bottom: 100px;
+    }
+  }
 
-    @media screen and (max-width: 650px){
-        .prioContainer{
-            padding: 15px;
-            
-        }
+
+  @media (max-width: 500px){
+    .titlesInputfild{
+        width: 78vw;
     }
 
-    @media screen and (max-width: 600px){
-        .prioContainer{
-            padding: 10px;
-            
-        }
+    .leftContainer textarea{
+        width: 78vw;
     }
 
-    @media screen and (max-width: 530px){
-        .prioContainer{
-           margin-right: 5%;
-            
-        }
+    .addTask_categoryDiv {
+        width: 78vw;
     }
 
-    @media screen and (max-width: 470px){
-        .prioContainer{
-           font-size: 25px;
-            
-        }
+    .assignedDiv{
+        width: 78vw;
     }
 
-    @media screen and (max-width: 440px){
-        .prioContainer{
-           font-size: 20px;
-           margin-right: 1%;
-           padding: 5px;
-        }
-
-        .headline h1{
-            font-size: 40px;
-        }
+    .assignedDiv{
+        width: 78vw;
     }
 
-    @media screen and (max-width: 420px){
-        .prioContainer{
-           font-size: 16px;
-           margin-right: 5%;
-           padding: 0px;
-           padding-top: 5px;
-           padding-bottom: 5px;
-        }
-        .flexContainer {
-            margin-left: 5%;
-        }
+    .rightContainer input{
+        width: 78vw;
+    }
 
-        .titlesInputfild {
-            width: 85%;
-        }
+    .prioContainer{
+        width: 22vw;
+    }
+  }
 
-        .leftContainer textarea{
-            width: 85%;
-        }
+  @media (max-width: 400px){
+    .prioContainer{
+        font-size: 18px;
+        margin-right: 10px;
+    }
 
-        .addTask_categoryDiv{
-            width: 80%;
-        }
-
-       
-
-        .assignedDiv{
-            width: 80%;
-        }
-
-
-        .rightContainer input{
-            width: 85%;
-        }
-
-       
-
-        #addTask_openSubtasks{
-            width: 85%;
-        }
-        
-    }}
+    .addTask_selectTaskCategory{
+        font-size: 18px;
+    }
+  }

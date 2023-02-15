@@ -31,7 +31,7 @@ async function initSummary() {
     filterAllTasks();
     watchTask();
     loadActiveUsers();
-    
+    navBarHighlight(1);
 }
 
 function loadActiveUsers() {
@@ -52,8 +52,9 @@ function loadActiveUsers() {
             </div>
         `;
 
-greet();
+    greet();
 }
+
 function watchTask() {
     let watchUrgent = document.getElementById('task-urgent');
     let watchBoard = document.getElementById('task-board');
@@ -61,27 +62,58 @@ function watchTask() {
     let watchDone = document.getElementById('task-done');
     let watchProgress = document.getElementById('task-progress');
     let watchFeedback = document.getElementById('task-feedback');
-    clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
-    watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback);
+    let watchDate = document.getElementById('task-date');
+
+    clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback, watchDate);
+    watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback, watchDate);
 
 }
 
-function clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
+function clearDivs(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback, watchDate) {
     watchUrgent.innerHTML = '';
     watchTodo.innerHTML = '';
     watchDone.innerHTML = '';
     watchBoard.innerHTML = '';
     watchProgress.innerHTML = '';
     watchFeedback.innerHTML = '';
+    watchDate.innerHTML = '';
 }
 
-function watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback) {
-    watchUrgent.innerHTML += `<b>${users[activeUser]['tasks'].length}</b>`;
+
+function watchtasksLength(watchUrgent, watchBoard, watchTodo, watchDone, watchProgress, watchFeedback, watchDate) {
+    let countUrgent = showUrgent()
+    let earliestDueDate = deudate()
+
+    watchUrgent.innerHTML += `<b>${countUrgent}</b>`;
     watchBoard.innerHTML += `<b>${users[activeUser]['tasks'].length}</b>`;
     watchProgress.innerHTML += `<b>${progress.length}</b>`;
     watchFeedback.innerHTML += `<b>${feedback.length}</b>`;
     watchTodo.innerHTML += `<b>${todo.length}</b>`;
     watchDone.innerHTML += `<b>${done.length}</b>`;
+    watchDate.innerHTML += `<b>${earliestDueDate.toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric' })}</b>`;
+}
+
+function deudate() {
+    let earliestDueDate = new Date(users[activeUser]['tasks'][0].dueDates);
+    for (let i = 1; i < users[activeUser]['tasks'].length; i++) {
+        let currentDueDate = new Date(users[activeUser]['tasks'][i].dueDates);
+        if (currentDueDate < earliestDueDate) {
+            earliestDueDate = currentDueDate;
+        }
+    }
+
+    return earliestDueDate;
+}
+
+function showUrgent() {
+    let countUrgent = 0;
+    for (let i = 0; i < users[activeUser]['tasks'].length; i++) {
+        if (users[activeUser]['tasks'][i].prio.text === 'Urgent') {
+            countUrgent++;
+        }
+    }
+
+    return countUrgent;
 }
 
 
@@ -92,10 +124,10 @@ function greet() {
     let curHr = today.getHours()
 
     if (curHr < 12) {
-        greet.innerHTML =`good morning<br><p>${users[activeUser]['name']}</p>`;
+        greet.innerHTML = `good morning<br><p>${users[activeUser]['name']}</p>`;
     } else if (curHr < 18) {
-                greet.innerHTML =`good afternoon<br><p>${users[activeUser]['name']}</p>`;
+        greet.innerHTML = `good afternoon<br><p>${users[activeUser]['name']}</p>`;
     } else {
-                greet.innerHTML =`good evening<br><p>${users[activeUser]['name']}</p>`;
+        greet.innerHTML = `good evening<br><p>${users[activeUser]['name']}</p>`;
     }
 }

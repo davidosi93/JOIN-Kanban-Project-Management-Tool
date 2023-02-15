@@ -31,6 +31,7 @@ async function initLoadTasks() {
     filterTasks()
     createnewCategoryAll()
     loadActiveUser()
+    navBarHighlight(2)
 }
 
 function filterTasks() {
@@ -460,18 +461,18 @@ async function createTask() {
     // allTasks.push(task);
     users[activeUser]['tasks'].push(task);
 
+
     addTasking()
     inputfieldValue()
 
-    if (users[activeUser]['tasks'].push(task)) {
-        let successContainer = document.getElementById('taskDiv');
-        successContainer.classList.remove('d-none');
-        successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
-        successContainer.style.display = 'block';
-        setTimeout(function() {
-            successContainer.style.display = 'none';
-        }, 2000);
-    }
+    let successContainer = document.getElementById('taskDiv');
+    successContainer.classList.remove('d-none');
+    successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
+    successContainer.style.display = 'block';
+    setTimeout(function() {
+        successContainer.style.display = 'none';
+    }, 2000);
+
     closeContainer()
 
 }
@@ -787,7 +788,7 @@ async function addTasking() {
 
 function touchstart(id) {
 
-    timer = setTimeout(() => { onlongtouch(id); }, 200);
+    timer = setTimeout(() => onlongtouch(id), 200);
 }
 
 function touchend(id) {
@@ -979,7 +980,7 @@ async function createNewCategory() {
 
                 let successContainer = document.getElementById('taskDiv1');
                 successContainer.classList.remove('d-none');
-                successContainer.innerHTML = 'Neue Kategorie erfolgreich erstellt.';
+                successContainer.innerHTML = 'Eine neue Kategorie wurde erfolgreich erstellt.';
                 successContainer.style.display = 'block';
                 setTimeout(function() {
                     successContainer.style.display = 'none';
@@ -1247,6 +1248,7 @@ function openCheckTask(Index) {
         let openTocheckRightTask = users[activeUser]['tasks'].indexOf(openToCheck[0]);
         openCheckTasks(openTocheckRightTask);
     }
+    touchStartActive = false;
 }
 
 

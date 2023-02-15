@@ -15,12 +15,10 @@
     <script src="/js/task_form.js"></script>
     <script src="/js/desktop_template.js"></script>
     <script src="template.js"></script>
-    <script src="./template.js"></script>
     <script src="/js/contacts.js"></script>
 
 
     <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
-    <!-- <link rel="stylesheet" href="css/contacts.css"> -->
 
 
 </head>
@@ -30,7 +28,7 @@
 
     <div class="content">
         <div w3-include-html="/asseds/templates/desktop_template.html" class="rightTemplates"></div>
-        <!-- <div w3-include-html="/asseds/templates/mobileMenu.html"></div> -->
+        <div w3-include-html="/asseds/templates/mobileMenu.html" class="mobileMenuBig"></div>
         <div id="addTaskRight" w3-include-html="/asseds/templates/task_form.html" class="d-none"></div>
         <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
 
@@ -159,6 +157,25 @@
 
         </div>
         <div class="selectionMessage d-none" id="taskDiv"></div>
+
+        <div class="miniTemplate">
+            <a href="summary.html" class="buttonSection" id="boardNavBarSummary">
+                <img src="./asseds/img/mobileSummary.png">
+                <p>Summary</p>
+            </a>
+            <a href="board.html" class="buttonSection" id="boardNavBarBoard">
+                <img src="./asseds/img/mobileBoard.png">
+                <p>Board</p>
+            </a>
+            <a href="add_task.html" class="buttonSection" id="boardNavBarAddTask">
+                <img src="./asseds/img/mobileAddTask.png">
+                <p>Add Task</p>
+            </a>
+            <a href="contacts.html" class="buttonSection" id="boardNavBarContacts">
+                <img src="./asseds/img/mobileContacts.png">
+                <p>Contacts</p>
+            </a>
+        </div>
     </div>
 
 
