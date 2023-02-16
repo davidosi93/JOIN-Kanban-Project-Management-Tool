@@ -289,7 +289,7 @@ function showMessage(message, type) {
     container.innerHTML = message;
     container.style.display = 'block';
 
-    const timeout = 4000;
+    const timeout = 1000;
     setTimeout(function() {
         container.style.display = 'none';
     }, timeout);

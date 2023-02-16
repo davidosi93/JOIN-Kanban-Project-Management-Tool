@@ -266,7 +266,7 @@ function addInfoToTakeCategory(task) {
         errorContainer.style.display = 'block';
         setTimeout(function() {
             errorContainer.style.display = 'none';
-        }, 2000);
+        }, 1000);
         return;
     }
     return true;
@@ -283,7 +283,7 @@ function addInfoToTakeAssignedTo(task) {
         errorContainer.style.display = 'block';
         setTimeout(function() {
             errorContainer.style.display = 'none';
-        }, 2000);
+        }, 1000);
         return;
     }
 
@@ -301,7 +301,7 @@ function addInfoToTakePrio(task) {
         errorContainer.style.display = 'block';
         setTimeout(function() {
             errorContainer.style.display = 'none';
-        }, 2000);
+        }, 1000);
         return;
     }
     return true;
@@ -317,7 +317,7 @@ function addInfoToTakeAnTask() {
     successContainer.style.display = 'block';
     setTimeout(function() {
         successContainer.style.display = 'none';
-    }, 2000);
+    }, 1000);
 
 }
 
@@ -451,7 +451,7 @@ function touchend(id) {
         clearTimeout(timer);
         openCheckTask(id);
     }
-    setTimeout(() => timeIsup = false, 300)
+    setTimeout(() => timeIsup = false, 250)
 }
 
 
@@ -481,7 +481,7 @@ function openMoveToPoppupMobileHTML() {
     <div id="popupToMoveTaskMobile" class="popupToMoveTaskMobile" ontouchstart="save(event); closeMoveToPoppupMobile()">
         <div class="popupToMoveTaskMobileSelections">
             <div>Move to</div>
-            <span ontouchstart="save(event); drop('todo')">To do</span>
+            <span ontouchstart="save(event); drop('todo'); save(event) ">To do</span>
             <span ontouchstart="save(event); drop('progress')">In Progress</span>
             <span ontouchstart="save(event); drop('feedback')">Feedback</span>
             <span ontouchstart="save(event); drop('done')">Done</span>
@@ -494,6 +494,7 @@ function openMoveToPoppupMobileHTML() {
 
 function save(event) {
     event.stopPropagation();
+
 }
 
 
@@ -502,9 +503,9 @@ function save(event) {
 function closeMoveToPoppupMobile() {
     filterTasks();
 
-    setTimeout(function() {
-        touchStartActive = false;
-    }, 1000);
+    // setTimeout(function() {
+    //     touchStartActive = false;
+    // }, 1000);
 }
 
 
@@ -540,7 +541,6 @@ async function drop(categorys) {
     await backend.setItem('users', JSON.stringify(users));
     touchStartActive = false;
 }
-
 
 // create an variable for id
 
