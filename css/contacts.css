@@ -221,13 +221,13 @@ body {
 
 .contactName p {
     font-weight: 400;
-    font-size: 21px;
+    font-size: 1.5vw;
 }
 
 .email {
     margin: 0;
-    font-size: 16px !important;
-    font-weight: 400 !important;
+    font-size: 1.2vw;
+    font-weight: 400;
     color: #007CEE;
 }
 
@@ -1052,6 +1052,15 @@ body {
         margin-top: 5px;
         margin-bottom: 5px;
     }
+
+    .phoneMailBox {
+        bottom: unset;
+        gap: unset;
+    }
+
+    .contactName p {
+        font-size: 21px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -1102,5 +1111,13 @@ body {
 
     .showContactHeaderH1 {
         font-size: 9vw;
+    }
+
+    .contactName p {
+        font-size: 16px;
+    }
+
+    .email {
+        font-size: 16px !important;
     }
 }
