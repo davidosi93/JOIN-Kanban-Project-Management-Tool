@@ -234,7 +234,7 @@ function addTaskRight() {
 async function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
     selectedSubtasksProgress = [];
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -368,7 +368,7 @@ async function createTask() {
     }
 
 
-    allTasks.push(task);
+    // allTasks.push(task);
     users[activeUser]['tasks'].push(task);
     addTasking();
     inputfieldValue();
@@ -431,7 +431,7 @@ async function addTasking() {
     addTasksToContainer(containerFeedback, feedbacks);
     addTasksToContainer(containerDone, dones);
 
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -738,8 +738,9 @@ async function putTheProgressBar(taskIndex) {
         selectedSubtasksForProgress = [];
 
     }, 200)
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+
     await backend.setItem('users', JSON.stringify(users));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     filterTasks()
     addTasking();
 
@@ -951,8 +952,9 @@ async function saveTask(taskIndex) {
     addTasking();
 
     await Promise.all([
-        backend.setItem('allTasks', JSON.stringify(allTasks)),
         backend.setItem('users', JSON.stringify(users))
+        // backend.setItem('allTasks', JSON.stringify(allTasks)),
+
     ]);
 
     openCheckTasks(taskIndex);

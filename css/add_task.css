@@ -2,7 +2,6 @@ body {
     margin: 0;
 }
 
-
 .rightContent {
     height: 100vh;
     width: 100vw;
@@ -31,15 +30,14 @@ body {
     height: 30px;
     padding-left: 20px;
     padding-top: 20px;
-
 }
 
-.display-none{
+.display-none {
     display: none !important;
 }
 
 .d-none {
-    display: none ;
+    display: none !important;
 }
 
 .logOutBackground {
@@ -854,186 +852,150 @@ select {
     background-color: #091931;
 }
 
-@media (max-width: 1250px){
-    .mainContents{
+@media (max-width: 1250px) {
+    .mainContents {
         margin-top: 20px;
     }
-
-    .btn{
+    .btn {
         right: 100px !important;
     }
-    .flexContainer{
-        padding-left: 50px ;
+    .flexContainer {
+        padding-left: 50px;
     }
-
-    .mainContent{
+    .mainContent {
         padding-left: 50px;
     }
 }
 
-@media (max-width: 1100px){
-
-    
-    .btn{
+@media (max-width: 1100px) {
+    .btn {
         right: 50px !important;
     }
-    .titlesInputfild{
+    .titlesInputfild {
         width: 28vw;
     }
-
-    .leftContainer textarea{
+    .leftContainer textarea {
         width: 29vw;
     }
-
     .addTask_categoryDiv {
         width: 28vw;
     }
-
-    .assignedDiv{
+    .assignedDiv {
         width: 28vw;
     }
-
-    .assignedDiv{
+    .assignedDiv {
         width: 28vw;
     }
-
-    .rightContainer input{
+    .rightContainer input {
         width: 28vw;
     }
-
-    .prioContainer{
+    .prioContainer {
         width: 8vw;
         font-size: 16px;
         padding: 5px;
     }
 }
 
-@media (max-width: 1000px){
-    .addTask_selectTaskCategory{
+@media (max-width: 1000px) {
+    .addTask_selectTaskCategory {
         font-size: 18px;
     }
 }
 
 @media (max-width: 900px) {
-    .header{
+    .header {
         display: none !important;
     }
-
-    .flexContainer{
+    .flexContainer {
         display: block;
         margin-left: 5%;
         margin-right: 5%;
         padding-left: 0;
     }
-
-    #btn{
+    #btn {
         display: none;
     }
-
-    .rightContent{
+    .rightContent {
         height: unset;
     }
-
-    .titlesInputfild{
+    .titlesInputfild {
         width: 80vw;
     }
-
-    .leftContainer textarea{
+    .leftContainer textarea {
         width: 80vw;
     }
-
     .addTask_categoryDiv {
         width: 80vw;
     }
-
-    .assignedDiv{
+    .assignedDiv {
         width: 80vw;
     }
-
-    .assignedDiv{
+    .assignedDiv {
         width: 80vw;
     }
-
-    .rightContainer input{
+    .rightContainer input {
         width: 80vw;
     }
-
-    .middleLine{
-      display: none;
-    }
-
-    .headerContent p{
+    .middleLine {
         display: none;
     }
-
-    .personLogIn{
+    .headerContent p {
         display: none;
     }
-
-    .information{
+    .personLogIn {
         display: none;
     }
-
-    .logOutButton{
+    .information {
         display: none;
     }
-
-    .headline{
+    .logOutButton {
+        display: none;
+    }
+    .headline {
         display: block;
     }
-
-    .mainContent{
+    .mainContent {
         padding: 0;
         margin-left: 5%;
     }
-
-    .prioContainer{
+    .prioContainer {
         width: 24vw;
     }
-
-    .relativeContainer{
+    .relativeContainer {
         margin-bottom: 100px;
     }
-  }
+}
 
-
-  @media (max-width: 500px){
-    .titlesInputfild{
+@media (max-width: 500px) {
+    .titlesInputfild {
         width: 78vw;
     }
-
-    .leftContainer textarea{
+    .leftContainer textarea {
         width: 78vw;
     }
-
     .addTask_categoryDiv {
         width: 78vw;
     }
-
-    .assignedDiv{
+    .assignedDiv {
         width: 78vw;
     }
-
-    .assignedDiv{
+    .assignedDiv {
         width: 78vw;
     }
-
-    .rightContainer input{
+    .rightContainer input {
         width: 78vw;
     }
-
-    .prioContainer{
+    .prioContainer {
         width: 22vw;
     }
-  }
+}
 
-  @media (max-width: 400px){
-    .prioContainer{
+@media (max-width: 400px) {
+    .prioContainer {
         font-size: 18px;
         margin-right: 10px;
     }
-
-    .addTask_selectTaskCategory{
+    .addTask_selectTaskCategory {
         font-size: 18px;
     }
-  }
+}
