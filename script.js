@@ -41,8 +41,8 @@ function navBarHighlight(item) {
 
 async function getAllTasks() {
     await downloadFromServer()
-    // allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    // allCategorys = JSON.parse(backend.getItem('allCategorys')) || [];
+    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    allCategorys = JSON.parse(backend.getItem('allCategorys')) || [];
     users = JSON.parse(backend.getItem('users')) || [];
     activeUser = backend.getItem('activeUser') || 0;
 }

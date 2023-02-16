@@ -226,7 +226,7 @@
     
     .mainContainerTaskForm {
         background-color: #FFFFFF;
-        width: 80vw;
+        width: 83vw;
         height: 90vh;
         border-radius: 30px;
         position: relative;
@@ -866,6 +866,7 @@
             height: 189px;
             width: 51%;
             padding: 10px;
+            z-index: 10;
         }
         .popupToMoveTaskMobileSelections div {
             width: 100%;
