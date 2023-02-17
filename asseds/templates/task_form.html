@@ -10,7 +10,7 @@
         </div>
 
 
-        <div class="middleLine"></div>
+
 
         <form class="containerForm" onsubmit="onSubmit(event);">
             <div class="leftContainer">
@@ -22,7 +22,7 @@
                 <textarea class="leftContainerTextarea" id="description" required placeholder="Enter a Description"></textarea>
 
                 <p class="titleInputFields">Category</p>
-                <div id="borderButton" class="categoryDiv" onclick="openCategory();">
+                <div id="borderButton" class="categoryDiv" onclick="openCategory(); createnewCategoryAll()">
                     <p id="selectTaskCategory" class="selectTaskCategory">Select Task Category</p>
                     <img id="selectTaskCategoryImg" src="/asseds/img/Vector 2.png">
                     <input id="selectNewCategory" class="inputfieldNewCategory d-none" placeholder="New Catetogory Name">
@@ -54,7 +54,7 @@
 
 
                 <p class="titleInputFields">Assigned to</p>
-                <div id="openContact" onclick="openContacts()" class="assignedDiv">
+                <div id="openContact" onclick="openContacts(); openAllContacts()" class="assignedDiv">
                     <p id="assignedContactsSelect">Select contacts to assigt</p>
                     <img id="assignedContactImg" src="/asseds/img/Vector 2.png">
                 </div>

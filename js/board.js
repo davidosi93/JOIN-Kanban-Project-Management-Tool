@@ -26,12 +26,11 @@ let touchStartActive = false;
 async function initLoadTasks() {
     includeHTML();
     await getAllTasks();
-    filterAllTasks();
-    openAllContacts();
-    filterTasks()
-    createnewCategoryAll()
     loadActiveUser()
+    filterAllTasks();
+    filterTasks()
     navBarHighlight(2)
+
 }
 
 
@@ -108,20 +107,25 @@ function createTaskAssignedTo(element) {
         if (j < 3) {
             let name = nameParts[j]['name'].split(' ');
             let color = nameParts[j]['color'];
+            let initials = name[0][0].toUpperCase();
+            if (name.length > 1) {
+                initials += name[1][0].toUpperCase();
+            }
             initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+          <div class="assignTask">
+            <div class="divAssignTask" style="background-color: ${color}">${initials}</div>
+          </div>
+        `;
         } else {
             initialsContainer += /*html*/ `
-                <div class="nameContainer">+${nameParts.length - 3}</div>`;
+          <div class="nameContainer">+${nameParts.length - 3}</div>`;
             break;
         }
     }
 
     return initialsContainer;
 }
+
 
 
 // show the progressbar in the task of subtasks
@@ -664,19 +668,22 @@ function dateOpenCheckTask(taskIndex) {
 
 function openCheckTaskNames(taskIndex) {
     let names = users[activeUser]['tasks'][taskIndex];
-    let nameParts = (names.assignedTo);
+    let nameParts = names.assignedTo;
     let initialsContainer = '';
     for (let j = 0; j < nameParts.length; j++) {
         let name = nameParts[j]['name'].split(' ');
         let color = nameParts[j]['color'];
+        let initials = name[0][0].toUpperCase();
+        if (name.length > 1) {
+            initials += name[1][0].toUpperCase();
+        }
         initialsContainer += /*html*/ `
         <div class="openCheckAssignTask">
-            <div class="openCheckDivAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+          <div class="openCheckDivAssignTask" style="background-color: ${color}">${initials}</div>
         </div>
       `;
     }
     return initialsContainer;
-
 }
 
 

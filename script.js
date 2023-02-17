@@ -21,7 +21,7 @@ function navBarHighlight(item) {
 
     }
     if (item == 2) {
-        document.getElementById('navBarBoard').classList.add('buttonSectionBackground');
+
         document.getElementById('board').classList.add('buttonSectionBackground');
         document.getElementById('boardNavBarBoard').classList.add('buttonSectionBackground');
     }

@@ -1319,6 +1319,9 @@ h3 {
         padding-right: 40px;
         height: 506px;
     }
+    .checkTasking {
+        top: 81px;
+    }
 }
 
 @media(max-width: 530px) {
