@@ -42,13 +42,18 @@ function loadActiveUsers() {
     const color = users[activeUser]['color'];
     activeUsers.innerHTML = /*html*/ `
             <p>Kanban Project Management Tool</p>
-
+            <img id="logoMobile" class="logoMobile d-none" src="asseds/img/biglogo.png">
             <div class="headerContentRight">
+            
                 <img onclick="help()" class="information" src="/asseds/img/information.png">
                 <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
                     ${name}
                 </div>
-                <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+                <div id="logOutButton" class="logOutButton d-none" >
+                <div id="helpp" class="d-none">Help</div>
+                <div id="legalNotice" class="d-none">Legal Notice</div>
+                <div onclick="logOut()">Log Out</div>
+                </div>
             </div>
         `;
 

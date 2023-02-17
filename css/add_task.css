@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    position: relative;
 }
 
 
@@ -90,6 +91,8 @@ body {
     font-size: 16px;
     cursor: pointer;
     z-index: 2;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .headerContentRight {
@@ -233,7 +236,7 @@ h2 {
 
 .headline h1 {
     padding-right: 30px;
-    font-size: 60px;
+    font-size: 50px;
     margin-bottom: 0;
     margin-top: 20px;
 }
@@ -336,14 +339,14 @@ h2 {
     box-shadow: 2px 3px lightgray;
 }
 
-.middleLine {
+/* .middleLine {
     position: absolute;
     width: 0px;
     height: 500px;
-    left: 845px;
+    left: 890px;
     top: 170px;
     border: 1px solid #D1D1D1;
-}
+} */
 
 .relativeContainer {
     position: relative;
@@ -917,6 +920,10 @@ select {
 @media (max-width: 900px) {
     .header{
         display: none !important;
+    }
+
+    .mobileText{
+        display: block !important;
     }
 
     .flexContainer{

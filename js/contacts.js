@@ -16,7 +16,7 @@ async function contactInit() {
 function loadLetters() {
     for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
         let name = users[activeUser]['contacts'][i]['contactName'];
-        let firstLetter = name.charAt(0);
+        let  Letter = name.charAt(0);
         if (!letters.includes(firstLetter)) {
             letters.push(firstLetter);
             letters.sort();

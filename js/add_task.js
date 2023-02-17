@@ -69,7 +69,7 @@ function controllMediaQuery() {
 //     categoryList.classList.add('display-none');
 //     categoryDiv.classList.add('display-none');
 //     category.classList.add('display-none');
-      
+
 // }
 
 
@@ -134,7 +134,7 @@ async function addTasks() {
     successContainer.classList.remove('d-none');
     successContainer.innerHTML = 'Task wurde erfolgreich erstellt.';
     successContainer.style.display = 'block';
-    setTimeout(function() {
+    setTimeout(function () {
         successContainer.style.display = 'none';
     }, 2000);
 
@@ -160,7 +160,13 @@ function loadActiveUsers() {
                     ${name}
                     
             </div>
-            <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+            <div id="logOutButton" class="logOutButton d-none" >
+                
+                <div onclick="logOut()">Log Out</div>
+
+
+
+                </div>
         </div>
     `;
 }
@@ -257,7 +263,7 @@ async function createNewCategory() {
                 successContainer.classList.remove('d-none');
                 successContainer.innerHTML = 'Eine neue Kategorie wurde erfolgreich erstellt.';
                 successContainer.style.display = 'block';
-                setTimeout(function() {
+                setTimeout(function () {
                     successContainer.style.display = 'none';
                 }, 4000);
             } else {
@@ -265,7 +271,7 @@ async function createNewCategory() {
                 errorContainer.classList.remove('d-none');
                 errorContainer.innerHTML = 'Eine Kategorie mit demselben Namen und derselben Farbe existiert bereits.';
                 errorContainer.style.display = 'block';
-                setTimeout(function() {
+                setTimeout(function () {
                     errorContainer.style.display = 'none';
                 }, 4000);
             }
@@ -274,7 +280,7 @@ async function createNewCategory() {
             errorContainer.classList.remove('d-none');
             errorContainer.innerHTML = 'Bitte wählen Sie eine Farbe für die neue Kategorie aus.';
             errorContainer.style.display = 'block';
-            setTimeout(function() {
+            setTimeout(function () {
                 errorContainer.style.display = 'none';
             }, 4000);
         }
@@ -283,7 +289,7 @@ async function createNewCategory() {
         errorContainer.classList.remove('d-none');
         errorContainer.innerHTML = 'Bitte wählen Sie eine Kategorie aus';
         errorContainer.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
             errorContainer.style.display = 'none';
         }, 4000);
     }
