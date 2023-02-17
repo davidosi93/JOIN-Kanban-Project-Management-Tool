@@ -26,12 +26,11 @@ let touchStartActive = false;
 async function initLoadTasks() {
     includeHTML();
     await getAllTasks();
-    filterAllTasks();
-    openAllContacts();
-    filterTasks()
-    createnewCategoryAll()
     loadActiveUser()
+    filterAllTasks();
+    filterTasks()
     navBarHighlight(2)
+
 }
 
 
@@ -108,20 +107,25 @@ function createTaskAssignedTo(element) {
         if (j < 3) {
             let name = nameParts[j]['name'].split(' ');
             let color = nameParts[j]['color'];
+            let initials = name[0][0].toUpperCase();
+            if (name.length > 1) {
+                initials += name[1][0].toUpperCase();
+            }
             initialsContainer += /*html*/ `
-                <div class="assignTask">
-                    <div class="divAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
-                </div>
-            `;
+          <div class="assignTask">
+            <div class="divAssignTask" style="background-color: ${color}">${initials}</div>
+          </div>
+        `;
         } else {
             initialsContainer += /*html*/ `
-                <div class="nameContainer">+${nameParts.length - 3}</div>`;
+          <div class="nameContainer">+${nameParts.length - 3}</div>`;
             break;
         }
     }
 
     return initialsContainer;
 }
+
 
 
 // show the progressbar in the task of subtasks
@@ -234,7 +238,7 @@ function addTaskRight() {
 async function closeContainer1() {
     document.getElementById('closeContainer2').classList.add('d-none');
     selectedSubtasksProgress = [];
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -368,7 +372,7 @@ async function createTask() {
     }
 
 
-    allTasks.push(task);
+    // allTasks.push(task);
     users[activeUser]['tasks'].push(task);
     addTasking();
     inputfieldValue();
@@ -431,7 +435,7 @@ async function addTasking() {
     addTasksToContainer(containerFeedback, feedbacks);
     addTasksToContainer(containerDone, dones);
 
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -539,7 +543,9 @@ async function drop(categorys) {
     addTasking();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
-    touchStartActive = false;
+    setTimeout(function() {
+        touchStartActive = false;
+    }, 1000);
 }
 
 // create an variable for id
@@ -578,7 +584,7 @@ function openCheckTask(Index) {
         let openTocheckRightTask = users[activeUser]['tasks'].indexOf(openToCheck[0]);
         openCheckTasks(openTocheckRightTask);
     }
-    touchStartActive = false;
+
 }
 
 
@@ -664,19 +670,22 @@ function dateOpenCheckTask(taskIndex) {
 
 function openCheckTaskNames(taskIndex) {
     let names = users[activeUser]['tasks'][taskIndex];
-    let nameParts = (names.assignedTo);
+    let nameParts = names.assignedTo;
     let initialsContainer = '';
     for (let j = 0; j < nameParts.length; j++) {
         let name = nameParts[j]['name'].split(' ');
         let color = nameParts[j]['color'];
+        let initials = name[0][0].toUpperCase();
+        if (name.length > 1) {
+            initials += name[1][0].toUpperCase();
+        }
         initialsContainer += /*html*/ `
         <div class="openCheckAssignTask">
-            <div class="openCheckDivAssignTask" style="background-color: ${color}">${name[0][0].toUpperCase()}${name[1][0].toUpperCase()}</div>
+          <div class="openCheckDivAssignTask" style="background-color: ${color}">${initials}</div>
         </div>
       `;
     }
     return initialsContainer;
-
 }
 
 
@@ -738,8 +747,9 @@ async function putTheProgressBar(taskIndex) {
         selectedSubtasksForProgress = [];
 
     }, 200)
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+
     await backend.setItem('users', JSON.stringify(users));
+    // await backend.setItem('allTasks', JSON.stringify(allTasks));
     filterTasks()
     addTasking();
 
@@ -951,8 +961,9 @@ async function saveTask(taskIndex) {
     addTasking();
 
     await Promise.all([
-        backend.setItem('allTasks', JSON.stringify(allTasks)),
         backend.setItem('users', JSON.stringify(users))
+        // backend.setItem('allTasks', JSON.stringify(allTasks)),
+
     ]);
 
     openCheckTasks(taskIndex);
