@@ -252,7 +252,7 @@ async function createNewCategory() {
         return;
     }
 
-    allCategorys.push(jsonColor);
+    // allCategorys.push(jsonColor);
     users[activeUser]['categorys'].push(jsonColor);
 
     currentCategoryColor = null;
@@ -289,7 +289,7 @@ function showMessage(message, type) {
     container.innerHTML = message;
     container.style.display = 'block';
 
-    const timeout = 4000;
+    const timeout = 1000;
     setTimeout(function() {
         container.style.display = 'none';
     }, timeout);
@@ -347,11 +347,11 @@ function newCategorySelectColor(id) {
 // delete the category
 
 async function deleteCategory(i) {
-    allCategorys.splice(i, 1)
+    // allCategorys.splice(i, 1)
     users[activeUser]['categorys'].splice(i, 1);
     await backend.deleteItem('users', users);
     createnewCategoryAll()
-    await backend.setItem('allCategorys', JSON.stringify(allCategorys));
+        // await backend.setItem('allCategorys', JSON.stringify(allCategorys));
     await backend.setItem('users', JSON.stringify(users));
 }
 

@@ -221,13 +221,13 @@ body {
 
 .contactName p {
     font-weight: 400;
-    font-size: 21px;
+    font-size: 19px;
 }
 
 .email {
     margin: 0;
-    font-size: 16px !important;
-    font-weight: 400 !important;
+    font-size: 1.2vw;
+    font-weight: 400;
     color: #007CEE;
 }
 
@@ -296,6 +296,7 @@ body {
     from {
         right: -1000px;
     }
+
     to {
         right: 0px;
     }
@@ -763,6 +764,7 @@ body {
     from {
         bottom: -3000px;
     }
+
     to {
         bottom: 40%;
         z-index: 2;
@@ -773,6 +775,7 @@ body {
     body {
         overflow: hidden;
     }
+
     .desktopMenu {
         display: none;
     }
@@ -787,18 +790,22 @@ body {
     .headerContentText {
         display: none;
     }
+
     .headerContent img {
         height: 50%;
         display: block;
         position: relative;
         left: 3%;
     }
+
     .mainContent {
         background-color: white;
     }
+
     .rightContent {
         background-color: white;
     }
+
     .rightSection {
         display: none;
         position: fixed;
@@ -838,6 +845,7 @@ body {
     .rightArea {
         gap: 50px;
     }
+
     .showContactHeader {
         flex-direction: column;
         align-items: flex-start;
@@ -917,12 +925,15 @@ body {
         width: 100%;
         height: 70vh;
     }
+
     .contactList::-webkit-scrollbar {
         width: 3px;
     }
+
     .new-contact {
         display: none;
     }
+
     .new-contact-mobile {
         padding: 4px 0px;
         width: 193px;
@@ -939,21 +950,26 @@ body {
         justify-content: space-evenly;
         position: absolute;
         right: 2%;
-        top: 9%;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
+
     .new-contact-mobile-box {
         height: 75px;
         background-color: white;
+        display: flex;
+        align-items: center;
     }
+
     .newContactBox {
         width: 95%;
         height: 80%;
         top: -10px;
     }
+
     .closeImg {
         display: none;
     }
+
     .closeImgMobile {
         position: absolute;
         right: 05%;
@@ -962,6 +978,7 @@ body {
         z-index: 1;
         display: block;
     }
+
     .leftContent {
         width: 100%;
         height: 45%;
@@ -970,14 +987,17 @@ body {
         padding: unset;
         align-items: center;
     }
+
     .leftContent img {
         display: none;
     }
+
     .newContactBoxLine {
         position: relative;
         left: -60px;
         width: 170px;
     }
+
     .contactRightContent {
         position: absolute;
         right: unset;
@@ -987,6 +1007,7 @@ body {
         flex-direction: column;
         justify-content: center;
     }
+
     .contactRightContentImg {
         position: absolute;
         width: 100px;
@@ -994,6 +1015,7 @@ body {
         top: -21%;
         left: unset;
     }
+
     .inputFieldSection {
         top: unset;
         right: unset;
@@ -1002,28 +1024,34 @@ body {
         align-items: center;
         width: 100%;
     }
+
     .inputField {
         position: unset;
         width: 60%;
     }
+
     .inputField input {
         height: unset;
         margin-bottom: unset;
         width: 100%;
     }
+
     .buttons {
         justify-content: center;
         margin-top: 3%;
     }
+
     .buttonImg {
         background-position-x: 97%;
         display: flex;
         justify-content: stretch;
         padding-left: 7%;
     }
+
     .log-in-guest {
         display: none;
     }
+
     .log-in-btn {
         padding-left: unset;
     }
@@ -1052,6 +1080,15 @@ body {
         margin-top: 5px;
         margin-bottom: 5px;
     }
+
+    .phoneMailBox {
+        bottom: unset;
+        gap: unset;
+    }
+
+    .contactName p {
+        font-size: 21px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -1078,29 +1115,44 @@ body {
     .new-contact-mobile {
         height: 5%;
     }
+
     .contactDiv {
         gap: 10px;
     }
+
     .letter {
         width: 85%;
     }
+
     .mobileMenu img {
         width: 20px;
     }
+
     .buttonSection p {
         font-size: 13px;
     }
+
     .leftContent h1 {
         font-size: 250%;
     }
+
     .leftContent p {
         font-size: 130%;
     }
+
     .newContactBoxLine {
         width: 135px;
     }
 
     .showContactHeaderH1 {
         font-size: 9vw;
+    }
+
+    .contactName p {
+        font-size: 16px;
+    }
+
+    .email {
+        font-size: 16px !important;
     }
 }

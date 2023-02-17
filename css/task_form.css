@@ -111,7 +111,7 @@
     
     .medium {
         height: 10px !important;
-        padding-top: 4px;
+        padding-top: 0px;
     }
     
     .prioContainer:hover {
@@ -388,6 +388,12 @@
         overflow: scroll;
         overflow-x: hidden;
     }
+    /* .categoryList::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        background: transparent;
+    }
+     */
     
     .borderButton {
         border-bottom: none;
@@ -1174,7 +1180,7 @@
             width: auto;
         }
         .deleteTaskButton {
-            margin-left: 73%;
+            margin-left: 82%;
             margin-top: 15px;
         }
     }
@@ -1577,7 +1583,7 @@
             width: 95%;
         }
         .checkTasking {
-            top: 91px;
+            top: 81px;
         }
         .toEditopenCheckTaskBigDiv {
             margin-top: 0px;
@@ -1677,6 +1683,10 @@
             border-radius: 10px;
             height: 27px;
         }
+        .flexContainer {
+            display: flex;
+            padding-left: 30px;
+        }
     }
     
     @media(max-width: 412px) {
@@ -1771,6 +1781,14 @@
             width: 270px;
             height: 74px;
         }
+        .categoryList {
+            background-color: white;
+            width: 103.5%;
+        }
+        .assignedToList {
+            background-color: white;
+            width: 103.5%;
+        }
     }
     
     @media(max-width: 390px) {
@@ -1778,7 +1796,7 @@
             height: 677px;
         }
         .prioContainer {
-            margin-right: 11px;
+            margin-right: 26px;
         }
         .assignedToListToEdit {
             width: 100.5%;
@@ -1806,17 +1824,26 @@
         }
         .assignedToList {
             background-color: white;
-            width: 104%;
+            width: 102.5%;
         }
         .categoryList {
             background-color: white;
-            width: 104%;
+            width: 103%;
         }
         .selectionMessage {
             left: 8%;
             top: 60%;
             width: 270px;
             height: 74px;
+        }
+        .categoryDiv {
+            width: 92%;
+        }
+        .assignedDiv {
+            width: 92%;
+        }
+        .rightContainer input {
+            width: 88%;
         }
     }
     
@@ -1831,7 +1858,7 @@
             height: 77vh;
         }
         .checkTasking {
-            top: 91px;
+            top: 81px;
             height: auto;
             overflow: scroll;
         }
@@ -1928,7 +1955,7 @@
         }
         .categoryList {
             background-color: white;
-            width: 104.5%;
+            width: 103.5%;
         }
         .taskAssignedTo {
             font-size: 16px;
@@ -1936,7 +1963,7 @@
         }
         .assignedToList {
             background-color: white;
-            width: 104.5%;
+            width: 103.5%;
         }
         .popupToMoveTaskMobileSelections {
             height: 189px;
@@ -1958,6 +1985,10 @@
             margin-bottom: 10px;
             border-radius: 10px;
             height: 27px;
+        }
+        .flexContainer {
+            display: flex;
+            padding-left: 40px;
         }
     }
     
@@ -1997,6 +2028,10 @@
         }
         .assignedToListToEdit {
             width: 101%;
+        }
+        .categoryList {
+            background-color: white;
+            width: 104%;
         }
     }
     
