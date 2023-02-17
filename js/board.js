@@ -543,7 +543,9 @@ async function drop(categorys) {
     addTasking();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
-    touchStartActive = false;
+    setTimeout(function() {
+        touchStartActive = false;
+    }, 1000);
 }
 
 // create an variable for id
@@ -582,7 +584,7 @@ function openCheckTask(Index) {
         let openTocheckRightTask = users[activeUser]['tasks'].indexOf(openToCheck[0]);
         openCheckTasks(openTocheckRightTask);
     }
-    touchStartActive = false;
+
 }
 
 

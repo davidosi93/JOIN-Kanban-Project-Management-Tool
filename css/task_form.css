@@ -1188,6 +1188,7 @@
         }
         .checkTasking {
             height: 936px;
+            top: 80px;
         }
         .checkTaskSmall {
             height: 853px;
@@ -1592,7 +1593,7 @@
             width: 95%;
         }
         .checkTasking {
-            top: 83px;
+            top: 81px;
         }
         .toEditopenCheckTaskBigDiv {
             margin-top: 0px;
