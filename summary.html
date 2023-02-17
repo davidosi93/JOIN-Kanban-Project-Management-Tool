@@ -7,34 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summary</title>
 
-    <link rel="stylesheet" href="css/summary.css">
-    <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
-    <script src="mini_backend.js"></script>
-    <script src="script.js"></script>
-    <script src="template.js"></script>
-    <script src="js/summary.js"></script>
-    <script src="js/contacts.js"></script>
-    <script src="js/board.js"></script>
+    <link rel="stylesheet" href="./css/summary.css">
+    <link rel="icon" type="image/x-icon" href="./asseds/img/Capa 1.png">
+    <script src="./mini_backend.js"></script>
+    <script src="./script.js"></script>
+    <script src="./template.js"></script>
+    <script src="./js/summary.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/board.js"></script>
     <script src="/js/desktop_template.js"></script>
-    <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="./css/contacts.css">
 
 
 </head>
 
 <body onload="initSummary()">
     <div class="content">
-        <div class="desktopMenu" w3-include-html="/asseds/templates/desktop_template.html"></div>
+        <div class="desktopMenu" w3-include-html="./asseds/templates/desktop_template.html"></div>
         <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
-        <div w3-include-html="/asseds/templates/mobileMenu.html"></div>
+        <div w3-include-html="./asseds/templates/mobileMenu.html"></div>
 
         <div class="rightContent">
 
             <div class="headerContent" id="headerContents"></div>
-            
+
             <div id="help" class="mainContainerHelp d-none">
                 <div class="headerHelp">
                     <h1>Help</h1>
-                    <img onclick="goBacktoMainContainer()" src="asseds/img/Vector.png">
+                    <img onclick="goBacktoMainContainer()" src="./asseds/img/Vector.png">
                 </div>
 
                 <h2>What is Join?</h2>
@@ -67,19 +67,19 @@
                 <div style="display:flex">
                     <div class="left-Container">
                         <div class="taskContainer">
-                            <a href="board.html">
+                            <a href="./board.html">
                                 <div class="boardContainer">
                                     <div id="task-board"><b>5</b></div>
                                     <p>Tasks in<br> Board</p>
                                 </div>
                             </a>
-                            <a href="board.html">
+                            <a href="./board.html">
                                 <div class="boardContainer">
                                     <div id="task-progress"><b>2</b></div>
                                     <p>Tasks in <br>Progress</p>
                                 </div>
                             </a>
-                            <a href="board.html">
+                            <a href="./board.html">
                                 <div class="boardContainer">
                                     <div id="task-feedback"><b>2</b></div>
                                     <p>Awaiting <br>Feedback</p>
@@ -89,9 +89,9 @@
 
 
                         <div class="deadlineContainer">
-                            <a href="board.html">
+                            <a href="./board.html">
                                 <div class="deadlineTasks">
-                                    <img src="/asseds/img/Group 7.png">
+                                    <img src="./asseds/img/Group 7.png">
                                     <div>
                                         <div id="task-urgent"><b>1</b></div>
                                         <p>Urgent</p>
@@ -106,18 +106,18 @@
                         </div>
 
                         <div class="finishTask">
-                            <a href="board.html">
+                            <a href="./board.html">
                                 <div onmouseover="onHoverLeft()" onmouseout="offHoverLeft()" class="finishContainer">
-                                    <img id="left-img" href="board.html" src="/asseds/img/Frame 59.png">
+                                    <img id="left-img" href="./board.html" src="./asseds/img/Frame 59.png">
                                     <div>
                                         <div id="task-todo"><b>1</b></div>
                                         <p>To-do</p>
                                     </div>
                                 </div>
                             </a>
-                            <a href="board.html">
+                            <a href="./board.html">
                                 <div onmouseover="onHoverRight()" onmouseout="offHoverRight()" class="finishContainer">
-                                    <img id="right-img" href="board.html" src="/asseds/img/Group 7 (1).png">
+                                    <img id="right-img" href="./board.html" src="./asseds/img/Group 7 (1).png">
                                     <div>
                                         <div id="task-done"><b>1</b></div>
                                         <p>Done</p>
@@ -133,12 +133,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
 
             </div>
         </div>

@@ -9,20 +9,20 @@ function goBacktoMainContainer() {
 }
 
 function onHoverLeft() {
-    document.getElementById('left-img').src = 'asseds/img/stift-weiss.png';
+    document.getElementById('left-img').src = './asseds/img/stift-weiss.png';
 }
 
 function offHoverLeft() {
-    document.getElementById('left-img').src = 'asseds/img/Frame 59.png';
+    document.getElementById('left-img').src = './asseds/img/Frame 59.png';
 }
 
 function onHoverRight() {
-    document.getElementById('right-img').src = 'asseds/img/hacken-weiss.png';
+    document.getElementById('right-img').src = './asseds/img/hacken-weiss.png';
 
 }
 
 function offHoverRight() {
-    document.getElementById('right-img').src = 'asseds/img/Group 7 (1).png';
+    document.getElementById('right-img').src = './asseds/img/Group 7 (1).png';
 }
 
 async function initSummary() {
@@ -42,10 +42,10 @@ function loadActiveUsers() {
     const color = users[activeUser]['color'];
     activeUsers.innerHTML = /*html*/ `
             <p>Kanban Project Management Tool</p>
-            <img id="logoMobile" class="logoMobile d-none" src="asseds/img/biglogo.png">
+            <img id="logoMobile" class="logoMobile d-none" src="./asseds/img/biglogo.png">
             <div class="headerContentRight">
             
-                <img onclick="help()" class="information" src="/asseds/img/information.png">
+                <img onclick="help()" class="information" src="./asseds/img/information.png">
                 <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
                     ${name}
                 </div>
