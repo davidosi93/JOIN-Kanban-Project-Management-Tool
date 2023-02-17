@@ -34,11 +34,11 @@ body {
 }
 
 .display-none {
-    display: none !important;
+    display: none;
 }
 
 .d-none {
-    display: none !important;
+    display: none ;
 }
 
 .logOutBackground {
