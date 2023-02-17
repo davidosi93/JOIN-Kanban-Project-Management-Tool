@@ -14,6 +14,11 @@ async function login() {
 }
 
 
+async function guestLogin() {
+    window.location.href = 'contacts.html';
+}
+
+
 async function init() {
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
