@@ -771,7 +771,17 @@ body {
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1150px) {
+    .contactName p {
+        font-size: 1.5vw;
+    }
+
+    .contactDiv {
+        gap: 3%;
+    }
+}
+
+@media screen and (max-width: 980px) {
     body {
         overflow: hidden;
     }
