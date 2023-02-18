@@ -516,6 +516,7 @@ async function drop(categorys) {
     let droppedTask = users[activeUser]['tasks'].filter(x => x.id == currentDraggedElement)
     droppedTask[0]['list'] = categorys;
     filterTasks();
+    filterAllTasks()
     addTasking();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     await backend.setItem('users', JSON.stringify(users));
