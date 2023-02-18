@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
-    <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="./css/board.css">
 
 
     <script src="./mini_backend.js"></script>
-    <script src="script.js"></script>
-    <script src="/js/board.js"></script>
-    <script src="/js/desktop_template.js"></script>
-    <script src="template.js"></script>
-    <script src="/js/contacts.js"></script>
-    <script src="/js/task_form.js"></script>
+    <script src="./script.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/desktop_template.js"></script>
+    <script src="./template.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/task_form.js"></script>
 
-    <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
+    <link rel="icon" type="image/x-icon" href="./asseds/img/Capa 1.png">
 
 
 </head>
@@ -26,9 +26,9 @@
 <body onload="initLoadTasks()">
 
     <div class="content">
-        <div w3-include-html="/asseds/templates/desktop_template.html" class="rightTemplates"></div>
-        <div w3-include-html="/asseds/templates/mobileMenu.html" class="mobileMenuBig"></div>
-        <div id="addTaskRight" w3-include-html="/asseds/templates/task_form.html" class="d-none"></div>
+        <div w3-include-html="./asseds/templates/desktop_template.html" class="rightTemplates"></div>
+        <div w3-include-html="./asseds/templates/mobileMenu.html" class="mobileMenuBig"></div>
+        <div id="addTaskRight" w3-include-html="./asseds/templates/task_form.html" class="d-none"></div>
         <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
 
         <div class="rightContent">
@@ -39,7 +39,7 @@
             <div id="help" class="mainContainerHelp d-none">
                 <div class="headerHelp">
                     <h1>Help</h1>
-                    <img onclick="goBacktoMainContainer()" src="asseds/img/Vector.png">
+                    <img onclick="goBacktoMainContainer()" src="./asseds/img/Vector.png">
                 </div>
 
                 <h2>What is Join?</h2>
@@ -71,19 +71,19 @@
                         </div>
                         <div class="headerUnderRightMenuHeaderDiv">
                             <p class="headerUnderRightMenuHeaderHeadline">Board</p>
-                            <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButtonSmall"><img class="addTaskImageSmall" src="/asseds/img/Group 11.png "></button>
+                            <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButtonSmall"><img class="addTaskImageSmall" src="./asseds/img/Group 11.png "></button>
                         </div>
                     </div>
                     <div class="headerUnderRightMenuHeaderBigDiv">
                         <div class="containerInputfield ">
                             <input class="headerUnderRightMenuHeaderInputfield " type="text " id="search" onkeyup="searchToTask()" placeholder="Find Task ">
                             <div class="searchImageDiv">
-                                <img class="containerInputfieldImage " src="/asseds/img/Vector (7).png ">
+                                <img class="containerInputfieldImage " src="./asseds/img/Vector (7).png ">
 
                             </div>
 
                         </div>
-                        <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="/asseds/img/Group 11.png "></button>
+                        <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="./asseds/img/Group 11.png "></button>
                     </div>
                 </div>
 
@@ -159,19 +159,19 @@
         <div class="selectionMessage d-none" id="taskDiv"></div>
 
         <div class="miniTemplate">
-            <a href="summary.html" class="buttonSection" id="boardNavBarSummary">
+            <a href="./summary.html" class="buttonSection" id="boardNavBarSummary">
                 <img src="./asseds/img/mobileSummary.png">
                 <p>Summary</p>
             </a>
-            <a href="board.html" class="buttonSection" id="boardNavBarBoard">
+            <a href="./board.html" class="buttonSection" id="boardNavBarBoard">
                 <img src="./asseds/img/mobileBoard.png">
                 <p>Board</p>
             </a>
-            <a href="add_task.html" class="buttonSection" id="boardNavBarAddTask">
+            <a href="./add_task.html" class="buttonSection" id="boardNavBarAddTask">
                 <img src="./asseds/img/mobileAddTask.png">
                 <p>Add Task</p>
             </a>
-            <a href="contacts.html" class="buttonSection" id="boardNavBarContacts">
+            <a href="./contacts.html" class="buttonSection" id="boardNavBarContacts">
                 <img src="./asseds/img/mobileContacts.png">
                 <p>Contacts</p>
             </a>

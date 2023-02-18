@@ -45,30 +45,6 @@ function filterTasks() {
 }
 
 
-// load the html date for show the activeuser, help information and log aut button
-
-function loadActiveUserHTML(name, color) {
-    return /*html*/ `
-        <img class="headerImageLeft" src="/asseds/img/biglogo.png">
-        <p>Kanban Project Management Tool</p>
-    
-        <div class="headerContentRight">
-            <img onclick="help()" class="information" src="/asseds/img/information.png">
-            <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
-                ${name}
-            </div>
-            
-            <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
-            <div id="bigLogOutButton" class="bigLogOutButton d-none">
-                <div onclick="help()">Help</div>
-                <div>Legal Notice</div>
-                <div id="logOutButton" onclick="logOut()">Log Out</div>
-            </div>
-        </div>
-    `;
-}
-
-
 // load the activeuser information 
 
 function loadActiveUser() {
@@ -837,13 +813,13 @@ function openTaskToEditPrioImage(taskIndex) {
 
     if (task.prio.text === 'Urgent') {
         document.getElementById('toEditRed').classList.add('red');
-        document.getElementById('toEditRedImg').src = '/asseds/img/pfeil-oben-weiss.png';
+        document.getElementById('toEditRedImg').src = './asseds/img/pfeil-oben-weiss.png';
     } else if (task.prio.text === 'Medium') {
         document.getElementById('toEditYellow').classList.add('yellow');
-        document.getElementById('toEditYellowImg').src = '/asseds/img/medium-weiss.png';
+        document.getElementById('toEditYellowImg').src = './asseds/img/medium-weiss.png';
     } else if (task.prio.text === 'Low') {
         document.getElementById('toEditGreen').classList.add('green');
-        document.getElementById('toEditGreenImg').src = '/asseds/img/pfeil-unten-weiss.png';
+        document.getElementById('toEditGreenImg').src = './asseds/img/pfeil-unten-weiss.png';
     }
 
 }

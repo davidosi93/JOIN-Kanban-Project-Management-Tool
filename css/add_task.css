@@ -38,7 +38,7 @@ body {
 }
 
 .d-none {
-    display: none ;
+    display: none !important;
 }
 
 .logOutBackground {
@@ -337,6 +337,7 @@ h2 {
     box-shadow: 2px 3px lightgray;
 }
 
+
 /* .middleLine {
     position: absolute;
     width: 0px;
@@ -559,7 +560,7 @@ select {
     height: 133px;
     overflow: scroll;
     overflow-x: hidden;
-    width: 436px;
+    width: 34vw;
     background-color: white;
 }
 
@@ -679,7 +680,7 @@ select {
     padding-left: 0px;
     list-style-type: none;
     height: 133px;
-    width: 96%;
+    width: 34vw;
     overflow: scroll;
     overflow-x: hidden;
     background-color: white;
@@ -909,12 +910,10 @@ select {
     .header {
         display: none !important;
     }
-
-    .mobileText{
+    .mobileText {
         display: block !important;
     }
-
-    .flexContainer{
+    .flexContainer {
         display: block;
         margin-left: 5%;
         margin-right: 5%;

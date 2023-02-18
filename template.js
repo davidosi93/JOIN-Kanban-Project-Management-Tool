@@ -130,7 +130,12 @@ function editContactBox(i, color, str) {
                 </div>`;
 }
 
+
+
 // template for Board
+
+
+// load the thml code for create an task
 
 function createTaskHTML(initialsContainer, subtaskInitialsContainer, element) {
     return /*html*/ `
@@ -160,6 +165,9 @@ function createTaskHTML(initialsContainer, subtaskInitialsContainer, element) {
     </div>
     `;
 }
+
+
+// load the html code for open the task 
 
 function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, taskIndex) {
     return /*html*/ `
@@ -222,6 +230,9 @@ function openCheckTaskHTML(initialsName, fullinitialsName, dateFormatted, task, 
 
 }
 
+
+// loaad the html code for open the task to edit
+
 function openTaskToEditHTML(task, duaDate, taskIndex) {
     return /*html*/ `
         <div class="toEditopenCheckTaskBigDiv" id="editTaskForm">
@@ -275,4 +286,57 @@ function openTaskToEditHTML(task, duaDate, taskIndex) {
         </div>
     `;
 
+}
+
+
+// load the html date for show the activeuser, help information and log aut button
+
+function loadActiveUserHTML(name, color) {
+    return /*html*/ `
+        <img class="headerImageLeft" src="./asseds/img/biglogo.png">
+        <p>Kanban Project Management Tool</p>
+    
+        <div class="headerContentRight">
+            <img onclick="help()" class="information" src="./asseds/img/information.png">
+            <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
+                ${name}
+            </div>
+            
+            <div id="logOutButton" class="logOutButton d-none" onclick="logOut()">Log Out</div>
+            <div id="bigLogOutButton" class="bigLogOutButton d-none">
+                <div onclick="help()">Help</div>
+                <div>Legal Notice</div>
+                <div id="logOutButton" onclick="logOut()">Log Out</div>
+            </div>
+        </div>
+    `;
+}
+
+
+// template for Board
+
+
+// load the html code for load the active user
+
+function loadActiveUsersHTML(name, color) {
+    return /*html*/ `
+    <p>Kanban Project Management Tool</p>
+    <img id="logoMobile" class="logoMobile d-none" src="./asseds/img/biglogo.png">
+    <div class="headerContentRight">
+        
+    <button onclick=" addTasks()" id="createTask" class="btnForMobile d-none"> Create Task
+                    <img src="./asseds/img/hacken.png">
+                </button>
+        <img id="closeImgForMobile" onclick="help()" class="information" src="./asseds/img/information.png">
+        <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}">
+                ${name}
+                
+        </div>
+        <div id="logOutButton" class="logOutButton d-none" >
+            
+            <div onclick="logOut()">Log Out</div>
+
+            </div>
+    </div>
+`;
 }
