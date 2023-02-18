@@ -431,7 +431,16 @@ h3 {
     }
 }
 
-@media(max-width: 900px) {
+
+
+@media(max-width: 980px) {
+
+    .right-Container {
+        display: none;
+    }
+    .headerContent p{
+        display: none;
+    }
 
     #legalNotice{
         display: block;
@@ -440,9 +449,7 @@ h3 {
     #helpp{
         display: block;
     }
-    .headerContent p{
-        display: none;
-    }
+    
 
     .information{
         display: none !important;
@@ -471,9 +478,7 @@ h3 {
     .headerContentRight{
         justify-content: space-between;
     }
-    .right-Container {
-        display: none;
-    }
+    
     .left-Container {
         margin-left: 0;
         width: 100%;
