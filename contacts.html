@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="template.js"></script>
+    <script src="./template.js"></script>
     <script src="./script.js"></script>
     <script src="./js/sign_up.js"></script>
     <script src="./js/logIn.js"></script>
     <script src="./js/contacts.js"></script>
     <script src="./mini_backend.js"></script>
-    <link rel="stylesheet" href="css/contacts.css">
-    <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
+    <link rel="stylesheet" href="./css/contacts.css">
+    <link rel="icon" type="image/x-icon" href="./asseds/img/Capa 1.png">
 </head>
 
 <body onload="contactInit(); includeHTML();">
     <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
     <div class="content">
-        <div class="desktopMenu" w3-include-html="/asseds/templates/desktop_template.html"></div>
-        <div w3-include-html="/asseds/templates/mobileMenu.html"></div>
+        <div class="desktopMenu" w3-include-html="./asseds/templates/desktop_template.html"></div>
+        <div w3-include-html="./asseds/templates/mobileMenu.html"></div>
 
 
         <div class="rightContent">
@@ -28,7 +28,7 @@
             <div class="new-contact-mobile-box">
                 <div onclick="showContactBox()" class="new-contact-mobile d-none">
                     <p class="new-contact-btn">New Contact</p>
-                    <img src="asseds/img/new_contact.png">
+                    <img src="./asseds/img/new_contact.png">
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
                             <p class="mobileHeader">Kanban Project Management Tool</p>
                             <h1 class="showContactHeaderH1">Contacts</h1>
                             <img onclick="closeMobileContactInfo()" class="closeArrow d-none"
-                                src="asseds/img/closeArrowBlack.png">
+                                src="./asseds/img/closeArrowBlack.png">
                             <div class="line"></div>
                             <p>Better with a team</p>
                         </div>
@@ -54,7 +54,7 @@
 
                     <div onclick="showContactBox()" class="new-contact">
                         <p class="new-contact-btn">New Contact</p>
-                        <img src="asseds/img/new_contact.png">
+                        <img src="./asseds/img/new_contact.png">
                     </div>
                 </div>
 
@@ -62,10 +62,10 @@
 
                 <div id="newContactBoxBckgr" style="display: none;" class="newContactBoxBckgr">
                     <div id="newContactBox" class="newContactBox">
-                        <img onclick="closeContactBox()" class="closeImg" src="asseds/img/cross.png">
-                        <img onclick="closeContactBox()" class="closeImgMobile d-none" src="asseds/img/closewhite.png">
+                        <img onclick="closeContactBox()" class="closeImg" src="./asseds/img/cross.png">
+                        <img onclick="closeContactBox()" class="closeImgMobile d-none" src="./asseds/img/closewhite.png">
                         <div class="leftContent">
-                            <img src="asseds/img/littleLogo.png">
+                            <img src="./asseds/img/littleLogo.png">
                             <h1>Add Contact</h1>
                             <p>Tasks are better with a team</p>
                             <div class="newContactBoxLine"></div>
