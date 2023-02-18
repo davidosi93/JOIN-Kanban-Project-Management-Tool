@@ -16,10 +16,10 @@ async function includeHTML() {
 function showHeader(color, str) {
     return `<div class="headerContent">
                 <p class="headerContentText">Kanban Project Management Tool</p>
-                <img src="asseds/img/biglogo.png" class="d-none">
+                <img src="./asseds/img/biglogo.png" class="d-none">
                  <div class="headerContentRight">
                     <div class="buttonsTopRight">
-                        <img onclick="help()" class="information" src="/asseds/img/information.png">
+                        <img onclick="help()" class="information" src="./asseds/img/information.png">
                         <div id="userButton" onclick="showLogOutButton()" class="personLogIn" style="background-color: ${color}; cursor: pointer">${str}</div>
                     </div>
                     <div id="logOutButton" class="logOutButton d-none">
@@ -60,8 +60,8 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                     <p style="background-color: ${color}" class="contactP">${str}</p>
                     <div class="contactNameRight">
                         <p class="contactNameRightP">${name}</p>
-                        <a href="add_task.html"><div class="addTaskBox">
-                            <img src="asseds/img/blueplus.png">
+                        <a href="./add_task.html"><div class="addTaskBox">
+                            <img src="./asseds/img/blueplus.png">
                             <p class="addTask">Add Task</p>
                         </div></a>
                     </div>
@@ -70,7 +70,7 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                 <div class="contactInfo">
                     <p class="contactInfoP">Contact Information</p>
                     <div onclick="showEditContactBox(${i})" class="contactInfoEdit">
-                        <img src="asseds/img/pencil.png">
+                        <img src="./asseds/img/pencil.png">
                         <p class="contactInfoEditP">Edit Contact</p>
                     </div>
                 </div>
@@ -87,17 +87,17 @@ function showBigConactDiv(str, name, email, phone, i, color) {
                 </div>
             </div>
             <div onclick="showEditContactBox(${i})" class="editMobileBox d-none">
-                <img src="asseds/img/whitePencil.png">
+                <img src="./asseds/img/whitePencil.png">
             </div>`;
 }
 
 
 function editContactBox(i, color, str) {
     return `<div id="editContactBox${i}" class="newContactBox">
-                <img onclick="closeEditBox()" class="closeImg" src="asseds/img/cross.png">
-                <img onclick="closeEditBox()" class="closeImgMobile d-none" src="asseds/img/closewhite.png">
+                <img onclick="closeEditBox()" class="closeImg" src="./asseds/img/cross.png">
+                <img onclick="closeEditBox()" class="closeImgMobile d-none" src="./asseds/img/closewhite.png">
                     <div class="leftContent">
-                            <img src="asseds/img/littleLogo.png">
+                            <img src="./asseds/img/littleLogo.png">
                             <h1>Edit Contact</h1>
                         <div class="newContactBoxLine"></div>
                     </div>

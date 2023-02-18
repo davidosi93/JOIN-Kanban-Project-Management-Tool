@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot my password - send mail</title>
-    <link rel="stylesheet" href="css/forgot_psw.css">
-    <script src="js/forgot_psw.js"></script>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="./css/forgot_psw.css">
+    <script src="./js/forgot_psw.js"></script>
+    <script src="./script.js"></script>
     <script src="./mini_backend.js"></script>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link rel="icon" type="image/x-icon" href="asseds/img/Capa 1.png">
+    <link rel="icon" type="image/x-icon" href="./asseds/img/Capa 1.png">
 </head>
 
 <body onload="forgotPasswordinit()">
     <div class="container">
-        <img class="big-Logo" src="asseds/img/biglogo.png">
+        <img class="big-Logo" src="./asseds/img/biglogo.png">
         <form onsubmit="sendResetEmail(); return false" class="log-In-area">
             <div class="left-arrow">
-                <a href="index.html"><img src="asseds/img/arrow-left-line.png"></a>
+                <a href="index.html"><img src="./asseds/img/arrow-left-line.png"></a>
             </div>
             <div class="header">
                 <h1>I forgot my password</h1>
@@ -31,7 +31,7 @@
             <div class="log-In-input">
                 <div class="inputField">
                     <input required id="input1" type="email" required placeholder="Email">
-                    <img class="inputFieldIMG" src="asseds/img/email.png">
+                    <img class="inputFieldIMG" src="./asseds/img/email.png">
                 </div>
             </div>
             <div id="wrongInput" class="falseInput d-none">
@@ -43,7 +43,7 @@
         </form>
         <div id="email-confirm" class="email-confirm-background d-none">
             <div class="email-confirm">
-                <img src="asseds/img/send.png">
+                <img src="./asseds/img/send.png">
                 <p>An E-mail has been sent to you</p>
             </div>
         </div>
