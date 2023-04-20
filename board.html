@@ -8,13 +8,13 @@
     <title>Board</title>
     <link rel="stylesheet" href="./css/board.css">
 
-
+    <script src="./js/data_protection.js"></script>
     <script src="./mini_backend.js"></script>
     <script src="./script.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/desktop_template.js"></script>
     <script src="./template.js"></script>
-    <script src="./js/contacts.js"></script>
+
     <script src="./js/task_form.js"></script>
 
     <link rel="icon" type="image/x-icon" href="./asseds/img/Capa 1.png">
@@ -29,17 +29,18 @@
         <div w3-include-html="./asseds/templates/desktop_template.html" class="rightTemplates"></div>
         <div w3-include-html="./asseds/templates/mobileMenu.html" class="mobileMenuBig"></div>
         <div id="addTaskRight" w3-include-html="./asseds/templates/task_form.html" class="d-none"></div>
-        <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
+        <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButtonBord()"></div>
+
 
         <div class="rightContent">
             <div class="headerContent" id="headerContent">
 
             </div>
 
-            <div id="help" class="mainContainerHelp d-none">
+            <div id="helpp" class="mainContainerHelp d-none">
                 <div class="headerHelp">
                     <h1>Help</h1>
-                    <img onclick="goBacktoMainContainer()" src="./asseds/img/Vector.png">
+                    <img onclick="goBacktoMainContainers()" src="./asseds/img/Vector.png">
                 </div>
 
                 <h2>What is Join?</h2>
@@ -61,6 +62,22 @@
                 </div>
             </div>
 
+            <div id="legalNiticeBord" class="mainContainerHelpBord d-none">
+                <div class="headerHelpBord">
+                    <h1>Legal Notice</h1>
+                    <img onclick="goBacktoMainContainers()" src="./asseds/img/Vector.png">
+                </div>
+
+                <h2>Bubtitle</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                <h2>Subtitle</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+            </div>
+
+            <div id="dataProtection" w3-include-html="./asseds/templates/data_protection.html" class="dataProtection d-none"></div>
+
             <div class="mainContent" id="mainContent">
 
                 <div class="headerUnderRightMenuHeader ">
@@ -71,7 +88,7 @@
                         </div>
                         <div class="headerUnderRightMenuHeaderDiv">
                             <p class="headerUnderRightMenuHeaderHeadline">Board</p>
-                            <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButtonSmall"><img class="addTaskImageSmall" src="./asseds/img/Group 11.png "></button>
+                            <button onclick="addTaskRight('todo')" class="headerUnderRightMenuHeaderButtonSmall"><img class="addTaskImageSmall" src="./asseds/img/Group 11.png "></button>
                         </div>
                     </div>
                     <div class="headerUnderRightMenuHeaderBigDiv">
@@ -83,7 +100,7 @@
                             </div>
 
                         </div>
-                        <button onclick="addTaskRight()" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="./asseds/img/Group 11.png "></button>
+                        <button onclick="addTaskRight('todo')" class="headerUnderRightMenuHeaderButton ">Add Task<img class="addTaskImage " src="./asseds/img/Group 11.png "></button>
                     </div>
                 </div>
 
@@ -106,8 +123,8 @@
                 <div class="containerTodoList">
                     <div>
                         <div class="containerTodoListTodo" id="myHeader">
-                            <p onclick="addTaskRight()" class="containerTodoListTodoTodo">To do</p>
-                            <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
+                            <p onclick="addTaskRight('todo')" class="containerTodoListTodoTodo">To do</p>
+                            <button onclick="addTaskRight('todo')" class="plusButtonTodoList">+</button>
                         </div>
 
                         <div id="containerTodos" class="containerTodo" ondragleave="removeHighlight('containerTodos')" ondrop="drop('todo'); removeHighlight('containerTodos')" ondragover="allowDrop(event); highlight('containerTodos')">
@@ -118,8 +135,8 @@
 
                     <div>
                         <div class="containerTodoListTodo">
-                            <p onclick="addTaskRight()" class="containerTodoListProgress">In progress</p>
-                            <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
+                            <p onclick="addTaskRight('progress')" class="containerTodoListProgress">In progress</p>
+                            <button onclick="addTaskRight('progress')" class="plusButtonTodoList">+</button>
                         </div>
 
                         <div id="containerProgresses" class="containerTodo" ondragleave="removeHighlight('containerProgresses')" ondrop="drop('progress'); removeHighlight('containerProgresses')" ondragover="allowDrop(event); highlight('containerProgresses')">
@@ -130,8 +147,8 @@
 
                     <div>
                         <div class="containerTodoListTodo">
-                            <p onclick="addTaskRight()" class="containerTodoListFeedback">Awaiting Feedback</p>
-                            <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
+                            <p onclick="addTaskRight('feedback')" class="containerTodoListFeedback">Awaiting Feedback</p>
+                            <button onclick="addTaskRight('feedback')" class="plusButtonTodoList">+</button>
                         </div>
 
                         <div id="containerFeedbacks" class="containerTodo" ondragleave="removeHighlight('containerFeedbacks')" ondrop="drop('feedback'); removeHighlight('containerFeedbacks')" ondragover="allowDrop(event); highlight('containerFeedbacks')">
@@ -142,8 +159,8 @@
 
                     <div>
                         <div class="containerTodoListTodo">
-                            <p onclick="addTaskRight()" class="containerTodoListDone">Done</p>
-                            <button onclick="addTaskRight()" class="plusButtonTodoList">+</button>
+                            <p onclick="addTaskRight('done')" class="containerTodoListDone">Done</p>
+                            <button onclick="addTaskRight('done')" class="plusButtonTodoList">+</button>
                         </div>
 
                         <div id="containerDones" class="containerTodo" ondragleave="removeHighlight('containerDones')" ondrop="drop('done'); removeHighlight('containerDones')" ondragover="allowDrop(event); highlight('containerDones')">

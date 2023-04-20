@@ -1,5 +1,5 @@
 let jsonFromServer = {};
-let BASE_SERVER_URL = 'https://gruppe-365.developerakademie.net/smallest_backend_ever';
+let BASE_SERVER_URL = 'https://waldemar-neumann.developerakademie.net/smallest_backend_ever';
 
 
 

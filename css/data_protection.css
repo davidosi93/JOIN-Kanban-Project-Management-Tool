@@ -1,0 +1,208 @@
+.backTo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.backTo h1 {
+    margin-top: 0;
+    font-size: 50px;
+}
+
+.backTo img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 22px;
+}
+
+.divDataProtection {
+    padding: 60px;
+    overflow: scroll;
+    height: 700px;
+    background-color: #F5F5F5;
+}
+
+.divDataProtection::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+@media(max-width: 912px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 1080px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 19px;
+    }
+}
+
+@media(max-width: 768px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 631px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 19px;
+    }
+}
+
+@media(max-width: 690px) {
+    .backTo h1 {
+        margin-top: 0;
+        font-size: 40px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 16px;
+    }
+}
+
+@media(max-width: 600px) {
+    .backTo h1 {
+        margin-top: 0;
+        font-size: 30px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .divDataProtection h2 {
+        margin-top: 0;
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 540px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 592px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+}
+
+@media(max-width: 500px) {
+    .divDataProtection {
+        padding: 40px;
+    }
+    .backTo h1 {
+        margin-top: 0;
+        font-size: 23px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 7px;
+    }
+}
+
+@media(max-width: 414px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 678px;
+    }
+}
+
+@media(max-width: 393px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 605px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+}
+
+@media(max-width: 390px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 605px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+}
+
+@media(max-width: 375px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 450px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+}
+
+@media(max-width: 360px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 533px;
+    }
+    .backTo img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+}
+
+@media(max-width: 280px) {
+    .divDataProtection {
+        overflow: scroll;
+        height: 453px;
+    }
+    .backTo img {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        margin-top: 21px;
+    }
+    .divDataProtection {
+        padding: 10px;
+    }
+    .backTo h1 {
+        margin-top: 16px;
+        font-size: 20px;
+    }
+    .divDataProtection h2 {
+        margin-top: 0;
+        font-size: 16px;
+    }
+    .divDataProtection p {
+        font-size: 13px;
+    }
+    .divDataProtection h3 {
+        font-size: 16px;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    .divDataProtection li {
+        font-size: 13px;
+    }
+}

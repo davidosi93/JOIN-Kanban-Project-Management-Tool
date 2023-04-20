@@ -13,6 +13,7 @@ async function contactInit() {
 }
 
 
+
 function loadLetters() {
     for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
         let name = users[activeUser]['contacts'][i]['contactName'];
@@ -25,6 +26,63 @@ function loadLetters() {
 }
 
 
+//open the info container at help function
+function help() {
+    document.getElementById('helpContacts').classList.remove('d-none');
+    document.getElementById('contactList').classList.add('d-none');
+    document.getElementById('rightSection').classList.add('d-none');
+    document.getElementById('newContact').classList.add('d-none');
+    document.getElementById('logOutButton').classList.add('d-none');
+    document.getElementById('legalNiticeContact').classList.add('d-none');
+    document.getElementById('dataProtection').classList.add('d-none');
+
+}
+
+
+//close the info container at help function
+function goBacktoMainContainers() {
+    document.getElementById('helpContacts').classList.add('d-none');
+    document.getElementById('contactList').classList.remove('d-none');
+    document.getElementById('rightSection').classList.remove('d-none');
+    document.getElementById('legalNiticeContact').classList.add('d-none');
+    document.getElementById('newContact').classList.remove('d-none');
+}
+
+
+//open the notice container
+function notice() {
+    document.getElementById('legalNiticeContact').classList.remove('d-none');
+    document.getElementById('contactList').classList.add('d-none');
+    document.getElementById('rightSection').classList.add('d-none');
+    document.getElementById('logOutButton').classList.add('d-none');
+    document.getElementById('newContact').classList.add('d-none');
+    document.getElementById('dataProtection').classList.add('d-none');
+    document.getElementById('helpContacts').classList.add('d-none');
+}
+
+
+//open the data Protection information
+function dataProtection() {
+    document.getElementById('dataProtection').classList.remove('d-none');
+    document.getElementById('contactList').classList.add('d-none');
+    document.getElementById('rightSection').classList.add('d-none');
+    document.getElementById('logOutButton').classList.add('d-none');
+    document.getElementById('newContact').classList.add('d-none');
+    document.getElementById('helpContacts').classList.add('d-none');
+    document.getElementById('legalNiticeContact').classList.add('d-none');
+}
+
+
+//close the notice and data Pritection container
+function goBack() {
+    document.getElementById('dataProtection').classList.add('d-none');
+    document.getElementById('contactList').classList.remove('d-none');
+    document.getElementById('rightSection').classList.remove('d-none');
+    document.getElementById('newContact').classList.remove('d-none');
+}
+
+
+//load activeuser 
 function loadHeader() {
     let header = document.getElementById('headerContent');
     let color = users[activeUser]['color'];
@@ -33,6 +91,7 @@ function loadHeader() {
 }
 
 
+//render the letters
 function renderLetters() {
     let contact = document.getElementById('contactList');
     contact.innerHTML = '';
@@ -43,6 +102,7 @@ function renderLetters() {
 }
 
 
+//render the contactlist
 function renderContactList() {
     for (let i = 0; i < users[activeUser]['contacts'].length; i++) {
         let name = users[activeUser]['contacts'][i]['contactName'];
@@ -81,6 +141,7 @@ async function addContact() {
 }
 
 
+//push the letter to array
 function pushLetterToArray(firstLetter) {
     if (!letters.includes(firstLetter)) {
         letters.push(firstLetter);
@@ -89,6 +150,7 @@ function pushLetterToArray(firstLetter) {
 }
 
 
+//sort the name and create the letters
 function sortNamesAndCreateLetters() {
     sortNames();
     createLetters();
@@ -179,7 +241,7 @@ function closeContactBox() {
 // Show the Button after a contact is created
 function showContactBtn() {
     document.getElementById('contactCreated').style.display = 'block';
-    setTimeout(closeContactBtn, 800);
+    setTimeout(closeContactBtn, 1000);
 }
 
 
@@ -276,6 +338,7 @@ async function saveContactChanges(i) {
 }
 
 
+//delete a contact
 async function deleteContact(i) {
     let deletedContact = users[activeUser]['contacts'][i];
     let firstLetter = users[activeUser]['contacts'][i]['contactName'].charAt(0);
@@ -311,24 +374,30 @@ function getRandomColor() {
     return color;
 }
 
+
+//open the log out button
 function showLogOutButton() {
     document.getElementById('logOutButton').classList.remove('d-none');
     document.getElementById('logOutBackground').classList.remove('d-none');
     document.getElementById('userButton').style.removeProperty('cursor: pointer');
 }
 
+
+//close the log out button
 function hideLogOutButton() {
     document.getElementById('logOutButton').classList.add('d-none');
     document.getElementById('logOutBackground').classList.add('d-none');
 }
 
 
+//log out
 async function logOut() {
     await backend.deleteItem('activeUser');
     await backend.deleteItem('letters');
     window.location.href = 'index.html';
 }
 
+//close the info container
 function closeMobileContactInfo() {
     document.getElementById('rightSection').classList.add('closeAnimation');
 }
