@@ -13,26 +13,26 @@
     <script src="./script.js"></script>
     <script src="./template.js"></script>
     <script src="./js/summary.js"></script>
-    <script src="./js/contacts.js"></script>
-    <script src="./js/board.js"></script>
+    <script src="./js/data_protection.js"></script>
     <script src="./js/desktop_template.js"></script>
-    <link rel="stylesheet" href="./css/contacts.css">
 
+    <link rel="stylesheet" href="./css/contacts.css">
 
 </head>
 
 <body onload="initSummary()">
     <div class="content">
         <div class="desktopMenu" w3-include-html="./asseds/templates/desktop_template.html"></div>
-        <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
+        <div id="logOutBackground" class="logOutBackgroundSummary d-none" onclick="hideLogOutButtonSummary()"></div>
         <div w3-include-html="./asseds/templates/mobileMenu.html"></div>
+
 
         <div class="rightContent">
 
             <div class="headerContent" id="headerContents"></div>
 
-            <div id="help" class="mainContainerHelp d-none">
-                <div class="headerHelp">
+            <div id="help" class="mainContainerHelpSummary d-none">
+                <div class="headerHelpSummary">
                     <h1>Help</h1>
                     <img onclick="goBacktoMainContainer()" src="./asseds/img/Vector.png">
                 </div>
@@ -55,6 +55,24 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
                 </div>
             </div>
+
+            <div id="legalNiticeSummery" class="legalNiticeSummery d-none">
+                <div class="headerHelpSummary">
+                    <h1>Legal Notice</h1>
+                    <img onclick="goBacktoMainContainer()" src="./asseds/img/Vector.png">
+                </div>
+
+                <h2>Bubtitle</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                <h2>Subtitle</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+            </div>
+
+            <div id="dataProtection" w3-include-html="./asseds/templates/data_protection.html" class="dataProtection d-none"></div>
+
+
             <div id="mainContainer">
                 <div class="mainContent">
                     <div class="headline">
@@ -92,7 +110,7 @@
                             <a href="./board.html">
                                 <div class="deadlineTasks">
                                     <img src="./asseds/img/Group 7.png">
-                                    <div>
+                                    <div class="deatlineUrgent">
                                         <div id="task-urgent"><b>1</b></div>
                                         <p>Urgent</p>
                                     </div>
@@ -128,7 +146,8 @@
                     </div>
 
                     <div class="right-Container">
-                        <div id="greetTime" class="greet"><p>Good Morning</p><br>
+                        <div id="greetTime" class="greet">
+                            <p>Good Morning</p><br>
                             <p>Artur Marbach</p>
                         </div>
                     </div>

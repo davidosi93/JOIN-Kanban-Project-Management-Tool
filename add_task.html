@@ -15,7 +15,6 @@
     <script src="./js/add_task.js"></script>
     <script src="./template.js"></script>
     <script src="./js/desktop_template.js"></script>
-    <script src="./js/contacts.js"></script>
 
 
     <body onload="initLoadTasksAddTask()">
@@ -57,6 +56,21 @@
                     </div>
                 </div>
 
+                <div id="dataProtection" w3-include-html="./asseds/templates/data_protection.html" class="dataProtection d-none"></div>
+
+                <div id="legalNiticeAddTask" class="legalNiticeAddTask d-none">
+                    <div class="headerHelpAddTask">
+                        <h1>Legal Notice</h1>
+                        <img onclick="goBacktoMainContainers()" src="./asseds/img/Vector.png">
+                    </div>
+
+                    <h2>Bubtitle</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                    <h2>Subtitle</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                </div>
 
 
                 <div class="mainContents" id="mainContents">
@@ -110,7 +124,7 @@
 
                                 <p id="assigned" class="addTask_titleInputFields">Assigned to</p>
                                 <div id="addTask_openContact" onclick="openContactss()" class="assignedDiv">
-                                    <p id="assignedContactsSelect" class="assignedToArea">Select contacts to assigt</p>
+                                    <p id="assignedContactsSelect" class="assignedToArea">Select contacts to assign</p>
                                     <img id="assignedContactImg" src="./asseds/img/Vector 2.png">
                                 </div>
 
@@ -157,10 +171,10 @@
 
                                 </div>
 
-                                <div id="btn" class="btn">
+                                <div class="btn">
                                     <button onclick="inputfieldsValues()" class="btnClear">Clear
                                     X
-                                </button>
+                                    </button>
                                     <button class="btnCreate"> Create Task
                                     <img src="./asseds/img/hacken.png">
                                 </button>
@@ -173,8 +187,27 @@
                     <div class="selectionMessage d-none" id="div"></div>
 
                 </div>
+                <div class="miniTemplate">
+                    <a href="./summary.html" class="buttonSection" id="boardNavBarSummary">
+                        <img src="./asseds/img/mobileSummary.png">
+                        <p>Summary</p>
+                    </a>
+                    <a href="./board.html" class="buttonSection" id="boardNavBarBoard">
+                        <img src="./asseds/img/mobileBoard.png">
+                        <p>Board</p>
+                    </a>
+                    <a href="./add_task.html" class="buttonSection" id="boardNavBarAddTask">
+                        <img src="./asseds/img/mobileAddTask.png">
+                        <p>Add Task</p>
+                    </a>
+                    <a href="./contacts.html" class="buttonSection" id="boardNavBarContacts">
+                        <img src="./asseds/img/mobileContacts.png">
+                        <p>Contacts</p>
+                    </a>
+                </div>
 
             </div>
+
         </div>
 
     </body>

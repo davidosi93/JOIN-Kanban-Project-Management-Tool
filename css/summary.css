@@ -5,7 +5,7 @@ body {
 .rightContent {
     height: 100vh;
     width: 100vw;
-    background-color: #F5F5F5;
+    background-color: #F5F5F5 !important;
 }
 
 .headerContent {
@@ -15,7 +15,7 @@ body {
     height: 79px;
 }
 
-.logOutButton {
+.logOutButtonSummary {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,9 +31,18 @@ body {
     font-weight: 400;
     font-size: 16px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 10;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.logOutBackgroundSummary {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
 }
 
 .logoMobile {
@@ -41,7 +50,6 @@ body {
     height: 30px;
     /* padding-left: 20px; */
     /* padding-top: 20px; */
-
 }
 
 .headerContent p {
@@ -122,7 +130,7 @@ body {
 
 .right-Container {
     width: 40%;
-    margin-right: 10%;
+    margin-right: 4%;
 }
 
 .leftContent {
@@ -150,6 +158,8 @@ body {
     background-color: white;
     border-radius: 10px;
     border: 1px solid lightgray;
+    width: 100px;
+    height: 100px;
 }
 
 .boardContainer div {
@@ -175,7 +185,7 @@ body {
     align-items: center;
     background-color: white;
     margin-top: 30px;
-    padding: 5px;
+    padding: 20px;
     text-decoration: none;
     color: black;
     border-radius: 10px;
@@ -203,7 +213,7 @@ body {
     margin: 0;
     font-size: 18px;
     margin-top: 10px;
-    /* padding-left: 30px; */
+    padding-left: 30px;
 }
 
 .deadlineContainer:hover {
@@ -231,7 +241,7 @@ body {
 
 .deatlineDate {
     margin-left: 50px;
-    /* padding-left: 30px; */
+    padding-left: 15px;
     border-left: 3px solid lightgray;
 }
 
@@ -258,7 +268,7 @@ body {
     margin-top: 20px;
     background-color: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid lightgray;
 }
 
@@ -310,23 +320,31 @@ body {
 
 /*Ab hier Help Container*/
 
-.mainContainerHelp {
+.mainContainerHelpSummary {
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 50px;
-    background-color: rgba(240, 236, 236, 0.443);
+    background-color: #F5F5F5;
+    overflow: scroll;
+    height: 652px;
+}
+
+.mainContainerHelpSummary::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 .d-none {
     display: none;
 }
 
-.headerHelp {
+.headerHelpSummary {
     display: flex;
     justify-content: space-between;
 }
 
-.headerHelp h1 {
+.headerHelpSummary h1 {
     margin-top: 0;
     font-size: 50px;
 }
@@ -335,11 +353,11 @@ h2 {
     font-size: 30px;
 }
 
-.headerHelp img {
+.headerHelpSummary img {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    opacity: 0.8;
+    margin-top: 22px;
 }
 
 .flexContainer {
@@ -364,15 +382,160 @@ h3 {
     background-color: #091931;
 }
 
+.help {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.help:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.legalNotice {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.legalNotice:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.dataProtectionLogOutButton {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.dataProtectionLogOutButton:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.logOutSummary {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.logOutSummary:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.legalNiticeSummery {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    background-color: #F5F5F5;
+    overflow: scroll;
+    height: 652px;
+}
+
+.legalNiticeSummery::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+.backToSumaary {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 22px;
+    right: 60px !important;
+    z-index: 3 !important;
+}
+
+@media(max-width: 1500px) {
+    .greet {
+        margin-top: 204px;
+        font-size: 46px;
+    }
+}
+
+@media(max-width: 1320px) {
+    .date {
+        font-size: 29px !important;
+    }
+}
+
+@media(max-width: 1307px) {
+    .date {
+        font-size: 27px !important;
+    }
+}
+
 @media(max-width: 1290px) {
     .left-Container {
         width: 80%;
     }
     .date {
-        font-size: 20px !important;
+        font-size: 27px !important;
     }
     .deadlineContainer p {
         font-size: 18px !important;
+    }
+    .greet {
+        margin-top: 212px;
+        font-size: 39px;
+    }
+}
+
+@media(max-width: 1270px) {
+    .greet {
+        margin-top: 217px;
+        font-size: 36px;
+    }
+}
+
+@media(max-width: 1222px) {
+    .greet {
+        margin-top: 217px;
+        font-size: 36px;
+    }
+}
+
+@media(max-width: 1198px) {
+    .greet {
+        margin-top: 200px;
+        font-size: 35px;
+    }
+    .boardContainer {
+        padding: 20px;
+    }
+}
+
+@media(max-width: 1162px) {
+    .greet {
+        margin-top: 200px;
+        font-size: 34px;
+    }
+    .boardContainer {
+        padding: 20px;
+    }
+}
+
+@media(max-width: 1155px) {
+    .greet {
+        margin-top: 200px;
+        font-size: 32px;
+    }
+    .boardContainer {
+        padding: 20px;
+    }
+}
+
+@media(max-width: 1125px) {
+    .greet {
+        margin-top: 207px;
+        font-size: 32px;
+    }
+    .deatlineDate {
+        padding-left: 10px;
     }
 }
 
@@ -380,24 +543,19 @@ h3 {
     .headline p {
         font-size: 25px;
     }
+    .greet {
+        margin-top: 194px;
+        font-size: 32px;
+    }
     .date {
         font-size: 18px !important;
     }
     .deadlineContainer p {
-        font-size: 16px !important;
-    }
-    .headerContent p {
-        margin-left: 5%;
-    }
-    .greet {
-        font-size: 40px;
-        margin-left: 10%;
+        font-size: 19px !important;
     }
     .boardContainer {
         padding: 15px;
     }
-
-     
     .left-Container {
         margin-left: 5%;
     }
@@ -416,42 +574,55 @@ h3 {
     }
 }
 
-@media(max-width: 1000px) {
-    .headerContent p {
-        font-size: 26px !important;
+@media(max-width: 1032px) {
+    .greet {
+        margin-top: 198px;
+        font-size: 31px;
     }
+}
+
+@media(max-width: 1007px) {
+    .greet {
+        margin-top: 198px;
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 1000px) {
     .headline p {
         font-size: 20px;
     }
-}
-
-@media(max-width: 940px) {
-    .date {
-        font-size: 16px !important;
+    .headline p {
+        margin-bottom: 14px;
     }
 }
 
-
+@media(max-width: 999px) {
+    .boardContainer p {
+        font-size: 18px;
+    }
+    .deadlineContainer p {
+        font-size: 18px !important;
+    }
+}
 
 @media(max-width: 980px) {
-
     .right-Container {
         display: none;
     }
-    .headerContent p{
+    .headerContent p {
         display: none;
     }
-
-    #legalNotice{
+    #legalNotice {
         display: block;
     }
-
-    #helpp{
+    #helpp {
         display: block;
     }
-    
-
-    .information{
+    .dataProtectionLogOutButton {
+        display: block !important;
+    }
+    .information {
         display: none !important;
     }
     .headline {
@@ -467,18 +638,18 @@ h3 {
     }
     .mainContent {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         margin-top: 20px;
+        background-color: #F5F5F5 !important;
     }
     .headline p {
         border-bottom: 3px solid #29ABE2;
         padding-left: 0;
         margin-top: 5px;
     }
-    .headerContentRight{
+    .headerContentRight {
         justify-content: space-between;
     }
-    
     .left-Container {
         margin-left: 0;
         width: 100%;
@@ -487,19 +658,19 @@ h3 {
     .deadlineContainer {
         margin-left: 10%;
         margin-right: 10%;
-        margin-top: 15px;
+        margin-top: 60px;
     }
     .taskContainer {
         justify-content: space-between;
         margin-left: 10%;
         margin-right: 10%;
-        margin-top: 15px;
+        margin-top: 40px;
     }
     .finishTask {
         justify-content: space-between;
         margin-left: 10%;
         margin-right: 10%;
-        margin-top: 15px;
+        margin-top: 60px;
     }
     .finishContainer {
         margin-top: 0;
@@ -508,9 +679,100 @@ h3 {
     .kanban-mobile {
         display: contents !important;
     }
-    .boardContainer p{
+    .boardContainer p {
         font-size: 16px;
-     }
+    }
+    .deatlineDate {
+        padding-left: 80px;
+    }
+    .deatlineUrgent {
+        padding-right: 50px;
+    }
+    .logOutButtonSummary {
+        height: 120px;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        padding-left: 10px;
+    }
+}
+
+@media(max-width: 940px) {
+    .date {
+        font-size: 16px !important;
+    }
+    .deatlineDate {
+        padding-left: 64px;
+    }
+    .deatlineUrgent {
+        padding-right: 37px;
+    }
+}
+
+@media(max-width: 912px) {
+    .taskContainer {
+        margin-top: 40px;
+    }
+    .deadlineContainer {
+        margin-top: 60px;
+    }
+    .finishTask {
+        margin-top: 60px;
+    }
+}
+
+@media(max-width: 850px) {
+    .deatlineDate {
+        padding-left: 54px;
+    }
+    .deatlineUrgent {
+        padding-right: 37px;
+    }
+}
+
+@media(max-width: 770px) {
+    .deatlineDate {
+        padding-left: 39px;
+    }
+    .deatlineUrgent {
+        padding-right: 20px;
+    }
+}
+
+@media(max-width: 730px) {
+    .deatlineDate {
+        padding-left: 30px;
+    }
+    .deatlineUrgent {
+        padding-right: 20px;
+    }
+}
+
+@media(max-width: 690px) {
+    .deatlineDate {
+        padding-left: 27px;
+    }
+    .deatlineUrgent {
+        padding-right: 15px;
+    }
+}
+
+@media(max-height: 667px) {
+    .mainContainerHelpSummary {
+        overflow: scroll;
+        height: 478px !important;
+    }
+}
+
+@media(max-width: 622px) {
+    .deatlineDate {
+        padding-left: 17px;
+    }
+    .deatlineUrgent {
+        padding-right: 10px;
+    }
+    /* .date {
+        font-size: 15px !important;
+    } */
 }
 
 @media(max-width: 550px) {
@@ -532,23 +794,6 @@ h3 {
         width: 60px;
         height: 60px;
     }
-    @media(max-width: 500px) {
-        .finishContainer img {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        .deatlineDate {
-            margin-left: 15px;
-        }
-    }
-    @media(max-width: 450px) {
-        .headline p {
-            font-size: 20px;
-        }
-        .finishContainer p {
-            font-size: 16px;
-        }
-    }
     .deadlineContainer img {
         width: 40px;
         height: 40px;
@@ -557,9 +802,348 @@ h3 {
         width: 40px;
         height: 40px;
     }
-    @media(max-width: 450px) {
-        .finishContainer {
-            padding: 8px;
-        }
+    .boardContainer {
+        padding: 10px;
+    }
+    .mainContainerHelpSummary {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        background-color: #F5F5F5;
+        overflow: scroll;
+        height: 652px;
+    }
+    .legalNiticeSummery {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        background-color: #F5F5F5;
+        overflow: scroll;
+        height: 652px;
+    }
+}
+
+@media(max-width: 540px) {
+    .taskContainer {
+        margin-top: 10px;
+    }
+    .deadlineContainer {
+        margin-top: 30px;
+    }
+    .finishTask {
+        margin-top: 30px;
+    }
+    .mainContainerHelp {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        background-color: #F5F5F5;
+        overflow: scroll;
+        height: 652px;
+    }
+    .headerHelp h1 {
+        margin-top: 0;
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .headerHelp img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+}
+
+@media(max-width: 500px) {
+    .finishContainer img {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .deatlineDate {
+        margin-left: 15px;
+    }
+    .boardContainer {
+        padding: 7px;
+    }
+}
+
+@media(max-width: 450px) {
+    .headline p {
+        font-size: 20px;
+    }
+    .finishContainer p {
+        font-size: 16px;
+    }
+    .finishContainer {
+        padding: 8px;
+    }
+    .boardContainer {
+        padding: 0px;
+    }
+    .boardContainer div {
+        font-size: 40px;
+        padding-top: 0;
+    }
+    .taskContainer div {
+        text-align: center;
+        margin-top: 6px;
+    }
+    .legalNiticeSummery {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 30px;
+        background-color: #F5F5F5;
+        overflow: scroll;
+        height: 652px;
+    }
+}
+
+@media(max-width: 414px) {
+    .taskContainer {
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 30px;
+    }
+    .deadlineContainer {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 50px;
+        height: 110px;
+    }
+    .finishTask {
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 50px;
+    }
+    .deadlineContainer p {
+        margin: 0;
+        font-size: 18px;
+        margin-top: 10px;
+        padding-left: 6px;
+    }
+    .mainContainerHelp {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        background-color: #F5F5F5;
+        overflow: scroll;
+        height: 630px;
+    }
+    .headerHelp h1 {
+        margin-top: 0;
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .headerHelp img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+}
+
+@media(max-width: 412px) {
+    .taskContainer {
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 30px;
+    }
+    .deadlineContainer {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 60px;
+        height: 110px;
+    }
+    .finishTask {
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 60px;
+    }
+    .mainContainerHelp {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        background-color: #F5F5F5;
+        overflow: scroll;
+        height: 630px;
+    }
+    .headerHelp h1 {
+        margin-top: 0;
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 410px) {
+    .boardContainer div {
+        font-size: 30px;
+    }
+    .boardContainer {
+        width: 90px;
+        height: 90px;
+    }
+    .taskContainer div {
+        text-align: center;
+        margin-top: 7px;
+    }
+}
+
+@media(max-width: 393px) {
+    .mainContainerHelpSummary {
+        overflow: scroll;
+        height: 661px;
+    }
+    .legalNiticeSummery h1 {
+        font-size: 30px;
+    }
+    .headerHelpSummary img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+}
+
+@media(max-width: 390px) {
+    .mainContainerHelpSummary {
+        overflow: scroll;
+        height: 655px;
+    }
+    .legalNiticeSummery h1 {
+        font-size: 30px;
+    }
+    .headerHelpSummary img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+}
+
+@media(max-width: 375px) {
+    .headline h1 {
+        border: none;
+        font-size: 47px;
+        margin-top: 5px;
+    }
+    .headline p {
+        font-size: 16px;
+    }
+    .headline {
+        display: flex;
+        margin-left: 10%;
+    }
+    .taskContainer {
+        margin-top: 0px;
+    }
+    .deadlineContainer {
+        margin-top: 22px;
+    }
+    .finishTask {
+        margin-top: 22px;
+    }
+    .deadlineContainer p {
+        margin: 0;
+        font-size: 18px;
+        margin-top: 10px;
+        padding-left: 0px;
+    }
+    .deadlineContainer div {
+        font-size: 30px;
+        text-align: center;
+        padding-top: 0;
+    }
+    .deadlineContainer img {
+        width: 40px;
+        height: 40px;
+        margin-top: 9px;
+    }
+    .finishContainer div div {
+        text-align: center;
+        font-size: 30px;
+        padding-top: 0;
+        /* padding-right: 25px; */
+    }
+    .finishContainer p {
+        padding-right: 0px;
+    }
+    .mainContainerHelpSummary {
+        overflow: scroll;
+        height: 682px;
+    }
+}
+
+@media(max-width: 360px) {
+    .taskContainer {
+        margin-top: 20px;
+    }
+    .deadlineContainer {
+        margin-top: 40px;
+    }
+    .finishTask {
+        margin-top: 40px;
+    }
+    .deatlineDate {
+        margin-left: 11px;
+    }
+    .mainContainerHelpSummary {
+        overflow: scroll;
+        height: 551px;
+    }
+}
+
+@media(max-width: 280px) {
+    .boardContainer div {
+        font-size: 25px;
+    }
+    .boardContainer p {
+        font-size: 11px !important;
+    }
+    .boardContainer {
+        width: 70px;
+        height: 70px;
+    }
+    .taskContainer {
+        margin-top: 10px;
+    }
+    .deadlineContainer {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 30px;
+        height: 81px;
+    }
+    .deadlineContainer p {
+        font-size: 10px !important;
+    }
+    .deadlineContainer div {
+        font-size: 25px;
+        text-align: center;
+        padding-top: 0;
+    }
+    .finishContainer div div {
+        text-align: center;
+        font-size: 25px;
+        padding-top: 0;
+        /* padding-right: 25px; */
+    }
+    .finishContainer p {
+        font-size: 9px;
+    }
+    .mainContainerHelpSummary {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+        overflow: scroll;
+        height: 465px;
     }
 }

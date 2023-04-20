@@ -25,7 +25,7 @@
 
         <div class="rightContent">
             <div id="headerContent"></div>
-            <div class="new-contact-mobile-box">
+            <div id="newContact" class="new-contact-mobile-box">
                 <div onclick="showContactBox()" class="new-contact-mobile d-none">
                     <p class="new-contact-btn">New Contact</p>
                     <img src="./asseds/img/new_contact.png">
@@ -36,14 +36,54 @@
 
                 <div id="contactList" class="contactList"></div>
 
+                <div id="helpContacts" class="mainContainerHelp d-none">
+                    <div class="headerHelp">
+                        <h1>Help</h1>
+                        <img onclick="goBacktoMainContainers()" src="./asseds/img/Vector.png">
+                    </div>
+
+                    <h2>What is Join?</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                    <h2>How to use it</h2>
+
+                    <div class="flexContainer">
+                        <h3>1.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                    </div>
+                    <div class="flexContainer">
+                        <h3>2.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                    </div>
+                    <div class="flexContainer">
+                        <h3>3.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga explicabo sequi totam, id, cum, quibusdam vero neque numquam nemo rerum laborum. Pariatur dolor odit eos consequuntur alias porro magni.</p>
+                    </div>
+                </div>
+
+                <div id="legalNiticeContact" class="mainContainerHelp d-none">
+                    <div class="headerHelpNotice">
+                        <h1>Legal Notice</h1>
+                        <img onclick="goBacktoMainContainers()" src="./asseds/img/Vector.png">
+                    </div>
+
+                    <h2>Bubtitle</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                    <h2>Subtitle</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloribus eaque labore commodi ipsa rerum impedit, tempore, reiciendis dicta nostrum ducimus enim assumenda unde ab quos id, facilis possimus dolores.</p>
+
+                </div>
+
+                <div id="dataProtection" w3-include-html="./asseds/templates/data_protection.html" class="dataProtection d-none"></div>
+
 
                 <div class="rightSection" id="rightSection">
                     <div class="rightArea">
                         <div class="showContactHeader">
                             <p class="mobileHeader">Kanban Project Management Tool</p>
                             <h1 class="showContactHeaderH1">Contacts</h1>
-                            <img onclick="closeMobileContactInfo()" class="closeArrow d-none"
-                                src="./asseds/img/closeArrowBlack.png">
+                            <img onclick="closeMobileContactInfo()" class="closeArrow d-none" src="./asseds/img/closeArrowBlack.png">
                             <div class="line"></div>
                             <p>Better with a team</p>
                         </div>
@@ -83,7 +123,7 @@
                                     <input required id="input2" type="email" placeholder="Email">
                                 </div>
                                 <div class="inputField">
-                                    <input required id="input3" type="phone" placeholder="Phone">
+                                    <input required id="input3" type="number" placeholder="Phone">
                                 </div>
 
 

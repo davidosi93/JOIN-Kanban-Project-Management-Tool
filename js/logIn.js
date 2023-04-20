@@ -1,3 +1,4 @@
+//login function
 async function login() {
     let email = document.getElementById('input1');
     let password = document.getElementById('input2');
@@ -14,8 +15,9 @@ async function login() {
 }
 
 
+//show the html site at guest login
 async function guestLogin() {
-    window.location.href = 'contacts.html';
+    window.location.href = 'summary.html';
 }
 
 
@@ -26,6 +28,7 @@ async function init() {
 }
 
 
+//toggle password visibility icon
 function changeImg() {
     let passwordField = document.getElementById('input2');
     if (passwordField.value.length > 0) {
@@ -38,6 +41,7 @@ function changeImg() {
 }
 
 
+//a function to toggle password visibility
 function setInputToText() {
     let passwordField = document.getElementById('input2');
     let showPassword = document.getElementById('password-nonvisible');

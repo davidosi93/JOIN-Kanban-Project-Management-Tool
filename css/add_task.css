@@ -7,14 +7,23 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: #F5F5F5;
+    overflow: auto;
+}
+
+.rightContent::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 .headerContent {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
-    position: relative;
+    height: 79px;
     box-shadow: -1px 2px lightgrey;
+    position: relative;
 }
 
 .btnForMobile {
@@ -24,13 +33,14 @@ body {
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
+    width: 124px;
+    height: 51px;
 }
 
 .logoMobile {
-    width: 30px;
-    height: 30px;
-    padding-left: 20px;
-    padding-top: 20px;
+    height: 50%;
+    display: flex;
+    margin-left: 3%;
 }
 
 .display-none {
@@ -52,7 +62,6 @@ body {
 
 .headerContent p {
     padding: 20px;
-    padding-left: 100px;
     font-size: 30px;
     margin-top: 0;
     margin-bottom: 0;
@@ -137,6 +146,7 @@ h2 {
     height: 20px;
     cursor: pointer;
     opacity: 0.8;
+    margin-top: 23px;
 }
 
 .mainContent {
@@ -144,7 +154,14 @@ h2 {
 }
 
 .mainContents {
-    margin-top: 60px;
+    overflow: scroll;
+    height: 787px;
+}
+
+.mainContents::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 
@@ -560,8 +577,14 @@ select {
     height: 133px;
     overflow: scroll;
     overflow-x: hidden;
-    width: 34vw;
+    width: 81.2%;
     background-color: white;
+}
+
+.addTask_categoryList::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 .addTask_taskCategory {
@@ -644,7 +667,7 @@ select {
     font-weight: bold;
     transition: 0.3s;
     font-family: none;
-    margin-right: 10px;
+    margin-right: -3px;
     width: 40px;
     height: 40px;
 }
@@ -680,10 +703,16 @@ select {
     padding-left: 0px;
     list-style-type: none;
     height: 133px;
-    width: 34vw;
+    width: 81.2%;
     overflow: scroll;
     overflow-x: hidden;
     background-color: white;
+}
+
+.assignedToList::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 .assignedAddContact {
@@ -742,7 +771,7 @@ select {
 
 .prioContainer {
     padding: 10px;
-    margin-right: 18px;
+    margin-right: 38px;
     background-color: #FFFFFF;
     border-radius: 10px;
     font-size: 21px;
@@ -837,9 +866,12 @@ select {
 }
 
 .selectionMessage {
-    padding: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 326px;
-    height: 74px;
+    height: 50px;
     background: #2A3647;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
@@ -850,16 +882,347 @@ select {
     color: #FFFFFF;
     animation: contactAnim 400ms normal forwards;
     text-align: center;
+    top: 69%;
 }
 
 .buttonSectionBackground {
     background-color: #091931;
 }
 
-@media (max-width: 1250px) {
-    .mainContents {
-        margin-top: 20px;
+.logOutAddTask {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.logOutAddTask:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.miniTemplate {
+    width: 100%;
+    height: 80px;
+    background-color: #2A3647;
+    position: fixed;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.headerHelpAddTask img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 31px;
+}
+
+.legalNiticeAddTask {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    background-color: #F5F5F5;
+    overflow: scroll;
+    height: 652px;
+}
+
+.legalNiticeAddTask::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+.headerHelpAddTask {
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 17px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+
+@media (max-width: 1700px) {
+    .addTask_categoryList {
+        width: 82.3%;
+        background-color: white;
     }
+    .assignedToList {
+        width: 82.3%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1670px) {
+    .addTask_categoryList {
+        width: 82.9%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 82.9%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1650px) {
+    .addTask_categoryList {
+        width: 83%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 83%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1620px) {
+    .addTask_categoryList {
+        width: 83.6%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 83.6%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1590px) {
+    .addTask_categoryList {
+        width: 84.3%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 84.3%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1570px) {
+    .addTask_categoryList {
+        width: 84.6%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 84.6%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1550px) {
+    .addTask_categoryList {
+        width: 84.9%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 84.9%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1530px) {
+    .addTask_categoryList {
+        width: 85.3%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 85.3%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1510px) {
+    .addTask_categoryList {
+        width: 85.5%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 85.5%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 33px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .addTask_categoryList {
+        width: 85.8%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 85.8%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 28px;
+    }
+}
+
+@media (max-width: 1470px) {
+    .addTask_categoryList {
+        width: 86.5%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 86.5%;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1440px) {
+    .addTask_categoryList {
+        width: 86.9%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 86.9%;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1420px) {
+    .addTask_categoryList {
+        width: 87.4%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 87.4%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 26px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .addTask_categoryList {
+        width: 88.2%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 88.2%;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1370px) {
+    .addTask_categoryList {
+        width: 88.9%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 88.9%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 24px;
+    }
+}
+
+@media (max-width: 1360px) {
+    .addTask_categoryList {
+        width: 89.2%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 89.2%;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1340px) {
+    .addTask_categoryList {
+        width: 89.6%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 89.6%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 23px;
+    }
+}
+
+@media (max-width: 1320px) {
+    .addTask_categoryList {
+        width: 90.2%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 90.2%;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1300px) {
+    .addTask_categoryList {
+        width: 90.8%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 90.8%;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 22px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .addTask_categoryList {
+        width: 91.2%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 91.2%;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1260px) {
+    .addTask_categoryList {
+        width: 91.9%;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 91.9%;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1250px) {
     .btn {
         right: 100px !important;
     }
@@ -868,6 +1231,103 @@ select {
     }
     .mainContent {
         padding-left: 50px;
+    }
+    .addTask_categoryList {
+        width: 87.9% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 87.9% !important;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 19px;
+    }
+}
+
+@media (max-width: 1230px) {
+    .addTask_categoryList {
+        width: 88% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 88% !important;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 18px;
+    }
+}
+
+@media (max-width: 1210px) {
+    .addTask_categoryList {
+        width: 88.7% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 88.7% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1190px) {
+    .addTask_categoryList {
+        width: 89.1% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 89.1% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1170px) {
+    .addTask_categoryList {
+        width: 89.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 89.8% !important;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 17px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .addTask_categoryList {
+        width: 90.4% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 90.4% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1130px) {
+    .addTask_categoryList {
+        width: 90.9% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 90.9% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1110px) {
+    .addTask_categoryList {
+        width: 91.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 91.8% !important;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 15px;
     }
 }
 
@@ -891,12 +1351,68 @@ select {
         width: 28vw;
     }
     .rightContainer input {
-        width: 28vw;
+        width: 32vw;
+    }
+    .leftContainer {
+        width: 46%;
+    }
+    .addTask_categoryList {
+        width: 91.4% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 91.4% !important;
+        background-color: white;
     }
     .prioContainer {
-        width: 8vw;
-        font-size: 16px;
-        padding: 5px;
+        margin-right: 19px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .addTask_categoryList {
+        width: 92.2% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 92.2% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1060px) {
+    .addTask_categoryList {
+        width: 92.9% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 92.9% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1040px) {
+    .addTask_categoryList {
+        width: 93.6% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 93.6% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1020px) {
+    .addTask_categoryList {
+        width: 94.6% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 94.6% !important;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 17px;
     }
 }
 
@@ -904,9 +1420,20 @@ select {
     .addTask_selectTaskCategory {
         font-size: 18px;
     }
+    .addTask_categoryList {
+        width: 95.6% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 95.6% !important;
+        background-color: white;
+    }
+    .prioContainer {
+        margin-right: 15px;
+    }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
     .header {
         display: none !important;
     }
@@ -922,26 +1449,23 @@ select {
     #btn {
         display: none;
     }
-    .rightContent {
-        height: unset;
-    }
     .titlesInputfild {
-        width: 80vw;
+        width: 81vw;
     }
     .leftContainer textarea {
-        width: 80vw;
+        width: 82vw;
     }
     .addTask_categoryDiv {
         width: 80vw;
     }
     .assignedDiv {
-        width: 80vw;
+        width: 82vw;
     }
     .assignedDiv {
         width: 80vw;
     }
     .rightContainer input {
-        width: 80vw;
+        width: 82vw;
     }
     .middleLine {
         display: none;
@@ -969,31 +1493,520 @@ select {
         width: 24vw;
     }
     .relativeContainer {
-        margin-bottom: 100px;
+        margin-bottom: 15px;
+    }
+    #logoMobile {
+        display: block !important;
+    }
+    #createTask {
+        display: block !important;
+    }
+    .miniTemplate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 12px;
+        width: 147px;
+        height: 51px;
+    }
+    .btnClear {
+        display: none;
+    }
+    .addTask_categoryList {
+        width: 202% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 202% !important;
+        background-color: white;
+    }
+    .mainContents {
+        overflow: scroll;
+        height: 710px;
+    }
+    .prioContainer {
+        padding: 10px;
+        margin-right: 23px;
+    }
+    .selectionMessage {
+        padding: 30px;
+        width: 326px;
+        height: 50px;
+        left: 30%;
+        font-size: 21px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 950px) {
+    .addTask_categoryList {
+        width: 202.3% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 202.3% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 900px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 20px;
+    }
+    .addTask_categoryList {
+        width: 202.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 202.8% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 850px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 18px;
+    }
+    .addTask_categoryList {
+        width: 203.5% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 203.5% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 800px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 16px;
+    }
+    .addTask_categoryList {
+        width: 203.9% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 203.9% !important;
+        background-color: white;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 326px;
+        height: 50px;
+        left: 25%;
+        font-size: 21px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 750px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 14px;
+    }
+    .addTask_categoryList {
+        width: 204.7% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 204.7% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 700px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 12px;
+    }
+    .addTask_categoryList {
+        width: 205.6% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 205.6% !important;
+        background-color: white;
+    }
+    .leftContainer textarea {
+        width: 83vw;
+    }
+    .rightContainer input {
+        width: 83vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 326px;
+        height: 50px;
+        left: 24%;
+        font-size: 21px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 650px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 10px;
+    }
+    .addTask_categoryList {
+        width: 206.6% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 206.6% !important;
+        background-color: white;
+    }
+    .leftContainer textarea {
+        width: 83vw;
+    }
+    .rightContainer input {
+        width: 83vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 326px;
+        height: 50px;
+        left: 22%;
+        font-size: 21px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 600px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 8px;
+    }
+    .addTask_categoryList {
+        width: 207.5% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 207.5% !important;
+        background-color: white;
+    }
+    .leftContainer textarea {
+        width: 83vw;
+    }
+    .rightContainer input {
+        width: 83vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 326px;
+        height: 50px;
+        left: 18%;
+        font-size: 21px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 550px) {
+    .prioContainer {
+        padding: 10px;
+        margin-right: 6px;
+    }
+    .addTask_categoryList {
+        width: 208.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 208.8% !important;
+        background-color: white;
+    }
+    .leftContainer textarea {
+        width: 83vw;
+    }
+    .rightContainer input {
+        width: 83vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 326px;
+        height: 50px;
+        left: 12%;
+        font-size: 21px;
+        text-align: center;
+        top: 69%;
+    }
+    .mainContainerHelp {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        background-color: rgba(240, 236, 236, 0.443);
+    }
+}
+
+@media (max-width: 540px) {
+    .addTask_categoryList {
+        width: 213.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 213.8% !important;
+        background-color: white;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedDiv {
+        width: 83.2vw;
+    }
+    .addTask_categoryDiv {
+        width: 83vw;
+    }
+    .leftContainer textarea {
+        width: 86.5vw;
+        font-size: 19px;
+    }
+    .titlesInputfild {
+        width: 84vw;
+        font-size: 19px;
+    }
+    .prioContainer {
+        padding: 10px;
+        margin-right: -2px;
+        width: 36vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 229px;
+        height: 20px;
+        left: 26%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+    }
+    .mainContents {
+        overflow: scroll;
+        height: 560px;
+    }
+    .rightContainer input {
+        width: 87vw;
+    }
+}
+
+@media (max-width: 525px) {
+    .addTask_categoryList {
+        width: 209.4% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 209.4% !important;
+        background-color: white;
     }
 }
 
 @media (max-width: 500px) {
     .titlesInputfild {
-        width: 78vw;
+        width: 83vw;
     }
     .leftContainer textarea {
-        width: 78vw;
+        width: 85vw;
     }
     .addTask_categoryDiv {
-        width: 78vw;
+        width: 81vw;
     }
     .assignedDiv {
         width: 78vw;
     }
     .assignedDiv {
-        width: 78vw;
+        width: 81vw;
     }
     .rightContainer input {
-        width: 78vw;
+        width: 85vw;
     }
     .prioContainer {
-        width: 22vw;
+        padding: 10px;
+        margin-right: 8px;
+        width: 36vw;
+    }
+    .addTask_categoryList {
+        width: 212.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 212.8% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 480px) {
+    .addTask_categoryList {
+        width: 213.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 213.8% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 460px) {
+    .addTask_categoryList {
+        width: 214.5% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 214.5% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 440px) {
+    .addTask_categoryList {
+        width: 215.2% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 215.2% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 420px) {
+    .addTask_categoryList {
+        width: 215.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 215.8% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 414px) {
+    .addTask_categoryList {
+        width: 213.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 213.8% !important;
+        background-color: white;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedDiv {
+        width: 80vw;
+    }
+    .addTask_categoryDiv {
+        width: 80vw;
+    }
+    .leftContainer textarea {
+        width: 84.5vw;
+        font-size: 19px;
+    }
+    .titlesInputfild {
+        width: 82vw;
+        font-size: 19px;
+    }
+    .prioContainer {
+        padding: 10px;
+        margin-right: 3px;
+        width: 36vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 229px;
+        height: 20px;
+        left: 18%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+    }
+    .mainContents {
+        overflow: scroll;
+        height: 734px;
+    }
+}
+
+@media (max-width: 412px) {
+    .addTask_categoryList {
+        width: 214% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 214% !important;
+        background-color: white;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedDiv {
+        width: 80vw;
+    }
+    .addTask_categoryDiv {
+        width: 80vw;
+    }
+    .leftContainer textarea {
+        width: 84.5vw;
+        font-size: 19px;
+    }
+    .titlesInputfild {
+        width: 82vw;
+        font-size: 19px;
+    }
+    .prioContainer {
+        padding: 10px;
+        margin-right: 3px;
+        width: 36vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 229px;
+        height: 20px;
+        left: 18%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+    }
+    .mainContents {
+        overflow: scroll;
+        height: 754px;
     }
 }
 
@@ -1004,5 +2017,345 @@ select {
     }
     .addTask_selectTaskCategory {
         font-size: 18px;
+    }
+    .addTask_categoryList {
+        width: 217.6% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 217.6% !important;
+        background-color: white;
+    }
+}
+
+@media (max-width: 393px) {
+    .mainContents {
+        overflow: scroll;
+        height: 690px;
+    }
+    .addTask_categoryList {
+        width: 215.5% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 215.5% !important;
+        background-color: white;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedDiv {
+        width: 80vw;
+    }
+    .addTask_categoryDiv {
+        width: 80vw;
+    }
+    .leftContainer textarea {
+        width: 84.5vw;
+        font-size: 19px;
+    }
+    .titlesInputfild {
+        width: 82vw;
+        font-size: 19px;
+    }
+    .prioContainer {
+        padding: 10px;
+        margin-right: 3px;
+        width: 36vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 229px;
+        height: 20px;
+        left: 16%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 390px) {
+    .mainContents {
+        overflow: scroll;
+        height: 682px;
+    }
+    .addTask_categoryList {
+        width: 215.8% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 215.8% !important;
+        background-color: white;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedDiv {
+        width: 80vw;
+    }
+    .addTask_categoryDiv {
+        width: 80vw;
+    }
+    .leftContainer textarea {
+        width: 84.5vw;
+        font-size: 19px;
+    }
+    .titlesInputfild {
+        width: 82vw;
+        font-size: 19px;
+    }
+    .prioContainer {
+        padding: 10px;
+        margin-right: 3px;
+        width: 36vw;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 229px;
+        height: 20px;
+        left: 16%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 375px) {
+    .prioContainer {
+        font-size: 16px;
+        margin-right: 2px;
+    }
+    .addTask_selectTaskCategory {
+        font-size: 16px;
+    }
+    .addTask_categoryList {
+        width: 216.5% !important;
+        background-color: white;
+        font-size: 16px;
+    }
+    .assignedToList {
+        width: 216.5% !important;
+        background-color: white;
+        font-size: 19px;
+    }
+    .mainContents {
+        overflow: scroll;
+        height: 507px;
+    }
+    .assignedDiv {
+        width: 80vw;
+    }
+    .addTask_categoryDiv {
+        width: 80vw;
+    }
+    .titlesInputfild {
+        width: 82vw;
+        font-size: 16px;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedToArea {
+        height: 27px;
+        font-size: 16px;
+    }
+    .taskAssignedTo {
+        font-size: 16px;
+        margin: 10px 19px;
+    }
+    .rightContainer input {
+        font-size: 16px;
+    }
+    .leftContainer textarea {
+        width: 84.5vw;
+        font-size: 16px;
+    }
+    .addTask_titleInputFields {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+    .headline h1 {
+        padding-right: 30px;
+        font-size: 47px;
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+    .mobileText {
+        font-size: 16px;
+    }
+    .selectionMessage {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 229px;
+        height: 20px;
+        left: 14%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+    }
+}
+
+@media (max-width: 360px) {
+    .prioContainer {
+        font-size: 16px;
+        margin-right: 2px;
+    }
+    .addTask_selectTaskCategory {
+        font-size: 16px;
+    }
+    .addTask_categoryList {
+        width: 215.7% !important;
+        background-color: white;
+        font-size: 16px;
+    }
+    .assignedToList {
+        width: 215.7% !important;
+        background-color: white;
+        font-size: 19px;
+    }
+    .mainContents {
+        overflow: scroll;
+        height: 580px;
+    }
+    .assignedDiv {
+        width: 79.3vw;
+    }
+    .addTask_categoryDiv {
+        width: 79.3vw;
+    }
+    .titlesInputfild {
+        width: 81vw;
+        font-size: 16px;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedToArea {
+        height: 27px;
+        font-size: 16px;
+    }
+    .taskAssignedTo {
+        font-size: 16px;
+        margin: 10px 19px;
+    }
+    .rightContainer input {
+        font-size: 16px;
+    }
+    .leftContainer textarea {
+        width: 84.5vw;
+        font-size: 16px;
+    }
+    .addTask_titleInputFields {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+    .headline h1 {
+        padding-right: 30px;
+        font-size: 47px;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    .mobileText {
+        font-size: 16px;
+    }
+    .selectionMessage {
+        padding: 30px;
+        width: 229px;
+        height: 20px;
+        left: 10%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 280px) {
+    .addTask_categoryList {
+        width: 212.6% !important;
+        background-color: white;
+    }
+    .assignedToList {
+        width: 212.8% !important;
+        background-color: white;
+    }
+    .btnCreate {
+        position: fixed;
+        right: 22px;
+        top: 16px;
+        width: 147px;
+        height: 45px;
+        font-size: 15px;
+    }
+    .assignedDiv {
+        width: 75.3vw;
+    }
+    .addTask_categoryDiv {
+        width: 75vw;
+    }
+    .leftContainer textarea {
+        width: 81.5vw;
+        font-size: 19px;
+    }
+    .titlesInputfild {
+        width: 77vw;
+        font-size: 19px;
+    }
+    .prioContainer {
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        width: 40vw;
+    }
+    .prio {
+        display: block;
+    }
+    .selectionMessage {
+        padding: 30px;
+        width: 186px;
+        height: 9px;
+        left: 6%;
+        font-size: 16px;
+        text-align: center;
+        top: 69%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mainContents {
+        overflow: scroll;
+        height: 494px;
+    }
+    .rightContainer input {
+        width: 83vw;
     }
 }

@@ -1,5 +1,7 @@
 let resetUserId;
 
+
+//send a mail to reset the password
 async function sendResetEmail() {
     let forgotEmail = document.getElementById('input1');
     let user = users.find((u) => u.email == forgotEmail.value);
@@ -14,14 +16,16 @@ async function sendResetEmail() {
 }
 
 
+//show the animation 
 function showAnim() {
     document.getElementById('email-confirm').classList.remove('d-none');
 }
 
 
-function delay () {
-    setTimeout( function() { window.location.href = 'reset_psw.html' }, 700 );
+function delay() {
+    setTimeout(function() { window.location.href = 'reset_psw.html' }, 700);
 }
+
 
 async function forgotPasswordinit() {
     await downloadFromServer();

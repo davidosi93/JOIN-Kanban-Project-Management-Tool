@@ -29,10 +29,7 @@ body {
 
 .headerContent p {
     padding: 20px;
-    padding-left: 100px;
     font-size: 30px;
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
 .personLogIn {
@@ -335,7 +332,7 @@ body {
     position: relative;
     background-color: #FFFFFF;
     width: 623px;
-    height: 781px;
+    height: 90%;
     border-radius: 30px;
     overflow: scroll;
     animation: slideInFromRight 0.5s forwards;
@@ -356,6 +353,12 @@ body {
     padding-top: 50px;
     background-color: rgba(240, 236, 236, 0.443);
     overflow: scroll;
+}
+
+.mainContainerHelp::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 .d-none {
@@ -381,6 +384,7 @@ h2 {
     height: 20px;
     cursor: pointer;
     opacity: 0.8;
+    margin-top: 24px;
 }
 
 .flexContainer {
@@ -434,16 +438,65 @@ h3 {
     z-index: 2;
 }
 
+#logOutButton:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.helpBord {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.helpBord:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.legalNotice {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.legalNotice:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.dataProtectionBord {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.dataProtectionBord:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
+.LogOutBort {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 225ms ease-in-out;
+}
+
+.LogOutBort:hover {
+    border-bottom: 2px solid white;
+    transition: all 225ms ease-in-out;
+}
+
 .bigLogOutButton {
-    display: none;
-    justify-content: space-around;
-    align-items: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     position: absolute;
     top: 100%;
     right: 2%;
-    width: 110px;
-    height: 92px;
+    width: 130px;
+    height: 53px;
     background: #2A3647;
     border-radius: 20px 0px 20px 20px;
     color: #CDCDCD;
@@ -451,7 +504,6 @@ h3 {
     font-size: 16px;
     cursor: pointer;
     z-index: 2;
-    padding: 14px;
 }
 
 .logOutBackground {
@@ -973,12 +1025,40 @@ h3 {
     display: none;
 }
 
+.mainContainerHelpBord {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    background-color: #F5F5F5;
+    overflow: scroll;
+    height: 652px;
+}
+
+.mainContainerHelpBord::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+.headerHelpBord img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 31px;
+}
+
+.headerHelpBord {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media(max-width: 1500px) {
     .containerInputfield {
         margin-left: 450px;
     }
     .headerContent p {
-        padding-left: 70px;
+        padding: 20px;
+        font-size: 30px;
     }
 }
 
@@ -997,17 +1077,18 @@ h3 {
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    .headerContent p {
-        padding-left: 65px;
+}
+
+@media(max-height: 1368px) {
+    .mainContent {
+        height: 1091px !important;
+        margin-top: 2px;
     }
 }
 
 @media(max-width: 1310px) {
     .containerInputfield {
         margin-left: 300px;
-    }
-    .headerContent p {
-        padding-left: 60px;
     }
 }
 
@@ -1020,9 +1101,6 @@ h3 {
     .containerInputfield {
         margin-left: 250px;
     }
-    .headerContent p {
-        padding-left: 55px;
-    }
 }
 
 @media(max-width: 1215px) {
@@ -1034,10 +1112,18 @@ h3 {
     .containerInputfield {
         margin-left: 200px;
     }
-    .headerContent p {
-        padding-left: 50px;
-    }
 }
+
+
+/* @media(max-height: 1180px) {
+    .checkTasking {
+        background-color: #F5F5F5;
+        width: auto;
+        height: 1009px !important;
+        top: 91px;
+        display: block;
+    }
+} */
 
 @media(max-width: 1160px) {
     .containerTodoList {
@@ -1047,9 +1133,6 @@ h3 {
     }
     .containerInputfield {
         margin-left: 150px;
-    }
-    .headerContent p {
-        padding-left: 46px;
     }
 }
 
@@ -1070,6 +1153,12 @@ h3 {
     }
 }
 
+@media(max-height: 1024px) {
+    .mainContent {
+        height: 840px !important;
+    }
+}
+
 @media(max-width: 1024px) {
     .headerHelp h1 {
         margin-top: 0;
@@ -1086,57 +1175,6 @@ h3 {
     .containerInputfield {
         margin-left: 20px;
     }
-}
-
-@media(max-width: 950px) {
-    .containerInputfield {
-        width: 200px;
-        margin-right: 30px;
-    }
-    .headerUnderRightMenuHeaderInputfield {
-        width: 136px;
-    }
-    .headerContent p {
-        text-align: center;
-    }
-    .headerContent p {
-        padding-left: 43px;
-    }
-}
-
-@media(max-width: 912px) {
-    .mainContainerHelp {
-        padding-left: 40px;
-        padding-right: 40px;
-        height: 1239px;
-    }
-}
-
-@media(max-width: 875px) {
-    .headerUnderRightMenuHeaderHeadline {
-        font-size: 55px;
-    }
-    .containerInputfield {
-        width: 150px;
-        margin-right: 30px;
-    }
-    .headerUnderRightMenuHeaderInputfield {
-        width: 88px;
-    }
-    .headerContent p {
-        padding-left: 40px;
-    }
-}
-
-@media(max-width: 820px) {
-    .mainContainerHelp {
-        padding-left: 40px;
-        padding-right: 40px;
-        height: 1052px;
-    }
-}
-
-@media(max-width: 812px) {
     .containerTodoListTodo {
         width: 85vw;
     }
@@ -1167,7 +1205,7 @@ h3 {
     .containerTodo {
         margin-left: -10px;
         width: 93vw;
-        min-height: 350px;
+        min-height: 200px;
     }
     .headerContent p {
         display: none;
@@ -1212,7 +1250,7 @@ h3 {
         background-color: #F5F5F5;
         width: auto;
         height: 792px;
-        top: 91px;
+        top: 81px;
         display: block;
     }
     .checkTaskSmall {
@@ -1228,11 +1266,11 @@ h3 {
         margin-left: 30px;
     }
     .deleteTaskButton {
-        margin-left: 75%;
+        margin-left: 73%;
         margin-top: 15px;
     }
     .toEditTaskButton {
-        margin-left: 70%;
+        margin-left: 84%;
     }
     .toEditTaskMainDiv {
         background-color: #F5F5F5 !important;
@@ -1274,8 +1312,8 @@ h3 {
         display: none;
     }
     .closes4 {
-        top: 61px;
-        left: 85%;
+        top: 12%;
+        left: 94%;
         display: flex;
     }
     .miniTemplate {
@@ -1289,10 +1327,98 @@ h3 {
         margin-left: 3%;
     }
     .bigLogOutButton {
-        display: flex;
+        height: 120px;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        padding-left: 10px;
     }
-    .logOutButton {
-        display: none;
+    #helpBord {
+        display: block !important;
+    }
+    #legalNotice {
+        display: block !important;
+    }
+    #dataProtectionLogOutButton {
+        display: block !important;
+    }
+    .mainContent {
+        height: 708px !important;
+    }
+}
+
+@media(max-width: 950px) {
+    .containerInputfield {
+        width: 200px;
+        margin-right: 30px;
+    }
+    .headerUnderRightMenuHeaderInputfield {
+        width: 136px;
+    }
+    .headerContent p {
+        text-align: center;
+    }
+}
+
+@media(max-height: 915px) {
+    .mainContent {
+        height: 747px !important;
+        margin-top: 3px;
+    }
+}
+
+@media(max-width: 912px) {
+    .mainContainerHelp {
+        padding-left: 40px;
+        padding-right: 40px;
+        height: 1239px;
+    }
+    .headerHelp img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        opacity: 0.8;
+        margin-top: 18px;
+    }
+}
+
+@media(max-height: 896px) {
+    .mainContent {
+        height: 785px !important;
+    }
+}
+
+@media(max-width: 875px) {
+    .headerUnderRightMenuHeaderHeadline {
+        font-size: 55px;
+    }
+    .containerInputfield {
+        width: 150px;
+        margin-right: 30px;
+    }
+    .headerUnderRightMenuHeaderInputfield {
+        width: 88px;
+    }
+}
+
+@media(max-height: 851px) {
+    .mainContent {
+        height: 685px !important;
+        margin-top: 3px;
+    }
+}
+
+@media(max-height: 844px) {
+    .mainContent {
+        height: 680px !important;
+        margin-top: 3px;
+    }
+}
+
+@media(max-width: 820px) {
+    .mainContainerHelp {
+        padding-left: 40px;
+        padding-right: 40px;
+        height: 1052px;
     }
 }
 
@@ -1301,6 +1427,36 @@ h3 {
         padding-left: 40px;
         padding-right: 40px;
         height: 814px;
+    }
+}
+
+@media(max-height: 740px) {
+    .mainContent {
+        height: 575px !important;
+    }
+}
+
+@media(max-height: 720px) {
+    .mainContent {
+        height: 550px !important;
+    }
+}
+
+@media(max-height: 667px) {
+    .mainContent {
+        height: 502px !important;
+    }
+}
+
+@media(max-height: 653px) {
+    .mainContent {
+        height: 502px !important;
+    }
+}
+
+@media(max-height: 600px) {
+    .mainContent {
+        height: 509px !important;
     }
 }
 
@@ -1321,6 +1477,9 @@ h3 {
     }
     .checkTasking {
         top: 81px;
+    }
+    .mainContainerHelpBord {
+        height: 579px;
     }
 }
 
@@ -1363,6 +1522,11 @@ h3 {
         padding-right: 40px;
         height: 681px;
     }
+    .mainContainerHelpBord {
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 10px;
+    }
 }
 
 @media(max-width: 412px) {
@@ -1404,6 +1568,11 @@ h3 {
         padding-right: 40px;
         height: 456px;
     }
+    .mainContainerHelpBord {
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 10px;
+    }
 }
 
 @media(max-width: 360px) {
@@ -1442,80 +1611,12 @@ h3 {
         justify-content: space-between;
         align-items: baseline;
     }
-}
-
-@media(max-height: 1368px) {
-    .mainContent {
-        height: 1091px;
-        margin-top: 2px;
-    }
-}
-
-@media(max-height: 1024px) {
-    .mainContent {
-        height: 840px;
-    }
-}
-
-@media(max-height: 915px) {
-    .mainContent {
-        height: 747px;
-        margin-top: 3px;
-    }
-}
-
-@media(max-height: 896px) {
-    .mainContent {
-        height: 730px;
-    }
-}
-
-@media(max-height: 851px) {
-    .mainContent {
-        height: 685px;
-        margin-top: 3px;
-    }
-}
-
-@media(max-height: 844px) {
-    .mainContent {
-        height: 680px;
-        margin-top: 3px;
-    }
-}
-
-@media(max-height: 800px) {
-    .mainContent {
-        height: 709px;
-    }
-}
-
-@media(max-height: 740px) {
-    .mainContent {
-        height: 575px;
-    }
-}
-
-@media(max-height: 720px) {
-    .mainContent {
-        height: 550px;
-    }
-}
-
-@media(max-height: 667px) {
-    .mainContent {
-        height: 502px;
-    }
-}
-
-@media(max-height: 653px) {
-    .mainContent {
-        height: 502px;
-    }
-}
-
-@media(max-height: 600px) {
-    .mainContent {
-        height: 509px;
+    .mainContainerHelpBord {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 0px;
+        background-color: #F5F5F5;
+        overflow: scroll;
+        height: 478px;
     }
 }
